@@ -8,12 +8,13 @@ import {EmaPageRoutingModule} from './ema-routing.module';
 import {EmaPage} from './ema.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    EmaPageRoutingModule
-  ],
-  declarations: [EmaPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        EmaPageRoutingModule
+    ],
+    declarations: [EmaPage],
 })
-export class EmaPageModule {}
+export class EmaPageModule {
+}

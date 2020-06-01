@@ -1,52 +1,54 @@
 <ion-header>
-	<ion-toolbar>
-		<ion-buttons slot="start" fill="clear" class="menu">
-			<ion-button fill="clear" slot="icon-only" (click)="overlap()">
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-			<path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 
+    <ion-toolbar>
+        <ion-buttons slot="start" fill="clear" class="menu">
+            <ion-button fill="clear" slot="icon-only" (click)="overlap()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10
 			10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 
 			17h-12v-2h12v2zm0-4h-12v-2h12v2zm0-4h-12v-2h12v2z"/>
-			</svg>
-			</ion-button>
-		</ion-buttons>
-	</ion-toolbar>
+                </svg>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 <ion-content class="background">
-	<ion-grid>
-		<ion-card-title *ngIf="displayName">
-			<p class="hello">
-			Hello {{(displayName |async)}}<br>
-			We are together on this with you </p>
-		</ion-card-title>
-	</ion-grid><br>
-	<ion-grid class="score" *ngIf="Info">
-		<ion-title size="large" style="text-align: center;">Your Well-being score</ion-title>
-		<ion-card-content>
-		<ion-title size="large" style="text-align: center;
-		font-size: 80px;">{{(Info |async)?.wellbeingScore}} %</ion-title>
-		</ion-card-content>
-		<!--<ion-card>
-			<ion-card-content>
-			<svg width="120" height="120" viewBox="0 0 120 120" class="progress__svg">
-				<circle
-				  [attr.r]="circle.radius"
-				  cx="60"
-				  cy="60"
-				  stroke-width="12"
-				  class="progress__meter"
-				/>
-				<circle
-				  [style.strokeDasharray]="circle.circumference"
-				  [style.strokeDashoffset]="circle.dashoffset"
-				  [attr.r]="circle.radius"
-				  cx="60"
-				  cy="60"
-				  stroke-width="12"
-				  class="progress__value"
-				/>
-			  </svg>
-			</ion-card-content>
-		</ion-card>-->
-	</ion-grid>
+    <ion-grid>
+        <ion-card-title *ngIf="displayName">
+            <p class="hello">
+                Hello {{(displayName |async)}}<br>
+                We are together on this with you </p>
+        </ion-card-title>
+    </ion-grid>
+    <br>
+    <ion-grid class="score" *ngIf="Info">
+        <ion-title size="large" style="text-align: center;">Your Well-being score</ion-title>
+        <ion-card-content>
+            <ion-title size="large" style="text-align: center;
+		font-size: 80px;">{{(Info |async)?.wellbeingScore}} %
+            </ion-title>
+        </ion-card-content>
+        <!--<ion-card>
+            <ion-card-content>
+            <svg width="120" height="120" viewBox="0 0 120 120" class="progress__svg">
+                <circle
+                  [attr.r]="circle.radius"
+                  cx="60"
+                  cy="60"
+                  stroke-width="12"
+                  class="progress__meter"
+                />
+                <circle
+                  [style.strokeDasharray]="circle.circumference"
+                  [style.strokeDashoffset]="circle.dashoffset"
+                  [attr.r]="circle.radius"
+                  cx="60"
+                  cy="60"
+                  stroke-width="12"
+                  class="progress__value"
+                />
+              </svg>
+            </ion-card-content>
+        </ion-card>-->
+    </ion-grid>
 </ion-content>	
 

@@ -7,25 +7,25 @@ import {UserService} from './user.service';
 import {AuthService} from './auth.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+    selector: 'app-root',
+    templateUrl: 'app.component.html',
+    styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    public user: UserService,
-    public auth: AuthService
-  ) {
-    this.initializeApp();
-  }
+    constructor(
+        private platform: Platform,
+        private splashScreen: SplashScreen,
+        private statusBar: StatusBar,
+        public user: UserService,
+        public auth: AuthService
+    ) {
+        this.initializeApp();
+    }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
+    initializeApp() {
+        this.platform.ready().then(() => {
+            this.statusBar.styleDefault();
+            this.splashScreen.hide();
+        });
+    }
 }

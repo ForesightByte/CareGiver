@@ -24,30 +24,33 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PercentageComponent} from './percentage/percentage.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy,
-      useClass: IonicRouteStrategy },
-    UserService,
-    AuthService,
-    PercentageComponent
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    entryComponents: [],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+        ReactiveFormsModule,
+        HttpClientModule
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        {
+            provide: RouteReuseStrategy,
+            useClass: IonicRouteStrategy
+        },
+        UserService,
+        AuthService,
+        PercentageComponent
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

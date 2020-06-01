@@ -12,6 +12,6 @@ const firebaseConfig = {
     messagingSenderId: '899524404143',
     appId: '1:899524404143:web:df2133f520f9d4c3c9455a',
     measurementId: 'G-P0PQGPM34V'
-  };
+};
 // tslint:disable-next-line: semicolon
 export default firebaseConfig

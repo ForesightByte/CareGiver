@@ -1,21 +1,25 @@
-ion-content{
-    --background:url(../../../assets/blue_mountains.jpg) 0 0/100% 100% no-repeat;
+ion-content {
+  --background: url(../../../assets/blue_mountains.jpg) 0 0/100% 100% no-repeat;
 }
-ion-toolbar{
-    --background:url(../../../assets/toolbar.jpg) 0 0/100% 100% no-repeat;
-    color: black;
+
+ion-toolbar {
+  --background: url(../../../assets/toolbar.jpg) 0 0/100% 100% no-repeat;
+  color: black;
 }
-ion-list{
-    background: rgba(255, 248, 220, 0);
+
+ion-list {
+  background: rgba(255, 248, 220, 0);
 }
-.profile{
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    font-size: large;
+
+.profile {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: large;
 }
-.photo{
-    align-items: center;
-    justify-content: center;
+
+.photo {
+  align-items: center;
+  justify-content: center;
 }

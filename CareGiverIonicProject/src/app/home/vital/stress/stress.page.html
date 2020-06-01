@@ -1,31 +1,31 @@
 <ion-header>
-  <ion-toolbar color= "primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/vital"></ion-back-button>
-    </ion-buttons>
-      <ion-title>Stress</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/vital"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Stress</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding><br>
-  <ion-row row-1>
-    <!--<ion-title (click)="getData(yesterday)">Yesterday</ion-title>
-    <ion-title (click)="getData(today)" style="text-align: right;">Today</ion-title>-->
-  </ion-row>
-  <ion-card *ngIf="Info">
-    <ion-grid class="profile">
-    <ion-list>
-      <b>Stress: </b>
-      <p>Date: {{(Info |async)?.dailies.calendarDate}}</p>
-      <p>Avg. Stress Level: {{(Info |async)?.dailies.averageStressLevel}}</p>
-      <p>Max. Stress Level: {{(Info |async)?.dailies.maxStressLevel}}</p>
-      <p>Stress Duration: {{(Info |async)?.dailies.stressDurationInSeconds}}s</p>
-      <p>Active Stress Duration: {{(Info |async)?.dailies.activityStressDurationInSeconds}}s</p>
-      <p>Rest Stress Duration: {{(Info |async)?.dailies.restStressDurationInSeconds}}s</p>
-      <p>High Stress Duration: {{(Info |async)?.dailies.highStressDurationInSeconds}}s</p>
-      <p>Medium Stress Duration: {{(Info |async)?.dailies.mediumStressDurationInSeconds}}s</p>
-      <p>Low Stress Duration: {{(Info |async)?.dailies.lowStressDurationInSeconds}}s</p>
-    </ion-list>
-  </ion-grid>
-  </ion-card>
+    <ion-row row-1>
+        <!--<ion-title (click)="getData(yesterday)">Yesterday</ion-title>
+        <ion-title (click)="getData(today)" style="text-align: right;">Today</ion-title>-->
+    </ion-row>
+    <ion-card *ngIf="Info">
+        <ion-grid class="profile">
+            <ion-list>
+                <b>Stress: </b>
+                <p>Date: {{(Info |async)?.dailies.calendarDate}}</p>
+                <p>Avg. Stress Level: {{(Info |async)?.dailies.averageStressLevel}}</p>
+                <p>Max. Stress Level: {{(Info |async)?.dailies.maxStressLevel}}</p>
+                <p>Stress Duration: {{(Info |async)?.dailies.stressDurationInSeconds}}s</p>
+                <p>Active Stress Duration: {{(Info |async)?.dailies.activityStressDurationInSeconds}}s</p>
+                <p>Rest Stress Duration: {{(Info |async)?.dailies.restStressDurationInSeconds}}s</p>
+                <p>High Stress Duration: {{(Info |async)?.dailies.highStressDurationInSeconds}}s</p>
+                <p>Medium Stress Duration: {{(Info |async)?.dailies.mediumStressDurationInSeconds}}s</p>
+                <p>Low Stress Duration: {{(Info |async)?.dailies.lowStressDurationInSeconds}}s</p>
+            </ion-list>
+        </ion-grid>
+    </ion-card>
 </ion-content>

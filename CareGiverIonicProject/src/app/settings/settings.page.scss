@@ -1,15 +1,18 @@
-ion-toolbar{
-    --background:url(../../assets/toolbar.jpg);
-    color: black;
-  }
-  ion-content{
-    --background:url(../../assets/blue_mountains.jpg) 0 0/100% 100% no-repeat;
-  }
-  ion-grid{
-      padding-left: 10px;
-      padding-top: 10px;
-  }
-  ion-button{
-    --background: rgb(210, 253, 153);
-    color: black;
-  }
+ion-toolbar {
+  --background: url(../../assets/toolbar.jpg);
+  color: black;
+}
+
+ion-content {
+  --background: url(../../assets/blue_mountains.jpg) 0 0/100% 100% no-repeat;
+}
+
+ion-grid {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+ion-button {
+  --background: rgb(210, 253, 153);
+  color: black;
+}

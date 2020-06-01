@@ -9,12 +9,13 @@ import {HeartRatePageRoutingModule} from './heart-rate-routing.module';
 import {HeartRatePage} from './heart-rate.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HeartRatePageRoutingModule
-  ],
-  declarations: [HeartRatePage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        HeartRatePageRoutingModule
+    ],
+    declarations: [HeartRatePage]
 })
-export class HeartRatePageModule {}
+export class HeartRatePageModule {
+}

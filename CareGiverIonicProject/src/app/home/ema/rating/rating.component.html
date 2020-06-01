@@ -1,21 +1,26 @@
 <div class="btn">
-  <ion-row row-1>
-      <ion-text style="font-size: smaller; color:green; padding-top:10px;">Low</ion-text>&nbsp;
-      <ion-fab-button size="small" shape="round" [disabled]="isDisabled" [color]="ratingSelected==20?'dark':'lightblue'"
-                  (click)="OnClickAction(20)"><img class="pic" [src]="ema.five"/>
-      </ion-fab-button>
-      <ion-fab-button size="small" shape="round" [disabled]="isDisabled" [color]="ratingSelected==40?'dark':'lightblue'"
-                  (click)="OnClickAction(40)"><img class="pic" [src]="ema.four"/>
-      </ion-fab-button>
-      <ion-fab-button size="small" shape="round" [disabled]="isDisabled" [color]="ratingSelected==60?'dark':'lightblue'"
-                  (click)="OnClickAction(60)"><img class="pic" [src]="ema.three"/>
-      </ion-fab-button>
-      <ion-fab-button size="small" shape="round" [disabled]="isDisabled" [color]="ratingSelected==80?'dark':'lightblue'"
-                  (click)="OnClickAction(80)"><img class="pic" [src]="ema.two"/>
-      </ion-fab-button>
-      <ion-fab-button size="small" shape="round" [disabled]="isDisabled" [color]="ratingSelected==100?'dark':'lightblue'"
-                  (click)="OnClickAction(100)"><img class="pic" [src]="ema.one"/>
-      </ion-fab-button>&nbsp;
-      <ion-text style="font-size: smaller; color:red; padding-top:10px;">High</ion-text>
-  </ion-row>
+    <ion-row row-1>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round" [disabled]="isDisabled"
+                        [color]="ratingSelected==20?'dark':'lightblue'"
+                        (click)="OnClickAction(20)"><img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round" [disabled]="isDisabled"
+                        [color]="ratingSelected==40?'dark':'lightblue'"
+                        (click)="OnClickAction(40)"><img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round" [disabled]="isDisabled"
+                        [color]="ratingSelected==60?'dark':'lightblue'"
+                        (click)="OnClickAction(60)"><img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round" [disabled]="isDisabled"
+                        [color]="ratingSelected==80?'dark':'lightblue'"
+                        (click)="OnClickAction(80)"><img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round" [disabled]="isDisabled"
+                        [color]="ratingSelected==100?'dark':'lightblue'"
+                        (click)="OnClickAction(100)"><img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">High</ion-text>
+    </ion-row>
 </div>

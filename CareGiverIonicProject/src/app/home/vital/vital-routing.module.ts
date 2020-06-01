@@ -4,14 +4,15 @@ import {RouterModule, Routes} from '@angular/router';
 import {VitalPage} from './vital.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: VitalPage
-  },
+    {
+        path: '',
+        component: VitalPage
+    },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class VitalPageRoutingModule {}
+export class VitalPageRoutingModule {
+}

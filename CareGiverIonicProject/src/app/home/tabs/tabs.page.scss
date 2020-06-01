@@ -1,88 +1,101 @@
-ion-content.background{
-    --background:url(../../../assets/gray.jpg) 0 0/100% 100% no-repeat;
+ion-content.background {
+  --background: url(../../../assets/gray.jpg) 0 0/100% 100% no-repeat;
 }
-ion-tab-bar{
-    --background:url(../../../assets/tab_bar.jpg) 0 0/100% 100%;
+
+ion-tab-bar {
+  --background: url(../../../assets/tab_bar.jpg) 0 0/100% 100%;
 }
-ion-tab-button{
-    color:rgb(47, 51, 42);
+
+ion-tab-button {
+  color: rgb(47, 51, 42);
 }
-.content{
-    position:auto;
-    max-width: 1000px;
-    margin-top:100px;
-    margin-left:60px;
-    margin: 100px;
+
+.content {
+  position: auto;
+  max-width: 1000px;
+  margin-top: 100px;
+  margin-left: 60px;
+  margin: 100px;
 }
-.buttons-action{
-    margin-left:5px;
+
+.buttons-action {
+  margin-left: 5px;
 }
-.Registration-text{
-    font-size: x-small;
-    color: #ffffff;
-    text-align: center;
-    font-family: 'Nunito', sans-serif;
-    text-transform: none;
+
+.Registration-text {
+  font-size: x-small;
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  text-transform: none;
 }
-.login-text{
-    margin-left: 10px;
-    font-size: large;
-    color: #d7ffa3;
-    text-align: center;
-    font-family: 'Nunito', sans-serif;
-    text-transform: none;
+
+.login-text {
+  margin-left: 10px;
+  font-size: large;
+  color: #d7ffa3;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  text-transform: none;
 }
-ion-input{
-background-color: #ededed;
-border-radius:5px;
-font-size:small;
+
+ion-input {
+  background-color: #ededed;
+  border-radius: 5px;
+  font-size: small;
 }
-.actionbutton{
-    background-color: #92ff05;
-    color: black;
-    border-radius: 5px;
-    margin-left:15px;
-    margin-right:13px;
-    font-size:small;
-    font-family:Arial, Helvetica, sans-serif;
+
+.actionbutton {
+  background-color: #92ff05;
+  color: black;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-right: 13px;
+  font-size: small;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.forgotbutton{
-    background-color:#ffffff00;
-    color:#d7ffa3;
-    font-size: x-small;
-    margin-right: 50px;
-    font-style: italic;
-    text-transform: none;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+.forgotbutton {
+  background-color: #ffffff00;
+  color: #d7ffa3;
+  font-size: x-small;
+  margin-right: 50px;
+  font-style: italic;
+  text-transform: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-.line{
-    border-bottom: 2px solid rgb(255, 255, 255);
-    margin-bottom: 22px;
+
+.line {
+  border-bottom: 2px solid rgb(255, 255, 255);
+  margin-bottom: 22px;
 }
-.or{
-    color:#ffffff;
-    text-align: center;
+
+.or {
+  color: #ffffff;
+  text-align: center;
 }
-.fbbutton{
-    background-color: #3b5998;
-    border-radius: 5px;
-    color:#ffffff;
-    margin-bottom:12px;
-    margin-left:15px;
-    margin-right:13px;
-    font-size: large;
-    font-family: 'Times New Roman', Times, serif;
-    text-transform: none;
-    text-align: right;
+
+.fbbutton {
+  background-color: #3b5998;
+  border-radius: 5px;
+  color: #ffffff;
+  margin-bottom: 12px;
+  margin-left: 15px;
+  margin-right: 13px;
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+  text-transform: none;
+  text-align: right;
 }
-.gbutton{
-    background-color: #ee5e5e;
-    border-radius: 5px;
-    color:#fdfdfd;
-    margin-bottom:12px;
-    margin-left:15px;
-    margin-right:13px;
-    font-size: large;
-    font-family: 'Times New Roman', Times, serif;
-    text-transform: none;
+
+.gbutton {
+  background-color: #ee5e5e;
+  border-radius: 5px;
+  color: #fdfdfd;
+  margin-bottom: 12px;
+  margin-left: 15px;
+  margin-right: 13px;
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+  text-transform: none;
 }

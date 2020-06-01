@@ -10,15 +10,16 @@ import {TagInputModule} from 'ngx-chips';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ProfileEditPageRoutingModule,
-    HttpClientModule,
-    TagInputModule,
-    ReactiveFormsModule
-  ],
-  declarations: [ProfileEditPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ProfileEditPageRoutingModule,
+        HttpClientModule,
+        TagInputModule,
+        ReactiveFormsModule
+    ],
+    declarations: [ProfileEditPage]
 })
-export class ProfileEditPageModule {}
+export class ProfileEditPageModule {
+}

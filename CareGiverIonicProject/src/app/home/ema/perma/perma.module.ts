@@ -11,13 +11,14 @@ import {RatingComponent} from '../rating/rating.component';
 import {PermaPage} from './perma.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    IonicRatingModule,
-    PermaPageRoutingModule
-  ],
-  declarations: [PermaPage, RatingComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        IonicRatingModule,
+        PermaPageRoutingModule
+    ],
+    declarations: [PermaPage, RatingComponent]
 })
-export class PermaPageModule {}
+export class PermaPageModule {
+}

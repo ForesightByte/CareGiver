@@ -5,36 +5,37 @@ import {Userelement} from '../../../users';
 import {GarminService} from 'src/app/garmin.service';
 
 @Component({
-  selector: 'app-sleep',
-  templateUrl: './sleep.page.html',
-  styleUrls: ['./sleep.page.scss'],
+    selector: 'app-sleep',
+    templateUrl: './sleep.page.html',
+    styleUrls: ['./sleep.page.scss'],
 })
 export class SleepPage implements OnInit {
-  Info: Observable<Userelement>;
-  uid;
-  today;
-  yesterday;
+    Info: Observable<Userelement>;
+    uid;
+    today;
+    yesterday;
 
-  constructor(
-    private user: UserService,
-    private garmin: GarminService
-  ) { }
+    constructor(
+        private user: UserService,
+        private garmin: GarminService
+    ) {
+    }
 
-  ngOnInit() {
-    const date = new Date();
-    const dd = String(date.getDate()).padStart(2, '0');
-    const ydd = String(date.getDate() - 1).padStart(2, '0');
-    const mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
-    const yyyy = date.getFullYear();
+    ngOnInit() {
+        const date = new Date();
+        const dd = String(date.getDate()).padStart(2, '0');
+        const ydd = String(date.getDate() - 1).padStart(2, '0');
+        const mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+        const yyyy = date.getFullYear();
 
-    this.today = yyyy + '-' + mm + '-' + dd;
-    this.yesterday = yyyy + '-' + mm + '-' + ydd;
-    this.uid = this.user.userId;
-    this.getData(this.today);
-  }
+        this.today = yyyy + '-' + mm + '-' + dd;
+        this.yesterday = yyyy + '-' + mm + '-' + ydd;
+        this.uid = this.user.userId;
+        this.getData(this.today);
+    }
 
-  getData(date: string) {
-    this.Info = this.garmin.getGarmin(this.uid, date);
-    console.log(date);
-  }
+    getData(date: string) {
+        this.Info = this.garmin.getGarmin(this.uid, date);
+        console.log(date);
+    }
 }

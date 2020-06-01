@@ -11,13 +11,14 @@ import {PercentageComponent} from 'src/app/percentage/percentage.component';
 import {CircleProgressComponent} from 'src/app/circle-progress/circle-progress.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    AngularFireDatabaseModule,
-    RouterModule.forChild([{path: '', component: HomePage }])
-  ],
-  declarations: [HomePage, PercentageComponent, CircleProgressComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        AngularFireDatabaseModule,
+        RouterModule.forChild([{path: '', component: HomePage}])
+    ],
+    declarations: [HomePage, PercentageComponent, CircleProgressComponent]
 })
-export class HomePageModule {}
+export class HomePageModule {
+}

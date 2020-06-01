@@ -9,12 +9,13 @@ import {CaloriesPageRoutingModule} from './calories-routing.module';
 import {CaloriesPage} from './calories.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    CaloriesPageRoutingModule
-  ],
-  declarations: [CaloriesPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        CaloriesPageRoutingModule
+    ],
+    declarations: [CaloriesPage]
 })
-export class CaloriesPageModule {}
+export class CaloriesPageModule {
+}

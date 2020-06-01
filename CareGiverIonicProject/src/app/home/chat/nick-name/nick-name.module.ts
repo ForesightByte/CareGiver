@@ -9,12 +9,13 @@ import {NickNamePageRoutingModule} from './nick-name-routing.module';
 import {NickNamePage} from './nick-name.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    NickNamePageRoutingModule
-  ],
-  declarations: [NickNamePage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        NickNamePageRoutingModule
+    ],
+    declarations: [NickNamePage]
 })
-export class NickNamePageModule {}
+export class NickNamePageModule {
+}

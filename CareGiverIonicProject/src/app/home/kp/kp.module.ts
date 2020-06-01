@@ -9,12 +9,13 @@ import {KpPageRoutingModule} from './kp-routing.module';
 import {KpPage} from './kp.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    KpPageRoutingModule
-  ],
-  declarations: [KpPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        KpPageRoutingModule
+    ],
+    declarations: [KpPage]
 })
-export class KpPageModule {}
+export class KpPageModule {
+}
