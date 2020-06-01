@@ -1,0 +1,24 @@
+<ion-content class="background">
+  <div class="content">
+    <ion-grid style="max-width: 465px;">
+    <ion-buttons class="button-action">
+        <ion-button fill="clear" color="dark" size="small" routerLink="/tabs" routerDirection="root">
+          <b><p class="login-text">Log In</p></b>
+        </ion-button>
+        <ion-button fill="clear" color="dark" size="small">
+          <b><p class="Registration-text">Registration</p></b>
+        </ion-button>
+    </ion-buttons>
+    <div class="ion-padding">
+      <ion-input placeholder="Email" type="email" [(ngModel)]="email"></ion-input> <br>
+      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input> <br>
+      <ion-input placeholder="Re-Password" type="password" [(ngModel)]="repassword"></ion-input><br>
+      <ion-input placeholder="Garmin UserId" type="text" [(ngModel)]="userId"></ion-input>
+    </div>
+    <ion-button class="actionbutton" expand="full" color="#20438d" (click)="register()" routerLink="/tabs">Registration</ion-button>
+    <ion-button fill="clear" style="font-size:10px; padding-bottom:20px;
+    color:lavender;margin-left:10px; text-transform:none; color:#ffbf6c;" routerLink="/tabs" routerDirection="root">
+    Already have an account?</ion-button>
+  </ion-grid>
+  </div>
+  </ion-content>

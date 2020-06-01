@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-button class="editProfile" (click)="profileEdit()">
+      <ion-label>Edit Profile</ion-label>
+    </ion-button><br><br>
+    <ion-button class="delete" (click)="deleteId()" (click)= "this.afAuth.auth.signOut()"
+    routerLink="/tabs" routerDirection="root">
+    <ion-label>Delete Account</ion-label>
+    </ion-button>
+  </ion-grid>
+</ion-content>

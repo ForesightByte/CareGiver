@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Vital</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-grid class="position">
+  <ion-row>
+    <ion-col>
+      <ion-button class="vitals" color="transparent" routerLink="/steps" routerDirection="root">
+        <div><img [src]="steps"/><br><br>Steps</div>
+      </ion-button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <ion-button class="vitals" color="transparent" routerLink="/calories" routerDirection="root">
+        <div><img [src]="calories"/><br><br>Calories</div>
+        </ion-button>
+    </ion-col>
+  </ion-row><br>
+  <ion-row>
+    <ion-col>
+      <ion-button class="vitals" color="transparent" routerLink="/heart-rate" routerDirection="root">
+        <div><img [src]="heartRate"/><br><br>Heart Rate</div>
+      </ion-button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <ion-button class="vitals" color="transparent" routerLink="/stress" routerDirection="root">
+        <div><img [src]="stress"/><br><br>Stress</div>
+      </ion-button>
+    </ion-col>
+  </ion-row><br>
+  <ion-row>
+    <ion-col>
+      <ion-button class="vitals" color="transparent" routerLink="/sleep" routerDirection="root">
+        <div><img [src]="sleep"/><br><br>sleep</div>
+      </ion-button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <ion-button class="vitals" color="transparent" routerLink="/pulse-ox" routerDirection="root">
+        <div><img [src]="pulseOx"/><br><br>pulseOx</div>
+      </ion-button>
+    </ion-col>
+  </ion-row>      
+</ion-grid>
+</ion-content>
+    

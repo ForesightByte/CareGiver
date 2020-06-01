@@ -1,0 +1,14 @@
+ion-content{
+    --background:url(../../../assets/blue_mountains.jpg) 0 0/100% 100% repeat;
+}
+ion-toolbar{
+    --background:url(../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
+    color: black;
+}
+ion-item{
+    --background: rgba(255, 255, 255, 0);
+    color: rgb(0, 0, 0);
+}
+ion-list{
+    background: rgba(255, 255, 255, 0);
+}

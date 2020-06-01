@@ -1,0 +1,159 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perma Profiler</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="questions">
+    <div>
+      <p>How relaxed do you feel right now? </p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="relaxChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I am feeling joyful</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="joyfulChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I am feeling positive</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="positiveChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I am feeling contented</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="contentedChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>When I noticed the text message, I was absorbed in what I was doing</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="absorbedChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>When I noticed the text message, I felt excited and interested in the things around me</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="excitedChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>When I noticed the text message, I had lost track of time because of what I was doing?</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="lostTrackChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I feel helped and supported by others</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="helpedChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I feel loved</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="lovedChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I feel satisfied with my personal relationships</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="satisfiedChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I lead a purposeful and meaningful life</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="purposefulChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>What I do in my life is valuable and worthwhile</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="valuableChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I have a sense of direction in my life</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="senseChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I am making progress towards accomplishing my goals</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="prgressChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I am achieving the important goals I have set for myself</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="achieveChange($event)"></app-rating>
+      </ion-row>
+    </div>
+    <div>
+      <p>I am handling my responsibilities</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="handleChange($event)"></app-rating>
+      </ion-row>
+    </div>
+
+    <div>
+      <p>How long did you sleep last night?</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+      <ion-input placeholder="hours" type="tel" minlength="1" maxlength="2" [(ngModel)]="hours"></ion-input>&nbsp;&nbsp;
+      <ion-input placeholder="minutes" type="tel" minlength="1" maxlength="2" [(ngModel)]="minutes"></ion-input>
+      </ion-row>
+    </div>
+    <div>
+      <p>How well did you sleep last night?</p>
+    </div>
+    <div class ="btn">
+      <ion-row row-1>
+        <app-rating (OnSelectRating)="wellSleepChange($event)"></app-rating>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,26 @@
+ion-content{
+    --background:url(../../../assets/blue_mountains.jpg) 0 0/100% 100% repeat;
+}
+ion-toolbar{
+    --background:url(../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
+    color: black;
+}
+
+ion-button.vitals{
+    height: 115px;
+    width: 115px;
+    background-color: rgb(162, 194, 252);
+    box-shadow: rgb(255, 139, 139);
+    color: black; 
+}
+img{
+    height: 50px;
+    width: 60px;
+}
+.position{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+  
