@@ -38,17 +38,16 @@
 
 <ion-footer>
     <ion-toolbar class="footer">
-        <ion-row align-items-center no-padding>
-            <ion-col col-10>
-        <textarea autosize maxRows="5" type="text" placeholder="Type a message"
-                  [(ngModel)]="data.message" name="message" class="msg-input"></textarea>
-            </ion-col>
-            <ion-col col-2>
-                <ion-button expand="block" fill="clear" color="primary"
-                            (click)="sendMessage()">
-                    <ion-icon name="paper-plane" slot="icon-only"></ion-icon>
-                </ion-button>
-            </ion-col>
-        </ion-row>
+      <ion-row align-items-center no-padding>
+        <ion-col col-10>
+          <textarea autosize maxRows="5" type="text" placeholder="Type a message" 
+          [(ngModel)]="data.message" name="message" class="msg-input"></textarea>
+        </ion-col> &nbsp;&nbsp;
+          <ion-fab-button fill="clear" color="rgba(255, 0, 0, 0)" style="color: rgba(255, 0, 0, 0); margin-right: 30px;"
+                          [disabled]="data.message === ''" (click)="sendMessage()">
+          <ion-icon name="paper-plane"></ion-icon>
+          </ion-fab-button>
+      </ion-row>
     </ion-toolbar>
-</ion-footer>
+  </ion-footer>
+  
