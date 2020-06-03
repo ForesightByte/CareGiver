@@ -35,10 +35,6 @@ const routes: Routes = [
         loadChildren: () => import('./home/kp/kp.module').then(m => m.KpPageModule)
     },
     {
-        path: 'ema',
-        loadChildren: () => import('./home/ema/ema.module').then(m => m.EmaPageModule)
-    },
-    {
         path: 'profile',
         loadChildren: () => import('./home/profile/profile.module').then(m => m.ProfilePageModule)
     },
@@ -77,7 +73,25 @@ const routes: Routes = [
     {
         path: 'home',
         loadChildren: () => import('./home/chat/home/home.module').then(m => m.HomePageModule)
-    }
+    },
+    {
+        path: 'ema',
+        loadChildren: () => import('./home/ema/ema.module').then(m => m.EmaPageModule)
+    },
+ // {
+ //   path: 'relax',
+ //   loadChildren: () => import('./home/ema/relax/relax.module').then( m => m.RelaxPageModule)
+// },
+//  {
+ //   path: 'perma',
+ //   loadChildren: () => import('./home/ema/perma/perma.module').then( m => m.PermaPageModule)
+ // },
+ // {
+ //   path: 'extra',
+ //   loadChildren: () => import('./home/ema/extra/extra.module').then( m => m.ExtraPageModule)
+//  }
+
+
 
 
 ];

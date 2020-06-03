@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar color="primary">
+    <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/vital"></ion-back-button>
         </ion-buttons>
@@ -14,8 +14,8 @@
     </ion-row>
     <ion-card *ngIf="Info">
         <ion-grid class="profile">
+            <ion-title style="color: black;">Steps: </ion-title>
             <ion-list>
-                <b>Steps: </b>
                 <p>Date: {{(Info |async)?.dailies.calendarDate}}</p>
                 <p>Activity Type: {{(Info |async)?.dailies.activityType}}</p>
                 <p>Steps: {{(Info |async)?.dailies.steps}}</p>

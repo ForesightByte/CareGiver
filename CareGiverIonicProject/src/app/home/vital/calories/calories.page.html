@@ -14,8 +14,8 @@
     </ion-row>
     <ion-card *ngIf="Info">
         <ion-grid class="profile">
+            <ion-title style="color: black;">Calorie Burn: </ion-title>
             <ion-list>
-                <b>Calorie Burn: </b>
                 <p>Date: {{(Info |async)?.dailies.calendarDate}}</p>
                 <p>activeKilocalories: {{(Info |async)?.dailies.activeKilocalories}} calories</p>
                 <p>bmrKilocalories: {{(Info |async)?.dailies.bmrKilocalories}} calories</p>

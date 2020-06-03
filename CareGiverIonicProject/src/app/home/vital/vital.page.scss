@@ -1,18 +1,17 @@
 ion-content {
-  --background: url(../../../assets/blue_mountains.jpg) 0 0/100% 100% repeat;
+  --background: url(../../../assets/light_background.jpg) 0 0/100% 100% repeat;
 }
 
 ion-toolbar {
-  --background: url(../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
-  color: black;
+  --background:rgb(7, 156, 161);// url(../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
+  color: white;
 }
 
 ion-button.vitals {
   height: 115px;
   width: 115px;
-  background-color: rgb(162, 194, 252);
-  box-shadow: rgb(255, 139, 139);
-  color: black;
+  background-color: rgb(7, 156, 161);
+  color: white;
 }
 
 img {

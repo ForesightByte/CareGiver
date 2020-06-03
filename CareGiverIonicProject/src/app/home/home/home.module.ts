@@ -8,17 +8,19 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 import {HomePage} from './home.page';
 import {PercentageComponent} from 'src/app/percentage/percentage.component';
-import {CircleProgressComponent} from 'src/app/circle-progress/circle-progress.component';
+import { BarProgressComponent } from 'src/app/bar-progress/bar-progress.component';
+import {ProgressBarModule} from 'angular-progress-bar';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         IonicModule,
+        ProgressBarModule,
         AngularFireDatabaseModule,
         RouterModule.forChild([{path: '', component: HomePage}])
     ],
-    declarations: [HomePage, PercentageComponent, CircleProgressComponent]
+    declarations: [HomePage, PercentageComponent, BarProgressComponent]
 })
 export class HomePageModule {
 }

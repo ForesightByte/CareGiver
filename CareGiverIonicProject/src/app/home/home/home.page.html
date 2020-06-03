@@ -1,12 +1,10 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons slot="start" fill="clear" class="menu">
+        <ion-title style="text-align: center; color: white;">Home</ion-title>
+        <ion-buttons slot="end" fill="clear" class="menu">
             <ion-button fill="clear" slot="icon-only" (click)="overlap()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10
-			10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 
-			17h-12v-2h12v2zm0-4h-12v-2h12v2zm0-4h-12v-2h12v2z"/>
-                </svg>
+                <img src='../../../assets/menu.png' 
+                style="height: 18px; width: 18px;"/>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -24,8 +22,11 @@
         <ion-title size="large" style="text-align: center;">Your Well-being score</ion-title>
         <ion-card-content>
             <ion-title size="large" style="text-align: center;
-		font-size: 80px;">{{(Info |async)?.wellbeingScore}} %
+                font-size: 80px;">{{(Info |async)?.wellbeingScore}} <br>
             </ion-title>
+            <progress-bar [progress]="score" 
+                [color-degraded]="{'0': 'red',  '20': 'orange', '40': 'gold', '60': 'greenyellow', '80': 'green'}">
+            </progress-bar>
         </ion-card-content>
         <!--<ion-card>
             <ion-card-content>

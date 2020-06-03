@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>extra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="questions">
+    <div>
+        <p>How long did you sleep last night?</p>
+    </div>
+    <div class="btn">
+        <ion-row row-1>
+            <ion-input placeholder="hours" type="tel" minlength="1" maxlength="2" [(ngModel)]="hours"></ion-input>&nbsp;&nbsp;
+            <ion-input placeholder="minutes" type="tel" minlength="1" maxlength="2"
+                       [(ngModel)]="minutes"></ion-input>
+        </ion-row>
+    </div>
+    <div>
+        <p>How well did you sleep last night?</p>
+    </div>
+    <div class="btn">
+        <ion-row row-1>
+            <app-rating (OnSelectRating)="wellSleepChange($event)"></app-rating>
+        </ion-row>
+    </div>
+</ion-grid>
+</ion-content>
+
+<ion-tab-bar>
+  <ion-buttons>
+      <ion-button expand="block" fill="clear" (click)="submit()">Done</ion-button>
+  </ion-buttons>
+</ion-tab-bar>

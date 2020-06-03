@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {EmaPage} from '../ema.page';
 
 @Component({
     selector: 'app-rating',
@@ -11,8 +10,13 @@ export class RatingComponent implements OnInit {
     @Input() isDisabled: boolean;
     public ratingSelected = 10;
 
-    constructor(public ema: EmaPage) {
-    }
+    one = '../../../assets/score/1.png';
+    two = '../../../assets/score/2.png';
+    three = '../../../assets/score/3.png';
+    four = '../../../assets/score/4.png';
+    five = '../../../assets/score/5.png';
+
+    constructor() {}
 
     ngOnInit() {
     }

@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar color="primary">
+    <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/vital"></ion-back-button>
         </ion-buttons>
@@ -14,8 +14,8 @@
     </ion-row>
     <ion-card *ngIf="Info">
         <ion-grid class="profile">
+            <ion-title style="color: black;">Sleeps: </ion-title>
             <ion-list>
-                <b>Sleeps: </b>
                 <p>Date: {{(Info |async)?.sleeps.calendarDate}}</p>
                 <p>Duration: {{(Info |async)?.sleeps.durationInSeconds}}s</p>
                 <p>light Sleep Duration: {{(Info |async)?.sleeps.lightSleepDurationInSeconds}}s</p>

@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class AuthService {
     verifiedEmail = true;
+    emailVerified;
     user$: Observable<Userelement>;
     uInfo: Userelement = null;
 
@@ -28,7 +29,7 @@ export class AuthService {
         this.afAuth.authState.subscribe(user => {
             if (user) {
                 setInterval(() => {
-                    //      this.verifiedEmail = this.afAuth.auth.currentUser.emailVerified;
+                    this.verifiedEmail = this.afAuth.auth.currentUser.emailVerified;
                 }, 1000);
             }
         });

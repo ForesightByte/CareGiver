@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Perma Profiler</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="questions">
+    <div>
+      <p>How relaxed do you feel right now? </p>
+  </div>
+  <div class="btn">
+      <ion-row row-1>
+          <app-rating (OnSelectRating)="relaxChange($event)" required="true"></app-rating>
+      </ion-row>
+  </div>
+  <div>
+      <p>I am feeling joyful</p>
+  </div>
+  <div class="btn">
+      <ion-row row-1>
+          <app-rating (OnSelectRating)="joyfulChange($event)" required="true"></app-rating>
+      </ion-row>
+  </div>
+  <div>
+      <p>I am feeling positive</p>
+  </div>
+  <div class="btn">
+      <ion-row row-1>
+          <app-rating (OnSelectRating)="positiveChange($event)" required="true"></app-rating>
+      </ion-row>
+  </div>
+  <div>
+      <p>I am feeling contented</p>
+  </div>
+  <div class="btn">
+      <ion-row row-1>
+          <app-rating (OnSelectRating)="contentedChange($event)" required="true"></app-rating>
+      </ion-row>
+  </div>
+  <div>
+      <p>When I noticed the text message, I was absorbed in what I was doing</p>
+  </div>
+  <div class="btn">
+      <ion-row row-1>
+          <app-rating (OnSelectRating)="absorbedChange($event)" required="true"></app-rating>
+      </ion-row>
+  </div>
+  <div>
+      <p>When I noticed the text message, I felt excited and interested in the things around me</p>
+  </div>
+  <div class="btn">
+      <ion-row row-1>
+          <app-rating (OnSelectRating)="excitedChange($event)" required="true"></app-rating>
+      </ion-row>
+  </div>
+  <div>
+      <p>When I noticed the text message, I had lost track of time because of what I was doing?</p>
+  </div>
+  <div class="btn">
+      <ion-row row-1>
+          <app-rating (OnSelectRating)="lostTrackChange($event)" required="true"></app-rating>
+      </ion-row>
+  </div>
+  </ion-grid>
+</ion-content>
+
+<ion-tab-bar>
+    <ion-buttons>
+        <ion-button expand="block" fill="clear" (click)="submit()">Next</ion-button>
+    </ion-buttons>
+</ion-tab-bar>

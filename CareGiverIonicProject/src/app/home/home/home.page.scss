@@ -1,9 +1,9 @@
 ion-content.background {
-  --background: url(../../../assets/blue_mountains.jpg) 0 0/100% 100% repeat;
+  --background: url(../../../assets/whiteleaf.jpg) 0 0/100% 100% no-repeat;
 }
 
 ion-toolbar {
-  --background: url(../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
+  --background: rgb(7, 156, 161);// url(../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
 }
 
 .score {
@@ -41,8 +41,3 @@ ion-card {
   text-transform: none;
   color: rgb(47, 51, 42);
 }
-
-.menu {
-  color: rgb(71, 119, 0);
-}
-

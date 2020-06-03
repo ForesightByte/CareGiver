@@ -32,10 +32,7 @@ export class LoginComponent implements OnInit {
         try {
             const res = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
             if (res.user) {
-                this.userS.setUser({
-                    email,
-                    uid: res.user.uid
-                });
+                console.log('Ok');
             }
         } catch (error) {
             console.dir(error);
