@@ -1,27 +1,40 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="/vital"></ion-back-button>
-        </ion-buttons>
-        <ion-title>Steps</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/vital"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Steps</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding><br>
-    <ion-row row-1>
-        <!--<ion-title (click)="getData(yesterday)">Yesterday</ion-title>
-        <ion-title (click)="getData(today)" style="text-align: right;">Today</ion-title>-->
-    </ion-row>
-    <ion-card *ngIf="Info">
-        <ion-grid class="profile">
-            <ion-title style="color: black;">Steps: </ion-title>
-            <ion-list>
-                <p>Date: {{(Info |async)?.dailies.calendarDate}}</p>
-                <p>Activity Type: {{(Info |async)?.dailies.activityType}}</p>
-                <p>Steps: {{(Info |async)?.dailies.steps}}</p>
-                <p>Distance: {{(Info |async)?.dailies.distanceInMeters}}m</p>
-                <p>Steps Goal: {{(Info |async)?.dailies.stepsGoal}}</p>
-            </ion-list>
-        </ion-grid>
-    </ion-card>
+  <ion-row row-1>
+    <!--<ion-title (click)="getData(yesterday)">Yesterday</ion-title>
+    <ion-title (click)="getData(today)" style="text-align: right;">Today</ion-title>-->
+  </ion-row>
+  <ion-card *ngIf="Info">
+    <ion-grid class="profile">
+      <ion-title style="color: black;">Steps:</ion-title>
+      <ion-list>
+        <p>Date: {{(Info |async)?.dailies.calendarDate}}</p>
+        <p>Activity Type: {{(Info |async)?.dailies.activityType}}</p>
+        <p>Steps: {{(Info |async)?.dailies.steps}}</p>
+        <p>Distance: {{(Info |async)?.dailies.distanceInMeters}}m</p>
+        <p>Steps Goal: {{(Info |async)?.dailies.stepsGoal}}</p>
+      </ion-list>
+    </ion-grid>
+  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-card class="welcome-card">
+        <ion-card-header>
+          <ion-card-subtitle>Steps Rate Change</ion-card-subtitle>
+          <ion-card-title>Steps Rate Change</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #barChart></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

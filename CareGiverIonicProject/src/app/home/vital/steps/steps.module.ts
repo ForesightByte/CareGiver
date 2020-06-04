@@ -9,13 +9,13 @@ import {StepsPageRoutingModule} from './steps-routing.module';
 import {StepsPage} from './steps.page';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        StepsPageRoutingModule
-    ],
-    declarations: [StepsPage]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    StepsPageRoutingModule
+  ],
+  declarations: [StepsPage]
 })
 export class StepsPageModule {
 }

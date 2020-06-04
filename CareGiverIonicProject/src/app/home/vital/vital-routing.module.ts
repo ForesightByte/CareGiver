@@ -8,6 +8,11 @@ const routes: Routes = [
         path: '',
         component: VitalPage
     },
+    {
+        path: 'steps',
+        loadChildren: () => import('./steps/steps.module').then(m => m.StepsPageModule)
+    },
+
 ];
 
 @NgModule({
