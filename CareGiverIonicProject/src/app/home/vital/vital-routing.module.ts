@@ -10,6 +10,10 @@ const routes: Routes = [
     },
     {
         path: 'steps',
+        loadChildren: () => import('./heart-rate/heart-rate.module').then(m => m.HeartRatePageModule)
+    },
+    {
+        path: 'steps',
         loadChildren: () => import('./steps/steps.module').then(m => m.StepsPageModule)
     },
     {

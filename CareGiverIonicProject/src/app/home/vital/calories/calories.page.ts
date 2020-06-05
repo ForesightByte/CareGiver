@@ -24,7 +24,7 @@ export class CaloriesPage implements OnInit {
     }
 
     ngOnInit() {
-        this.showStepsData();
+        this.showActiveCaloriesData();
     }
 
     public async getDataByRestApi(url: string): Promise<any> {
@@ -37,7 +37,7 @@ export class CaloriesPage implements OnInit {
         return await result.json();
     }
 
-    async showStepsData() {
+    async showActiveCaloriesData() {
         let garminId, garminData, latestEntry;
         let userData = await this.getDataByRestApi('https://firestore.googleapis.com/v1/projects/care-giver-project/databases/(default)/documents/users/' + this.firebaseAuth.auth.currentUser.uid);
         setTimeout(function () {
@@ -50,14 +50,14 @@ export class CaloriesPage implements OnInit {
         }
         let dailiesDataset = [];
         if (garminData) {
-            let stepsData = [];
+            let caloriesData = [];
             for (let item of garminData.documents) {
                 if (item.fields.dailies) {
                     dailiesDataset.push(item.fields.dailies);
-                    stepsData.push(item.fields.dailies.mapValue.fields.activeKilocalories.integerValue);
+                    caloriesData.push(item.fields.dailies.mapValue.fields.activeKilocalories.integerValue);
                 }
             }
-            this.createStepsChart(stepsData);
+            this.createActiveCaloriesChart(caloriesData);
         }
         if (dailiesDataset.length > 0) {
             function compare(a, b) {
@@ -73,7 +73,6 @@ export class CaloriesPage implements OnInit {
             }
 
             let sortedDataSet = dailiesDataset.sort(compare);
-            console.log(sortedDataSet[0]);
             this.calendarDate = sortedDataSet[0].mapValue.fields.calendarDate.stringValue;
             this.activeKilocalories = sortedDataSet[0].mapValue.fields.activeKilocalories.integerValue;
             this.bmrKilocalories = sortedDataSet[0].mapValue.fields.bmrKilocalories.integerValue;
@@ -81,7 +80,7 @@ export class CaloriesPage implements OnInit {
     }
 
 
-    createStepsChart(dataSet: number[]) {
+    createActiveCaloriesChart(dataSet: number[]) {
         let labelData = [];
         for (let item in dataSet) {
             labelData.push('');
@@ -91,7 +90,7 @@ export class CaloriesPage implements OnInit {
             data: {
                 labels: labelData,
                 datasets: [{
-                    label: 'Steps per Day',
+                    label: 'Active Calories per Day',
                     data: dataSet,
                     backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
                     borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset

@@ -74,7 +74,6 @@ export class StepsPage implements OnInit {
             }
 
             let sortedDataSet = dailiesDataset.sort(compare);
-            console.log(sortedDataSet[0]);
             this.totalSteps = sortedDataSet[0].mapValue.fields.steps.integerValue;
             this.activityType = sortedDataSet[0].mapValue.fields.activityType.stringValue;
             this.calendarDate = sortedDataSet[0].mapValue.fields.calendarDate.stringValue;
