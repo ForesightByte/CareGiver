@@ -10,6 +10,10 @@ const routes: Routes = [
     },
     {
         path: 'steps',
+        loadChildren: () => import('./sleep/sleep.module').then(m => m.SleepPageModule)
+    },
+    {
+        path: 'steps',
         loadChildren: () => import('./pulse-ox/pulse-ox.module').then(m => m.PulseOxPageModule)
     },
     {

@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../../user.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Userelement} from '../../../users';
-import {GarminService} from 'src/app/garmin.service';
+import {AngularFireAuth} from "@angular/fire/auth";
 
 @Component({
     selector: 'app-sleep',
@@ -14,28 +13,76 @@ export class SleepPage implements OnInit {
     uid;
     today;
     yesterday;
+    public firebaseAuth: AngularFireAuth;
+    @ViewChild('barChart', {static: false}) barChart;
+    bars: any;
+    public calendarDate: string;
+    public durationInSeconds: number;
+    public lightSleepDurationInSeconds: number;
+    public deepSleepDurationInSeconds: number;
+    public unmeasurableSleepDurationInSeconds: number;
+    public remSleepInSeconds: number;
+    public awakeDurationInSeconds: number;
 
-    constructor(
-        private user: UserService,
-        private garmin: GarminService
-    ) {
+    constructor(public _afAuth: AngularFireAuth) {
+        this.firebaseAuth = _afAuth;
     }
 
     ngOnInit() {
-        const date = new Date();
-        const dd = String(date.getDate()).padStart(2, '0');
-        const ydd = String(date.getDate() - 1).padStart(2, '0');
-        const mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
-        const yyyy = date.getFullYear();
-
-        this.today = yyyy + '-' + mm + '-' + dd;
-        this.yesterday = yyyy + '-' + mm + '-' + ydd;
-        this.uid = this.user.userId;
-        this.getData(this.today);
+        this.showSleepData();
     }
 
-    getData(date: string) {
-        this.Info = this.garmin.getGarmin(this.uid, date);
-        console.log(date);
+    public async getDataByRestApi(url: string): Promise<any> {
+        const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+        const result = await fetch(proxyurl + url, {
+            headers: {
+                'Bearer': 'AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk'
+            },
+        }); // https://cors-anywhere.herokuapp.com/https://example.com
+        return await result.json();
+    }
+
+    async showSleepData() {
+        let garminId, garminData;
+        let userData = await this.getDataByRestApi('https://firestore.googleapis.com/v1/projects/care-giver-project/databases/(default)/documents/users/' + this.firebaseAuth.auth.currentUser.uid);
+        setTimeout(function () {
+        }, 1000, []);
+        if (userData) {
+            garminId = userData.fields.garminUserId.stringValue;
+            garminData = await this.getDataByRestApi('https://firestore.googleapis.com/v1/projects/care-giver-project/databases/(default)/documents/users/' + garminId + '/garmin');
+            setTimeout(function () {
+            }, 1000, []);
+        }
+        let sleepDataset = [];
+        if (garminData) {
+            console.log(garminData);
+            for (let item of garminData.documents) {
+                if (item.fields.sleeps) {
+                    sleepDataset.push(item.fields.sleeps);
+                }
+            }
+        }
+        if (sleepDataset.length > 0) {
+            function compare(a, b) {
+                let aValue = a.mapValue.fields.calendarDate.stringValue;
+                let bValue = b.mapValue.fields.calendarDate.stringValue;
+                if (aValue < bValue) {
+                    return 1;
+                }
+                if (aValue > bValue) {
+                    return -1;
+                }
+                return 0;
+            }
+
+            let sortedDataSet = sleepDataset.sort(compare);
+            this.calendarDate = sortedDataSet[0].mapValue.fields.calendarDate.stringValue;
+            this.durationInSeconds = sortedDataSet[0].mapValue.fields.durationInSeconds.integerValue;
+            this.lightSleepDurationInSeconds = sortedDataSet[0].mapValue.fields.lightSleepDurationInSeconds.integerValue;
+            this.deepSleepDurationInSeconds = sortedDataSet[0].mapValue.fields.deepSleepDurationInSeconds.integerValue;
+            this.unmeasurableSleepDurationInSeconds = sortedDataSet[0].mapValue.fields.unmeasurableSleepInSeconds.integerValue;
+            this.remSleepInSeconds = sortedDataSet[0].mapValue.fields.remSleepInSeconds.integerValue;
+            this.awakeDurationInSeconds = sortedDataSet[0].mapValue.fields.awakeDurationInSeconds.integerValue;
+        }
     }
 }
