@@ -10,6 +10,10 @@ const routes: Routes = [
     },
     {
         path: 'steps',
+        loadChildren: () => import('./stress/stress.module').then(m => m.StressPageModule)
+    },
+    {
+        path: 'steps',
         loadChildren: () => import('./heart-rate/heart-rate.module').then(m => m.HeartRatePageModule)
     },
     {
