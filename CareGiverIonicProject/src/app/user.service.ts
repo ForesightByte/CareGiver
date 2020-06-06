@@ -12,7 +12,7 @@ export class UserService {
     public userCollection: AngularFirestoreCollection<Userelement>;
     public displayName: string;
     public userId: string;
-    public wellbeingScore = 0;
+    public wellbeingScore: Observable<string>;
 
 
     constructor(
@@ -73,11 +73,20 @@ export class UserService {
             map(user => {
                 this.displayName = user.displayName;
                 this.userId = user.garminUserId;
-                this.wellbeingScore = user.wellbeingScore;
-                console.log('score', this.wellbeingScore);
+             //   this.wellbeingScore = user.wellbeingScore;
                 return user.displayName;
             })
         );
+    }
+
+    getScore(id: string): Observable<string> {
+        this.wellbeingScore = this.afStore.collection('users').doc<Userelement>(id).valueChanges().pipe(
+            take(1),
+            map(user => {
+                return user.wellbeingScore;
+            })
+        );
+        return this.wellbeingScore;
     }
 
     // pop up alert message

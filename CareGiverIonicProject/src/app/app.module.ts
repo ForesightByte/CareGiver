@@ -20,8 +20,9 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {UserService} from './user.service';
 import {AuthService} from './auth.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {FCM} from '@ionic-native/fcm/ngx';
 import {PercentageComponent} from './percentage/percentage.component';
+
 
 @NgModule({
     declarations: [AppComponent],
@@ -48,6 +49,7 @@ import {PercentageComponent} from './percentage/percentage.component';
         },
         UserService,
         AuthService,
+        FCM,
         PercentageComponent
     ],
     bootstrap: [AppComponent]

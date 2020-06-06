@@ -1,55 +1,34 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title style="text-align: center; color: white;">Home</ion-title>
+        <ion-title style="text-align: center; color: rgb(0, 63, 158);">
+            <b>Home</b></ion-title>
         <ion-buttons slot="end" fill="clear" class="menu">
             <ion-button fill="clear" slot="icon-only" (click)="overlap()">
-                <img src='../../../assets/menu.png' 
+                <img src='../../../assets/menu_black.png' 
                 style="height: 18px; width: 18px;"/>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content class="background">
+<ion-content class="background"><br>
     <ion-grid>
-        <ion-card-title *ngIf="displayName">
-            <p class="hello">
-                Hello {{(displayName |async)}}<br>
-                We are together on this with you </p>
-        </ion-card-title>
+        <ion-title *ngIf="displayName" style="text-align: center; font-size: xx-large;">
+                <b>Hello {{(displayName |async)}}</b>
+        </ion-title><br><br><br>
+            <p class="hello">We are together on this with you </p><br>
+            <p class="hello">Your Well-being score</p>
     </ion-grid>
     <br>
     <ion-grid class="score" *ngIf="Info">
-        <ion-title size="large" style="text-align: center;">Your Well-being score</ion-title>
         <ion-card-content>
             <ion-title size="large" style="text-align: center;
-                font-size: 80px;">{{(Info |async)?.wellbeingScore}} <br>
+                font-size: 80px;">{{score | async}} <br>
             </ion-title>
-            <progress-bar [progress]="score" 
-                [color-degraded]="{'0': 'red',  '20': 'orange', '40': 'gold', '60': 'greenyellow', '80': 'green'}">
-            </progress-bar>
+            <progress-bar [progress]="66" 
+                [color-degraded]="{'0': 'red',  '20': 'orange', '40': 'gold', '60': 'greenyellow', '80': 'green'}"
+                [disable-percentage]="false">
+            </progress-bar><br>
         </ion-card-content>
-        <!--<ion-card>
-            <ion-card-content>
-            <svg width="120" height="120" viewBox="0 0 120 120" class="progress__svg">
-                <circle
-                  [attr.r]="circle.radius"
-                  cx="60"
-                  cy="60"
-                  stroke-width="12"
-                  class="progress__meter"
-                />
-                <circle
-                  [style.strokeDasharray]="circle.circumference"
-                  [style.strokeDashoffset]="circle.dashoffset"
-                  [attr.r]="circle.radius"
-                  cx="60"
-                  cy="60"
-                  stroke-width="12"
-                  class="progress__value"
-                />
-              </svg>
-            </ion-card-content>
-        </ion-card>-->
     </ion-grid>
 </ion-content>	
 

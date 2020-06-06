@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar>
+    <ion-toolbar>
       <ion-buttons slot="start">
           <ion-back-button defaultHref="/"></ion-back-button>
       </ion-buttons>
       <ion-title>Perma Profiler</ion-title>
-  </ion-toolbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -14,7 +14,33 @@
   </div>
   <div class="btn">
       <ion-row row-1>
-          <app-rating (OnSelectRating)="relaxChange($event)" required="true"></app-rating>
+          <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+          <ion-fab-button size="small" shape="round"
+                          [color]="relax==20?'dark':'lightblue'"
+                          (click)="relaxChange(20)" required="true">
+                          <img class="pic" [src]="ema.five"/>
+          </ion-fab-button>
+          <ion-fab-button size="small" shape="round"
+                          [color]="relax==40?'dark':'lightblue'"
+                          (click)="relaxChange(40)" required="true">
+                          <img class="pic" [src]="ema.four"/>
+          </ion-fab-button>
+          <ion-fab-button size="small" shape="round"
+                          [color]="relax==60?'dark':'lightblue'"
+                          (click)="relaxChange(60)" required="true">
+                          <img class="pic" [src]="ema.three"/>
+          </ion-fab-button>
+          <ion-fab-button size="small" shape="round"
+                          [color]="relax==80?'dark':'lightblue'"
+                          (click)="relaxChange(80)" required="true">
+                          <img class="pic" [src]="ema.two"/>
+          </ion-fab-button>
+          <ion-fab-button size="small" shape="round"
+                          [color]="relax==100?'dark':'lightblue'"
+                          (click)="relaxChange(100)" required="true">
+                          <img class="pic" [src]="ema.one"/>
+          </ion-fab-button>&nbsp;
+          <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
   </div>
   <div>
@@ -22,7 +48,33 @@
   </div>
   <div class="btn">
       <ion-row row-1>
-          <app-rating (OnSelectRating)="joyfulChange($event)" required="true"></app-rating>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="joyful==20?'dark':'lightblue'"
+                        (click)="joyfulChange(20)" required="true">
+                        <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="joyful==40?'dark':'lightblue'"
+                        (click)="joyfulChange(40)" required="true">
+                        <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="joyful==60?'dark':'lightblue'"
+                        (click)="joyfulChange(60)" required="true">
+                        <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="joyful==80?'dark':'lightblue'"
+                        (click)="joyfulChange(80)" required="true">
+                        <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="joyful==100?'dark':'lightblue'"
+                        (click)="joyfulChange(100)" required="true">
+                        <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
   </div>
   <div>
@@ -30,7 +82,33 @@
   </div>
   <div class="btn">
       <ion-row row-1>
-          <app-rating (OnSelectRating)="positiveChange($event)" required="true"></app-rating>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="positive==20?'dark':'lightblue'"
+                        (click)="positiveChange(20)" required="true">
+                        <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="positive==40?'dark':'lightblue'"
+                        (click)="positiveChange(40)" required="true">
+                        <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="positive==60?'dark':'lightblue'"
+                        (click)="positiveChange(60)" required="true">
+                        <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="positive==80?'dark':'lightblue'"
+                        (click)="positiveChange(80)" required="true">
+                        <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="positive==100?'dark':'lightblue'"
+                        (click)="positiveChange(100)" required="true">
+                        <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
   </div>
   <div>
@@ -38,7 +116,33 @@
   </div>
   <div class="btn">
       <ion-row row-1>
-          <app-rating (OnSelectRating)="contentedChange($event)" required="true"></app-rating>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="contented==20?'dark':'lightblue'"
+                        (click)="contentedChange(20)" required="true">
+                        <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="contented==40?'dark':'lightblue'"
+                        (click)="contentedChange(40)" required="true">
+                        <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="contented==60?'dark':'lightblue'"
+                        (click)="contentedChange(60)" required="true">
+                        <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="contented==80?'dark':'lightblue'"
+                        (click)="contentedChange(80)" required="true">
+                        <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="contented==100?'dark':'lightblue'"
+                        (click)="contentedChange(100)" required="true">
+                        <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
   </div>
   <div>
@@ -46,7 +150,33 @@
   </div>
   <div class="btn">
       <ion-row row-1>
-          <app-rating (OnSelectRating)="absorbedChange($event)" required="true"></app-rating>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="absorbed==20?'dark':'lightblue'"
+                        (click)="absorbedChange(20)" required="true">
+                        <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="absorbed==40?'dark':'lightblue'"
+                        (click)="absorbedChange(40)" required="true">
+                        <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="absorbed==60?'dark':'lightblue'"
+                        (click)="absorbedChange(60)" required="true">
+                        <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="absorbed==80?'dark':'lightblue'"
+                        (click)="absorbedChange(80)" required="true">
+                        <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="absorbed==100?'dark':'lightblue'"
+                        (click)="absorbedChange(100)" required="true">
+                        <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
   </div>
   <div>
@@ -54,7 +184,33 @@
   </div>
   <div class="btn">
       <ion-row row-1>
-          <app-rating (OnSelectRating)="excitedChange($event)" required="true"></app-rating>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="excited==20?'dark':'lightblue'"
+                        (click)="excitedChange(20)" required="true">
+                        <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="excited==40?'dark':'lightblue'"
+                        (click)="excitedChange(40)" required="true">
+                        <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="excited==60?'dark':'lightblue'"
+                        (click)="excitedChange(60)" required="true">
+                        <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="excited==80?'dark':'lightblue'"
+                        (click)="excitedChange(80)" required="true">
+                        <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="excited==100?'dark':'lightblue'"
+                        (click)="excitedChange(100)" required="true">
+                        <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
   </div>
   <div>
@@ -62,7 +218,33 @@
   </div>
   <div class="btn">
       <ion-row row-1>
-          <app-rating (OnSelectRating)="lostTrackChange($event)" required="true"></app-rating>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="lostTrack==20?'dark':'lightblue'"
+                        (click)="lostTrackChange(20)" required="true">
+                        <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="lostTrack==40?'dark':'lightblue'"
+                        (click)="lostTrackChange(40)" required="true">
+                        <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="lostTrack==60?'dark':'lightblue'"
+                        (click)="lostTrackChange(60)" required="true">
+                        <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="lostTrack==80?'dark':'lightblue'"
+                        (click)="lostTrackChange(80)" required="true">
+                        <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="lostTrack==100?'dark':'lightblue'"
+                        (click)="lostTrackChange(100)" required="true">
+                        <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
   </div>
   </ion-grid>

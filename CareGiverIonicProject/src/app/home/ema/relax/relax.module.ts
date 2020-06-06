@@ -7,8 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { RelaxPageRoutingModule } from './relax-routing.module';
 import {IonicRatingModule} from 'ionic-rating';
 import { RelaxPage } from './relax.page';
-import { RatingComponent } from '../rating/rating.component';
-import { EmaPageModule } from '../ema.module';
 
 @NgModule({
   imports: [
@@ -18,6 +16,6 @@ import { EmaPageModule } from '../ema.module';
     IonicRatingModule,
     RelaxPageRoutingModule
   ],
-  declarations: [RelaxPage, RatingComponent]
+  declarations: [RelaxPage]
 })
 export class RelaxPageModule {}

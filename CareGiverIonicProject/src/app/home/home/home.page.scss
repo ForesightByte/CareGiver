@@ -1,9 +1,9 @@
 ion-content.background {
-  --background: url(../../../assets/whiteleaf.jpg) 0 0/100% 100% no-repeat;
+  --background:white;// url(../../../assets/whiteleaf.jpg) 0 0/100% 100% no-repeat;
 }
 
 ion-toolbar {
-  --background: rgb(7, 156, 161);// url(../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
+  --background:white;// rgb(7, 156, 161);// url(../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
 }
 
 .score {
@@ -39,5 +39,6 @@ ion-card {
   position: auto;
   text-align: center;
   text-transform: none;
-  color: rgb(47, 51, 42);
+  font-size: larger;
+  color: black;
 }

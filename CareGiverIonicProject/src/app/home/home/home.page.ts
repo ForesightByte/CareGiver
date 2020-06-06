@@ -6,6 +6,7 @@ import {UserService} from '../../user.service';
 import {AuthService} from '../../auth.service';
 import {Observable} from 'rxjs';
 import {PercentageComponent} from 'src/app/percentage/percentage.component';
+import { Userelement } from 'src/app/users';
 
 @Component({
     selector: 'app-home',
@@ -15,7 +16,8 @@ import {PercentageComponent} from 'src/app/percentage/percentage.component';
 export class HomePage implements OnInit {
     displayName: Observable<any>;
     Info: Observable<any>;
-    score = 0;
+    score: Observable<string>;
+    Score: [];
 
     constructor(
         private router: Router,
@@ -27,6 +29,7 @@ export class HomePage implements OnInit {
         const uid = this.auth.cUid;
         this.displayName = this.user.getDisplayname(uid);
         this.Info = this.user.getUser(uid);
+        this.score = this.user.getScore(uid);
     }
 
     ngOnInit() {
@@ -41,7 +44,6 @@ export class HomePage implements OnInit {
         const sdate = new Date().toLocaleString();
         console.log('today', today);
         console.log('temp', sdate);
-        this.score = Number(this.user.wellbeingScore);
     }
 
     async overlap() {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { EmaPage } from '../ema.page';
 
 @Component({
   selector: 'app-extra',
@@ -20,10 +20,9 @@ export class ExtraPage implements OnInit {
 
   constructor(
     private afStore: AngularFirestore,
-    private auth: AuthService,
+    auth: AuthService,
     private router: Router,
-    private aRoute: ActivatedRoute,
-    private alert: AlertController) {
+    public ema: EmaPage) {
       const date = new Date();
       const dd = String(date.getUTCDate()).padStart(2, '0');
       const mm = String(date.getUTCMonth() + 1).padStart(2, '0');
