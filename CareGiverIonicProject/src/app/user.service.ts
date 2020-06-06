@@ -4,7 +4,6 @@ import {map, take} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {Userelement} from './users';
 import {AlertController} from '@ionic/angular';
-import {PercentageComponent} from './percentage/percentage.component';
 
 @Injectable()
 export class UserService {
@@ -18,7 +17,6 @@ export class UserService {
     constructor(
         private afStore: AngularFirestore,
         private alert: AlertController,
-        private score: PercentageComponent
     ) {
         this.userCollection = this.afStore.collection<Userelement>('users');
         this.user$ = this.userCollection.snapshotChanges().pipe(

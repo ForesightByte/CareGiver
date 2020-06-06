@@ -5,7 +5,6 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {UserService} from '../../user.service';
 import {AuthService} from '../../auth.service';
 import {Observable} from 'rxjs';
-import {PercentageComponent} from 'src/app/percentage/percentage.component';
 
 @Component({
     selector: 'app-home',
@@ -22,7 +21,6 @@ export class HomePage implements OnInit {
         public afAuth: AngularFireAuth,
         public auth: AuthService,
         public user: UserService,
-        public circle: PercentageComponent,
         public actionSheetController: ActionSheetController) {
         const uid = this.auth.cUid;
         this.displayName = this.user.getDisplayname(uid);

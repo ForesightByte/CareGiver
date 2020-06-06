@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/auth.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { EmaPage } from '../ema.page';
 
 @Component({
   selector: 'app-relax',
@@ -26,7 +26,8 @@ export class RelaxPage implements OnInit {
     private afStore: AngularFirestore,
     private auth: AuthService,
     private router: Router,
-    private alert: AlertController
+    private alert: AlertController,
+    public ema: EmaPage
     ) {
       const date = new Date();
       const dd = String(date.getUTCDate()).padStart(2, '0');
@@ -38,30 +39,37 @@ export class RelaxPage implements OnInit {
     }
 
   relaxChange(event: number) {
-      return this.relax = event;
+    console.log(event);
+    return this.relax = event;
   }
 
   joyfulChange(event: number) {
+    console.log(event);
     return this.joyful = event;
   }
 
   positiveChange(event: number) {
+    console.log(event);
     return this.positive = event;
   }
 
   contentedChange(event: number) {
+    console.log(event);
     return this.contented = event;
   }
 
   absorbedChange(event: number) {
+    console.log(event);
     return this.absorbed = event;
   }
 
   excitedChange(event: number) {
+    console.log(event);
     return this.excited = event;
   }
 
   lostTrackChange(event: number) {
+    console.log(event);
     return this.lostTrack = event;
   }
 
@@ -69,7 +77,6 @@ export class RelaxPage implements OnInit {
   }
 
   submit() {
-    try {
       const res = this.afStore.doc(`users/${this.uid}/EMA/${this.today}`);
       const relax = this.relax;
       const joyful = this.joyful;
@@ -83,13 +90,12 @@ export class RelaxPage implements OnInit {
       const navExtras: NavigationExtras = {
         queryParams: {score: JSON.stringify(score)}
       };
-
-      res.set(data, {merge: true});
-
-      this.router.navigate(['/ema/perma'], navExtras);
-    } catch (err) {
-    console.log('Please answer all questions');
-    this.showAlert('Please answer all questions');
+      try {
+        res.set(data, {merge: true});
+        this.router.navigate(['/ema/perma'], navExtras);
+      } catch (err) {
+        console.log('Please answer all questions');
+        this.showAlert('Please answer all questions');
   }
 }
   async showAlert(message: string) {

@@ -21,7 +21,7 @@ import {UserService} from './user.service';
 import {AuthService} from './auth.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {PercentageComponent} from './percentage/percentage.component';
+import {FCM} from '@ionic-native/fcm/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -48,7 +48,7 @@ import {PercentageComponent} from './percentage/percentage.component';
         },
         UserService,
         AuthService,
-        PercentageComponent
+        FCM
     ],
     bootstrap: [AppComponent]
 })

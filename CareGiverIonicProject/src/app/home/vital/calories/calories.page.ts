@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {UserService} from "../../../user.service";
-import {GarminService} from "../../../garmin.service";
-import {AngularFireAuth} from "@angular/fire/auth";
-import {HttpClient} from "@angular/common/http";
+import {UserService} from '../../../user.service';
+import {GarminService} from '../../../garmin.service';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {HttpClient} from '@angular/common/http';
 import {Chart} from 'chart.js';
 
 
@@ -76,6 +76,7 @@ export class CaloriesPage implements OnInit {
             this.calendarDate = sortedDataSet[0].mapValue.fields.calendarDate.stringValue;
             this.activeKilocalories = sortedDataSet[0].mapValue.fields.activeKilocalories.integerValue;
             this.bmrKilocalories = sortedDataSet[0].mapValue.fields.bmrKilocalories.integerValue;
+            console.log('active calories', this.activeKilocalories);
         }
     }
 
