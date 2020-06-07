@@ -7,7 +7,6 @@ import {RouterModule} from '@angular/router';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 import {HomePage} from './home.page';
-import {PercentageComponent} from 'src/app/percentage/percentage.component';
 import { BarProgressComponent } from 'src/app/bar-progress/bar-progress.component';
 import {ProgressBarModule} from 'angular-progress-bar';
 
@@ -20,7 +19,7 @@ import {ProgressBarModule} from 'angular-progress-bar';
         AngularFireDatabaseModule,
         RouterModule.forChild([{path: '', component: HomePage}])
     ],
-    declarations: [HomePage, PercentageComponent, BarProgressComponent]
+    declarations: [HomePage, BarProgressComponent]
 })
 export class HomePageModule {
 }

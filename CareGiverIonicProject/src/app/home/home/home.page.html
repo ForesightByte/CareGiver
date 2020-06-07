@@ -24,32 +24,12 @@
             <ion-title size="large" style="text-align: center;
                 font-size: 80px;">{{(Info |async)?.wellbeingScore}} <br>
             </ion-title>
+            <ion-title style="font-size: large; text-align: center;">{{scoreLabel}}</ion-title>
             <progress-bar [progress]="score" 
-                [color-degraded]="{'0': 'red',  '20': 'orange', '40': 'gold', '60': 'greenyellow', '80': 'green'}">
+                [color-degraded]="{'0': 'red',  '20': 'orange', '40': 'gold', '60': 'greenyellow', '80': 'green'}"
+                button [routerLink]="['/wellbeing-score']">
             </progress-bar>
         </ion-card-content>
-        <!--<ion-card>
-            <ion-card-content>
-            <svg width="120" height="120" viewBox="0 0 120 120" class="progress__svg">
-                <circle
-                  [attr.r]="circle.radius"
-                  cx="60"
-                  cy="60"
-                  stroke-width="12"
-                  class="progress__meter"
-                />
-                <circle
-                  [style.strokeDasharray]="circle.circumference"
-                  [style.strokeDashoffset]="circle.dashoffset"
-                  [attr.r]="circle.radius"
-                  cx="60"
-                  cy="60"
-                  stroke-width="12"
-                  class="progress__value"
-                />
-              </svg>
-            </ion-card-content>
-        </ion-card>-->
     </ion-grid>
 </ion-content>	
 

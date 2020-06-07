@@ -15,6 +15,7 @@ export class HomePage implements OnInit {
     displayName: Observable<any>;
     Info: Observable<any>;
     score = 0;
+    scoreLabel: string;
 
     constructor(
         private router: Router,
@@ -28,18 +29,24 @@ export class HomePage implements OnInit {
     }
 
     ngOnInit() {
-        const date = new Date();
-        const dd = String(date.getUTCDate()).padStart(2, '0');
-        const ydd = String(date.getUTCDate() - 1).padStart(2, '0');
-        const mm = String(date.getUTCMonth() + 1).padStart(2, '0'); // January is 0!
-        const yyyy = date.getUTCFullYear();
+        this.Info.subscribe(data => {
+            this.score = data.wellbeingScore;
+            this.getScoreLabel(this.score);
+        });
+    }
 
-        const today = yyyy + '-' + mm + '-' + dd;
-        const yesterday = yyyy + '-' + mm + '-' + ydd;
-        const sdate = new Date().toLocaleString();
-        console.log('today', today);
-        console.log('temp', sdate);
-        this.score = Number(this.user.wellbeingScore);
+    getScoreLabel(score: number) {
+        if (score < 20) {
+            this.scoreLabel = 'Very Bad';
+        } else if (score < 40) {
+            this.scoreLabel = 'Bad';
+        } else if (score < 60) {
+            this.scoreLabel = 'Nutral';
+        } else if (score < 80) {
+            this.scoreLabel = 'Good';
+        } else {
+            this.scoreLabel = 'Very Good';
+        }
     }
 
     async overlap() {
