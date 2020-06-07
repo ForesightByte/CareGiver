@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>wellbeingScore</ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Well-being Score</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-row>
+    <ion-col>
+      <ion-card class="welcome-card">
+        <ion-card-header>
+          <ion-card-title>Well-being Score Rate Change</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #barChart></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>
