@@ -18,17 +18,23 @@
         </ion-card-title>
     </ion-grid>
     <br>
-    <ion-grid class="score" *ngIf="Info">
+    <ion-grid class="score">
         <ion-title size="large" style="text-align: center;">Your Well-being score</ion-title>
         <ion-card-content>
-            <ion-title size="large" style="text-align: center;
-                font-size: 80px;">{{(Info |async)?.wellbeingScore}} <br>
-            </ion-title>
-            <ion-title style="font-size: large; text-align: center;">{{scoreLabel}}</ion-title>
-            <progress-bar [progress]="score" 
-                [color-degraded]="{'0': 'red',  '20': 'orange', '40': 'gold', '60': 'greenyellow', '80': 'green'}"
-                button [routerLink]="['/wellbeing-score']">
-            </progress-bar>
+            <circle-progress [percent]="score"
+                [radius]="100"
+                [outerStrokeWidth]="16"
+                [innerStrokeWidth]="8"
+                [outerStrokeColor]="scoreColor"
+                [innerStrokeColor]="defaultColor"
+                [animation]="true"
+                [animationDuration]="300"
+                [showUnits]="false"
+                [subtitle]="formatSubtitle(score)"
+                [titleFontSize]="60"
+                [subtitleFontSize]="25"
+                [subtitleColor]='scoreColor'
+                button [routerLink]="['/wellbeing-score']"></circle-progress>
         </ion-card-content>
     </ion-grid>
 </ion-content>	

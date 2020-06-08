@@ -7,19 +7,26 @@ import {RouterModule} from '@angular/router';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 import {HomePage} from './home.page';
-import { BarProgressComponent } from 'src/app/bar-progress/bar-progress.component';
-import {ProgressBarModule} from 'angular-progress-bar';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         IonicModule,
-        ProgressBarModule,
         AngularFireDatabaseModule,
+        NgCircleProgressModule.forRoot({
+            // set defaults here
+            radius: 100,
+            outerStrokeWidth: 16,
+            innerStrokeWidth: 8,
+            outerStrokeColor: '#78C000',
+            innerStrokeColor: '#C7E596',
+            animationDuration: 300
+          }),
         RouterModule.forChild([{path: '', component: HomePage}])
     ],
-    declarations: [HomePage, BarProgressComponent]
+    declarations: [HomePage]
 })
 export class HomePageModule {
 }

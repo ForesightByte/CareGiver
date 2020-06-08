@@ -43,17 +43,19 @@ export class WellbeingScorePage implements OnInit {
     setTimeout(function() {
         }, 1000, []);
     const scoreData = [];
+    const dateDate = [];
     if (userData) {
             for (const item of userData.documents) {
                 if (item.fields.wellbeingScore) {
                   scoreData.push(item.fields.wellbeingScore.integerValue);
+                  dateDate.push(item.fields.date.stringValue);
                 }
             }
-            this.createWellbeingScoreChart(scoreData);
+            this.createWellbeingScoreChart(scoreData, dateDate);
         }
   }
 
-  createWellbeingScoreChart(dataSet: number[]) {
+  createWellbeingScoreChart(dataSet: number[], date: string[]) {
     const labelData = [];
     for (const item in dataSet) {
         labelData.push('');
@@ -61,13 +63,16 @@ export class WellbeingScorePage implements OnInit {
     this.bars = new Chart(this.barChart.nativeElement, {
         type: 'line',
         data: {
-            labels: labelData,
+            labels: date,
             datasets: [{
                 label: 'Well-being Score per Day',
                 data: dataSet,
-                backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
+                backgroundColor: 'rgba(0, 0, 0, 0)', // array should have same number of elements as number of dataset
                 borderColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
-                borderWidth: 1
+                borderWidth: 4,
+                pointBorderColor: 'royalblue',
+                pointBorderWidth: 1,
+                pointBackgroundColor: 'royalblue'
             }]
         },
         options: {

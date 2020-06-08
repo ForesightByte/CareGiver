@@ -5,6 +5,9 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {UserService} from '../../user.service';
 import {AuthService} from '../../auth.service';
 import {Observable} from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Userelement } from 'src/app/users';
+import { take, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-home',
@@ -13,41 +16,52 @@ import {Observable} from 'rxjs';
 })
 export class HomePage implements OnInit {
     displayName: Observable<any>;
-    Info: Observable<any>;
-    score = 0;
-    scoreLabel: string;
+    score: number;
+    scoreColor = 'red';
+    defaultColor = 'rgba(0, 0, 0, 0.200)';
 
     constructor(
         private router: Router,
+        private afStore: AngularFirestore,
         public afAuth: AngularFireAuth,
         public auth: AuthService,
         public user: UserService,
         public actionSheetController: ActionSheetController) {
         const uid = this.auth.cUid;
         this.displayName = this.user.getDisplayname(uid);
-        this.Info = this.user.getUser(uid);
     }
 
     ngOnInit() {
-        this.Info.subscribe(data => {
-            this.score = data.wellbeingScore;
-            this.getScoreLabel(this.score);
+        const data = this.afStore.collection('users').doc<Userelement>(this.auth.cUid).valueChanges().pipe(
+            take(1),
+            map(user => {
+                return user;
+            })
+        );
+        data.subscribe(score => {
+            this.score = score.wellbeingScore;
+            this.formatSubtitle(this.score);
         });
     }
 
-    getScoreLabel(score: number) {
+    formatSubtitle = (score: number): string => {
         if (score < 20) {
-            this.scoreLabel = 'Very Bad';
+            this.scoreColor = 'red';
+            return 'Distressing';
         } else if (score < 40) {
-            this.scoreLabel = 'Bad';
+            this.scoreColor = 'orange';
+            return 'Substandard';
         } else if (score < 60) {
-            this.scoreLabel = 'Nutral';
+            this.scoreColor = 'gold';
+            return 'Ordinary';
         } else if (score < 80) {
-            this.scoreLabel = 'Good';
+            this.scoreColor = 'lightgreen';
+            return 'Adequate';
         } else {
-            this.scoreLabel = 'Very Good';
+            this.scoreColor = 'green';
+            return 'Impressive';
         }
-    }
+      }
 
     async overlap() {
         const actionSheet = await this.actionSheetController.create({

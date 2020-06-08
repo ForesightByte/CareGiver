@@ -10,8 +10,7 @@ export class UserService {
     public user$: Observable<Userelement[]>;
     public userCollection: AngularFirestoreCollection<Userelement>;
     public displayName: string;
-    public userId: string;
-    public wellbeingScore = 0;
+    public garminId: string;
 
 
     constructor(
@@ -51,11 +50,6 @@ export class UserService {
         return this.showAlert('Account', 'Account successfully deleted!');
     }
 
-    // Set userelement to current user
-    // setUsers(user: any) {
-    //     return this.users = user;
-    // }
-
     getUser(id: string): Observable<Userelement> {
         return this.afStore.collection('users').doc<Userelement>(id).valueChanges().pipe(
             take(1),
@@ -70,12 +64,15 @@ export class UserService {
             take(1),
             map(user => {
                 this.displayName = user.displayName;
-                this.userId = user.garminUserId;
-                this.wellbeingScore = user.wellbeingScore;
-                console.log('score', this.wellbeingScore);
+                this.getGarminId(id);
                 return user.displayName;
             })
         );
+    }
+    getGarminId(id: string) {
+        this.getUser(id).subscribe(data => {
+            this.garminId = data.garminUserId;
+        });
     }
 
     // pop up alert message
