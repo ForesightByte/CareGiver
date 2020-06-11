@@ -58,6 +58,18 @@ export class UserService {
             })
         );
     }
+    getEma(uid: string) {
+        this.userCollection = this.afStore.collection('users').doc(uid).collection('EMA');
+        return this.userCollection.snapshotChanges().pipe(
+            map(actions => {
+                return actions.map(a => {
+                    const data = a.payload.doc.data();
+                    const id = a.payload.doc.id;
+                    return {id, ...data};
+                });
+            })
+        );
+    }
 
     getDisplayname(id: string) {
         return this.afStore.collection('users').doc<Userelement>(id).valueChanges().pipe(

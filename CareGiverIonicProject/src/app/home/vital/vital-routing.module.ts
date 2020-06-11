@@ -9,19 +9,19 @@ const routes: Routes = [
         component: VitalPage
     },
     {
-        path: 'steps',
+        path: 'sleep',
         loadChildren: () => import('./sleep/sleep.module').then(m => m.SleepPageModule)
     },
     {
-        path: 'steps',
+        path: 'pulse-ox',
         loadChildren: () => import('./pulse-ox/pulse-ox.module').then(m => m.PulseOxPageModule)
     },
     {
-        path: 'steps',
+        path: 'stress',
         loadChildren: () => import('./stress/stress.module').then(m => m.StressPageModule)
     },
     {
-        path: 'steps',
+        path: 'heart-rate',
         loadChildren: () => import('./heart-rate/heart-rate.module').then(m => m.HeartRatePageModule)
     },
     {
@@ -31,7 +31,8 @@ const routes: Routes = [
     {
         path: 'calories',
         loadChildren: () => import('./calories/calories.module').then(m => m.CaloriesPageModule)
-    },
+    }
+
 
 
 ];

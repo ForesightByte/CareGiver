@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/vital"></ion-back-button>
     </ion-buttons>
-    <ion-title>Calories</ion-title>
+    <ion-title style="text-align: center;">Calories</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,9 +14,9 @@
   </ion-row>
   <ion-card>
     <ion-grid class="profile">
-      <ion-title style="color: black;">Calorie Burn:</ion-title>
+      <ion-title style="color: black;">Calories Burn:</ion-title>
       <ion-list>
-        <p>Date: {{calendarDate}}</p>
+        <!--<p>Date: {{calendarDate}}</p>-->
         <p>ActiveKilocalories: {{activeKilocalories}} calories</p>
         <p>BmrKilocalories: {{bmrKilocalories}} calories</p>
       </ion-list>
@@ -26,8 +26,7 @@
     <ion-col>
       <ion-card class="welcome-card">
         <ion-card-header>
-          <ion-card-subtitle>Calory Rate Change</ion-card-subtitle>
-          <ion-card-title>Calory Rate Change</ion-card-title>
+          <ion-card-title>Calories Rate Change</ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <canvas #barChart></canvas>

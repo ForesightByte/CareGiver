@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>extra</ion-title>
+    <ion-title style="text-align: center;">extra</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,8 +11,8 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-          <ion-input placeholder="hours" type="tel" minlength="1" maxlength="2" [(ngModel)]="hours"></ion-input>&nbsp;&nbsp;
-          <ion-input placeholder="minutes" type="tel" minlength="1" maxlength="2"
+          <ion-input required="true" placeholder="hours" type="tel" minlength="1" maxlength="2" [(ngModel)]="hours"></ion-input>&nbsp;&nbsp;
+          <ion-input required="true" placeholder="minutes" type="tel" minlength="1" maxlength="2"
                      [(ngModel)]="minutes"></ion-input>
       </ion-row>
     </div>

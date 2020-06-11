@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class AuthService {
     verifiedEmail = true;
-    emailVerified;
+    emailVerified: boolean;
     user$: Observable<Userelement>;
     uInfo: Userelement = null;
 

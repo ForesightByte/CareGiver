@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/vital"></ion-back-button>
         </ion-buttons>
-        <ion-title>Pulse Ox</ion-title>
+        <ion-title style="text-align: center;">Pulse Ox</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -16,23 +16,22 @@
         <ion-grid class="profile">
             <ion-title style="color: black;">Pulse OX:</ion-title>
             <ion-list>
-                <p>Date: {{calendarDate}}</p>
+                <!--<p>Date: {{calendarDate}}</p>-->
                 <p>Avg. SpO2 Value: {{averageSpLevel}}</p>
                 <p>Duration: {{durationInSeconds}}s</p>
             </ion-list>
         </ion-grid>
     </ion-card>
     <ion-row>
-        <ion-col>
-            <ion-card class="welcome-card">
-                <ion-card-header>
-                    <ion-card-subtitle>Average Pulse Rate Change</ion-card-subtitle>
-                    <ion-card-title>Average Pulse Rate Change</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                    <canvas #barChart></canvas>
-                </ion-card-content>
-            </ion-card>
-        </ion-col>
-    </ion-row>
+      <ion-col>
+          <ion-card class="welcome-card">
+              <ion-card-header>
+                  <ion-card-title>Average Pulse Rate Change</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                  <canvas #barChart></canvas>
+              </ion-card-content>
+          </ion-card>
+      </ion-col>
+  </ion-row>
 </ion-content>

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/vital"></ion-back-button>
     </ion-buttons>
-    <ion-title>Steps</ion-title>
+    <ion-title style="text-align: center;">Steps</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
     <ion-grid class="profile">
       <ion-title style="color: black;">Steps:</ion-title>
       <ion-list>
-        <p>Date: {{this.calendarDate}}</p>
+        <!--<p>Date: {{calendarDate}}</p>-->
         <p>Activity Type: {{this.activityType}}</p>
         <p>Steps: {{this.totalSteps}}</p>
         <p>Distance: {{this.distanceInMeters}}m</p>
@@ -28,7 +28,6 @@
     <ion-col>
       <ion-card class="welcome-card">
         <ion-card-header>
-          <ion-card-subtitle>Steps Rate Change</ion-card-subtitle>
           <ion-card-title>Steps Rate Change</ion-card-title>
         </ion-card-header>
         <ion-card-content>

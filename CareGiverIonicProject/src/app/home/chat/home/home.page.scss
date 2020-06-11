@@ -1,10 +1,11 @@
-ion-toolbar{
-  --background:url(../../../../assets/white_flower.jpg);
-  color: black;
-}
 ion-content{
-  --background:url(../../../../assets/white_flower.jpg) 0 0/100% 100% no-repeat;
+  --background:white;// url(../../../../assets/white_flower.jpg) 0 0/100% 100% no-repeat;
 }
+ion-toolbar{
+  --background:rgb(7, 156, 161);// url(../../../../assets/white_flower.jpg);
+  color: white;
+}
+
 ion-list{
   background: rgba(186, 186, 248, 0);
 }

@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/"></ion-back-button>
         </ion-buttons>
-        <ion-title>Resource page</ion-title>
+        <ion-title style="text-align: center;">Resource page</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -19,7 +19,6 @@
     </ion-item>
 
     <ion-item>
-
         <ion-select interface="popover" placeholder="Select Place" [(ngModel)]="placeToSearch">
             <ion-select-option value="pharmacy,drugstore">Pharmacy</ion-select-option>
             <ion-select-option value="hospital">Hospital</ion-select-option>
@@ -27,7 +26,8 @@
         </ion-select>
     </ion-item>
     <section>
-        <ion-button (click)="searchByZipcode()">Search</ion-button>
+        <ion-button (click)="searchByZipcode()" color="rgb(7, 156, 161)"
+        style="background-color: rgb(7, 156, 161); margin-left: 25px;">Search</ion-button>
     </section>
     <ion-list>
         <ion-list-header>

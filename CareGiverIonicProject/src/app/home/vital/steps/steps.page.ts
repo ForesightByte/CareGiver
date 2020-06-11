@@ -2,8 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../user.service';
 import {GarminService} from 'src/app/garmin.service';
 import {Chart} from 'chart.js';
-import {AngularFireAuth} from "@angular/fire/auth";
-import {HttpClient} from "@angular/common/http";
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
     selector: 'app-steps',
@@ -14,90 +13,93 @@ export class StepsPage implements OnInit {
     public firebaseAuth: AngularFireAuth;
     @ViewChild('barChart', {static: false}) barChart;
     bars: any;
+
     public activityType: string;
     public calendarDate: string;
     public totalSteps: number;
     public distanceInMeters: number;
     public stepsGoal: number;
 
-    constructor(private user: UserService, private garmin: GarminService, public _afAuth: AngularFireAuth, private httpClient: HttpClient) {
-        this.firebaseAuth = _afAuth;
+    private garminId: string;
+
+    constructor(
+        private user: UserService,
+        private garmin: GarminService,
+        public afAuth: AngularFireAuth) {
+        this.firebaseAuth = afAuth;
+        this.garminId = this.user.garminId;
+        console.log('garminId', this.garminId);
     }
 
     ngOnInit() {
-        this.showStepsData();
+        this.showData();
     }
 
-    public async getDataByRestApi(url: string): Promise<any> {
-        const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-        const result = await fetch(proxyurl + url, {
-            headers: {
-                'Bearer': 'AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk'
-            },
-        }); // https://cors-anywhere.herokuapp.com/https://example.com
-        return await result.json();
-    }
+    async showData() {
+        let garminData;
+        if (this.garminId) {
+            this.garmin.getGarminDataset(this.garminId).subscribe(data => {
+                garminData = data;
+                const dailiesDataset = [];
+                if (garminData) {
+                    const stepsData = [];
+                    const dateData = [];
+                    for (const item of garminData) {
+                        if (item) {
+                            dailiesDataset.push(item.dailies);
+                            stepsData.push(item.dailies.steps);
+                            dateData.push(item.dailies.calendarDate);
+                        }
+                    }
+                    this.createLineChart(stepsData, dateData);
+                }
+                if (dailiesDataset.length > 0) {
+                    function compare(a, b) {
+                        const aValue = a.calendarDate;
+                        const bValue = b.calendarDate;
+                        if (aValue < bValue) {
+                            return 1;
+                        }
+                        if (aValue > bValue) {
+                            return -1;
+                        }
+                        return 0;
+                    }
 
-    async showStepsData() {
-        let garminId, garminData, latestEntry;
-        let userData = await this.getDataByRestApi('https://firestore.googleapis.com/v1/projects/care-giver-project/databases/(default)/documents/users/' + this.firebaseAuth.auth.currentUser.uid);
-        setTimeout(function () {
-        }, 1000, []);
-        if (userData) {
-            garminId = userData.fields.garminUserId.stringValue;
-            garminData = await this.getDataByRestApi('https://firestore.googleapis.com/v1/projects/care-giver-project/databases/(default)/documents/users/' + garminId + '/garmin');
-            setTimeout(function () {
+                    const sortedDataSet = dailiesDataset.sort(compare);
+                    this.totalSteps = sortedDataSet[0].steps;
+                    this.activityType = sortedDataSet[0].activityType;
+                    this.calendarDate = sortedDataSet[0].calendarDate;
+                    this.distanceInMeters = sortedDataSet[0].distanceInMeters;
+                    this.stepsGoal = sortedDataSet[0].stepsGoal;
+                }
+            });
+            // tslint:disable-next-line: only-arrow-functions
+            setTimeout(function() {
             }, 1000, []);
         }
-        let dailiesDataset = [];
-        if (garminData) {
-            let stepsData = [];
-            for (let item of garminData.documents) {
-                if (item.fields.dailies) {
-                    dailiesDataset.push(item.fields.dailies);
-                    stepsData.push(item.fields.dailies.mapValue.fields.steps.integerValue);
-                }
-            }
-            this.createStepsChart(stepsData);
-        }
-        if (dailiesDataset.length > 0) {
-            function compare(a, b) {
-                let aValue = a.mapValue.fields.calendarDate.stringValue;
-                let bValue = b.mapValue.fields.calendarDate.stringValue;
-                if (aValue < bValue) {
-                    return 1;
-                }
-                if (aValue > bValue) {
-                    return -1;
-                }
-                return 0;
-            }
-
-            let sortedDataSet = dailiesDataset.sort(compare);
-            this.totalSteps = sortedDataSet[0].mapValue.fields.steps.integerValue;
-            this.activityType = sortedDataSet[0].mapValue.fields.activityType.stringValue;
-            this.calendarDate = sortedDataSet[0].mapValue.fields.calendarDate.stringValue;
-            this.distanceInMeters = sortedDataSet[0].mapValue.fields.distanceInMeters.integerValue;
-            this.stepsGoal = sortedDataSet[0].mapValue.fields.stepsGoal.integerValue;
-        }
     }
 
 
-    createStepsChart(dataSet: number[]) {
-        let labelData = [];
-        for (let item in dataSet) {
+    createLineChart(dataset: number[], date: string[]) {
+        const labelData = [];
+        // tslint:disable-next-line: forin
+        for (const item in dataset) {
             labelData.push('');
         }
         this.bars = new Chart(this.barChart.nativeElement, {
             type: 'line',
             data: {
-                labels: labelData,
+                labels: date,
                 datasets: [{
-                    label: 'Steps per Day',
-                    data: dataSet,
-                    backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
-                    borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
-                    borderWidth: 1
+                    label: 'Steps per day',
+                    data: dataset,
+                    backgroundColor: 'rgba(0, 0, 0, 0)', // array should have same number of elements as number of dataset
+                    borderColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
+                    borderWidth: 3,
+                    pointBorderColor: 'royalblue',
+                    pointBorderWidth: 1,
+                    pointBackgroundColor: 'royalblue'
                 }]
             },
             options: {

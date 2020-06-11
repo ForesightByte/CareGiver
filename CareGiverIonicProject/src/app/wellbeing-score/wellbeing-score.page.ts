@@ -25,38 +25,34 @@ export class WellbeingScorePage implements OnInit {
     this.showScore();
   }
 
-  public async getDataByRestApi(url: string): Promise<any> {
-    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    const result = await fetch(proxyurl + url, {
-        headers: {
-            Bearer: 'AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk'
-        },
-    }); // https://cors-anywhere.herokuapp.com/https://example.com
-    return await result.json();
-  }
-
   async showScore() {
     const uid = this.auth.cUid;
-    // tslint:disable-next-line: max-line-length
-    const userData = await this.getDataByRestApi('https://firestore.googleapis.com/v1/projects/care-giver-project/databases/(default)/documents/users/' + uid + '/EMA');
-    // tslint:disable-next-line: only-arrow-functions
-    setTimeout(function() {
-        }, 1000, []);
-    const scoreData = [];
-    const dateDate = [];
-    if (userData) {
-            for (const item of userData.documents) {
-                if (item.fields.wellbeingScore) {
-                  scoreData.push(item.fields.wellbeingScore.integerValue);
-                  dateDate.push(item.fields.date.stringValue);
+    const score = this.user.getEma(uid);
+    let wellbeingData;
+    if (score) {
+        score.subscribe(data => {
+          wellbeingData = data;
+          const wellbeingDataset = [];
+          if (wellbeingData) {
+            const dateData = [];
+            for (const item of wellbeingData) {
+                if (item) {
+                  wellbeingDataset.push(item.wellbeingScore);
+                  dateData.push(item.date);
+                  }
                 }
+            this.createWellbeingScoreChart(wellbeingDataset, dateData);
             }
-            this.createWellbeingScoreChart(scoreData, dateDate);
-        }
+            });
+            // tslint:disable-next-line: only-arrow-functions
+        setTimeout(function() {
+      }, 1000, []);
+    }
   }
 
   createWellbeingScoreChart(dataSet: number[], date: string[]) {
     const labelData = [];
+    // tslint:disable-next-line: forin
     for (const item in dataSet) {
         labelData.push('');
     }

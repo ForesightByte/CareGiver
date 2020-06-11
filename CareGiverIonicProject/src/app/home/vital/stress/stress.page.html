@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/vital"></ion-back-button>
         </ion-buttons>
-        <ion-title>Stress</ion-title>
+        <ion-title style="text-align: center;">Stress</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
         <ion-grid class="profile">
             <ion-title style="color: black;">Stress:</ion-title>
             <ion-list>
-                <p>Date: {{calendarDate}}</p>
+                <!--<p>Date: {{calendarDate}}</p>-->
                 <p>Avg. Stress Level: {{averageStressLevel}}</p>
                 <p>Max. Stress Level: {{maxStressLevel}}</p>
                 <p>Stress Duration: {{stressDurationInSeconds}}s</p>
@@ -32,7 +32,6 @@
         <ion-col>
             <ion-card class="welcome-card">
                 <ion-card-header>
-                    <ion-card-subtitle>Average Stress Level Change</ion-card-subtitle>
                     <ion-card-title>Average Stress Level Change</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>

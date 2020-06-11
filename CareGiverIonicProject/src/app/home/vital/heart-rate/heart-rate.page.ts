@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AngularFireAuth} from "@angular/fire/auth";
+import {AngularFireAuth} from '@angular/fire/auth';
 import {Chart} from 'chart.js';
+import { UserService } from 'src/app/user.service';
+import { GarminService } from 'src/app/garmin.service';
 
 
 @Component({
@@ -18,85 +20,86 @@ export class HeartRatePage implements OnInit {
     public maxHeartRateInBeatsPerMinute: number;
     public restingHeartRateInBeatsPerMinute: number;
 
+    private garminId: string;
 
-    constructor(public _afAuth: AngularFireAuth) {
-        this.firebaseAuth = _afAuth;
+    constructor(
+        private user: UserService,
+        private garmin: GarminService,
+        public afAuth: AngularFireAuth) {
+        this.firebaseAuth = afAuth;
+        this.garminId = this.user.garminId;
+        console.log('garminId', this.garminId);
     }
 
     ngOnInit() {
-        this.showHeartRateData();
+        this.showData();
     }
 
-    public async getDataByRestApi(url: string): Promise<any> {
-        const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-        const result = await fetch(proxyurl + url, {
-            headers: {
-                'Bearer': 'AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk'
-            },
-        }); // https://cors-anywhere.herokuapp.com/https://example.com
-        return await result.json();
-    }
+    async showData() {
+        let garminData;
+        if (this.garminId) {
+            this.garmin.getGarminDataset(this.garminId).subscribe(data => {
+                garminData = data;
+                const dailiesDataset = [];
+                if (garminData) {
+                    const heartRateData = [];
+                    const dateData = [];
+                    for (const item of garminData) {
+                        if (item) {
+                            dailiesDataset.push(item.dailies);
+                            heartRateData.push(item.dailies.averageHeartRateInBeatsPerMinute);
+                            dateData.push(item.dailies.calendarDate);
+                        }
+                    }
+                    this.createLineChart(heartRateData, dateData);
+                }
+                if (dailiesDataset.length > 0) {
+                    function compare(a, b) {
+                        const aValue = a.calendarDate;
+                        const bValue = b.calendarDate;
+                        if (aValue < bValue) {
+                            return 1;
+                        }
+                        if (aValue > bValue) {
+                            return -1;
+                        }
+                        return 0;
+                    }
 
-    async showHeartRateData() {
-        let garminId, garminData;
-        let userData = await this.getDataByRestApi('https://firestore.googleapis.com/v1/projects/care-giver-project/databases/(default)/documents/users/' + this.firebaseAuth.auth.currentUser.uid);
-        setTimeout(function () {
-        }, 1000, []);
-        if (userData) {
-            garminId = userData.fields.garminUserId.stringValue;
-            garminData = await this.getDataByRestApi('https://firestore.googleapis.com/v1/projects/care-giver-project/databases/(default)/documents/users/' + garminId + '/garmin');
-            setTimeout(function () {
+                    const sortedDataSet = dailiesDataset.sort(compare);
+                    this.calendarDate = sortedDataSet[0].calendarDate;
+                    this.averageHeartRateInBeatsPerMinute = sortedDataSet[0].averageHeartRateInBeatsPerMinute;
+                    this.maxHeartRateInBeatsPerMinute = sortedDataSet[0].maxHeartRateInBeatsPerMinute;
+                    this.minHeartRateInBeatsPerMinute = sortedDataSet[0].minHeartRateInBeatsPerMinute;
+                    this.restingHeartRateInBeatsPerMinute = sortedDataSet[0].restingHeartRateInBeatsPerMinute;
+                }
+            });
+            // tslint:disable-next-line: only-arrow-functions
+            setTimeout(function() {
             }, 1000, []);
         }
-        let dailiesDataset = [];
-        if (garminData) {
-            let heartRateData = [];
-            for (let item of garminData.documents) {
-                if (item.fields.dailies) {
-                    dailiesDataset.push(item.fields.dailies);
-                    heartRateData.push(item.fields.dailies.mapValue.fields.averageHeartRateInBeatsPerMinute.integerValue);
-                }
-            }
-            this.createHeartRateChart(heartRateData);
-        }
-        if (dailiesDataset.length > 0) {
-            function compare(a, b) {
-                let aValue = a.mapValue.fields.calendarDate.stringValue;
-                let bValue = b.mapValue.fields.calendarDate.stringValue;
-                if (aValue < bValue) {
-                    return 1;
-                }
-                if (aValue > bValue) {
-                    return -1;
-                }
-                return 0;
-            }
-
-            let sortedDataSet = dailiesDataset.sort(compare);
-            this.calendarDate = sortedDataSet[0].mapValue.fields.calendarDate.stringValue;
-            this.averageHeartRateInBeatsPerMinute = sortedDataSet[0].mapValue.fields.averageHeartRateInBeatsPerMinute.integerValue;
-            this.maxHeartRateInBeatsPerMinute = sortedDataSet[0].mapValue.fields.maxHeartRateInBeatsPerMinute.integerValue;
-            this.minHeartRateInBeatsPerMinute = sortedDataSet[0].mapValue.fields.minHeartRateInBeatsPerMinute.integerValue;
-            this.restingHeartRateInBeatsPerMinute = sortedDataSet[0].mapValue.fields.restingHeartRateInBeatsPerMinute.integerValue;
-        }
     }
 
 
-    createHeartRateChart(dataSet: number[]) {
-        let labelData = [];
-        for (let item in dataSet) {
+    createLineChart(dataset: number[], date: string[]) {
+        const labelData = [];
+        // tslint:disable-next-line: forin
+        for (const item in dataset) {
             labelData.push('');
         }
         this.bars = new Chart(this.barChart.nativeElement, {
             type: 'line',
             data: {
-                labels: labelData,
+                labels: date,
                 datasets: [{
                     label: 'Average Heart-Beats/Minute per Day',
-                    data: dataSet,
-                    backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
-                    borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
-                    borderWidth: 1
+                    data: dataset,
+                    backgroundColor: 'rgba(0, 0, 0, 0)', // array should have same number of elements as number of dataset
+                    borderColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
+                    borderWidth: 3,
+                    pointBorderColor: 'royalblue',
+                    pointBorderWidth: 1,
+                    pointBackgroundColor: 'royalblue'
                 }]
             },
             options: {

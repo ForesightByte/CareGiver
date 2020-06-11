@@ -9,18 +9,14 @@ import {AuthService} from './auth.service';
     providedIn: 'root'
 })
 export class GarminService {
-    public user$: Observable<any[]>;
     public userCollection: AngularFirestoreCollection<any>;
-    uid;
 
     constructor(
-        private afStore: AngularFirestore,
-        private alert: AlertController,
-        private auth: AuthService) {
-        this.uid = this.auth.cUid;
-
-        this.userCollection = this.afStore.collection<any>('users').doc(this.uid).collection<any>('garmin');
-        this.user$ = this.userCollection.snapshotChanges().pipe(
+        private afStore: AngularFirestore) {
+    }
+    getGarminDataset(uid: string) {
+        this.userCollection = this.afStore.collection('users').doc(uid).collection<any>('garmin');
+        return this.userCollection.snapshotChanges().pipe(
             map(actions => {
                 return actions.map(a => {
                     const data = a.payload.doc.data();
@@ -30,7 +26,6 @@ export class GarminService {
             })
         );
     }
-
     getGarmin(uid: any, date: string): Observable<any> {
         return this.afStore.collection('users').doc(uid)
             .collection('garmin').doc<any>(date).valueChanges().pipe(

@@ -78,6 +78,7 @@ export class RelaxPage implements OnInit {
 
   submit() {
       const res = this.afStore.doc(`users/${this.uid}/EMA/${this.today}`);
+      const date = this.today;
       const relax = this.relax;
       const joyful = this.joyful;
       const positive = this.positive;
@@ -85,7 +86,7 @@ export class RelaxPage implements OnInit {
       const absorbed = this.absorbed;
       const excited = this.excited;
       const lostTrack = this.lostTrack;
-      const data = {relax, joyful, positive, contented, absorbed, excited, lostTrack};
+      const data = {relax, joyful, positive, contented, absorbed, excited, lostTrack, date};
       const score = relax + joyful + positive + contented + absorbed + excited + lostTrack;
       const navExtras: NavigationExtras = {
         queryParams: {score: JSON.stringify(score)}

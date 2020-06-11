@@ -25,34 +25,10 @@ garmin.post('/api/dailies', (req, res) => {
         try
         {
             const dataArray = req.body.dailies;
-            console.log('dailies', dataArray); // req.body.dailies[0].userId);
-            cred = fs.doc(`users/${req.body.dailies[0].userId}/garmin/${req.body.dailies[0].calendarDate}`);
             for(let data of dataArray) {
+                console.log({'dailies': data});
+                cred = fs.doc(`users/${data.userId}/garmin/${data.calendarDate}`);
                 cred.set({dailies: data}, {merge: true});
-            }
-
-            return res.status(200).send();
-        }
-        catch (error)
-        {
-            console.log(error);
-            return res.status(500).send(error);
-        }
-    })();
-});
-
-//stress
-garmin.post('/api/stress', (req, res) => {
-
-    (async () => {
-
-        try
-        {
-            const dataArray = req.body.stressDetails;
-            console.log('stress', dataArray);
-            cred = fs.doc(`users/${req.body.stressDetails[0].userId}/garmin/${req.body.stressDetails[0].calendarDate}`);
-            for(let data of dataArray) {
-                cred.set({stress: data}, {merge: true});
             }
 
             return res.status(200).send();
@@ -71,9 +47,9 @@ garmin.post('/api/sleeps', (req, res) => {
         try
         {
             const dataArray = req.body.sleeps;
-            console.log('sleeps', dataArray);
-            cred = fs.doc(`users/${req.body.sleeps[0].userId}/garmin/${req.body.sleeps[0].calendarDate}`);
-            for(let data of dataArray) {
+            for(let data  of dataArray) {
+                console.log({'sleeps': data});
+                cred = fs.doc(`users/${data.userId}/garmin/${data.calendarDate}`);
                 cred.set({sleeps: data}, {merge: true});
             }
 
@@ -95,9 +71,9 @@ garmin.post('/api/pulseOX', (req, res) => {
         try
         {
             const dataArray = req.body.pulseox;
-            console.log('pulseOX', dataArray);
-            cred = fs.doc(`users/${req.body.pulseox[0].userId}/garmin/${req.body.pulseox[0].calendarDate}`);
             for(let data of dataArray) {
+                console.log({'pulseOX':data});
+                cred = fs.doc(`users/${data.userId}/garmin/${data.calendarDate}`);
                 cred.set({pulseox: data}, {merge: true});
             }
 
