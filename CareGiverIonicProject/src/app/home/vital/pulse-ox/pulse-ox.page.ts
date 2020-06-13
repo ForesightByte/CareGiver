@@ -60,11 +60,15 @@ export class PulseOxPage implements OnInit {
                     for (const item of garminData) {
                         if (item) {
                             const pulseOxItem = item.pulseox;
+                            if (pulseOxItem) {
                             const average = this.getAveragePulseox(pulseOxItem.timeOffsetSpo2Values);
                             pulseOxItem.averageSpLevel = Number(average.toFixed(0));
                             averagePulseoxData.push(Number(average.toFixed(0)));
                             pulseoxDataset.push(pulseOxItem);
                             dateData.push(item.pulseox.calendarDate);
+                            } else {
+                                console.log('pulseox not found');
+                            }
                         }
                     }
                     this.createLineChart(averagePulseoxData, dateData);
