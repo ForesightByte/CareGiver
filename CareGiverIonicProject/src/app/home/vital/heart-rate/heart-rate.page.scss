@@ -1,9 +1,9 @@
 ion-content {
-  --background:white;// url(../../../../assets/botanica.jpg) 0 0/100% 100% repeat;
+  --background: white; // url(../../../../assets/botanica.jpg) 0 0/100% 100% repeat;
 }
 
 ion-toolbar {
-  --background:rgb(7, 156, 161);// url(../../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
+  --background: rgb(7, 156, 161); // url(../../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
   color: white;
 }
 
@@ -11,7 +11,8 @@ ion-list {
   background: rgba(0, 0, 255, 0);
   color: black;
 }
-p{
+
+p {
   font-size: larger;
   margin-left: 20px;
 }

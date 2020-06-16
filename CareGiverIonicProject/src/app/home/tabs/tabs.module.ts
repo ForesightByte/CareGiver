@@ -8,14 +8,14 @@ import {TabsPage} from './tabs.page';
 import {LoginComponent} from 'src/app/login/login.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        TabsPageRoutingModule
-    ],
-    declarations: [TabsPage],
-    providers: [LoginComponent]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    TabsPageRoutingModule
+  ],
+  declarations: [TabsPage],
+  providers: [LoginComponent]
 })
 export class TabsPageModule {
 }

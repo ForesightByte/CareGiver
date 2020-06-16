@@ -9,13 +9,13 @@ import {ResetPasswordPageRoutingModule} from './reset-password-routing.module';
 import {ResetPasswordPage} from './reset-password.page';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        ResetPasswordPageRoutingModule
-    ],
-    declarations: [ResetPasswordPage]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    ResetPasswordPageRoutingModule
+  ],
+  declarations: [ResetPasswordPage]
 })
 export class ResetPasswordPageModule {
 }

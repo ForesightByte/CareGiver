@@ -7,94 +7,96 @@ import {AlertController} from '@ionic/angular';
 
 @Injectable()
 export class UserService {
-    public user$: Observable<Userelement[]>;
-    public userCollection: AngularFirestoreCollection<Userelement>;
-    public displayName: string;
-    public garminId: string;
+  public user$: Observable<Userelement[]>;
+  public userCollection: AngularFirestoreCollection<Userelement>;
+  public displayName: string;
+  public garminId: string;
 
 
-    constructor(
-        private afStore: AngularFirestore,
-        private alert: AlertController,
-    ) {
-        this.userCollection = this.afStore.collection<Userelement>('users');
-        this.user$ = this.userCollection.snapshotChanges().pipe(
-            map(actions => {
-                return actions.map(a => {
-                    const data = a.payload.doc.data();
-                    const id = a.payload.doc.id;
-                    return {id, ...data};
-                });
-            })
-        );
-    }
-
-    setUser(user: Userelement): Promise<DocumentReference> {
-        return this.userCollection.add(user);
-    }
-
-    updateUser(user: Userelement): Promise<void> {
-        return this.userCollection.doc(user.uid).update({
-            firstName: user.firstName,
-            lastName: user.lastName,
-            gender: user.gender,
-            age: user.age,
-            photoURL: user.photoURL,
-            skills: user.skills
+  constructor(
+    private afStore: AngularFirestore,
+    private alert: AlertController,
+  ) {
+    this.userCollection = this.afStore.collection<Userelement>('users');
+    this.user$ = this.userCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
         });
-    }
+      })
+    );
+  }
 
-    deleteUser(uid: string) {
-        this.userCollection.doc(uid).delete();
-        console.log('Account successfully deleted!');
-        return this.showAlert('Account', 'Account successfully deleted!');
-    }
+  setUser(user: Userelement): Promise<DocumentReference> {
+    return this.userCollection.add(user);
+  }
 
-    getUser(id: string): Observable<Userelement> {
-        return this.afStore.collection('users').doc<Userelement>(id).valueChanges().pipe(
-            take(1),
-            map(user => {
-                return user;
-            })
-        );
-    }
-    getEma(uid: string) {
-        this.userCollection = this.afStore.collection('users').doc(uid).collection('EMA');
-        return this.userCollection.snapshotChanges().pipe(
-            map(actions => {
-                return actions.map(a => {
-                    const data = a.payload.doc.data();
-                    const id = a.payload.doc.id;
-                    return {id, ...data};
-                });
-            })
-        );
-    }
+  updateUser(user: Userelement): Promise<void> {
+    return this.userCollection.doc(user.uid).update({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      gender: user.gender,
+      age: user.age,
+      photoURL: user.photoURL,
+      skills: user.skills
+    });
+  }
 
-    getDisplayname(id: string) {
-        return this.afStore.collection('users').doc<Userelement>(id).valueChanges().pipe(
-            take(1),
-            map(user => {
-                this.displayName = user.displayName;
-                this.getGarminId(id);
-                return user.displayName;
-            })
-        );
-    }
-    getGarminId(id: string) {
-        this.getUser(id).subscribe(data => {
-            this.garminId = data.garminUserId;
+  deleteUser(uid: string) {
+    this.userCollection.doc(uid).delete();
+    console.log('Account successfully deleted!');
+    return this.showAlert('Account', 'Account successfully deleted!');
+  }
+
+  getUser(id: string): Observable<Userelement> {
+    return this.afStore.collection('users').doc<Userelement>(id).valueChanges().pipe(
+      take(1),
+      map(user => {
+        return user;
+      })
+    );
+  }
+
+  getEma(uid: string) {
+    this.userCollection = this.afStore.collection('users').doc(uid).collection('EMA');
+    return this.userCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
         });
-    }
+      })
+    );
+  }
 
-    // pop up alert message
-    async showAlert(header: string, message: string) {
-        const alert = this.alert.create({
-            header,
-            message,
-            buttons: ['OK']
-        });
-        await (await alert).present();
-    }
+  getDisplayname(id: string) {
+    return this.afStore.collection('users').doc<Userelement>(id).valueChanges().pipe(
+      take(1),
+      map(user => {
+        this.displayName = user.displayName;
+        this.getGarminId(id);
+        return user.displayName;
+      })
+    );
+  }
+
+  getGarminId(id: string) {
+    this.getUser(id).subscribe(data => {
+      this.garminId = data.garminUserId;
+    });
+  }
+
+  // pop up alert message
+  async showAlert(header: string, message: string) {
+    const alert = this.alert.create({
+      header,
+      message,
+      buttons: ['OK']
+    });
+    await (await alert).present();
+  }
 
 }

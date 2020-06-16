@@ -1,41 +1,41 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title style="text-align: center; color: white;">Home</ion-title>
-        <ion-buttons slot="end" fill="clear" class="menu">
-            <ion-button fill="clear" slot="icon-only" (click)="overlap()">
-                <img src='../../../assets/menu.png' 
-                style="height: 18px; width: 18px;"/>
-            </ion-button>
-        </ion-buttons>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title style="text-align: center; color: white;">Home</ion-title>
+    <ion-buttons slot="end" fill="clear" class="menu">
+      <ion-button fill="clear" slot="icon-only" (click)="overlap()">
+        <img src='../../../assets/menu.png'
+             style="height: 18px; width: 18px;"/>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 <ion-content class="background">
-    <ion-grid>
-        <ion-card-title *ngIf="displayName">
-            <p class="hello">
-                Hello {{(displayName |async)}}<br>
-                We are together on this with you </p>
-        </ion-card-title>
-    </ion-grid>
-    <br>
-    <ion-grid class="score">
-        <ion-title size="large" style="text-align: center;">Your Well-being score</ion-title>
-        <ion-card-content>
-            <circle-progress [percent]="score"
-                [radius]="100"
-                [outerStrokeWidth]="16"
-                [innerStrokeWidth]="8"
-                [outerStrokeColor]="scoreColor"
-                [innerStrokeColor]="defaultColor"
-                [animation]="true"
-                [animationDuration]="300"
-                [showUnits]="false"
-                [subtitle]="formatSubtitle(score)"
-                [titleFontSize]="60"
-                [subtitleFontSize]="25"
-                [subtitleColor]='scoreColor'
-                button [routerLink]="['/wellbeing-score']"></circle-progress>
-        </ion-card-content>
-    </ion-grid>
+  <ion-grid>
+    <ion-card-title *ngIf="displayName">
+      <p class="hello">
+        Hello {{(displayName |async)}}<br>
+        We are together on this with you </p>
+    </ion-card-title>
+  </ion-grid>
+  <br>
+  <ion-grid class="score">
+    <ion-title size="large" style="text-align: center;">Your Well-being score</ion-title>
+    <ion-card-content>
+      <circle-progress [percent]="score"
+                       [radius]="100"
+                       [outerStrokeWidth]="16"
+                       [innerStrokeWidth]="8"
+                       [outerStrokeColor]="scoreColor"
+                       [innerStrokeColor]="defaultColor"
+                       [animation]="true"
+                       [animationDuration]="300"
+                       [showUnits]="false"
+                       [subtitle]="formatSubtitle(score)"
+                       [titleFontSize]="60"
+                       [subtitleFontSize]="25"
+                       [subtitleColor]='scoreColor'
+                       button [routerLink]="['/wellbeing-score']"></circle-progress>
+    </ion-card-content>
+  </ion-grid>
 </ion-content>	
 

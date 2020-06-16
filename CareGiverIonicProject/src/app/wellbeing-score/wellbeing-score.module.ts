@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { WellbeingScorePageRoutingModule } from './wellbeing-score-routing.module';
+import {WellbeingScorePageRoutingModule} from './wellbeing-score-routing.module';
 
-import { WellbeingScorePage } from './wellbeing-score.page';
+import {WellbeingScorePage} from './wellbeing-score.page';
 
 @NgModule({
   imports: [
@@ -17,4 +17,5 @@ import { WellbeingScorePage } from './wellbeing-score.page';
   ],
   declarations: [WellbeingScorePage]
 })
-export class WellbeingScorePageModule {}
+export class WellbeingScorePageModule {
+}

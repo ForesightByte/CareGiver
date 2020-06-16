@@ -9,13 +9,13 @@ import {ResourcePageRoutingModule} from './resource-routing.module';
 import {ResourcePage} from './resource.page';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        ResourcePageRoutingModule
-    ],
-    declarations: [ResourcePage]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    ResourcePageRoutingModule
+  ],
+  declarations: [ResourcePage]
 })
 export class ResourcePageModule {
 }

@@ -10,17 +10,17 @@ import {VitalPageRoutingModule} from './vital-routing.module';
 import {VitalPage} from './vital.page';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        VitalPageRoutingModule
-    ],
-    declarations: [VitalPage],
-    providers: [
-        UserService,
-        AuthService
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    VitalPageRoutingModule
+  ],
+  declarations: [VitalPage],
+  providers: [
+    UserService,
+    AuthService
+  ]
 })
 export class VitalPageModule {
 }

@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { PermaPageRoutingModule } from './perma-routing.module';
-import { PermaPage } from './perma.page';
+import {PermaPageRoutingModule} from './perma-routing.module';
+import {PermaPage} from './perma.page';
 
 @NgModule({
   imports: [
@@ -16,4 +16,5 @@ import { PermaPage } from './perma.page';
   ],
   declarations: [PermaPage]
 })
-export class PermaPageModule {}
+export class PermaPageModule {
+}

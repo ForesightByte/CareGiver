@@ -19,7 +19,8 @@ export class TabsPage implements OnInit {
     public log: LoginComponent,
     private alert: AlertController,
     public actionSheetController: ActionSheetController
-    ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
@@ -29,34 +30,35 @@ export class TabsPage implements OnInit {
       header: 'Tools',
       cssClass: 'EditIcon',
       buttons: [{
-      text: 'Profile',
-      role: 'information',
-      icon: 'contact',
-      handler: () => {
-      //  return this.router.navigate(['./profile']);
+        text: 'Profile',
+        role: 'information',
+        icon: 'contact',
+        handler: () => {
+          //  return this.router.navigate(['./profile']);
         }
       }, {
-      text: 'Settings',
-      role: 'settings',
-      icon: 'settings',
-      handler: () => {
-      //  return this.router.navigate(['./settings']);
+        text: 'Settings',
+        role: 'settings',
+        icon: 'settings',
+        handler: () => {
+          //  return this.router.navigate(['./settings']);
         }
       }, {
-      text: 'Sign Out',
-      icon: 'power',
-      handler: () => {
-      this.afAuth.auth.signOut();
-      return this.router.navigate(['/tabs']);
+        text: 'Sign Out',
+        icon: 'power',
+        handler: () => {
+          this.afAuth.auth.signOut();
+          return this.router.navigate(['/tabs']);
         }
       }]
-      });
+    });
     await actionSheet.present();
-    }
+  }
 
   popAlert() {
     this.showAlert('Talk about your challenges');
   }
+
   // pop up alert message
   async showAlert(message: string) {
     const alert = this.alert.create({

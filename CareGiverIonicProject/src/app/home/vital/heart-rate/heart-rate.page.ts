@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Chart} from 'chart.js';
-import { UserService } from 'src/app/user.service';
-import { GarminService } from 'src/app/garmin.service';
+import {UserService} from 'src/app/user.service';
+import {GarminService} from 'src/app/garmin.service';
 
 
 @Component({
@@ -23,9 +23,9 @@ export class HeartRatePage implements OnInit {
     private garminId: string;
 
     constructor(
-        private user: UserService,
-        private garmin: GarminService,
-        public afAuth: AngularFireAuth) {
+      private user: UserService,
+      private garmin: GarminService,
+      public afAuth: AngularFireAuth) {
         this.firebaseAuth = afAuth;
         this.garminId = this.user.garminId;
         console.log('garminId', this.garminId);
@@ -75,7 +75,7 @@ export class HeartRatePage implements OnInit {
                 }
             });
             // tslint:disable-next-line: only-arrow-functions
-            setTimeout(function() {
+            setTimeout(function () {
             }, 1000, []);
         }
     }

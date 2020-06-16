@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { RelaxPageRoutingModule } from './relax-routing.module';
-import { RelaxPage } from './relax.page';
+import {RelaxPageRoutingModule} from './relax-routing.module';
+import {RelaxPage} from './relax.page';
 
 @NgModule({
   imports: [
@@ -16,4 +16,5 @@ import { RelaxPage } from './relax.page';
   ],
   declarations: [RelaxPage]
 })
-export class RelaxPageModule {}
+export class RelaxPageModule {
+}

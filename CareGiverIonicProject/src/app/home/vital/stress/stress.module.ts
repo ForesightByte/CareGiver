@@ -9,13 +9,13 @@ import {StressPageRoutingModule} from './stress-routing.module';
 import {StressPage} from './stress.page';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        StressPageRoutingModule
-    ],
-    declarations: [StressPage]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    StressPageRoutingModule
+  ],
+  declarations: [StressPage]
 })
 export class StressPageModule {
 }

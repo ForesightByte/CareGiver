@@ -6,34 +6,35 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {FCM} from '@ionic-native/fcm/ngx';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: 'app.component.html',
-    styleUrls: ['app.component.scss']
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-    constructor(
-        private platform: Platform,
-        private splashScreen: SplashScreen,
-        private statusBar: StatusBar,
-        private fcm: FCM
-        ) {
-        this.initializeApp();
-    }
+  constructor(
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar,
+    private fcm: FCM
+  ) {
+    this.initializeApp();
+  }
 
-    initializeApp() {
-        this.platform.ready().then(() => {
-            this.statusBar.styleDefault();
-            this.splashScreen.hide();
-            this.fcm.onNotification().subscribe(data => {
-                if (data.wasTapped) {
-                    console.log('Received in background');
-                } else {
-                    console.log('Received in foreground');
-                }
-            });
-        });
-    }
-    unsubscribeFromTopic() {
-        this.fcm.unsubscribeFromTopic('enappd');
-    }
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+      this.fcm.onNotification().subscribe(data => {
+        if (data.wasTapped) {
+          console.log('Received in background');
+        } else {
+          console.log('Received in foreground');
+        }
+      });
+    });
+  }
+
+  unsubscribeFromTopic() {
+    this.fcm.unsubscribeFromTopic('enappd');
+  }
 }

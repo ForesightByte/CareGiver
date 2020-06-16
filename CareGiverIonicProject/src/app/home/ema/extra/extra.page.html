@@ -7,54 +7,55 @@
 <ion-content>
   <ion-grid class="questions">
     <div>
-        <p>How long did you sleep last night?</p>
+      <p>How long did you sleep last night?</p>
     </div>
     <div class="btn">
       <ion-row row-1>
-          <ion-input required="true" placeholder="hours" type="tel" minlength="1" maxlength="2" [(ngModel)]="hours"></ion-input>&nbsp;&nbsp;
-          <ion-input required="true" placeholder="minutes" type="tel" minlength="1" maxlength="2"
-                     [(ngModel)]="minutes"></ion-input>
+        <ion-input required="true" placeholder="hours" type="tel" minlength="1" maxlength="2"
+                   [(ngModel)]="hours"></ion-input>&nbsp;&nbsp;
+        <ion-input required="true" placeholder="minutes" type="tel" minlength="1" maxlength="2"
+                   [(ngModel)]="minutes"></ion-input>
       </ion-row>
     </div>
     <div>
       <p>How well did you sleep last night?</p>
     </div>
     <div class="btn">
-      <ion-row row-1>	          
+      <ion-row row-1>
         <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
-                      [color]="wellSleep==20?'dark':'lightblue'"
-                      (click)="wellSleepChange(20)" required="true">
-                      <img class="pic" [src]="ema.five"/>
+                        [color]="wellSleep==20?'dark':'lightblue'"
+                        (click)="wellSleepChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
-                      [color]="wellSleep==40?'dark':'lightblue'"
-                      (click)="wellSleepChange(40)" required="true">
-                      <img class="pic" [src]="ema.four"/>
+                        [color]="wellSleep==40?'dark':'lightblue'"
+                        (click)="wellSleepChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
-                      [color]="wellSleep==60?'dark':'lightblue'"
-                      (click)="wellSleepChange(60)" required="true">
-                      <img class="pic" [src]="ema.three"/>
+                        [color]="wellSleep==60?'dark':'lightblue'"
+                        (click)="wellSleepChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
-                      [color]="wellSleep==80?'dark':'lightblue'"
-                      (click)="wellSleepChange(80)" required="true">
-                      <img class="pic" [src]="ema.two"/>
+                        [color]="wellSleep==80?'dark':'lightblue'"
+                        (click)="wellSleepChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
-                      [color]="wellSleep==100?'dark':'lightblue'"
-                      (click)="wellSleepChange(100)" required="true">
-                      <img class="pic" [src]="ema.one"/>
+                        [color]="wellSleep==100?'dark':'lightblue'"
+                        (click)="wellSleepChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
         <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
-      </ion-row>	    
-    </div>	   
+      </ion-row>
+    </div>
   </ion-grid>
 </ion-content>
 
 <ion-tab-bar>
   <ion-buttons>
-      <ion-button expand="block" fill="clear" style="color: rgb(7, 156, 161);" (click)="submit()">Done</ion-button>
+    <ion-button expand="block" fill="clear" style="color: rgb(7, 156, 161);" (click)="submit()">Done</ion-button>
   </ion-buttons>
 </ion-tab-bar>

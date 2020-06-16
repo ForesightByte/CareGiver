@@ -1,22 +1,22 @@
 ion-content {
-    --background: url('../../../../assets/whiteleaf.jpg') 0 0/100% 100% repeat;
-  }
-  
+  --background: url('../../../../assets/whiteleaf.jpg') 0 0/100% 100% repeat;
+}
+
 ion-toolbar {
-    --background:rgb(7, 156, 161);// url(src/assets/toolbar.jpg) 0 0/100% 100% repeat;
-    color: white;
-  }
-  
+  --background: rgb(7, 156, 161); // url(src/assets/toolbar.jpg) 0 0/100% 100% repeat;
+  color: white;
+}
+
 .pic {
-    width: 30px;
-    height: 30px;
-  }
-  
+  width: 30px;
+  height: 30px;
+}
+
 ion-grid {
-    display: grid;
-    justify-content: center;
-  }
-  
+  display: grid;
+  justify-content: center;
+}
+
 ion-row {
-    justify-content: center;
-  }
+  justify-content: center;
+}

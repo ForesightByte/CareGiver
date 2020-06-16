@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import * as firebase from 'Firebase';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {IonContent} from '@ionic/angular';
-import { AuthService } from 'src/app/auth.service';
-import { UserService } from 'src/app/user.service';
+import {AuthService} from 'src/app/auth.service';
+import {UserService} from 'src/app/user.service';
 
 export const snapshotToArray = snapshot => {
   const returnArr = [];
@@ -24,7 +24,7 @@ export const snapshotToArray = snapshot => {
 
 export class HomePage implements OnInit {
 
-  data = { type: '', displayName: '',  message: '' };
+  data = {type: '', displayName: '', message: ''};
   chats: any = [];
   roomkey: any = null;
   displayName: string = null;
@@ -35,38 +35,39 @@ export class HomePage implements OnInit {
     private Aroute: ActivatedRoute,
     private router: Router,
     public user: UserService,
-    private auth: AuthService  ) {
-      const uid = this.auth.cUid;
-      this.displayName = this.user.displayName;
-      this.roomkey = 'chatroom';
-      console.log(this.displayName);
+    private auth: AuthService) {
+    const uid = this.auth.cUid;
+    this.displayName = this.user.displayName;
+    this.roomkey = 'chatroom';
+    console.log(this.displayName);
 
-      this.offStatus = false;
-      this.data.type = 'message';
-      this.data.displayName = this.displayName;
+    this.offStatus = false;
+    this.data.type = 'message';
+    this.data.displayName = this.displayName;
 
-      const joinData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
-      joinData.set({
+    const joinData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
+    joinData.set({
       type: 'join',
       user: this.displayName,
       message: this.displayName + ' has joined this room.',
       sendDate: Date()
-      });
-      this.data.message = '';
+    });
+    this.data.message = '';
 
-      firebase.database().ref('chatrooms/' + this.roomkey + '/chats').on('value', resp => {
+    firebase.database().ref('chatrooms/' + this.roomkey + '/chats').on('value', resp => {
       this.chats = [];
       this.chats = snapshotToArray(resp);
       console.log(this.chats);
       setTimeout(() => {
         if (this.offStatus === false) {
-        this.content.scrollToBottom(300);
-      }
-    }, 1000);
-  });
-}
+          this.content.scrollToBottom(300);
+        }
+      }, 1000);
+    });
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   sendMessage() {
     const newData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();

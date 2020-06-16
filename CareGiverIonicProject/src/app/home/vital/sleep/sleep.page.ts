@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Userelement} from '../../../users';
 import {AngularFireAuth} from '@angular/fire/auth';
-import { UserService } from 'src/app/user.service';
-import { GarminService } from 'src/app/garmin.service';
+import {UserService} from 'src/app/user.service';
+import {GarminService} from 'src/app/garmin.service';
 import {Chart} from 'chart.js';
 
 @Component({
@@ -30,9 +30,9 @@ export class SleepPage implements OnInit {
     private garminId: string;
 
     constructor(
-        private user: UserService,
-        private garmin: GarminService,
-        public afAuth: AngularFireAuth) {
+      private user: UserService,
+      private garmin: GarminService,
+      public afAuth: AngularFireAuth) {
         this.firebaseAuth = afAuth;
         this.garminId = this.user.garminId;
         console.log('garminId', this.garminId);
@@ -56,13 +56,13 @@ export class SleepPage implements OnInit {
                     for (const item of garminData) {
                         if (item) {
                             sleepDataset.push(item.sleeps);
-                         //   totalSleepDuration.push(item.sleeps.durationInSeconds);
-                         //   lightSleepDuration.push(item.sleeps.lightSleepDurationInSeconds);
-                         //   deepSleepDuration.push(item.sleeps.deepSleepDurationInSeconds);
-                         //   dateData.push(item.sleeps.calendarDate);
+                            //   totalSleepDuration.push(item.sleeps.durationInSeconds);
+                            //   lightSleepDuration.push(item.sleeps.lightSleepDurationInSeconds);
+                            //   deepSleepDuration.push(item.sleeps.deepSleepDurationInSeconds);
+                            //   dateData.push(item.sleeps.calendarDate);
                         }
                     }
-                  //  this.createLineChart(lightSleepDuration, dateData);
+                    //  this.createLineChart(lightSleepDuration, dateData);
                 }
                 if (sleepDataset.length > 0) {
                     function compare(a, b) {
@@ -88,7 +88,7 @@ export class SleepPage implements OnInit {
                 }
             });
             // tslint:disable-next-line: only-arrow-functions
-            setTimeout(function() {
+            setTimeout(function () {
             }, 1000, []);
         }
     }

@@ -9,13 +9,13 @@ import {PulseOxPageRoutingModule} from './pulse-ox-routing.module';
 import {PulseOxPage} from './pulse-ox.page';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        PulseOxPageRoutingModule
-    ],
-    declarations: [PulseOxPage]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    PulseOxPageRoutingModule
+  ],
+  declarations: [PulseOxPage]
 })
 export class PulseOxPageModule {
 }

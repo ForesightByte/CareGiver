@@ -9,14 +9,14 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {ProfilePage} from './profile.page';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        ProfilePageRoutingModule,
-        AngularFireDatabaseModule
-    ],
-    declarations: [ProfilePage]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    ProfilePageRoutingModule,
+    AngularFireDatabaseModule
+  ],
+  declarations: [ProfilePage]
 })
 export class ProfilePageModule {
 }

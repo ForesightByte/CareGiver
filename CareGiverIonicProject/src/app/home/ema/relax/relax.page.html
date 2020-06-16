@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button defaultHref="/"></ion-back-button>
-      </ion-buttons>
-      <ion-title style="text-align: center;">Perma Profiler</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Perma Profiler</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,247 +11,247 @@
   <ion-grid class="questions">
     <div>
       <p>How relaxed do you feel right now? </p>
-  </div>
-  <div class="btn">
+    </div>
+    <div class="btn">
       <ion-row row-1>
         <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="relax==20?'dark':'lightblue'"
                         (click)="relaxChange(20)" required="true">
-                        <img class="pic" [src]="ema.five"/>
+          <img class="pic" [src]="ema.five"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="relax==40?'dark':'lightblue'"
                         (click)="relaxChange(40)" required="true">
-                        <img class="pic" [src]="ema.four"/>
+          <img class="pic" [src]="ema.four"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="relax==60?'dark':'lightblue'"
                         (click)="relaxChange(60)" required="true">
-                        <img class="pic" [src]="ema.three"/>
+          <img class="pic" [src]="ema.three"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="relax==80?'dark':'lightblue'"
                         (click)="relaxChange(80)" required="true">
-                        <img class="pic" [src]="ema.two"/>
+          <img class="pic" [src]="ema.two"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="relax==100?'dark':'lightblue'"
                         (click)="relaxChange(100)" required="true">
-                        <img class="pic" [src]="ema.one"/>
+          <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
         <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
-  </div>
-  <div>
+    </div>
+    <div>
       <p>I am feeling joyful</p>
-  </div>
-  <div class="btn">
+    </div>
+    <div class="btn">
       <ion-row row-1>
         <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="joyful==20?'dark':'lightblue'"
                         (click)="joyfulChange(20)" required="true">
-                        <img class="pic" [src]="ema.five"/>
+          <img class="pic" [src]="ema.five"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="joyful==40?'dark':'lightblue'"
                         (click)="joyfulChange(40)" required="true">
-                        <img class="pic" [src]="ema.four"/>
+          <img class="pic" [src]="ema.four"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="joyful==60?'dark':'lightblue'"
                         (click)="joyfulChange(60)" required="true">
-                        <img class="pic" [src]="ema.three"/>
+          <img class="pic" [src]="ema.three"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="joyful==80?'dark':'lightblue'"
                         (click)="joyfulChange(80)" required="true">
-                        <img class="pic" [src]="ema.two"/>
+          <img class="pic" [src]="ema.two"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="joyful==100?'dark':'lightblue'"
                         (click)="joyfulChange(100)" required="true">
-                        <img class="pic" [src]="ema.one"/>
+          <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
         <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
-  </div>
-  <div>
+    </div>
+    <div>
       <p>I am feeling positive</p>
-  </div>
-  <div class="btn">
+    </div>
+    <div class="btn">
       <ion-row row-1>
         <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="positive==20?'dark':'lightblue'"
                         (click)="positiveChange(20)" required="true">
-                        <img class="pic" [src]="ema.five"/>
+          <img class="pic" [src]="ema.five"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="positive==40?'dark':'lightblue'"
                         (click)="positiveChange(40)" required="true">
-                        <img class="pic" [src]="ema.four"/>
+          <img class="pic" [src]="ema.four"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="positive==60?'dark':'lightblue'"
                         (click)="positiveChange(60)" required="true">
-                        <img class="pic" [src]="ema.three"/>
+          <img class="pic" [src]="ema.three"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="positive==80?'dark':'lightblue'"
                         (click)="positiveChange(80)" required="true">
-                        <img class="pic" [src]="ema.two"/>
+          <img class="pic" [src]="ema.two"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="positive==100?'dark':'lightblue'"
                         (click)="positiveChange(100)" required="true">
-                        <img class="pic" [src]="ema.one"/>
+          <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
         <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
-  </div>
-  <div>
+    </div>
+    <div>
       <p>I am feeling contented</p>
-  </div>
-  <div class="btn">
+    </div>
+    <div class="btn">
       <ion-row row-1>
         <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="contented==20?'dark':'lightblue'"
                         (click)="contentedChange(20)" required="true">
-                        <img class="pic" [src]="ema.five"/>
+          <img class="pic" [src]="ema.five"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="contented==40?'dark':'lightblue'"
                         (click)="contentedChange(40)" required="true">
-                        <img class="pic" [src]="ema.four"/>
+          <img class="pic" [src]="ema.four"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="contented==60?'dark':'lightblue'"
                         (click)="contentedChange(60)" required="true">
-                        <img class="pic" [src]="ema.three"/>
+          <img class="pic" [src]="ema.three"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="contented==80?'dark':'lightblue'"
                         (click)="contentedChange(80)" required="true">
-                        <img class="pic" [src]="ema.two"/>
+          <img class="pic" [src]="ema.two"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="contented==100?'dark':'lightblue'"
                         (click)="contentedChange(100)" required="true">
-                        <img class="pic" [src]="ema.one"/>
+          <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
         <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
-  </div>
-  <div>
+    </div>
+    <div>
       <p>When I noticed the text message, I was absorbed in what I was doing</p>
-  </div>
-  <div class="btn">
+    </div>
+    <div class="btn">
       <ion-row row-1>
         <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="absorbed==20?'dark':'lightblue'"
                         (click)="absorbedChange(20)" required="true">
-                        <img class="pic" [src]="ema.five"/>
+          <img class="pic" [src]="ema.five"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="absorbed==40?'dark':'lightblue'"
                         (click)="absorbedChange(40)" required="true">
-                        <img class="pic" [src]="ema.four"/>
+          <img class="pic" [src]="ema.four"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="absorbed==60?'dark':'lightblue'"
                         (click)="absorbedChange(60)" required="true">
-                        <img class="pic" [src]="ema.three"/>
+          <img class="pic" [src]="ema.three"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="absorbed==80?'dark':'lightblue'"
                         (click)="absorbedChange(80)" required="true">
-                        <img class="pic" [src]="ema.two"/>
+          <img class="pic" [src]="ema.two"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="absorbed==100?'dark':'lightblue'"
                         (click)="absorbedChange(100)" required="true">
-                        <img class="pic" [src]="ema.one"/>
+          <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
         <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
-  </div>
-  <div>
+    </div>
+    <div>
       <p>When I noticed the text message, I felt excited and interested in the things around me</p>
-  </div>
-  <div class="btn">
+    </div>
+    <div class="btn">
       <ion-row row-1>
         <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="excited==20?'dark':'lightblue'"
                         (click)="excitedChange(20)" required="true">
-                        <img class="pic" [src]="ema.five"/>
+          <img class="pic" [src]="ema.five"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="excited==40?'dark':'lightblue'"
                         (click)="excitedChange(40)" required="true">
-                        <img class="pic" [src]="ema.four"/>
+          <img class="pic" [src]="ema.four"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="excited==60?'dark':'lightblue'"
                         (click)="excitedChange(60)" required="true">
-                        <img class="pic" [src]="ema.three"/>
+          <img class="pic" [src]="ema.three"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="excited==80?'dark':'lightblue'"
                         (click)="excitedChange(80)" required="true">
-                        <img class="pic" [src]="ema.two"/>
+          <img class="pic" [src]="ema.two"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="excited==100?'dark':'lightblue'"
                         (click)="excitedChange(100)" required="true">
-                        <img class="pic" [src]="ema.one"/>
+          <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
         <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
-  </div>
-  <div>
+    </div>
+    <div>
       <p>When I noticed the text message, I had lost track of time because of what I was doing?</p>
-  </div>
-  <div class="btn">
+    </div>
+    <div class="btn">
       <ion-row row-1>
         <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="lostTrack==20?'dark':'lightblue'"
                         (click)="lostTrackChange(20)" required="true">
-                        <img class="pic" [src]="ema.five"/>
+          <img class="pic" [src]="ema.five"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="lostTrack==40?'dark':'lightblue'"
                         (click)="lostTrackChange(40)" required="true">
-                        <img class="pic" [src]="ema.four"/>
+          <img class="pic" [src]="ema.four"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="lostTrack==60?'dark':'lightblue'"
                         (click)="lostTrackChange(60)" required="true">
-                        <img class="pic" [src]="ema.three"/>
+          <img class="pic" [src]="ema.three"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="lostTrack==80?'dark':'lightblue'"
                         (click)="lostTrackChange(80)" required="true">
-                        <img class="pic" [src]="ema.two"/>
+          <img class="pic" [src]="ema.two"/>
         </ion-fab-button>
         <ion-fab-button size="small" shape="round"
                         [color]="lostTrack==100?'dark':'lightblue'"
                         (click)="lostTrackChange(100)" required="true">
-                        <img class="pic" [src]="ema.one"/>
+          <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
         <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
       </ion-row>
-  </div>
+    </div>
   </ion-grid>
 </ion-content>
 
 <ion-tab-bar>
-    <ion-buttons>
-        <ion-button expand="block" fill="clear" style="color: rgb(7, 156, 161);" (click)="submit()">Next</ion-button>
-    </ion-buttons>
+  <ion-buttons>
+    <ion-button expand="block" fill="clear" style="color: rgb(7, 156, 161);" (click)="submit()">Next</ion-button>
+  </ion-buttons>
 </ion-tab-bar>

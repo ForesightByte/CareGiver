@@ -4,15 +4,15 @@ import {RouterModule, Routes} from '@angular/router';
 import {PulseOxPage} from './pulse-ox.page';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: PulseOxPage
-    }
+  {
+    path: '',
+    component: PulseOxPage
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class PulseOxPageRoutingModule {
 }
