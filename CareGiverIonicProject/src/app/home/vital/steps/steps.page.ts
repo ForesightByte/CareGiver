@@ -45,7 +45,7 @@ export class StepsPage implements OnInit {
           const stepsData = [];
           const dateData = [];
           for (const item of garminData) {
-            if (item) {
+            if (item.dailies) {
               dailiesDataset.push(item.dailies);
               stepsData.push(item.dailies.steps);
               dateData.push(item.dailies.calendarDate);

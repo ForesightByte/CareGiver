@@ -17,12 +17,9 @@ export class StressPage implements OnInit {
     public calendarDate: string;
     public averageStressLevel: number;
     public maxStressLevel: number;
-    public stressDurationInSeconds: number;
-    public activityStressDurationInSeconds: number;
-    public restStressDurationInSeconds: number;
-    public highStressDurationInSeconds: number;
-    public mediumStressDurationInSeconds: number;
-    public lowStressDurationInSeconds: number;
+    public stressDurationInSeconds: string;
+    public highStressDurationInSeconds: string;
+    public mediumStressDurationInSeconds: string;
 
     private garminId: string;
 
@@ -49,7 +46,7 @@ export class StressPage implements OnInit {
                     const averageStressData = [];
                     const dateData = [];
                     for (const item of garminData) {
-                        if (item) {
+                        if (item.dailies) {
                             dailiesDataset.push(item.dailies);
                             averageStressData.push(item.dailies.averageStressLevel);
                             dateData.push(item.dailies.calendarDate);
@@ -74,12 +71,9 @@ export class StressPage implements OnInit {
                     this.calendarDate = sortedDataSet[0].calendarDate;
                     this.averageStressLevel = sortedDataSet[0].averageStressLevel;
                     this.maxStressLevel = sortedDataSet[0].maxStressLevel;
-                    this.stressDurationInSeconds = sortedDataSet[0].stressDurationInSeconds;
-                    this.activityStressDurationInSeconds = sortedDataSet[0].activityStressDurationInSeconds;
-                    this.restStressDurationInSeconds = sortedDataSet[0].restStressDurationInSeconds;
-                    this.highStressDurationInSeconds = sortedDataSet[0].highStressDurationInSeconds;
-                    this.mediumStressDurationInSeconds = sortedDataSet[0].mediumStressDurationInSeconds;
-                    this.lowStressDurationInSeconds = sortedDataSet[0].lowStressDurationInSeconds;
+                    this.stressDurationInSeconds = this.secondsToHMS(sortedDataSet[0].stressDurationInSeconds);
+                    this.highStressDurationInSeconds = this.secondsToHMS(sortedDataSet[0].highStressDurationInSeconds);
+                    this.mediumStressDurationInSeconds = this.secondsToHMS(sortedDataSet[0].mediumStressDurationInSeconds);
                 }
             });
             // tslint:disable-next-line: only-arrow-functions
@@ -88,6 +82,12 @@ export class StressPage implements OnInit {
         }
     }
 
+    public secondsToHMS(seconds): string {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor(seconds % 3600 / 60);
+        const hms = h + ' hr ' + m + ' m';
+        return hms;
+      }
 
     createLineChart(dataset: number[], date: string[]) {
         const labelData = [];

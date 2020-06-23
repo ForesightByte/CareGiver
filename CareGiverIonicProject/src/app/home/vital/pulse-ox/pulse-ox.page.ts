@@ -21,7 +21,7 @@ export class PulseOxPage implements OnInit {
     bars: any;
     public calendarDate: string;
     public averageSpLevel: number;
-    public durationInSeconds: number;
+    public durationInSeconds: string;
 
     private garminId: string;
 
@@ -88,7 +88,7 @@ export class PulseOxPage implements OnInit {
 
                     const sortedDataSet = pulseoxDataset.sort(compare);
                     this.calendarDate = sortedDataSet[0].calendarDate;
-                    this.durationInSeconds = sortedDataSet[0].durationInSeconds;
+                    this.durationInSeconds = this.secondsToHMS(sortedDataSet[0].durationInSeconds);
                     this.averageSpLevel = sortedDataSet[0].averageSpLevel;
                 }
             });
@@ -97,6 +97,13 @@ export class PulseOxPage implements OnInit {
             }, 1000, []);
         }
     }
+
+    public secondsToHMS(seconds): string {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor(seconds % 3600 / 60);
+        const hms = h + ' hr ' + m + ' m';
+        return hms;
+      }
 
     createLineChart(dataset: number[], date: string[]) {
         this.bars = new Chart(this.barChart.nativeElement, {

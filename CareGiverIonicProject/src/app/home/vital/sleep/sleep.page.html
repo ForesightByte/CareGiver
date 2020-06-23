@@ -17,13 +17,23 @@
             <ion-title style="color: black;">Sleeps:</ion-title>
             <ion-list>
                 <!--<p>Date: {{calendarDate}}</p>-->
-                <p>Duration: {{durationInSeconds}}s</p>
-                <p>light Sleep Duration: {{lightSleepDurationInSeconds}}s</p>
-                <p>Deep Sleep Duration: {{deepSleepDurationInSeconds}}s</p>
-                <p>Unmeasurable Sleep Duration: {{unmeasurableSleepDurationInSeconds}}s</p>
-                <p>Rem Sleep: {{remSleepInSeconds}}s</p>
-                <p>Awake Duration: {{awakeDurationInSeconds}}s</p>
+                <p>Total Duration: {{totalDuration}}</p>
+                <p>light Sleep Duration: {{lightSleepDuration}}</p>
+                <p>Deep Sleep Duration: {{deepSleepDuration}}</p>
+                <p>Rem Sleep Duration: {{remSleepDuration}}</p>
             </ion-list>
         </ion-grid>
     </ion-card>
+    <ion-row>
+        <ion-col>
+            <ion-card class="welcome-card">
+                <ion-card-header>
+                    <ion-card-title>Sleep Duration Rate Change</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <canvas #barChart></canvas>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
 </ion-content>

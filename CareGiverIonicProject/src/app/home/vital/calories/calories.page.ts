@@ -15,8 +15,9 @@ export class CaloriesPage implements OnInit {
   @ViewChild('barChart', {static: false}) barChart;
   bars: any;
   public calendarDate: string;
-  public activeKilocalories: number;
-  public bmrKilocalories: number;
+  public activeKilocalories = 0;
+  public bmrKilocalories = 0;
+  public totalKilocalories = 0;
 
   private garminId: string;
 
@@ -44,9 +45,12 @@ export class CaloriesPage implements OnInit {
           const dateData = [];
           for (const item of garminData) {
             if (item) {
-              dailiesDataset.push(item.dailies);
-              caloriesData.push(item.dailies.activeKilocalories);
-              dateData.push(item.dailies.calendarDate);
+              const caloriesItem = item.dailies;
+              if (caloriesItem) {
+                dailiesDataset.push(item.dailies);
+                caloriesData.push(item.dailies.activeKilocalories + item.dailies.bmrKilocalories);
+                dateData.push(item.dailies.calendarDate);
+              }
             }
           }
           this.createLineChart(caloriesData, dateData);
@@ -68,10 +72,11 @@ export class CaloriesPage implements OnInit {
           this.calendarDate = sortedDataSet[0].calendarDate;
           this.activeKilocalories = sortedDataSet[0].activeKilocalories;
           this.bmrKilocalories = sortedDataSet[0].bmrKilocalories;
+          this.totalKilocalories = Number(this.activeKilocalories) + Number(this.bmrKilocalories);
         }
       });
       // tslint:disable-next-line: only-arrow-functions
-      setTimeout(function () {
+      setTimeout(function() {
       }, 1000, []);
     }
   }
@@ -88,7 +93,7 @@ export class CaloriesPage implements OnInit {
       data: {
         labels: date,
         datasets: [{
-          label: 'Active Calories per Day',
+          label: 'Total Calories per Day',
           data: dataset,
           backgroundColor: 'rgba(0, 0, 0, 0)', // array should have same number of elements as number of dataset
           borderColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset

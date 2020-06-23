@@ -45,7 +45,7 @@ export class HeartRatePage implements OnInit {
                     const heartRateData = [];
                     const dateData = [];
                     for (const item of garminData) {
-                        if (item) {
+                        if (item.dailies) {
                             dailiesDataset.push(item.dailies);
                             heartRateData.push(item.dailies.averageHeartRateInBeatsPerMinute);
                             dateData.push(item.dailies.calendarDate);
