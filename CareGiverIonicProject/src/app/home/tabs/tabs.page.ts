@@ -48,7 +48,7 @@ export class TabsPage implements OnInit {
         icon: 'power',
         handler: () => {
           this.afAuth.auth.signOut();
-          return this.router.navigate(['/tabs']);
+          this.router.navigate(['/tabs']);
         }
       }]
     });
@@ -56,7 +56,8 @@ export class TabsPage implements OnInit {
   }
 
   popAlert() {
-    this.showAlert('Talk about your challenges');
+    // tslint:disable-next-line: max-line-length
+    this.showAlert('Hello! This chat room is a place where you can connect with other cancer caregivers and provide support to one another');
   }
 
   // pop up alert message

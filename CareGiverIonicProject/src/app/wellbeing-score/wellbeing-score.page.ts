@@ -46,7 +46,7 @@ export class WellbeingScorePage implements OnInit {
         }
       });
       // tslint:disable-next-line: only-arrow-functions
-      setTimeout(function () {
+      setTimeout(function() {
       }, 1000, []);
     }
   }
@@ -58,27 +58,32 @@ export class WellbeingScorePage implements OnInit {
       labelData.push('');
     }
     this.bars = new Chart(this.barChart.nativeElement, {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: date,
         datasets: [{
           label: 'Well-being Score per Day',
           data: dataSet,
-          backgroundColor: 'rgba(0, 0, 0, 0)', // array should have same number of elements as number of dataset
-          borderColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
-          borderWidth: 4,
-          pointBorderColor: 'royalblue',
-          pointBorderWidth: 1,
-          pointBackgroundColor: 'royalblue'
+          backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
+          borderColor: 'royalblue', // array should have same number of elements as number of dataset
+          borderWidth: 1
         }]
       },
       options: {
-        plugins: {
-          filler: {
-            propagate: true
-          }
-        },
         scales: {
+          xAxes: [{
+            display: false,
+            barPercentage: 1.3,
+            ticks: {
+              max: 3,
+            }
+          }, {
+            display: true,
+            ticks: {
+              autoSkip: false,
+              max: 4,
+            }
+          }],
           yAxes: [{
             ticks: {
               beginAtZero: true

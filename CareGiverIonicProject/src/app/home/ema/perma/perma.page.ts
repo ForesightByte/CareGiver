@@ -115,11 +115,11 @@ export class PermaPage implements OnInit {
     const data = {helped, loved, satisfied, purposeful, valuable, sense, progress, achieve, handle, wellbeingScore};
 
     try {
-      this.router.navigate(['/extra']);
       res.set(data, {merge: true});
       // tslint:disable-next-line: object-literal-shorthand
       res2.set({wellbeingScore: wellbeingScore}, {merge: true});
-      this.router.navigate(['/ema/extra']);
+      this.showAlert('Thank you for your participation! Your contribution matters');
+      this.router.navigate(['/tabs']);
     } catch (err) {
       console.log('Please answer all questions');
       this.showAlert('Please answer all questions');

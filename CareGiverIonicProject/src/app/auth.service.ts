@@ -26,13 +26,15 @@ export class AuthService {
     });
 
     // check user email varified or not
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        setInterval(() => {
-          this.verifiedEmail = this.afAuth.auth.currentUser.emailVerified;
-        }, 1000);
-      }
-    });
+  //  this.afAuth.authState.subscribe(user => {
+    //  if (user) {
+    //    setInterval(() => {
+         // if (this.afAuth.auth.currentUser.emailVerified) {
+        //    this.verifiedEmail = this.afAuth.auth.currentUser.emailVerified;
+        //  } else { this.verifiedEmail = false; }
+    //    }, 1000);
+    //  }
+   // });
   }
 
   // check authenticated or not

@@ -123,19 +123,16 @@ export class SleepPage implements OnInit {
 
       createLineChart(dataset, date: string[]) {
         this.bars = new Chart(this.barChart.nativeElement, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: date,
                 datasets: dataset.map((data, ndx) =>
                 ({
                     label: data.title,
                     data: data.datasets,
-                    backgroundColor: 'rgba(0, 0, 0, 0)',
-                    borderColor: lineColors[ndx],
-                    borderWidth: 3,
-                    pointBorderColor: 'royalblue',
-                    pointBorderWidth: 1,
-                    pointBackgroundColor: 'royalblue'
+                    borderColor: lineColors[ndx], // array should have same number of elements as number of dataset
+                    backgroundColor: lineColors[ndx], // array should have same number of elements as number of dataset
+                    borderWidth: 1
                 }))
             },
             options: {

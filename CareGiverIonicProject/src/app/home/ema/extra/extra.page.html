@@ -1,11 +1,117 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="text-align: center;">extra</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Well-Being CheckIn</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid class="questions">
+  <ion-grid>
+    <div>
+      <ion-radio-group [(ngModel)]="where">
+        <ion-list-header style="font-size: large;">
+          <ion-label>Where are you right now?</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>At home</ion-label>
+          <ion-radio slot="start" value="At home"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>At work</ion-label>
+          <ion-radio slot="start" value="At work"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>At hospital</ion-label>
+          <ion-radio slot="start" value="At hospital"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Other:</ion-label>
+          <ion-radio slot="start" value="other"></ion-radio>
+          <ion-input [(ngModel)]="other1"></ion-input>
+        </ion-item>
+      </ion-radio-group>
+    </div>
+    <div>
+      <ion-radio-group [(ngModel)]="who">
+        <ion-list-header style="font-size: large;">
+          <ion-label>Who are you with right now?</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Alone</ion-label>
+          <ion-radio slot="start" value="Alone"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>With the patient</ion-label>
+          <ion-radio slot="start" value="With the patient"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>With friends</ion-label>
+          <ion-radio slot="start" value="With friends"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>With family</ion-label>
+          <ion-radio slot="start" value="With family"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Other:</ion-label>
+          <ion-radio slot="start" value="other"></ion-radio>
+          <ion-input [(ngModel)]="other2"></ion-input>
+        </ion-item>
+      </ion-radio-group>
+    </div>
+    <div>
+      <ion-radio-group [(ngModel)]="what">
+        <ion-list-header style="font-size: large;">
+          <ion-label>Right before you started this survey, what were you doing?</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Sleeping</ion-label>
+          <ion-radio slot="start" value="Sleeping"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Eating</ion-label>
+          <ion-radio slot="start" value="Eating"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Rending to the patient</ion-label>
+          <ion-radio slot="start" value="Rending to the patient"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Working</ion-label>
+          <ion-radio slot="start" value="Working"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Reading</ion-label>
+          <ion-radio slot="start" value="Reading"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Engaging in physical activity</ion-label>
+          <ion-radio slot="start" value="Engaging in physical activity"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>In nature</ion-label>
+          <ion-radio slot="start" value="In nature"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Cooking</ion-label>
+          <ion-radio slot="start" value="Cooking"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Relaxing</ion-label>
+          <ion-radio slot="start" value="Relaxing"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Other:</ion-label>
+          <ion-radio slot="start" value="other"></ion-radio>
+          <ion-input [(ngModel)]="other3"></ion-input>
+        </ion-item>
+      </ion-radio-group>
+    </div>
+  </ion-grid>
+
+  <ion-grid class="sleepQuestions" *ngIf="!isSleep">
     <div>
       <p>How long did you sleep last night?</p>
     </div>
@@ -56,6 +162,6 @@
 
 <ion-tab-bar>
   <ion-buttons>
-    <ion-button expand="block" fill="clear" style="color: rgb(7, 156, 161);" (click)="submit()">Done</ion-button>
+    <ion-button expand="block" fill="clear" style="color: rgb(7, 156, 161);" (click)="submit()">Next</ion-button>
   </ion-buttons>
 </ion-tab-bar>

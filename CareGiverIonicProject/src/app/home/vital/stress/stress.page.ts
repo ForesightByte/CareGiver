@@ -96,18 +96,15 @@ export class StressPage implements OnInit {
             labelData.push('');
         }
         this.bars = new Chart(this.barChart.nativeElement, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: date,
                 datasets: [{
                     label: 'Average Stress level per Day',
                     data: dataset,
-                    backgroundColor: 'rgba(0, 0, 0, 0)', // array should have same number of elements as number of dataset
-                    borderColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
-                    borderWidth: 3,
-                    pointBorderColor: 'royalblue',
-                    pointBorderWidth: 1,
-                    pointBackgroundColor: 'royalblue'
+                    backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
+                    borderColor: 'royalblue', // array should have same number of elements as number of dataset
+                    borderWidth: 1
                 }]
             },
             options: {

@@ -21,21 +21,44 @@
   <ion-grid class="score">
     <ion-title size="large" style="text-align: center;">Your Well-being score</ion-title>
     <ion-card-content>
-      <circle-progress [percent]="score"
-                       [radius]="100"
-                       [outerStrokeWidth]="16"
-                       [innerStrokeWidth]="8"
-                       [outerStrokeColor]="scoreColor"
-                       [innerStrokeColor]="defaultColor"
-                       [animation]="true"
-                       [animationDuration]="300"
-                       [showUnits]="false"
-                       [subtitle]="formatSubtitle(score)"
-                       [titleFontSize]="60"
-                       [subtitleFontSize]="25"
-                       [subtitleColor]='scoreColor'
-                       button [routerLink]="['/wellbeing-score']"></circle-progress>
-    </ion-card-content>
-  </ion-grid>
+      
+
+  <div class="overlap" button [routerLink]="['/wellbeing-score']">
+    <ion-img
+        class="dial"
+        [src]="coloredDial"
+        [ngStyle]="dialRotation"
+    >
+    </ion-img>
+    <ion-img class="wheel" [src]="wheel"></ion-img>
+    <div [ngClass]="wellbeingTextColor">{{todayScore}}</div>
+  </div>
+  <div style="text-align: center;">
+    <ion-title style="size: 20px;">{{this.wellbeingQual}}</ion-title>
+  </div>
+
+  <div class="wellbeingFooter">
+      <!--<div class="overlapMiniBubble">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+             [ngClass]="yesterdayClass">
+          <circle cx="50" cy="50" r="50"/>
+        </svg>
+        <span class="smallerText">Yesterday</span><br/>
+        <div><span [ngClass]="yesterdayTextColor">{{ystScore}}</span></div>
+      </div>-->
+
+      
+
+      <!--<div class="overlapMiniBubble">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+             [ngClass]="averageClass">
+          <circle cx="50" cy="50" r="50"/>
+        </svg>
+        <span class="smallerText">Average</span><br/>
+        <div><span [ngClass]="averageTextColor">{{avgScore}}</span></div>
+      </div>-->
+    </div>
+  </ion-card-content>
+</ion-grid>
 </ion-content>	
 

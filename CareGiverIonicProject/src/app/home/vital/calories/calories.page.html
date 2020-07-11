@@ -12,8 +12,8 @@
     <!--<ion-title (click)="getData(yesterday)">Yesterday</ion-title>
     <ion-title (click)="getData(today)" style="text-align: right;">Today</ion-title>-->
   </ion-row>
-  <ion-card>
-    <ion-grid class="profile">
+  <ion-grid class="alignAll">
+  <ion-card class="welcome-card">
       <ion-title style="color: black;">Calories Burn:</ion-title>
       <ion-list>
         <!--<p>Date: {{calendarDate}}</p>-->
@@ -21,7 +21,6 @@
         <p>Rest Calories: {{bmrKilocalories}} calories</p>
         <p>Total Calories: {{totalKilocalories}} calories</p>
       </ion-list>
-    </ion-grid>
   </ion-card>
   <ion-row>
     <ion-col>
@@ -35,4 +34,5 @@
       </ion-card>
     </ion-col>
   </ion-row>
+</ion-grid>
 </ion-content>

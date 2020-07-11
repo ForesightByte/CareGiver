@@ -9,6 +9,15 @@ const routes: Routes = [
     component: EmaPage,
     children: [
       {
+        path: 'extra',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('./extra/extra.module').then(m => m.ExtraPageModule)
+          }
+        ]
+      },
+      {
         path: 'relax',
         children: [
           {
@@ -27,26 +36,18 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'extra',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('./extra/extra.module').then(m => m.ExtraPageModule)
-          }
-        ]
-      },
-      {
         path: '',
-        redirectTo: '/ema/relax',
+        redirectTo: '/ema/extra',
         pathMatch: 'full'
       },
       {
         path: '',
-        redirectTo: '/ema/relax',
+        redirectTo: '/ema/extra',
         pathMatch: 'full'
       }
     ]
-  },
+  }
+
 ];
 
 @NgModule({

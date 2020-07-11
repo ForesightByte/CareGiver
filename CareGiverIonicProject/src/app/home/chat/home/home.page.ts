@@ -38,8 +38,8 @@ export class HomePage implements OnInit {
     private auth: AuthService) {
     const uid = this.auth.cUid;
     this.displayName = this.user.displayName;
+    console.log('dispname', this.displayName);
     this.roomkey = 'chatroom';
-    console.log(this.displayName);
 
     this.offStatus = false;
     this.data.type = 'message';

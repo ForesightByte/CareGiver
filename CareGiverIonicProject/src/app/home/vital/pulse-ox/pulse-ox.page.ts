@@ -107,18 +107,15 @@ export class PulseOxPage implements OnInit {
 
     createLineChart(dataset: number[], date: string[]) {
         this.bars = new Chart(this.barChart.nativeElement, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: date,
                 datasets: [{
                     label: 'Average Pulse Rate per Day',
                     data: dataset,
-                    backgroundColor: 'rgba(0, 0, 0, 0)', // array should have same number of elements as number of dataset
-                    borderColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
-                    borderWidth: 3,
-                    pointBorderColor: 'royalblue',
-                    pointBorderWidth: 1,
-                    pointBackgroundColor: 'royalblue'
+                    backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
+                    borderColor: 'royalblue', // array should have same number of elements as number of dataset
+                    borderWidth: 1
                 }]
             },
             options: {

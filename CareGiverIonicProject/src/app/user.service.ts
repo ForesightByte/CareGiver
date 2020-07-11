@@ -72,6 +72,14 @@ export class UserService {
     );
   }
 
+  getWellScore(uid: string, date: string): Observable<Userelement> {
+    console.log(uid, date);
+    return this.afStore.collection('users').doc<Userelement>(uid).collection('EMA').doc<Userelement>(date)
+    .valueChanges().pipe( take(1), map(user => {
+      return user;
+    }));
+  }
+
   getDisplayname(id: string) {
     return this.afStore.collection('users').doc<Userelement>(id).valueChanges().pipe(
       take(1),
@@ -84,8 +92,9 @@ export class UserService {
   }
 
   getGarminId(id: string) {
-    this.getUser(id).subscribe(data => {
+    return this.getUser(id).subscribe(data => {
       this.garminId = data.garminUserId;
+      return this.garminId;
     });
   }
 

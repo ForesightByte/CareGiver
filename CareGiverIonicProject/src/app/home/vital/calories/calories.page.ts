@@ -3,6 +3,7 @@ import {UserService} from '../../../user.service';
 import {GarminService} from '../../../garmin.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Chart} from 'chart.js';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -19,25 +20,25 @@ export class CaloriesPage implements OnInit {
   public bmrKilocalories = 0;
   public totalKilocalories = 0;
 
-  private garminId: string;
-
   constructor(
     private user: UserService,
     private garmin: GarminService,
-    public afAuth: AngularFireAuth) {
+    public afAuth: AngularFireAuth,
+    private auth: AuthService) {
     this.firebaseAuth = afAuth;
-    this.garminId = this.user.garminId;
-    console.log('garminId', this.garminId);
+    let gId;
+    gId =  this.user.garminId;
+    this.showData(gId);
+    console.log('garminId', gId);
   }
 
   ngOnInit() {
-    this.showData();
   }
 
-  async showData() {
+  async showData(garminId) {
     let garminData;
-    if (this.garminId) {
-      this.garmin.getGarminDataset(this.garminId).subscribe(data => {
+    if (garminId) {
+      this.garmin.getGarminDataset(garminId).subscribe(data => {
         garminData = data;
         const dailiesDataset = [];
         if (garminData) {
@@ -89,18 +90,18 @@ export class CaloriesPage implements OnInit {
       labelData.push('');
     }
     this.bars = new Chart(this.barChart.nativeElement, {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: date,
         datasets: [{
           label: 'Total Calories per Day',
           data: dataset,
-          backgroundColor: 'rgba(0, 0, 0, 0)', // array should have same number of elements as number of dataset
-          borderColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
-          borderWidth: 3,
-          pointBorderColor: 'royalblue',
-          pointBorderWidth: 1,
-          pointBackgroundColor: 'royalblue'
+          backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
+          borderColor: 'royalblue', // array should have same number of elements as number of dataset
+          borderWidth: 1,
+        //  pointBorderColor: 'royalblue',
+        //  pointBorderWidth: 1,
+        //  pointBackgroundColor: 'royalblue'
         }]
       },
       options: {

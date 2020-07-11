@@ -13,5 +13,6 @@ export interface Userelement {
   dailies?: any;
   sleeps?: any;
   pulseox?: any;
+  wellSleep?: string;
   wellbeingScore?: number;
 }
