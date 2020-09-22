@@ -9,19 +9,19 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="background">
+<ion-content class="background"><br><br>
   <ion-grid>
     <ion-card-title *ngIf="displayName">
-      <p class="hello">
+      <p class="hello"><b>
         Hello {{(displayName |async)}}<br>
-        We are together on this with you </p>
+        We are together on this with you </b></p>
     </ion-card-title>
   </ion-grid>
-  <br>
+  <br><br>
   <ion-grid class="score">
-    <ion-title size="large" style="text-align: center;">Your Well-being score</ion-title>
+    <ion-title size="large" style="text-align: center; font:bold">Your Well-being score</ion-title>
     <ion-card-content>
-      
+  <br> 
 
   <div class="overlap" button [routerLink]="['/wellbeing-score']">
     <ion-img
@@ -36,28 +36,6 @@
   <div style="text-align: center;">
     <ion-title style="size: 20px;">{{this.wellbeingQual}}</ion-title>
   </div>
-
-  <div class="wellbeingFooter">
-      <!--<div class="overlapMiniBubble">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
-             [ngClass]="yesterdayClass">
-          <circle cx="50" cy="50" r="50"/>
-        </svg>
-        <span class="smallerText">Yesterday</span><br/>
-        <div><span [ngClass]="yesterdayTextColor">{{ystScore}}</span></div>
-      </div>-->
-
-      
-
-      <!--<div class="overlapMiniBubble">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
-             [ngClass]="averageClass">
-          <circle cx="50" cy="50" r="50"/>
-        </svg>
-        <span class="smallerText">Average</span><br/>
-        <div><span [ngClass]="averageTextColor">{{avgScore}}</span></div>
-      </div>-->
-    </div>
   </ion-card-content>
 </ion-grid>
 </ion-content>	

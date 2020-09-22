@@ -42,20 +42,20 @@
           <ion-button fill="clear" color="dark" size="small" routerLink="/register" routerDirection="root">
             <b><p class="Registration-text">Registration</p></b>
           </ion-button>
-        </ion-buttons>
+        </ion-buttons><br><br>
         <div class="ion-padding">
           <ion-input placeholder="Email" type="text" [(ngModel)]="log.email"></ion-input>
-          <br>
+          <br><br>
           <ion-input placeholder="Password" type="password" [(ngModel)]="log.password"></ion-input>
         </div>
         <ion-button class="actionbutton" expand="block" color="#20438d" style="max-width: 465px;"
                     (click)="log.login()">Log In
         </ion-button>
-        <ion-button class="forgotbutton" fill="clear" style="font-size:10px; padding-bottom:20px;
+        <!--<ion-button class="forgotbutton" fill="clear" style="font-size:10px; padding-bottom:20px;
                             color:lavender;margin-left:10px; text-transform:none; color:#ffbf6c;"
                     routerLink="/reset-password" routerDirection="root">
           Forgot password ?
-        </ion-button>
+        </ion-button>-->
       </ion-grid>
       <!--<ion-grid style="max-width: 465px;">
           <ion-row>

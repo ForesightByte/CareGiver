@@ -86,7 +86,7 @@ export class ProfileEditPage implements OnInit {
     const age = this.age;
     const gender = this.gender;
     const skills = this.skills;
-    const photoURL = this.photoURL;
+  //  const photoURL = this.photoURL;
 
     const uProfile = this.afStore.doc(`users/${this.Uauth.cUid}`);
     const data = {
@@ -94,8 +94,8 @@ export class ProfileEditPage implements OnInit {
       lastName,
       gender,
       age,
-      skills,
-      photoURL
+      skills
+     // photoURL
     };
     uProfile.update(data);
     this.router.navigate(['/settings']);

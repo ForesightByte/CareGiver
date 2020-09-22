@@ -4,7 +4,7 @@ ion-toolbar {
 }
 
 ion-content {
-  --background: url(../../assets/whiteleaf.jpg) 0 0/100% 100% no-repeat;
+  --background: white; // url(../../assets/whiteleaf.jpg) 0 0/100% 100% no-repeat;
 }
 
 ion-grid {

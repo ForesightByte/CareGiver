@@ -1,5 +1,5 @@
 ion-content.background {
-  --background: url(../../assets/gray.jpg) 0 0/100% 100% no-repeat;
+  --background: url(../../assets/log.jpg) 0 0/100% 100% no-repeat;
 }
 
 .content {
@@ -25,7 +25,7 @@ ion-content.background {
 .Registration-text {
   margin-left: 10px;
   font-size: large;
-  color: #d7ffa3;
+  color: #ffffff;
   text-align: center;
   font-family: 'Nunito', sans-serif;
   text-transform: none;
@@ -38,8 +38,8 @@ ion-input {
 }
 
 .actionbutton {
-  background-color: #92ff05;
-  color: black;
+  background-color: #24a7a7;
+  color: rgb(255, 255, 255);
   border-radius: 5px;
   margin-left: 15px;
   margin-right: 13px;

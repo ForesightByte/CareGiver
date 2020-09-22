@@ -8,14 +8,14 @@
         <ion-button fill="clear" color="dark" size="small">
           <b><p class="Registration-text">Registration</p></b>
         </ion-button>
-      </ion-buttons>
+      </ion-buttons><br><br>
       <div class="ion-padding">
         <ion-input placeholder="Email" type="email" [(ngModel)]="email"></ion-input>
-        <br>
+        <br><br>
         <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
-        <br>
+        <br><br>
         <ion-input placeholder="Re-Password" type="password" [(ngModel)]="repassword"></ion-input>
-        <br>
+        <br><br>
         <ion-input placeholder="Garmin UserId" type="text" [(ngModel)]="userId"></ion-input>
       </div>
       <ion-button class="actionbutton" expand="full" color="#20438d" (click)="register()" routerLink="/tabs">

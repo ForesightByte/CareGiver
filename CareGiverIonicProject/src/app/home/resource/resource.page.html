@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
+  <ion-item><ion-label>Select Zip Code</ion-label>
     <ion-select interface="popover" placeholder="Select ZipCode" [(ngModel)]="zipCodeLocation">
       <ion-select-option value="34.080143,-117.73861">91767</ion-select-option>
       <ion-select-option value="34.12227,-117.71429">91711</ion-select-option>
@@ -18,7 +18,7 @@
     </ion-select>
   </ion-item>
 
-  <ion-item>
+  <ion-item><ion-label>Select Place</ion-label>
     <ion-select interface="popover" placeholder="Select Place" [(ngModel)]="placeToSearch">
       <ion-select-option value="pharmacy,drugstore">Pharmacy</ion-select-option>
       <ion-select-option value="hospital">Hospital</ion-select-option>
@@ -37,8 +37,10 @@
 
     <ion-item *ngFor="let place of placesResult">
       <ion-label>
-        <h2>{{place.name}}</h2>
-        <h3>{{place.vicinity}}</h3>
+        <h2>Name:     {{place.name}}</h2>
+        <h3>Status:   {{place.business_status}}</h3>
+        <h3>Rating:   {{place.rating}}</h3>
+        <h3>Vicinity: {{place.vicinity}}</h3>
       </ion-label>
     </ion-item>
 

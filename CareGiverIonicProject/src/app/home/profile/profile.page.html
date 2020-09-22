@@ -12,7 +12,7 @@
   <ion-card *ngIf="Info">
     <ion-grid class="profile">
       <ion-list>
-        <img style="width: 115px; height: 115px;" src="{{(Info |async)?.photoURL}}" class="photo">
+       <!--<img style="width: 115px; height: 115px;" src="{{(Info |async)?.photoURL}}" class="photo">-->
         <p>First Name: {{(Info |async)?.firstName}}</p>
         <p>Last Name: {{(Info |async)?.lastName}}</p>
         <p>Gender: {{(Info |async)?.gender}}</p>

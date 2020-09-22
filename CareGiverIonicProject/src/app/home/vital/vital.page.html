@@ -7,14 +7,14 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-grid class="position">
+<ion-content>
+    <ion-grid fixed>
         <ion-row>
             <ion-col>
-                <ion-button class="vitals" color="transparent" routerLink="/steps" routerDirection="root">
+                <ion-button class="steps" color="transparent" routerLink="/steps" routerDirection="root">
                     <div><img [src]="steps"/><br><br>Steps</div>
-                </ion-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                <ion-button class="vitals" color="transparent" routerLink="/calories" routerDirection="root">
+                </ion-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <ion-button class="calories" color="transparent" routerLink="/calories" routerDirection="root">
                     <div><img [src]="calories"/><br><br>Calories</div>
                 </ion-button>
             </ion-col>
@@ -22,10 +22,10 @@
         <br>
         <ion-row>
             <ion-col>
-                <ion-button class="vitals" color="transparent" routerLink="/heart-rate" routerDirection="root">
+                <ion-button class="heartRate" color="transparent" routerLink="/heart-rate" routerDirection="root">
                     <div><img [src]="heartRate"/><br><br>Heart Rate</div>
-                </ion-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                <ion-button class="vitals" color="transparent" routerLink="/stress" routerDirection="root">
+                </ion-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <ion-button class="stress" color="transparent" routerLink="/stress" routerDirection="root">
                     <div><img [src]="stress"/><br><br>Stress</div>
                 </ion-button>
             </ion-col>
@@ -33,10 +33,10 @@
         <br>
         <ion-row>
             <ion-col>
-                <ion-button class="vitals" color="transparent" routerLink="/sleep" routerDirection="root">
+                <ion-button class="sleep" color="transparent" routerLink="/sleep" routerDirection="root">
                     <div><img [src]="sleep"/><br><br>sleep</div>
-                </ion-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                <ion-button class="vitals" color="transparent" routerLink="/pulse-ox" routerDirection="root">
+                </ion-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <ion-button class="pulse" color="transparent" routerLink="/pulse-ox" routerDirection="root">
                     <div><img [src]="pulseOx"/><br><br>pulseOx</div>
                 </ion-button>
             </ion-col>

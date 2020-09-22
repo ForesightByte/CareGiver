@@ -1,10 +1,14 @@
 ion-content {
-  --background: url(../../../assets/whiteleaf.jpg) 0 0/100% 100% no-repeat;
+  --background: white; // url(../../../assets/whiteleaf.jpg) 0 0/100% 100% no-repeat;
 }
 
 ion-toolbar {
   --background: rgb(7, 156, 161); // url(../../../assets/toolbar.jpg) 0 0/100% 100% no-repeat;
   color: white;
+}
+
+ion-card {
+  background: rgb(185, 215, 224);
 }
 
 ion-list {
