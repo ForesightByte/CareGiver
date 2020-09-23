@@ -8,17 +8,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-item><ion-label>Select Zip Code</ion-label>
-    <ion-select interface="popover" placeholder="Select ZipCode" [(ngModel)]="zipCodeLocation">
-      <ion-select-option value="34.080143,-117.73861">91767</ion-select-option>
-      <ion-select-option value="34.12227,-117.71429">91711</ion-select-option>
-      <ion-select-option value="34.10385,-117.66391">91786</ion-select-option>
-      <ion-select-option value="44.369264,-123.62349">97324</ion-select-option>
-      <ion-select-option value="36.197152,-105.10727">87734</ion-select-option>
-    </ion-select>
+  <ion-item><b class="zip">Enter Zip Code:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <ion-input [(ngModel)]= 'zip_code' placeholder="zip_code"></ion-input>
   </ion-item>
 
-  <ion-item><ion-label>Select Place</ion-label>
+  <ion-item><b class="zip">Select Place:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <ion-select interface="popover" placeholder="Select Place" [(ngModel)]="placeToSearch">
       <ion-select-option value="pharmacy,drugstore">Pharmacy</ion-select-option>
       <ion-select-option value="hospital">Hospital</ion-select-option>
@@ -26,11 +20,11 @@
     </ion-select>
   </ion-item>
   <section>
-    <ion-button (click)="searchByZipcode()" color="rgb(7, 156, 161)"
+    <ion-button (click)="zipToLocation()" color="rgb(7, 156, 161)"
                 style="background-color: rgb(7, 156, 161); margin-left: 25px;">Search
     </ion-button>
   </section>
-  <ion-list>
+  <ion-list class="zip">
     <ion-list-header>
       <h1>Places Nearby</h1>
     </ion-list-header>
