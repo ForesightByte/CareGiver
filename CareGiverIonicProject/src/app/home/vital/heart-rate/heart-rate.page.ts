@@ -54,19 +54,16 @@ export class HeartRatePage implements OnInit {
                     this.createLineChart(heartRateData, dateData);
                 }
                 if (dailiesDataset.length > 0) {
-                    function compare(a, b) {
-                        const aValue = a.calendarDate;
-                        const bValue = b.calendarDate;
-                        if (aValue < bValue) {
-                            return 1;
+                    const sortedDataSet = dailiesDataset.sort((a, b) =>{
+                        if(a.calendarDate < b.calendarDate) {
+                          return 1
+                        } else if(a.calendarDate > b.calendarDate) {
+                          return -1
+                        } else {
+                          return 0
                         }
-                        if (aValue > bValue) {
-                            return -1;
-                        }
-                        return 0;
-                    }
-
-                    const sortedDataSet = dailiesDataset.sort(compare);
+                      });
+                      
                     this.calendarDate = sortedDataSet[0].calendarDate;
                     this.averageHeartRateInBeatsPerMinute = sortedDataSet[0].averageHeartRateInBeatsPerMinute;
                     this.maxHeartRateInBeatsPerMinute = sortedDataSet[0].maxHeartRateInBeatsPerMinute;

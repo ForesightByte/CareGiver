@@ -1,8 +1,8 @@
 {
   "name": "caregiver",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "1.0.0",
+  "author": "Foresightbyte",
+  "homepage": "https://foresightbyte.com",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -27,7 +27,6 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.7.1",
     "chart.js": "^2.9.3",
-    "cordova-android": "^8.1.0",
     "cordova-browser": "6.0.0",
     "core-js": "^2.5.4",
     "firebase": "^7.7.0",
@@ -53,6 +52,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "cordova-android": "^9.0.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^4.1.3",
@@ -71,7 +71,7 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-  "description": "An Ionic project",
+  "description": "It's a Care Giver project.",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
@@ -84,8 +84,8 @@
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "android",
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }

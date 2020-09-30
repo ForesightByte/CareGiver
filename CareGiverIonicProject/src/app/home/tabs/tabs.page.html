@@ -34,6 +34,9 @@
 <ng-template #login>
   <ion-content class="background">
     <div class="content">
+      <div style="display: flex; justify-content: center;">
+        <img src="../../assets/logo.png" style="height: 150px; width: 200px;">
+      </div><br>
       <ion-grid style="max-width: 465px;">
         <ion-buttons class="button-action">
           <ion-button fill="clear" color="dark" size="small">
@@ -42,7 +45,7 @@
           <ion-button fill="clear" color="dark" size="small" routerLink="/register" routerDirection="root">
             <b><p class="Registration-text">Registration</p></b>
           </ion-button>
-        </ion-buttons><br><br>
+        </ion-buttons><br>
         <div class="ion-padding">
           <ion-input placeholder="Email" type="text" [(ngModel)]="log.email"></ion-input>
           <br><br>

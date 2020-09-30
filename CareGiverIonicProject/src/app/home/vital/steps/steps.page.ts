@@ -54,19 +54,17 @@ export class StepsPage implements OnInit {
           this.createLineChart(stepsData, dateData);
         }
         if (dailiesDataset.length > 0) {
-          function compare(a, b) {
-            const aValue = a.calendarDate;
-            const bValue = b.calendarDate;
-            if (aValue < bValue) {
-              return 1;
+          const sortedDataSet = dailiesDataset.sort((a, b) =>{
+            if(a.calendarDate < b.calendarDate) {
+              return 1
+            } else if(a.calendarDate > b.calendarDate) {
+              return -1
+            } else {
+              return 0
             }
-            if (aValue > bValue) {
-              return -1;
-            }
-            return 0;
-          }
+          });
 
-          const sortedDataSet = dailiesDataset.sort(compare);
+          console.log('sort 2', sortedDataSet);
           this.totalSteps = sortedDataSet[0].steps;
           this.activityType = sortedDataSet[0].activityType;
           this.calendarDate = sortedDataSet[0].calendarDate;
