@@ -2,7 +2,7 @@
 <widget id="io.care.giver" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>CareGiver</name>
     <description>It's a caregiver project app</description>
-    <author email="support@foresightbyte.com" href="http://foresightbyte.com/">Foresightbyte Team</author>
+    <author email="md.moniruzzaman@cgu.edu" href="https://cgu.edu">CGU Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
