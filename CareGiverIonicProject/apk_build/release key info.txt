@@ -1,0 +1,3 @@
+
+keystore: caregiver-relase-key.keystore
+alias: alias_caregiver
