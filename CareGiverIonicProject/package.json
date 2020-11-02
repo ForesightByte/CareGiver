@@ -1,8 +1,8 @@
 {
   "name": "caregiver",
   "version": "1.0.0",
-  "author": "Foresightbyte",
-  "homepage": "https://foresightbyte.com",
+  "author": "CGU",
+  "homepage": "https://cgu.edu",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
