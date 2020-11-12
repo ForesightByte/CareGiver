@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import * as firebase from 'Firebase';
+import * as firebase from 'firebase/app';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {IonContent} from '@ionic/angular';
 import {AuthService} from 'src/app/auth.service';
