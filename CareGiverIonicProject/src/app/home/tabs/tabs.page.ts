@@ -29,7 +29,7 @@ export class TabsPage implements OnInit {
     const actionSheet = await this.actionSheetController.create({
       header: 'Tools',
       cssClass: 'EditIcon',
-      buttons: [{
+      buttons: [/*{
         text: 'Profile',
         role: 'information',
         icon: 'contact',
@@ -43,7 +43,7 @@ export class TabsPage implements OnInit {
         handler: () => {
           //  return this.router.navigate(['./settings']);
         }
-      }, {
+      }, */ {
         text: 'Sign Out',
         icon: 'power',
         handler: () => {

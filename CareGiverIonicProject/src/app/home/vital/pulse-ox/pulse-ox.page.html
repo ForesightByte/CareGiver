@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="/vital"></ion-back-button>
+            <ion-button [routerLink]="['/vital']" style="color: white;">Back</ion-button>
         </ion-buttons>
         <ion-title style="text-align: center;">Pulse Ox</ion-title>
     </ion-toolbar>
@@ -14,7 +14,7 @@
     </ion-row>
     <ion-card class="welcome-card">
         <ion-grid>
-            <ion-title style="color: black;">Pulse OX:</ion-title>
+            <h3 style="color: black;">Pulse OX:</h3>
             <ion-list>
                 <!--<p>Date: {{calendarDate}}</p>-->
                 <p>Avg. SpO2 Value: {{averageSpLevel}}</p>
@@ -26,7 +26,7 @@
         <ion-col>
             <ion-card class="welcome-card">
                 <ion-card-header>
-                    <ion-card-title>Average Pulse Rate Change</ion-card-title>
+                    <h4>Average Pulse Rate Change</h4>
                 </ion-card-header>
                 <ion-card-content>
                     <canvas #barChart></canvas>

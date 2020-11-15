@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="/vital"></ion-back-button>
+            <ion-button [routerLink]="['/vital']" style="color: white;">Back</ion-button>
         </ion-buttons>
         <ion-title style="text-align: center;">Sleep</ion-title>
     </ion-toolbar>
@@ -14,7 +14,7 @@
     </ion-row>
     <ion-card class="welcome-card">
         <ion-grid>
-            <ion-title style="color: black;">Sleeps:</ion-title>
+            <h3 style="color: black;">Sleeps:</h3>
             <ion-list>
                 <!--<p>Date: {{calendarDate}}</p>-->
                 <p>Total Duration: {{totalDuration}}</p>
@@ -28,7 +28,7 @@
         <ion-col>
             <ion-card class="welcome-card">
                 <ion-card-header>
-                    <ion-card-title>Sleep Duration Rate Change</ion-card-title>
+                    <h4>Sleep Duration Rate Change</h4>
                 </ion-card-header>
                 <ion-card-content>
                     <canvas #barChart></canvas>

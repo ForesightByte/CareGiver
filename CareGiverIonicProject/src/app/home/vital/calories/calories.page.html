@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/vital"></ion-back-button>
+      <ion-button [routerLink]="['/vital']" style="color: white;">Back</ion-button>
     </ion-buttons>
     <ion-title style="text-align: center;">Calories</ion-title>
   </ion-toolbar>
@@ -14,7 +14,7 @@
   </ion-row>
   <ion-grid class="alignAll">
   <ion-card class="welcome-card">
-      <ion-title style="color: black;">Calories Burn:</ion-title>
+      <h3 style="color: black;">Calories Burn:</h3>
       <ion-list>
         <!--<p>Date: {{calendarDate}}</p>-->
         <p>Active Calories: {{activeKilocalories}} calories</p>
@@ -26,7 +26,7 @@
     <ion-col>
       <ion-card class="welcome-card">
         <ion-card-header>
-          <ion-card-title>Calories Rate Change</ion-card-title>
+          <h4>Calories Rate Change</h4>
         </ion-card-header>
         <ion-card-content>
           <canvas #barChart></canvas>

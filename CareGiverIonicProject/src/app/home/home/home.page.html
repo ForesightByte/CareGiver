@@ -13,16 +13,14 @@
   <ion-grid>
     <ion-card-title *ngIf="displayName">
       <p class="hello"><b>
-        Hello {{(displayName |async)}}<br>
-        We are together on this with you </b></p>
+        Hello {{(displayName |async)}}</b><br>
+        We are together on this with you </p>
     </ion-card-title>
   </ion-grid>
   <br><br>
-  <ion-grid class="score">
-    <ion-title size="large" style="text-align: center; font:bold">Your Well-being score</ion-title>
+  <ion-grid class="score">  
+    <h3 style="text-align: center; font: bold">Your wellbeing-score</h3>  
     <ion-card-content>
-  <br> 
-
   <div class="overlap" button [routerLink]="['/wellbeing-score']">
     <ion-img
         class="dial"
@@ -33,10 +31,13 @@
     <ion-img class="wheel" [src]="wheel"></ion-img>
     <div [ngClass]="wellbeingTextColor">{{todayScore}}</div>
   </div>
-  <div style="text-align: center;">
-    <ion-title style="size: 20px;">{{this.wellbeingQual}}</ion-title>
-  </div>
   </ion-card-content>
+</ion-grid>
+<ion-grid>
+  
+  <div style="text-align: center;">
+    <h3 style="size: 20px;">{{this.wellbeingQual}}</h3>
+  </div>
 </ion-grid>
 </ion-content>	
 
