@@ -1,0 +1,30 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.care.giver"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "io.care.giver"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "io.care.giver"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.care.giver"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.care.giver"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.care.giver"
+    }
+  },
+  "dependent_plugins": {}
+}

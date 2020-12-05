@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/tabs/home']" style="color: white;">Back</ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Resource page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item><b class="zip">Enter Zip Code:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <ion-input [(ngModel)]= 'zip_code' placeholder="zip_code"></ion-input>
+  </ion-item>
+
+  <ion-item><b class="zip">Select Place:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <ion-select interface="popover" placeholder="Select Place" [(ngModel)]="placeToSearch">
+      <ion-select-option value="pharmacy,drugstore">Pharmacy</ion-select-option>
+      <ion-select-option value="hospital">Hospital</ion-select-option>
+      <ion-select-option value="social security office">Social security office</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <section>
+    <ion-button (click)="zipToLocation()" color="rgb(7, 156, 161)"
+                style="background-color: rgb(7, 156, 161); margin-left: 25px;">Search
+    </ion-button>
+  </section>
+  <ion-list class="zip">
+    <ion-list-header>
+      <h1>Places Nearby</h1>
+    </ion-list-header>
+
+    <ion-item *ngFor="let place of placesResult">
+      <ion-label>
+        <h2>Name:     {{place.name}}</h2>
+        <h3>Status:   {{place.business_status}}</h3>
+        <h3>Rating:   {{place.rating}}</h3>
+        <h3>Vicinity: {{place.vicinity}}</h3>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

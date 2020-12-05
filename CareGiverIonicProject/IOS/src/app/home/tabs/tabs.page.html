@@ -1,0 +1,88 @@
+<div *ngIf="Uauth.authenticated; else login">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+
+      <ion-tab-button routerLink="/vital" routerDirection="root">
+        <ion-icon md="md-analytics"></ion-icon>
+        <ion-label class="tabBar">Vital</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/resource" routerDirection="root">
+        <ion-icon md="md-information-circle"></ion-icon>
+        <ion-label class="tabBar">Resource</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/kp" routerDirection="root">
+        <ion-icon md="md-medkit"></ion-icon>
+        <ion-label class="tabBar">KP</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/home" routerDirection="root" (click)="popAlert()">
+        <ion-icon md="md-chatboxes"></ion-icon>
+        <ion-label class="tabBar">Chat</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/ema" routerDirection="root">
+        <ion-icon md="md-document"></ion-icon>
+        <ion-label class="tabBar">W.CheckIn</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+</div>
+
+<ng-template #login>
+  <ion-content class="background">
+    <div class="content">
+      <div style="display: flex; justify-content: center;">
+        <img src="../../assets/logo.png" style="height: 150px; width: 200px;">
+      </div><br>
+      <ion-grid style="max-width: 465px;">
+        <ion-buttons class="button-action">
+          <ion-button fill="clear" color="dark" size="small">
+            <b><p class="login-text">Log In</p></b>
+          </ion-button>
+          <ion-button fill="clear" color="dark" size="small" routerLink="/register" routerDirection="root">
+            <b><p class="Registration-text">Registration</p></b>
+          </ion-button>
+        </ion-buttons><br>
+        <div class="ion-padding">
+          <ion-input placeholder="Email" type="text" [(ngModel)]="log.email"></ion-input>
+          <br><br>
+          <ion-input placeholder="Password" type="password" [(ngModel)]="log.password"></ion-input>
+        </div>
+        <ion-button class="actionbutton" expand="block" color="#20438d" style="max-width: 465px;"
+                    (click)="log.login()">Log In
+        </ion-button>
+        <!--<ion-button class="forgotbutton" fill="clear" style="font-size:10px; padding-bottom:20px;
+                            color:lavender;margin-left:10px; text-transform:none; color:#ffbf6c;"
+                    routerLink="/reset-password" routerDirection="root">
+          Forgot password ?
+        </ion-button>-->
+      </ion-grid>
+      <!--<ion-grid style="max-width: 465px;">
+          <ion-row>
+              <ion-col class="line" size="5"></ion-col>
+              <ion-col class="or" size="2">
+                  OR
+              </ion-col>
+              <ion-col class="line" size="5"></ion-col>
+          </ion-row>
+      </ion-grid>
+      <ion-grid style="max-width: 465px;">
+          <ion-row>
+              <ion-col>
+                    <ion-button class="fbbutton" expand="block" color="#20438d">Facebook
+                        <ion-icon slot="end" name="logo-facebook"></ion-icon>
+                      </ion-button><br>
+
+                  <ion-button fill="solid" expand="block" color="#ff3300" class="gbutton" (click)="log.google()">
+                      Google
+                      <ion-icon slot="end" name="logo-googleplus"></ion-icon>
+                  </ion-button>
+              </ion-col>
+          </ion-row>
+      </ion-grid>-->
+    </div>
+  </ion-content>
+</ng-template>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+    <!--<ion-button (click)="editProfile()">Edit</ion-button>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngIf="Info">
+    <ion-grid class="profile">
+      <ion-list>
+       <!--<img style="width: 115px; height: 115px;" src="{{(Info |async)?.photoURL}}" class="photo">-->
+        <p>First Name: {{(Info |async)?.firstName}}</p>
+        <p>Last Name: {{(Info |async)?.lastName}}</p>
+        <p>Gender: {{(Info |async)?.gender}}</p>
+        <p>Age: {{(Info |async)?.age}}</p>
+        <p>Skills: {{(Info |async)?.skills}}</p>
+      </ion-list>
+    </ion-grid>
+  </ion-card>
+</ion-content>

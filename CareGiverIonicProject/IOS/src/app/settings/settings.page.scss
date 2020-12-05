@@ -1,0 +1,18 @@
+ion-toolbar {
+  --background: rgb(7, 156, 161); // url(../../assets/toolbar.jpg);
+  color: white;
+}
+
+ion-content {
+  --background: white; // url(../../assets/whiteleaf.jpg) 0 0/100% 100% no-repeat;
+}
+
+ion-grid {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+ion-button {
+  --background: rgb(210, 253, 153);
+  color: black;
+}

@@ -1,0 +1,26 @@
+ion-content {
+  --background: white; // url('../../../../assets/whiteleaf.jpg') 0 0/100% 100% repeat;
+}
+
+ion-toolbar {
+  --background: rgb(7, 156, 161); // url(src/assets/toolbar.jpg) 0 0/100% 100% repeat;
+  color: white;
+}
+
+.pic {
+  width: 30px;
+  height: 30px;
+}
+
+ion-grid {
+  display: grid;
+  justify-content: center;
+}
+
+ion-row {
+  justify-content: center;
+}
+
+ion-item{
+  --background: rgba(255, 255, 255, 0);
+}

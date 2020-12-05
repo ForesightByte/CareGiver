@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button [routerLink]="['/vital']" style="color: white;">Back</ion-button>
+        </ion-buttons>
+        <ion-title style="text-align: center;">Sleep</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding><br>
+    <ion-row row-1>
+        <!--<ion-title (click)="getData(yesterday)">Yesterday</ion-title>
+        <ion-title (click)="getData(today)" style="text-align: right;">Today</ion-title>-->
+    </ion-row>
+    <ion-card class="welcome-card">
+        <ion-grid>
+            <h3 style="color: black;">Sleeps:</h3>
+            <ion-list>
+                <!--<p>Date: {{calendarDate}}</p>-->
+                <p>Total Duration: {{totalDuration}}</p>
+                <p>light Sleep Duration: {{lightSleepDuration}}</p>
+                <p>Deep Sleep Duration: {{deepSleepDuration}}</p>
+                <p>Rem Sleep Duration: {{remSleepDuration}}</p>
+            </ion-list>
+        </ion-grid>
+    </ion-card>
+    <ion-row>
+        <ion-col>
+            <ion-card class="welcome-card">
+                <ion-card-header>
+                    <h4>Sleep Duration Rate Change</h4>
+                </ion-card-header>
+                <ion-card-content>
+                    <canvas #barChart></canvas>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>

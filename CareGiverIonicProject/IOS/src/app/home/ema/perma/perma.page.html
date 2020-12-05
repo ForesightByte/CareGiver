@@ -1,0 +1,325 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/tabs/relax']" style="color: white;">Back</ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Perma Profiler</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="questions">
+    <div>
+      <p>I feel helped and supported by others</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="helped==20?'dark':'lightblue'"
+                        (click)="helpedChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="helped==40?'dark':'lightblue'"
+                        (click)="helpedChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="helped==60?'dark':'lightblue'"
+                        (click)="helpedChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="helped==80?'dark':'lightblue'"
+                        (click)="helpedChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="helped==100?'dark':'lightblue'"
+                        (click)="helpedChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+      </ion-row>
+    </div>
+    <div>
+      <p>I feel loved</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="loved==20?'dark':'lightblue'"
+                        (click)="lovedChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="loved==40?'dark':'lightblue'"
+                        (click)="lovedChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="loved==60?'dark':'lightblue'"
+                        (click)="lovedChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="loved==80?'dark':'lightblue'"
+                        (click)="lovedChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="loved==100?'dark':'lightblue'"
+                        (click)="lovedChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+      </ion-row>
+    </div>
+    <div>
+      <p>I feel satisfied with my personal relationships</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="satisfied==20?'dark':'lightblue'"
+                        (click)="satisfiedChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="satisfied==40?'dark':'lightblue'"
+                        (click)="satisfiedChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="satisfied==60?'dark':'lightblue'"
+                        (click)="satisfiedChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="satisfied==80?'dark':'lightblue'"
+                        (click)="satisfiedChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="satisfied==100?'dark':'lightblue'"
+                        (click)="satisfiedChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+      </ion-row>
+    </div>
+    <div>
+      <p>I lead a purposeful and meaningful life</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="purposeful==20?'dark':'lightblue'"
+                        (click)="purposefulChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="purposeful==40?'dark':'lightblue'"
+                        (click)="purposefulChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="purposeful==60?'dark':'lightblue'"
+                        (click)="purposefulChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="purposeful==80?'dark':'lightblue'"
+                        (click)="purposefulChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="purposeful==100?'dark':'lightblue'"
+                        (click)="purposefulChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+      </ion-row>
+    </div>
+    <div>
+      <p>What I do in my life is valuable and worthwhile</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="valuable==20?'dark':'lightblue'"
+                        (click)="valuableChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="valuable==40?'dark':'lightblue'"
+                        (click)="valuableChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="valuable==60?'dark':'lightblue'"
+                        (click)="valuableChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="valuable==80?'dark':'lightblue'"
+                        (click)="valuableChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="valuable==100?'dark':'lightblue'"
+                        (click)="valuableChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+      </ion-row>
+    </div>
+    <div>
+      <p>I have a sense of direction in my life</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="sense==20?'dark':'lightblue'"
+                        (click)="senseChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="sense==40?'dark':'lightblue'"
+                        (click)="senseChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="sense==60?'dark':'lightblue'"
+                        (click)="senseChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="sense==80?'dark':'lightblue'"
+                        (click)="senseChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="sense==100?'dark':'lightblue'"
+                        (click)="senseChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+      </ion-row>
+    </div>
+    <div>
+      <p>I am making progress towards accomplishing my goals</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="progress==20?'dark':'lightblue'"
+                        (click)="prgressChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="progress==40?'dark':'lightblue'"
+                        (click)="prgressChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="progress==60?'dark':'lightblue'"
+                        (click)="prgressChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="progress==80?'dark':'lightblue'"
+                        (click)="prgressChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="progress==100?'dark':'lightblue'"
+                        (click)="prgressChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+      </ion-row>
+    </div>
+    <div>
+      <p>I am achieving the important goals I have set for myself</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="achieve==20?'dark':'lightblue'"
+                        (click)="achieveChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="achieve==40?'dark':'lightblue'"
+                        (click)="achieveChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="achieve==60?'dark':'lightblue'"
+                        (click)="achieveChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="achieve==80?'dark':'lightblue'"
+                        (click)="achieveChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="achieve==100?'dark':'lightblue'"
+                        (click)="achieveChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+      </ion-row>
+    </div>
+    <div>
+      <p>I am handling my responsibilities</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-fab-button size="small" shape="round"
+                        [color]="handle==20?'dark':'lightblue'"
+                        (click)="handleChange(20)" required="true">
+          <img class="pic" [src]="ema.five"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="handle==40?'dark':'lightblue'"
+                        (click)="handleChange(40)" required="true">
+          <img class="pic" [src]="ema.four"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="handle==60?'dark':'lightblue'"
+                        (click)="handleChange(60)" required="true">
+          <img class="pic" [src]="ema.three"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="handle==80?'dark':'lightblue'"
+                        (click)="handleChange(80)" required="true">
+          <img class="pic" [src]="ema.two"/>
+        </ion-fab-button>
+        <ion-fab-button size="small" shape="round"
+                        [color]="handle==100?'dark':'lightblue'"
+                        (click)="handleChange(100)" required="true">
+          <img class="pic" [src]="ema.one"/>
+        </ion-fab-button>&nbsp;
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>
+
+<ion-tab-bar>
+  <ion-buttons>
+    <ion-button expand="block" fill="clear" style="color: rgb(7, 156, 161);" (click)="submit()">Submit</ion-button>
+  </ion-buttons>
+</ion-tab-bar>

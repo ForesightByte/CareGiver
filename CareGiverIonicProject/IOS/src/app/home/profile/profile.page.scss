@@ -1,0 +1,29 @@
+ion-content {
+  --background: white; // url(../../../assets/whiteleaf.jpg) 0 0/100% 100% no-repeat;
+}
+
+ion-toolbar {
+  --background: rgb(7, 156, 161); // url(../../../assets/toolbar.jpg) 0 0/100% 100% no-repeat;
+  color: white;
+}
+
+ion-card {
+  background: rgb(185, 215, 224);
+}
+
+ion-list {
+  background: rgba(255, 248, 220, 0);
+}
+
+.profile {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: large;
+}
+
+.photo {
+  align-items: center;
+  justify-content: center;
+}

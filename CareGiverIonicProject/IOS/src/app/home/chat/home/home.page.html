@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="exitChat()" style="color: white;">
+        <ion-icon name="exit"></ion-icon> Exit
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Care Giver Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding #content>
+  <ion-list>
+    <ion-grid *ngFor="let chat of chats" no-lines>
+      <div class="chat-status" text-center *ngIf="chat.type==='join'||chat.type==='exit';else message">
+        <span class="chat-date">{{chat.sendDate | date:'short'}}</span>
+        <span class="chat-content-center">{{chat.message}}</span>
+      </div>
+      <ng-template #message>
+        <div class="chat-message" text-right *ngIf="chat.user === displayName">
+          <div class="right-bubble">
+            <span class="msg-name">Me</span>
+            <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
+            <p text-wrap>{{chat.message}}</p>
+          </div>
+        </div>
+        <div class="chat-message" text-left *ngIf="chat.user !== displayName">
+          <div class="left-bubble">
+            <span class="msg-name">{{(chat.user)}}</span>
+            <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
+            <p text-wrap>{{chat.message}}</p>
+          </div>
+        </div>
+      </ng-template>
+    </ion-grid>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer">
+    <ion-row align-items-center no-padding>
+      <ion-col col-10>
+          <textarea autosize maxRows="5" type="text" placeholder="Type a message"
+                    [(ngModel)]="data.message" name="message" class="msg-input"></textarea>
+      </ion-col> &nbsp;&nbsp;
+      <ion-fab-button fill="clear" color="rgba(255, 0, 0, 0)"
+                      style="color: rgba(255, 0, 0, 0); margin-right: 30px;"
+                      [disabled]="data.message === ''" (click)="sendMessage()">
+        <ion-icon name="paper-plane"></ion-icon>
+      </ion-fab-button>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
+  
