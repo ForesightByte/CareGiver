@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "899524404143",
+    "firebase_url": "https://care-giver-project.firebaseio.com",
+    "project_id": "care-giver-project",
+    "storage_bucket": "care-giver-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899524404143:android:048e205f7f9cd30ec9455a",
+        "android_client_info": {
+          "package_name": "com.cgu.caregiver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899524404143-rvcfingp8rk0pqduvdnbk4od717e2hdv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cgu.caregiver",
+            "certificate_hash": "bfdc50b37998ee301a3f8ecc28c43d58570e74b3"
+          }
+        },
+        {
+          "client_id": "899524404143-ihs9khq09s2h4vau8djsf6aignkgnjic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXOnvlbI4QiTQfQu1eQrwrZQ38rv-XEag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899524404143-ihs9khq09s2h4vau8djsf6aignkgnjic.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "899524404143-6nge1mbh2cag0ftafneckgg6gotrjbrl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.care.giver"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

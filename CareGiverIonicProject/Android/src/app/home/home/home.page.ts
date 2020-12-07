@@ -70,7 +70,7 @@ export class HomePage implements OnInit {
   }
 
   getTodayScore(uid, date) {
-    this.user.getWellScore(uid, date).subscribe(user => {
+    this.user.getUser(uid).subscribe(user => {
       let tempScore;
       if (user) {
         if (user.wellbeingScore) {

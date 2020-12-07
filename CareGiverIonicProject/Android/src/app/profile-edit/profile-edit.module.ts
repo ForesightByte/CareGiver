@@ -6,7 +6,6 @@ import {IonicModule} from '@ionic/angular';
 import {ProfileEditPageRoutingModule} from './profile-edit-routing.module';
 import {ProfileEditPage} from './profile-edit.page';
 
-import {TagInputModule} from 'ngx-chips';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -16,7 +15,6 @@ import {HttpClientModule} from '@angular/common/http';
     IonicModule,
     ProfileEditPageRoutingModule,
     HttpClientModule,
-    TagInputModule,
     ReactiveFormsModule
   ],
   declarations: [ProfileEditPage]
