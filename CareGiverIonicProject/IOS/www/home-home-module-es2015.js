@@ -12,11 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CircleProgressComponent", function() { return CircleProgressComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CircleProgressOptions", function() { return CircleProgressOptions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgCircleProgressModule", function() { return NgCircleProgressModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
-
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 
 
 
@@ -79,17 +77,17 @@ class CircleProgressOptions {
     }
 }
 /** @dynamic Prevent compiling error when using type `Document` https://github.com/angular/angular/issues/20351 */
-let CircleProgressComponent = class CircleProgressComponent {
+class CircleProgressComponent {
     constructor(defaultOptions, elRef, document) {
         this.elRef = elRef;
         this.document = document;
-        this.onClick = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.onClick = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         // <svg> of component
         this.svgElement = null;
         // whether <svg> is in viewport
         this.isInViewport = false;
         // event for notifying viewport change caused by scrolling or resizing
-        this.onViewportChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"];
+        this.onViewportChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
         this._viewportChangedSubscriber = null;
         this.options = new CircleProgressOptions();
         this.defaultOptions = new CircleProgressOptions();
@@ -359,7 +357,7 @@ let CircleProgressComponent = class CircleProgressComponent {
             let { step: step, interval: interval } = this.getAnimationParameters(fromPercent, toPercent);
             let count = fromPercent;
             if (fromPercent < toPercent) {
-                this._timerSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, interval).subscribe(() => {
+                this._timerSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["timer"])(0, interval).subscribe(() => {
                     count += step;
                     if (count <= toPercent) {
                         if (!this.options.animateTitle && !this.options.animateSubtitle && count >= 100) {
@@ -377,7 +375,7 @@ let CircleProgressComponent = class CircleProgressComponent {
                 });
             }
             else {
-                this._timerSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, interval).subscribe(() => {
+                this._timerSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["timer"])(0, interval).subscribe(() => {
                     count -= step;
                     if (count >= toPercent) {
                         if (!this.options.animateTitle && !this.options.animateSubtitle && toPercent >= 100) {
@@ -472,7 +470,7 @@ let CircleProgressComponent = class CircleProgressComponent {
                 }
                 // svgElement must be created in DOM before being checked.
                 // Is there a better way to check the existence of svgElemnt?
-                let _timer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 50).subscribe(() => {
+                let _timer = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["timer"])(0, 50).subscribe(() => {
                     this.svgElement === null ? this.checkViewport() : _timer.unsubscribe();
                 });
             }
@@ -536,235 +534,11 @@ let CircleProgressComponent = class CircleProgressComponent {
             changes.lazy.currentValue ? this.loadEventsForLazyMode() : this.unloadEventsForLazyMode();
         }
     }
-};
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
-], CircleProgressComponent.prototype, "onClick", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "name", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "class", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "backgroundGradient", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "backgroundColor", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "backgroundGradientStopColor", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "backgroundOpacity", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "backgroundStroke", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "backgroundStrokeWidth", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "backgroundPadding", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "radius", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "space", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "percent", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "toFixed", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "maxPercent", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "renderOnClick", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "units", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "unitsFontSize", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "unitsFontWeight", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "unitsColor", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "outerStrokeGradient", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "outerStrokeWidth", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "outerStrokeColor", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "outerStrokeGradientStopColor", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "outerStrokeLinecap", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "innerStrokeColor", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
-], CircleProgressComponent.prototype, "innerStrokeWidth", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Function)
-], CircleProgressComponent.prototype, "titleFormat", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
-], CircleProgressComponent.prototype, "title", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "titleColor", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "titleFontSize", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "titleFontWeight", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Function)
-], CircleProgressComponent.prototype, "subtitleFormat", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
-], CircleProgressComponent.prototype, "subtitle", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "subtitleColor", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "subtitleFontSize", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "subtitleFontWeight", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], CircleProgressComponent.prototype, "imageSrc", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "imageHeight", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "imageWidth", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "animation", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "animateTitle", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "animateSubtitle", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
-], CircleProgressComponent.prototype, "animationDuration", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "showTitle", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "showSubtitle", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "showUnits", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "showImage", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "showBackground", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "showInnerStroke", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "clockwise", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "responsive", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "startFromZero", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "showZeroOuterStroke", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
-], CircleProgressComponent.prototype, "lazy", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('options'),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", CircleProgressOptions)
-], CircleProgressComponent.prototype, "templateOptions", void 0);
-CircleProgressComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'circle-progress',
-        template: `
+}
+CircleProgressComponent.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
+                selector: 'circle-progress',
+                template: `
         <svg xmlns="http://www.w3.org/2000/svg" *ngIf="svg"
              [attr.viewBox]="svg.viewBox" preserveAspectRatio="xMidYMid meet"
              [attr.height]="svg.height" [attr.width]="svg.width" (click)="emitClickEvent($event)" [attr.class]="options.class">
@@ -854,35 +628,95 @@ CircleProgressComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"
             />
         </svg>
     `
-    }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_2__["DOCUMENT"])),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [CircleProgressOptions, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], Object])
-], CircleProgressComponent);
+            },] }
+];
+CircleProgressComponent.ctorParameters = () => [
+    { type: CircleProgressOptions },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"],] }] }
+];
+CircleProgressComponent.propDecorators = {
+    onClick: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }],
+    name: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    class: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    backgroundGradient: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    backgroundColor: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    backgroundGradientStopColor: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    backgroundOpacity: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    backgroundStroke: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    backgroundStrokeWidth: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    backgroundPadding: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    radius: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    space: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    percent: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    toFixed: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    maxPercent: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    renderOnClick: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    units: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    unitsFontSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    unitsFontWeight: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    unitsColor: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    outerStrokeGradient: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    outerStrokeWidth: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    outerStrokeColor: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    outerStrokeGradientStopColor: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    outerStrokeLinecap: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    innerStrokeColor: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    innerStrokeWidth: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    titleFormat: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    title: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    titleColor: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    titleFontSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    titleFontWeight: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    subtitleFormat: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    subtitle: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    subtitleColor: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    subtitleFontSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    subtitleFontWeight: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    imageSrc: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    imageHeight: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    imageWidth: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    animation: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    animateTitle: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    animateSubtitle: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    animationDuration: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    showTitle: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    showSubtitle: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    showUnits: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    showImage: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    showBackground: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    showInnerStroke: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    clockwise: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    responsive: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    startFromZero: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    showZeroOuterStroke: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    lazy: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    templateOptions: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['options',] }]
+};
 
-var NgCircleProgressModule_1;
-let NgCircleProgressModule = NgCircleProgressModule_1 = class NgCircleProgressModule {
+class NgCircleProgressModule {
     static forRoot(options = {}) {
         return {
-            ngModule: NgCircleProgressModule_1,
+            ngModule: NgCircleProgressModule,
             providers: [
                 { provide: CircleProgressOptions, useValue: options }
             ]
         };
     }
-};
-NgCircleProgressModule = NgCircleProgressModule_1 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
-        ],
-        declarations: [
-            CircleProgressComponent,
-        ],
-        exports: [
-            CircleProgressComponent,
-        ]
-    })
-], NgCircleProgressModule);
+}
+NgCircleProgressModule.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
+                declarations: [CircleProgressComponent],
+                imports: [
+                    _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]
+                ],
+                exports: [CircleProgressComponent]
+            },] }
+];
+
+/*
+ * Public API Surface of ng-circle-progress
+ */
 
 /**
  * Generated bundle index. Do not edit.
@@ -901,7 +735,7 @@ NgCircleProgressModule = NgCircleProgressModule_1 = Object(tslib__WEBPACK_IMPORT
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title style=\"text-align: center; color: white;\">Home</ion-title>\r\n    <ion-buttons slot=\"end\" fill=\"clear\" class=\"menu\">\r\n      <ion-button fill=\"clear\" slot=\"icon-only\" (click)=\"overlap()\">\r\n        <img src='../../../assets/menu.png'\r\n             style=\"height: 18px; width: 18px;\"/>\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content class=\"background\"><br><br>\r\n  <ion-grid>\r\n    <ion-card-title *ngIf=\"displayName\">\r\n      <p class=\"hello\"><b>\r\n        Hello {{(displayName |async)}}<br>\r\n        We are together on this with you </b></p>\r\n    </ion-card-title>\r\n  </ion-grid>\r\n  <br><br>\r\n  <ion-grid class=\"score\">\r\n    <ion-title size=\"large\" style=\"text-align: center; font:bold\">Your Well-being score</ion-title>\r\n    <ion-card-content>\r\n  <br> \r\n\r\n  <div class=\"overlap\" button [routerLink]=\"['/wellbeing-score']\">\r\n    <ion-img\r\n        class=\"dial\"\r\n        [src]=\"coloredDial\"\r\n        [ngStyle]=\"dialRotation\"\r\n    >\r\n    </ion-img>\r\n    <ion-img class=\"wheel\" [src]=\"wheel\"></ion-img>\r\n    <div [ngClass]=\"wellbeingTextColor\">{{todayScore}}</div>\r\n  </div>\r\n  <div style=\"text-align: center;\">\r\n    <ion-title style=\"size: 20px;\">{{this.wellbeingQual}}</ion-title>\r\n  </div>\r\n  </ion-card-content>\r\n</ion-grid>\r\n</ion-content>\t\r\n\r\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title style=\"text-align: center; color: white;\">Home</ion-title>\n    <ion-buttons slot=\"end\" fill=\"clear\" class=\"menu\">\n      <ion-button fill=\"clear\" slot=\"icon-only\" (click)=\"overlap()\">\n        <img src='../../../assets/menu.png'\n             style=\"height: 18px; width: 18px;\"/>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content class=\"background\"><br><br>\n  <ion-grid>\n    <ion-card-title *ngIf=\"displayName\">\n      <p class=\"hello\"><b>\n        Hello {{(displayName |async)}}</b><br>\n        We are together on this with you </p>\n    </ion-card-title>\n  </ion-grid>\n  <br><br>\n  <ion-grid class=\"score\">  \n    <h3 style=\"text-align: center; font: bold\">Your wellbeing-score</h3>  \n    <ion-card-content>\n  <div class=\"overlap\" button [routerLink]=\"['/wellbeing-score']\">\n    <ion-img\n        class=\"dial\"\n        [src]=\"coloredDial\"\n        [ngStyle]=\"dialRotation\"\n    >\n    </ion-img>\n    <ion-img class=\"wheel\" [src]=\"wheel\"></ion-img>\n    <div [ngClass]=\"wellbeingTextColor\">{{todayScore}}</div>\n  </div>\n  </ion-card-content>\n</ion-grid>\n<ion-grid>\n  \n  <div style=\"text-align: center;\">\n    <h3 style=\"size: 20px;\">{{this.wellbeingQual}}</h3>\n  </div>\n</ion-grid>\n</ion-content>\t\n\n"
 
 /***/ }),
 
@@ -968,7 +802,7 @@ HomePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-content.background {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n}\n\n.score {\n  display: grid;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n\nion-card {\n  border-radius: 100%;\n  height: 15em;\n  width: 15em;\n  background-color: rgba(255, 255, 255, 0);\n}\n\nion-card ion-card-header {\n  color: #2f332a;\n  text-align: center;\n  font-size: 20px;\n  margin-top: 25px;\n}\n\nion-card ion-card-content {\n  color: rgba(47, 51, 42, 0);\n  text-align: center;\n  justify-items: center;\n  margin-top: 20px;\n  font-size: 150px;\n  font-style: italic;\n  font-family: \"Lucida Sans\", \"Lucida Sans Regular\", \"Lucida Grande\", \"Lucida Sans Unicode\", Geneva, Verdana, sans-serif;\n}\n\n.hello {\n  position: auto;\n  text-align: center;\n  text-transform: none;\n  color: #2f332a;\n}\n\nh4 {\n  color: #170957;\n  margin: 0px;\n  margin-left: 6px;\n}\n\nh5 {\n  letter-spacing: 2px;\n}\n\ndiv.page-padding {\n  margin-left: auto;\n  margin-right: auto;\n  padding: 10px;\n  max-width: 400px;\n}\n\ndiv.overlapEnvironment {\n  display: grid;\n  width: 240px;\n  max-height: 0px;\n  margin: 40px;\n  margin-left: calc(50% - 120px);\n}\n\ndiv.overlapEnvironment > div {\n  grid-column: 1;\n  grid-row: 1;\n  width: 40px !important;\n  text-align: center;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n  position: relative;\n  top: -28px;\n  left: -140px;\n  font-size: 14px;\n}\n\nion-img.bar {\n  grid-column: 1;\n  grid-row: 1;\n  width: 100%;\n}\n\nion-img.temperature {\n  width: 90px;\n  position: relative;\n  top: -32px;\n  left: -166px;\n  height: 32px;\n  grid-column: 1;\n  grid-row: 1;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n}\n\ndiv.overlap {\n  display: grid;\n  width: 240px;\n  max-height: 170px;\n  margin: 0px;\n  padding-top: 10px;\n  margin-left: calc(50% - 120px);\n  position: relative;\n  top: -15px;\n}\n\ndiv.overlap > div {\n  width: 60px;\n  position: relative;\n  margin-left: calc(50% - 30px);\n  top: 68px;\n  text-align: center;\n  height: 50px;\n  grid-column: 1;\n  grid-row: 1;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n  color: #170957;\n  font-size: 20px;\n  font-weight: 500;\n}\n\nion-img.wheel {\n  width: 170px;\n  position: relative;\n  margin-left: calc(50% - 85px);\n  grid-column: 1;\n  grid-row: 1;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n}\n\nion-img.dial {\n  width: 84px;\n  position: relative;\n  left: calc(50% - 42px);\n  top: 2px;\n  grid-column: 1;\n  grid-row: 1;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n}\n\n.space-10 {\n  height: 0px;\n}\n\n.space-20 {\n  height: 20px;\n}\n\ndiv.ion-padding {\n  background-color: #f9f9f9;\n  height: 100vh;\n}\n\ncanvas.chart {\n  width: 80%;\n  padding: 0px 10px 0px 10px;\n  border: 1px solid grey;\n}\n\ndiv.accordion {\n  width: \"100%\";\n  background-color: #D0D6D0;\n  height: 1.5em;\n  padding-left: 6px;\n  cursor: pointer;\n  color: #3d5013;\n}\n\ndiv.accordion h5 {\n  display: \"inline-block\";\n  background-color: transparent;\n  float: left;\n  width: calc(100% - 25px);\n  margin: 0px;\n}\n\ndiv.accordion div {\n  display: \"inline-block\";\n  background-color: transparent;\n  text-align: right;\n  float: right;\n}\n\ndiv.accordion span {\n  position: relative;\n  top: 3px;\n}\n\ndiv.wellbeingFooter {\n  display: grid;\n  max-height: 45px;\n  grid-template-columns: 1fr 2fr 2fr 2fr 1fr;\n  position: relative;\n  top: -45px;\n  color: #170957;\n}\n\ndiv.wellbeingFooter div {\n  display: inline-block;\n  min-width: 50px;\n  grid-row: 1;\n  text-align: center;\n  white-space: nowrap;\n  text-overflow: show;\n}\n\ndiv.wellbeingFooter div:nth-of-type(1) {\n  grid-column: 2;\n}\n\ndiv.wellbeingFooter div:nth-of-type(2) {\n  padding: auto;\n  padding-top: 20px;\n  font-size: 18px;\n  grid-column: 3;\n  position: relative;\n  top: 5px;\n  font-size: 16px;\n}\n\ndiv.wellbeingFooter div:nth-of-type(3) {\n  grid-column: 4;\n}\n\ndiv.wellbeingFooter svg {\n  display: block;\n  margin: auto;\n  height: 50px;\n  width: 50px;\n}\n\ndiv.wellbeingFooter div.overlapMiniBubble div {\n  position: absolute;\n}\n\ndiv.wellbeingFooter div.overlapMiniBubble div span {\n  position: relative;\n  top: -53px;\n  left: -25px;\n  display: inline-block;\n  width: 40px;\n  text-align: center;\n}\n\n.black {\n  color: black !important;\n}\n\n.white {\n  color: white !important;\n}\n\n.environmentalQual {\n  color: #170957;\n  font-size: 16px;\n  text-align: center;\n  position: relative;\n  top: -5px;\n}\n\nspan.smallerText {\n  font-size: 14px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lL0Y6XFxJb25pY1Byb2plY3RcXEdpdFxcQ2FyZUdpdmVyXFxDYXJlR2l2ZXJJb25pY1Byb2plY3Qvc3JjXFxhcHBcXGhvbWVcXGhvbWVcXGhvbWUucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL2hvbWUvaG9tZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtQkFBQTtBQ0NGOztBREVBO0VBQ0UsOEJBQUE7QUNDRjs7QURFQTtFQUNFLGFBQUE7RUFDQSx3QkFBQTtVQUFBLHVCQUFBO0FDQ0Y7O0FERUE7RUFDRSxtQkFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0Esd0NBQUE7QUNDRjs7QURDRTtFQUNFLGNBQUE7RUFDQSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVFO0VBQ0UsMEJBQUE7RUFDQSxrQkFBQTtFQUNBLHFCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0Esc0hBQUE7QUNBSjs7QURJQTtFQUNFLGNBQUE7RUFDQSxrQkFBQTtFQUNBLG9CQUFBO0VBQ0EsY0FBQTtBQ0RGOztBRElBO0VBQ0UsY0FBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtBQ0RGOztBRElBO0VBQ0UsbUJBQUE7QUNERjs7QURJQTtFQUNFLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsZ0JBQUE7QUNERjs7QURJQTtFQUNFLGFBQUE7RUFDQSxZQUFBO0VBQ0EsZUFBQTtFQUNBLFlBQUE7RUFDQSw4QkFBQTtBQ0RGOztBRElBO0VBQ0UsY0FBQTtFQUNBLFdBQUE7RUFDQSxzQkFBQTtFQUNBLGtCQUFBO0VBQ0EsZ0NBQUE7VUFBQSx3QkFBQTtFQUdBLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLFlBQUE7RUFDQSxlQUFBO0FDSEY7O0FETUE7RUFDRSxjQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7QUNIRjs7QURNQTtFQUNFLFdBQUE7RUFFQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0VBRUEsWUFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0VBQ0EsZ0NBQUE7VUFBQSx3QkFBQTtBQ0xGOztBRFFBO0VBQ0UsYUFBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtFQUNBLFdBQUE7RUFDQSxpQkFBQTtFQUNBLDhCQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0FDTEY7O0FEUUE7RUFDRSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSw2QkFBQTtFQUNBLFNBQUE7RUFDQSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGdDQUFBO1VBQUEsd0JBQUE7RUFDQSxjQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0FDTEY7O0FEUUE7RUFDRSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSw2QkFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0VBQ0EsZ0NBQUE7VUFBQSx3QkFBQTtBQ0xGOztBRFFBO0VBQ0UsV0FBQTtFQUNBLGtCQUFBO0VBQ0Esc0JBQUE7RUFDQSxRQUFBO0VBQ0EsY0FBQTtFQUNBLFdBQUE7RUFDQSxnQ0FBQTtVQUFBLHdCQUFBO0FDTEY7O0FEUUE7RUFDRSxXQUFBO0FDTEY7O0FEUUE7RUFDRSxZQUFBO0FDTEY7O0FEUUE7RUFDRSx5QkFBQTtFQUNBLGFBQUE7QUNMRjs7QURRQTtFQUNFLFVBQUE7RUFDQSwwQkFBQTtFQUNBLHNCQUFBO0FDTEY7O0FEUUE7RUFDRSxhQUFBO0VBQ0EseUJBQUE7RUFDQSxhQUFBO0VBQ0EsaUJBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQ0xGOztBRFFBO0VBQ0UsdUJBQUE7RUFDQSw2QkFBQTtFQUNBLFdBQUE7RUFDQSx3QkFBQTtFQUNBLFdBQUE7QUNMRjs7QURRQTtFQUNFLHVCQUFBO0VBQ0EsNkJBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7QUNMRjs7QURRQTtFQUNFLGtCQUFBO0VBQ0EsUUFBQTtBQ0xGOztBRFFBO0VBQ0UsYUFBQTtFQUNBLGdCQUFBO0VBQ0EsMENBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxjQUFBO0FDTEY7O0FEUUE7RUFDRSxxQkFBQTtFQUNBLGVBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FDTEY7O0FEUUE7RUFDRSxjQUFBO0FDTEY7O0FEUUE7RUFDRSxhQUFBO0VBQ0EsaUJBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtFQUNBLGtCQUFBO0VBQ0EsUUFBQTtFQUNBLGVBQUE7QUNMRjs7QURRQTtFQUNFLGNBQUE7QUNMRjs7QURRQTtFQUNFLGNBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUNMRjs7QURRQTtFQUNFLGtCQUFBO0FDTEY7O0FEUUE7RUFDRSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EscUJBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7QUNMRjs7QURRQTtFQUNFLHVCQUFBO0FDTEY7O0FEUUE7RUFDRSx1QkFBQTtBQ0xGOztBRFFBO0VBQ0UsY0FBQTtFQUNBLGVBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtBQ0xGOztBRFFBO0VBQ0UsZUFBQTtBQ0xGIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lL2hvbWUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnQuYmFja2dyb3VuZCB7XHJcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTsgLy8gdXJsKC4uLy4uLy4uL2Fzc2V0cy93aGl0ZWxlYWYuanBnKSAwIDAvMTAwJSAxMDAlIG5vLXJlcGVhdDtcclxufVxyXG5cclxuaW9uLXRvb2xiYXIge1xyXG4gIC0tYmFja2dyb3VuZDogcmdiKDcsIDE1NiwgMTYxKTsgLy8gdXJsKC4uLy4uLy4uL2Fzc2V0cy90b29sYmFyLmpwZykgMCAwLzEwMCUgMTAwJSByZXBlYXQ7XHJcbn1cclxuXHJcbi5zY29yZSB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufVxyXG5cclxuaW9uLWNhcmQge1xyXG4gIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgaGVpZ2h0OiAxNWVtO1xyXG4gIHdpZHRoOiAxNWVtO1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7XHJcblxyXG4gIGlvbi1jYXJkLWhlYWRlciB7XHJcbiAgICBjb2xvcjogcmdiKDQ3LCA1MSwgNDIpO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1zaXplOiAyMHB4O1xyXG4gICAgbWFyZ2luLXRvcDogMjVweDtcclxuICB9XHJcblxyXG4gIGlvbi1jYXJkLWNvbnRlbnQge1xyXG4gICAgY29sb3I6IHJnYmEoNDcsIDUxLCA0MiwgMCk7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBtYXJnaW4tdG9wOiAyMHB4O1xyXG4gICAgZm9udC1zaXplOiAxNTBweDtcclxuICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcclxuICAgIGZvbnQtZmFtaWx5OiAnTHVjaWRhIFNhbnMnLCAnTHVjaWRhIFNhbnMgUmVndWxhcicsICdMdWNpZGEgR3JhbmRlJywgJ0x1Y2lkYSBTYW5zIFVuaWNvZGUnLCBHZW5ldmEsIFZlcmRhbmEsIHNhbnMtc2VyaWY7XHJcbiAgfVxyXG59XHJcblxyXG4uaGVsbG8ge1xyXG4gIHBvc2l0aW9uOiBhdXRvO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICB0ZXh0LXRyYW5zZm9ybTogbm9uZTtcclxuICBjb2xvcjogcmdiKDQ3LCA1MSwgNDIpO1xyXG59XHJcblxyXG5oNCB7XHJcbiAgY29sb3I6ICMxNzA5NTc7XHJcbiAgbWFyZ2luOiAwcHg7XHJcbiAgbWFyZ2luLWxlZnQ6IDZweDtcclxufVxyXG5cclxuaDUge1xyXG4gIGxldHRlci1zcGFjaW5nOiAycHg7XHJcbn1cclxuXHJcbmRpdi5wYWdlLXBhZGRpbmcge1xyXG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xyXG4gIG1hcmdpbi1yaWdodDogYXV0bztcclxuICBwYWRkaW5nOiAxMHB4O1xyXG4gIG1heC13aWR0aDogNDAwcHg7XHJcbn1cclxuXHJcbmRpdi5vdmVybGFwRW52aXJvbm1lbnQge1xyXG4gIGRpc3BsYXk6IGdyaWQ7XHJcbiAgd2lkdGg6IDI0MHB4O1xyXG4gIG1heC1oZWlnaHQ6IDBweDtcclxuICBtYXJnaW46IDQwcHg7XHJcbiAgbWFyZ2luLWxlZnQ6IGNhbGMoNTAlIC0gMTIwcHgpO1xyXG59XHJcblxyXG5kaXYub3ZlcmxhcEVudmlyb25tZW50ID4gZGl2IHtcclxuICBncmlkLWNvbHVtbjogMTtcclxuICBncmlkLXJvdzogMTtcclxuICB3aWR0aDogNDBweCAhaW1wb3J0YW50O1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XHJcblxyXG4gIC8vIFJFVklFVzogaGFja3MhXHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHRvcDogLTI4cHg7XHJcbiAgbGVmdDogLTE0MHB4O1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxufVxyXG5cclxuaW9uLWltZy5iYXIge1xyXG4gIGdyaWQtY29sdW1uOiAxO1xyXG4gIGdyaWQtcm93OiAxO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG5pb24taW1nLnRlbXBlcmF0dXJlIHtcclxuICB3aWR0aDogOTBweDtcclxuICAvLyBSRVZJRVc6IGhhY2tzIVxyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB0b3A6IC0zMnB4O1xyXG4gIGxlZnQ6IC0xNjZweDtcclxuXHJcbiAgaGVpZ2h0OiAzMnB4O1xyXG4gIGdyaWQtY29sdW1uOiAxO1xyXG4gIGdyaWQtcm93OiAxO1xyXG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjtcclxufVxyXG5cclxuZGl2Lm92ZXJsYXAge1xyXG4gIGRpc3BsYXk6IGdyaWQ7XHJcbiAgd2lkdGg6IDI0MHB4O1xyXG4gIG1heC1oZWlnaHQ6IDE3MHB4O1xyXG4gIG1hcmdpbjogMHB4O1xyXG4gIHBhZGRpbmctdG9wOiAxMHB4O1xyXG4gIG1hcmdpbi1sZWZ0OiBjYWxjKDUwJSAtIDEyMHB4KTtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgdG9wOiAtMTVweDtcclxufVxyXG5cclxuZGl2Lm92ZXJsYXAgPiBkaXYge1xyXG4gIHdpZHRoOiA2MHB4O1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICBtYXJnaW4tbGVmdDogY2FsYyg1MCUgLSAzMHB4KTtcclxuICB0b3A6IDY4cHg7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGhlaWdodDogNTBweDtcclxuICBncmlkLWNvbHVtbjogMTtcclxuICBncmlkLXJvdzogMTtcclxuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XHJcbiAgY29sb3I6ICMxNzA5NTc7XHJcbiAgZm9udC1zaXplOiAyMHB4O1xyXG4gIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbn1cclxuXHJcbmlvbi1pbWcud2hlZWwge1xyXG4gIHdpZHRoOiAxNzBweDtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgbWFyZ2luLWxlZnQ6IGNhbGMoNTAlIC0gODVweCk7XHJcbiAgZ3JpZC1jb2x1bW46IDE7XHJcbiAgZ3JpZC1yb3c6IDE7XHJcbiAgdHJhbnNmb3JtLW9yaWdpbjogY2VudGVyO1xyXG59XHJcblxyXG5pb24taW1nLmRpYWwge1xyXG4gIHdpZHRoOiA4NHB4O1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICBsZWZ0OiBjYWxjKDUwJSAtIDQycHgpO1xyXG4gIHRvcDogMnB4OyAvLyBtaW5vciBhbGlnbm1lbnQgYWRqdXN0bWVudCwgcmVsYXRlZCB0byBzdmcgZ3JhcGhpYyBjdXRzXHJcbiAgZ3JpZC1jb2x1bW46IDE7XHJcbiAgZ3JpZC1yb3c6IDE7XHJcbiAgdHJhbnNmb3JtLW9yaWdpbjogY2VudGVyO1xyXG59XHJcblxyXG4uc3BhY2UtMTAge1xyXG4gIGhlaWdodDogMHB4O1xyXG59XHJcblxyXG4uc3BhY2UtMjAge1xyXG4gIGhlaWdodDogMjBweDtcclxufVxyXG5cclxuZGl2Lmlvbi1wYWRkaW5nIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjlmOWY5O1xyXG4gIGhlaWdodDogMTAwdmg7XHJcbn1cclxuXHJcbmNhbnZhcy5jaGFydCB7XHJcbiAgd2lkdGg6IDgwJTtcclxuICBwYWRkaW5nOiAwcHggMTBweCAwcHggMTBweDtcclxuICBib3JkZXI6IDFweCBzb2xpZCBncmV5O1xyXG59XHJcblxyXG5kaXYuYWNjb3JkaW9uIHtcclxuICB3aWR0aDogJzEwMCUnO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNEMEQ2RDA7XHJcbiAgaGVpZ2h0OiAxLjVlbTtcclxuICBwYWRkaW5nLWxlZnQ6IDZweDtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgY29sb3I6IHJnYig2MSwgODAsIDE5KVxyXG59XHJcblxyXG5kaXYuYWNjb3JkaW9uIGg1IHtcclxuICBkaXNwbGF5OiAnaW5saW5lLWJsb2NrJztcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcclxuICBmbG9hdDogbGVmdDtcclxuICB3aWR0aDogY2FsYygxMDAlIC0gMjVweCk7XHJcbiAgbWFyZ2luOiAwcHg7XHJcbn1cclxuXHJcbmRpdi5hY2NvcmRpb24gZGl2IHtcclxuICBkaXNwbGF5OiAnaW5saW5lLWJsb2NrJztcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcclxuICB0ZXh0LWFsaWduOiByaWdodDtcclxuICBmbG9hdDogcmlnaHQ7XHJcbn1cclxuXHJcbmRpdi5hY2NvcmRpb24gc3BhbiB7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHRvcDogM3B4O1xyXG59XHJcblxyXG5kaXYud2VsbGJlaW5nRm9vdGVyIHtcclxuICBkaXNwbGF5OiBncmlkO1xyXG4gIG1heC1oZWlnaHQ6IDQ1cHg7XHJcbiAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnIgMmZyIDJmciAyZnIgMWZyO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB0b3A6IC00NXB4O1xyXG4gIGNvbG9yOiAjMTcwOTU3O1xyXG59XHJcblxyXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdiB7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIG1pbi13aWR0aDogNTBweDtcclxuICBncmlkLXJvdzogMTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcclxuICB0ZXh0LW92ZXJmbG93OiBzaG93O1xyXG59XHJcblxyXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdjpudGgtb2YtdHlwZSgxKSB7XHJcbiAgZ3JpZC1jb2x1bW46IDI7XHJcbn1cclxuXHJcbmRpdi53ZWxsYmVpbmdGb290ZXIgZGl2Om50aC1vZi10eXBlKDIpIHtcclxuICBwYWRkaW5nOiBhdXRvO1xyXG4gIHBhZGRpbmctdG9wOiAyMHB4O1xyXG4gIGZvbnQtc2l6ZTogMThweDtcclxuICBncmlkLWNvbHVtbjogMztcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgdG9wOiA1cHg7XHJcbiAgZm9udC1zaXplOiAxNnB4O1xyXG59XHJcblxyXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdjpudGgtb2YtdHlwZSgzKSB7XHJcbiAgZ3JpZC1jb2x1bW46IDQ7XHJcbn1cclxuXHJcbmRpdi53ZWxsYmVpbmdGb290ZXIgc3ZnIHtcclxuICBkaXNwbGF5OiBibG9jaztcclxuICBtYXJnaW46IGF1dG87XHJcbiAgaGVpZ2h0OiA1MHB4O1xyXG4gIHdpZHRoOiA1MHB4O1xyXG59XHJcblxyXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdi5vdmVybGFwTWluaUJ1YmJsZSBkaXYge1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxufVxyXG5cclxuZGl2LndlbGxiZWluZ0Zvb3RlciBkaXYub3ZlcmxhcE1pbmlCdWJibGUgZGl2IHNwYW4ge1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB0b3A6IC01M3B4O1xyXG4gIGxlZnQ6IC0yNXB4O1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICB3aWR0aDogNDBweDtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5ibGFjayB7XHJcbiAgY29sb3I6IGJsYWNrICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi53aGl0ZSB7XHJcbiAgY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5lbnZpcm9ubWVudGFsUXVhbCB7XHJcbiAgY29sb3I6ICMxNzA5NTc7XHJcbiAgZm9udC1zaXplOiAxNnB4O1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgdG9wOiAtNXB4O1xyXG59XHJcblxyXG5zcGFuLnNtYWxsZXJUZXh0IHtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbn0iLCJpb24tY29udGVudC5iYWNrZ3JvdW5kIHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHJnYig3LCAxNTYsIDE2MSk7XG59XG5cbi5zY29yZSB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24tY2FyZCB7XG4gIGJvcmRlci1yYWRpdXM6IDEwMCU7XG4gIGhlaWdodDogMTVlbTtcbiAgd2lkdGg6IDE1ZW07XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7XG59XG5pb24tY2FyZCBpb24tY2FyZC1oZWFkZXIge1xuICBjb2xvcjogIzJmMzMyYTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXNpemU6IDIwcHg7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5pb24tY2FyZCBpb24tY2FyZC1jb250ZW50IHtcbiAgY29sb3I6IHJnYmEoNDcsIDUxLCA0MiwgMCk7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAganVzdGlmeS1pdGVtczogY2VudGVyO1xuICBtYXJnaW4tdG9wOiAyMHB4O1xuICBmb250LXNpemU6IDE1MHB4O1xuICBmb250LXN0eWxlOiBpdGFsaWM7XG4gIGZvbnQtZmFtaWx5OiBcIkx1Y2lkYSBTYW5zXCIsIFwiTHVjaWRhIFNhbnMgUmVndWxhclwiLCBcIkx1Y2lkYSBHcmFuZGVcIiwgXCJMdWNpZGEgU2FucyBVbmljb2RlXCIsIEdlbmV2YSwgVmVyZGFuYSwgc2Fucy1zZXJpZjtcbn1cblxuLmhlbGxvIHtcbiAgcG9zaXRpb246IGF1dG87XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgdGV4dC10cmFuc2Zvcm06IG5vbmU7XG4gIGNvbG9yOiAjMmYzMzJhO1xufVxuXG5oNCB7XG4gIGNvbG9yOiAjMTcwOTU3O1xuICBtYXJnaW46IDBweDtcbiAgbWFyZ2luLWxlZnQ6IDZweDtcbn1cblxuaDUge1xuICBsZXR0ZXItc3BhY2luZzogMnB4O1xufVxuXG5kaXYucGFnZS1wYWRkaW5nIHtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbiAgcGFkZGluZzogMTBweDtcbiAgbWF4LXdpZHRoOiA0MDBweDtcbn1cblxuZGl2Lm92ZXJsYXBFbnZpcm9ubWVudCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIHdpZHRoOiAyNDBweDtcbiAgbWF4LWhlaWdodDogMHB4O1xuICBtYXJnaW46IDQwcHg7XG4gIG1hcmdpbi1sZWZ0OiBjYWxjKDUwJSAtIDEyMHB4KTtcbn1cblxuZGl2Lm92ZXJsYXBFbnZpcm9ubWVudCA+IGRpdiB7XG4gIGdyaWQtY29sdW1uOiAxO1xuICBncmlkLXJvdzogMTtcbiAgd2lkdGg6IDQwcHggIWltcG9ydGFudDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAtMjhweDtcbiAgbGVmdDogLTE0MHB4O1xuICBmb250LXNpemU6IDE0cHg7XG59XG5cbmlvbi1pbWcuYmFyIHtcbiAgZ3JpZC1jb2x1bW46IDE7XG4gIGdyaWQtcm93OiAxO1xuICB3aWR0aDogMTAwJTtcbn1cblxuaW9uLWltZy50ZW1wZXJhdHVyZSB7XG4gIHdpZHRoOiA5MHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogLTMycHg7XG4gIGxlZnQ6IC0xNjZweDtcbiAgaGVpZ2h0OiAzMnB4O1xuICBncmlkLWNvbHVtbjogMTtcbiAgZ3JpZC1yb3c6IDE7XG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjtcbn1cblxuZGl2Lm92ZXJsYXAge1xuICBkaXNwbGF5OiBncmlkO1xuICB3aWR0aDogMjQwcHg7XG4gIG1heC1oZWlnaHQ6IDE3MHB4O1xuICBtYXJnaW46IDBweDtcbiAgcGFkZGluZy10b3A6IDEwcHg7XG4gIG1hcmdpbi1sZWZ0OiBjYWxjKDUwJSAtIDEyMHB4KTtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IC0xNXB4O1xufVxuXG5kaXYub3ZlcmxhcCA+IGRpdiB7XG4gIHdpZHRoOiA2MHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIG1hcmdpbi1sZWZ0OiBjYWxjKDUwJSAtIDMwcHgpO1xuICB0b3A6IDY4cHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgaGVpZ2h0OiA1MHB4O1xuICBncmlkLWNvbHVtbjogMTtcbiAgZ3JpZC1yb3c6IDE7XG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjtcbiAgY29sb3I6ICMxNzA5NTc7XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cblxuaW9uLWltZy53aGVlbCB7XG4gIHdpZHRoOiAxNzBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBtYXJnaW4tbGVmdDogY2FsYyg1MCUgLSA4NXB4KTtcbiAgZ3JpZC1jb2x1bW46IDE7XG4gIGdyaWQtcm93OiAxO1xuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XG59XG5cbmlvbi1pbWcuZGlhbCB7XG4gIHdpZHRoOiA4NHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGxlZnQ6IGNhbGMoNTAlIC0gNDJweCk7XG4gIHRvcDogMnB4O1xuICBncmlkLWNvbHVtbjogMTtcbiAgZ3JpZC1yb3c6IDE7XG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjtcbn1cblxuLnNwYWNlLTEwIHtcbiAgaGVpZ2h0OiAwcHg7XG59XG5cbi5zcGFjZS0yMCB7XG4gIGhlaWdodDogMjBweDtcbn1cblxuZGl2Lmlvbi1wYWRkaW5nIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Y5ZjlmOTtcbiAgaGVpZ2h0OiAxMDB2aDtcbn1cblxuY2FudmFzLmNoYXJ0IHtcbiAgd2lkdGg6IDgwJTtcbiAgcGFkZGluZzogMHB4IDEwcHggMHB4IDEwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGdyZXk7XG59XG5cbmRpdi5hY2NvcmRpb24ge1xuICB3aWR0aDogXCIxMDAlXCI7XG4gIGJhY2tncm91bmQtY29sb3I6ICNEMEQ2RDA7XG4gIGhlaWdodDogMS41ZW07XG4gIHBhZGRpbmctbGVmdDogNnB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGNvbG9yOiAjM2Q1MDEzO1xufVxuXG5kaXYuYWNjb3JkaW9uIGg1IHtcbiAgZGlzcGxheTogXCJpbmxpbmUtYmxvY2tcIjtcbiAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gIGZsb2F0OiBsZWZ0O1xuICB3aWR0aDogY2FsYygxMDAlIC0gMjVweCk7XG4gIG1hcmdpbjogMHB4O1xufVxuXG5kaXYuYWNjb3JkaW9uIGRpdiB7XG4gIGRpc3BsYXk6IFwiaW5saW5lLWJsb2NrXCI7XG4gIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xuICB0ZXh0LWFsaWduOiByaWdodDtcbiAgZmxvYXQ6IHJpZ2h0O1xufVxuXG5kaXYuYWNjb3JkaW9uIHNwYW4ge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogM3B4O1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgbWF4LWhlaWdodDogNDVweDtcbiAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnIgMmZyIDJmciAyZnIgMWZyO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogLTQ1cHg7XG4gIGNvbG9yOiAjMTcwOTU3O1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdiB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgbWluLXdpZHRoOiA1MHB4O1xuICBncmlkLXJvdzogMTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICB0ZXh0LW92ZXJmbG93OiBzaG93O1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdjpudGgtb2YtdHlwZSgxKSB7XG4gIGdyaWQtY29sdW1uOiAyO1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdjpudGgtb2YtdHlwZSgyKSB7XG4gIHBhZGRpbmc6IGF1dG87XG4gIHBhZGRpbmctdG9wOiAyMHB4O1xuICBmb250LXNpemU6IDE4cHg7XG4gIGdyaWQtY29sdW1uOiAzO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogNXB4O1xuICBmb250LXNpemU6IDE2cHg7XG59XG5cbmRpdi53ZWxsYmVpbmdGb290ZXIgZGl2Om50aC1vZi10eXBlKDMpIHtcbiAgZ3JpZC1jb2x1bW46IDQ7XG59XG5cbmRpdi53ZWxsYmVpbmdGb290ZXIgc3ZnIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbjogYXV0bztcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogNTBweDtcbn1cblxuZGl2LndlbGxiZWluZ0Zvb3RlciBkaXYub3ZlcmxhcE1pbmlCdWJibGUgZGl2IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdi5vdmVybGFwTWluaUJ1YmJsZSBkaXYgc3BhbiB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAtNTNweDtcbiAgbGVmdDogLTI1cHg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgd2lkdGg6IDQwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmJsYWNrIHtcbiAgY29sb3I6IGJsYWNrICFpbXBvcnRhbnQ7XG59XG5cbi53aGl0ZSB7XG4gIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xufVxuXG4uZW52aXJvbm1lbnRhbFF1YWwge1xuICBjb2xvcjogIzE3MDk1NztcbiAgZm9udC1zaXplOiAxNnB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAtNXB4O1xufVxuXG5zcGFuLnNtYWxsZXJUZXh0IHtcbiAgZm9udC1zaXplOiAxNHB4O1xufSJdfQ== */"
+module.exports = "ion-content.background {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n}\n\n.score {\n  display: grid;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n\nion-card {\n  border-radius: 100%;\n  height: 15em;\n  width: 15em;\n  background-color: rgba(255, 255, 255, 0);\n}\n\nion-card ion-card-header {\n  color: #2f332a;\n  text-align: center;\n  font-size: 20px;\n  margin-top: 25px;\n}\n\nion-card ion-card-content {\n  color: rgba(47, 51, 42, 0);\n  text-align: center;\n  justify-items: center;\n  margin-top: 20px;\n  font-size: 150px;\n  font-style: italic;\n  font-family: \"Lucida Sans\", \"Lucida Sans Regular\", \"Lucida Grande\", \"Lucida Sans Unicode\", Geneva, Verdana, sans-serif;\n}\n\n.hello {\n  position: auto;\n  text-align: center;\n  text-transform: none;\n  color: #2f332a;\n}\n\nh4 {\n  color: #170957;\n  margin: 0px;\n  margin-left: 6px;\n}\n\nh5 {\n  letter-spacing: 2px;\n}\n\ndiv.page-padding {\n  margin-left: auto;\n  margin-right: auto;\n  padding: 10px;\n  max-width: 400px;\n}\n\ndiv.overlapEnvironment {\n  display: grid;\n  width: 240px;\n  max-height: 0px;\n  margin: 40px;\n  margin-left: calc(50% - 120px);\n}\n\ndiv.overlapEnvironment > div {\n  grid-column: 1;\n  grid-row: 1;\n  width: 40px !important;\n  text-align: center;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n  position: relative;\n  top: -28px;\n  left: -140px;\n  font-size: 14px;\n}\n\nion-img.bar {\n  grid-column: 1;\n  grid-row: 1;\n  width: 100%;\n}\n\nion-img.temperature {\n  width: 90px;\n  position: relative;\n  top: -32px;\n  left: -166px;\n  height: 32px;\n  grid-column: 1;\n  grid-row: 1;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n}\n\ndiv.overlap {\n  display: grid;\n  width: 240px;\n  max-height: 170px;\n  margin: 0px;\n  padding-top: 10px;\n  margin-left: calc(50% - 120px);\n  position: relative;\n  top: -15px;\n}\n\ndiv.overlap > div {\n  width: 60px;\n  position: relative;\n  margin-left: calc(50% - 30px);\n  top: 68px;\n  text-align: center;\n  height: 50px;\n  grid-column: 1;\n  grid-row: 1;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n  color: #170957;\n  font-size: 20px;\n  font-weight: 500;\n}\n\nion-img.wheel {\n  width: 170px;\n  position: relative;\n  margin-left: calc(50% - 85px);\n  grid-column: 1;\n  grid-row: 1;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n}\n\nion-img.dial {\n  width: 84px;\n  position: relative;\n  left: calc(50% - 42px);\n  top: 2px;\n  grid-column: 1;\n  grid-row: 1;\n  -webkit-transform-origin: center;\n          transform-origin: center;\n}\n\n.space-10 {\n  height: 0px;\n}\n\n.space-20 {\n  height: 20px;\n}\n\ndiv.ion-padding {\n  background-color: #f9f9f9;\n  height: 100vh;\n}\n\ncanvas.chart {\n  width: 80%;\n  padding: 0px 10px 0px 10px;\n  border: 1px solid grey;\n}\n\ndiv.accordion {\n  width: \"100%\";\n  background-color: #D0D6D0;\n  height: 1.5em;\n  padding-left: 6px;\n  cursor: pointer;\n  color: #3d5013;\n}\n\ndiv.accordion h5 {\n  display: \"inline-block\";\n  background-color: transparent;\n  float: left;\n  width: calc(100% - 25px);\n  margin: 0px;\n}\n\ndiv.accordion div {\n  display: \"inline-block\";\n  background-color: transparent;\n  text-align: right;\n  float: right;\n}\n\ndiv.accordion span {\n  position: relative;\n  top: 3px;\n}\n\ndiv.wellbeingFooter {\n  display: grid;\n  max-height: 45px;\n  grid-template-columns: 1fr 2fr 2fr 2fr 1fr;\n  position: relative;\n  top: -45px;\n  color: #170957;\n}\n\ndiv.wellbeingFooter div {\n  display: inline-block;\n  min-width: 50px;\n  grid-row: 1;\n  text-align: center;\n  white-space: nowrap;\n  text-overflow: show;\n}\n\ndiv.wellbeingFooter div:nth-of-type(1) {\n  grid-column: 2;\n}\n\ndiv.wellbeingFooter div:nth-of-type(2) {\n  padding: auto;\n  padding-top: 20px;\n  font-size: 18px;\n  grid-column: 3;\n  position: relative;\n  top: 5px;\n  font-size: 16px;\n}\n\ndiv.wellbeingFooter div:nth-of-type(3) {\n  grid-column: 4;\n}\n\ndiv.wellbeingFooter svg {\n  display: block;\n  margin: auto;\n  height: 50px;\n  width: 50px;\n}\n\ndiv.wellbeingFooter div.overlapMiniBubble div {\n  position: absolute;\n}\n\ndiv.wellbeingFooter div.overlapMiniBubble div span {\n  position: relative;\n  top: -53px;\n  left: -25px;\n  display: inline-block;\n  width: 40px;\n  text-align: center;\n}\n\n.black {\n  color: black !important;\n}\n\n.white {\n  color: white !important;\n}\n\n.environmentalQual {\n  color: #170957;\n  font-size: 16px;\n  text-align: center;\n  position: relative;\n  top: -5px;\n}\n\nspan.smallerText {\n  font-size: 14px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Wb2x1bWVzL0lvbmljUHJvamVjdC9DYXJlR2l2ZXIvQ2FyZUdpdmVySW9uaWNQcm9qZWN0L2lvcy9zcmMvYXBwL2hvbWUvaG9tZS9ob21lLnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lL2hvbWUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7QUNDRjs7QURFQTtFQUNFLDhCQUFBO0FDQ0Y7O0FERUE7RUFDRSxhQUFBO0VBQ0Esd0JBQUE7VUFBQSx1QkFBQTtBQ0NGOztBREVBO0VBQ0UsbUJBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLHdDQUFBO0FDQ0Y7O0FEQ0U7RUFDRSxjQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0VBQ0EsZ0JBQUE7QUNDSjs7QURFRTtFQUNFLDBCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTtFQUNBLHNIQUFBO0FDQUo7O0FESUE7RUFDRSxjQUFBO0VBQ0Esa0JBQUE7RUFDQSxvQkFBQTtFQUNBLGNBQUE7QUNERjs7QURJQTtFQUNFLGNBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7QUNERjs7QURJQTtFQUNFLG1CQUFBO0FDREY7O0FESUE7RUFDRSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtFQUNBLGdCQUFBO0FDREY7O0FESUE7RUFDRSxhQUFBO0VBQ0EsWUFBQTtFQUNBLGVBQUE7RUFDQSxZQUFBO0VBQ0EsOEJBQUE7QUNERjs7QURJQTtFQUNFLGNBQUE7RUFDQSxXQUFBO0VBQ0Esc0JBQUE7RUFDQSxrQkFBQTtFQUNBLGdDQUFBO1VBQUEsd0JBQUE7RUFHQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0VBQ0EsZUFBQTtBQ0hGOztBRE1BO0VBQ0UsY0FBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0FDSEY7O0FETUE7RUFDRSxXQUFBO0VBRUEsa0JBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtFQUVBLFlBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGdDQUFBO1VBQUEsd0JBQUE7QUNMRjs7QURRQTtFQUNFLGFBQUE7RUFDQSxZQUFBO0VBQ0EsaUJBQUE7RUFDQSxXQUFBO0VBQ0EsaUJBQUE7RUFDQSw4QkFBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtBQ0xGOztBRFFBO0VBQ0UsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsNkJBQUE7RUFDQSxTQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLFdBQUE7RUFDQSxnQ0FBQTtVQUFBLHdCQUFBO0VBQ0EsY0FBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtBQ0xGOztBRFFBO0VBQ0UsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsNkJBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGdDQUFBO1VBQUEsd0JBQUE7QUNMRjs7QURRQTtFQUNFLFdBQUE7RUFDQSxrQkFBQTtFQUNBLHNCQUFBO0VBQ0EsUUFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0VBQ0EsZ0NBQUE7VUFBQSx3QkFBQTtBQ0xGOztBRFFBO0VBQ0UsV0FBQTtBQ0xGOztBRFFBO0VBQ0UsWUFBQTtBQ0xGOztBRFFBO0VBQ0UseUJBQUE7RUFDQSxhQUFBO0FDTEY7O0FEUUE7RUFDRSxVQUFBO0VBQ0EsMEJBQUE7RUFDQSxzQkFBQTtBQ0xGOztBRFFBO0VBQ0UsYUFBQTtFQUNBLHlCQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNMRjs7QURRQTtFQUNFLHVCQUFBO0VBQ0EsNkJBQUE7RUFDQSxXQUFBO0VBQ0Esd0JBQUE7RUFDQSxXQUFBO0FDTEY7O0FEUUE7RUFDRSx1QkFBQTtFQUNBLDZCQUFBO0VBQ0EsaUJBQUE7RUFDQSxZQUFBO0FDTEY7O0FEUUE7RUFDRSxrQkFBQTtFQUNBLFFBQUE7QUNMRjs7QURRQTtFQUNFLGFBQUE7RUFDQSxnQkFBQTtFQUNBLDBDQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsY0FBQTtBQ0xGOztBRFFBO0VBQ0UscUJBQUE7RUFDQSxlQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtBQ0xGOztBRFFBO0VBQ0UsY0FBQTtBQ0xGOztBRFFBO0VBQ0UsYUFBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7RUFDQSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxlQUFBO0FDTEY7O0FEUUE7RUFDRSxjQUFBO0FDTEY7O0FEUUE7RUFDRSxjQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0FDTEY7O0FEUUE7RUFDRSxrQkFBQTtBQ0xGOztBRFFBO0VBQ0Usa0JBQUE7RUFDQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLHFCQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0FDTEY7O0FEUUE7RUFDRSx1QkFBQTtBQ0xGOztBRFFBO0VBQ0UsdUJBQUE7QUNMRjs7QURRQTtFQUNFLGNBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7QUNMRjs7QURRQTtFQUNFLGVBQUE7QUNMRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS9ob21lLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50LmJhY2tncm91bmQge1xuICAtLWJhY2tncm91bmQ6IHdoaXRlOyAvLyB1cmwoLi4vLi4vLi4vYXNzZXRzL3doaXRlbGVhZi5qcGcpIDAgMC8xMDAlIDEwMCUgbm8tcmVwZWF0O1xufVxuXG5pb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogcmdiKDcsIDE1NiwgMTYxKTsgLy8gdXJsKC4uLy4uLy4uL2Fzc2V0cy90b29sYmFyLmpwZykgMCAwLzEwMCUgMTAwJSByZXBlYXQ7XG59XG5cbi5zY29yZSB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24tY2FyZCB7XG4gIGJvcmRlci1yYWRpdXM6IDEwMCU7XG4gIGhlaWdodDogMTVlbTtcbiAgd2lkdGg6IDE1ZW07XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7XG5cbiAgaW9uLWNhcmQtaGVhZGVyIHtcbiAgICBjb2xvcjogcmdiKDQ3LCA1MSwgNDIpO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBmb250LXNpemU6IDIwcHg7XG4gICAgbWFyZ2luLXRvcDogMjVweDtcbiAgfVxuXG4gIGlvbi1jYXJkLWNvbnRlbnQge1xuICAgIGNvbG9yOiByZ2JhKDQ3LCA1MSwgNDIsIDApO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBqdXN0aWZ5LWl0ZW1zOiBjZW50ZXI7XG4gICAgbWFyZ2luLXRvcDogMjBweDtcbiAgICBmb250LXNpemU6IDE1MHB4O1xuICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgICBmb250LWZhbWlseTogJ0x1Y2lkYSBTYW5zJywgJ0x1Y2lkYSBTYW5zIFJlZ3VsYXInLCAnTHVjaWRhIEdyYW5kZScsICdMdWNpZGEgU2FucyBVbmljb2RlJywgR2VuZXZhLCBWZXJkYW5hLCBzYW5zLXNlcmlmO1xuICB9XG59XG5cbi5oZWxsbyB7XG4gIHBvc2l0aW9uOiBhdXRvO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHRleHQtdHJhbnNmb3JtOiBub25lO1xuICBjb2xvcjogcmdiKDQ3LCA1MSwgNDIpO1xufVxuXG5oNCB7XG4gIGNvbG9yOiAjMTcwOTU3O1xuICBtYXJnaW46IDBweDtcbiAgbWFyZ2luLWxlZnQ6IDZweDtcbn1cblxuaDUge1xuICBsZXR0ZXItc3BhY2luZzogMnB4O1xufVxuXG5kaXYucGFnZS1wYWRkaW5nIHtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbiAgcGFkZGluZzogMTBweDtcbiAgbWF4LXdpZHRoOiA0MDBweDtcbn1cblxuZGl2Lm92ZXJsYXBFbnZpcm9ubWVudCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIHdpZHRoOiAyNDBweDtcbiAgbWF4LWhlaWdodDogMHB4O1xuICBtYXJnaW46IDQwcHg7XG4gIG1hcmdpbi1sZWZ0OiBjYWxjKDUwJSAtIDEyMHB4KTtcbn1cblxuZGl2Lm92ZXJsYXBFbnZpcm9ubWVudCA+IGRpdiB7XG4gIGdyaWQtY29sdW1uOiAxO1xuICBncmlkLXJvdzogMTtcbiAgd2lkdGg6IDQwcHggIWltcG9ydGFudDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XG5cbiAgLy8gUkVWSUVXOiBoYWNrcyFcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IC0yOHB4O1xuICBsZWZ0OiAtMTQwcHg7XG4gIGZvbnQtc2l6ZTogMTRweDtcbn1cblxuaW9uLWltZy5iYXIge1xuICBncmlkLWNvbHVtbjogMTtcbiAgZ3JpZC1yb3c6IDE7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG5pb24taW1nLnRlbXBlcmF0dXJlIHtcbiAgd2lkdGg6IDkwcHg7XG4gIC8vIFJFVklFVzogaGFja3MhXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAtMzJweDtcbiAgbGVmdDogLTE2NnB4O1xuXG4gIGhlaWdodDogMzJweDtcbiAgZ3JpZC1jb2x1bW46IDE7XG4gIGdyaWQtcm93OiAxO1xuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XG59XG5cbmRpdi5vdmVybGFwIHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgd2lkdGg6IDI0MHB4O1xuICBtYXgtaGVpZ2h0OiAxNzBweDtcbiAgbWFyZ2luOiAwcHg7XG4gIHBhZGRpbmctdG9wOiAxMHB4O1xuICBtYXJnaW4tbGVmdDogY2FsYyg1MCUgLSAxMjBweCk7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAtMTVweDtcbn1cblxuZGl2Lm92ZXJsYXAgPiBkaXYge1xuICB3aWR0aDogNjBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBtYXJnaW4tbGVmdDogY2FsYyg1MCUgLSAzMHB4KTtcbiAgdG9wOiA2OHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGhlaWdodDogNTBweDtcbiAgZ3JpZC1jb2x1bW46IDE7XG4gIGdyaWQtcm93OiAxO1xuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XG4gIGNvbG9yOiAjMTcwOTU3O1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG59XG5cbmlvbi1pbWcud2hlZWwge1xuICB3aWR0aDogMTcwcHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgbWFyZ2luLWxlZnQ6IGNhbGMoNTAlIC0gODVweCk7XG4gIGdyaWQtY29sdW1uOiAxO1xuICBncmlkLXJvdzogMTtcbiAgdHJhbnNmb3JtLW9yaWdpbjogY2VudGVyO1xufVxuXG5pb24taW1nLmRpYWwge1xuICB3aWR0aDogODRweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBsZWZ0OiBjYWxjKDUwJSAtIDQycHgpO1xuICB0b3A6IDJweDsgLy8gbWlub3IgYWxpZ25tZW50IGFkanVzdG1lbnQsIHJlbGF0ZWQgdG8gc3ZnIGdyYXBoaWMgY3V0c1xuICBncmlkLWNvbHVtbjogMTtcbiAgZ3JpZC1yb3c6IDE7XG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjtcbn1cblxuLnNwYWNlLTEwIHtcbiAgaGVpZ2h0OiAwcHg7XG59XG5cbi5zcGFjZS0yMCB7XG4gIGhlaWdodDogMjBweDtcbn1cblxuZGl2Lmlvbi1wYWRkaW5nIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Y5ZjlmOTtcbiAgaGVpZ2h0OiAxMDB2aDtcbn1cblxuY2FudmFzLmNoYXJ0IHtcbiAgd2lkdGg6IDgwJTtcbiAgcGFkZGluZzogMHB4IDEwcHggMHB4IDEwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGdyZXk7XG59XG5cbmRpdi5hY2NvcmRpb24ge1xuICB3aWR0aDogJzEwMCUnO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRDBENkQwO1xuICBoZWlnaHQ6IDEuNWVtO1xuICBwYWRkaW5nLWxlZnQ6IDZweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBjb2xvcjogcmdiKDYxLCA4MCwgMTkpXG59XG5cbmRpdi5hY2NvcmRpb24gaDUge1xuICBkaXNwbGF5OiAnaW5saW5lLWJsb2NrJztcbiAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gIGZsb2F0OiBsZWZ0O1xuICB3aWR0aDogY2FsYygxMDAlIC0gMjVweCk7XG4gIG1hcmdpbjogMHB4O1xufVxuXG5kaXYuYWNjb3JkaW9uIGRpdiB7XG4gIGRpc3BsYXk6ICdpbmxpbmUtYmxvY2snO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gIGZsb2F0OiByaWdodDtcbn1cblxuZGl2LmFjY29yZGlvbiBzcGFuIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IDNweDtcbn1cblxuZGl2LndlbGxiZWluZ0Zvb3RlciB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIG1heC1oZWlnaHQ6IDQ1cHg7XG4gIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMWZyIDJmciAyZnIgMmZyIDFmcjtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IC00NXB4O1xuICBjb2xvcjogIzE3MDk1Nztcbn1cblxuZGl2LndlbGxiZWluZ0Zvb3RlciBkaXYge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIG1pbi13aWR0aDogNTBweDtcbiAgZ3JpZC1yb3c6IDE7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgdGV4dC1vdmVyZmxvdzogc2hvdztcbn1cblxuZGl2LndlbGxiZWluZ0Zvb3RlciBkaXY6bnRoLW9mLXR5cGUoMSkge1xuICBncmlkLWNvbHVtbjogMjtcbn1cblxuZGl2LndlbGxiZWluZ0Zvb3RlciBkaXY6bnRoLW9mLXR5cGUoMikge1xuICBwYWRkaW5nOiBhdXRvO1xuICBwYWRkaW5nLXRvcDogMjBweDtcbiAgZm9udC1zaXplOiAxOHB4O1xuICBncmlkLWNvbHVtbjogMztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IDVweDtcbiAgZm9udC1zaXplOiAxNnB4O1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdjpudGgtb2YtdHlwZSgzKSB7XG4gIGdyaWQtY29sdW1uOiA0O1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIHN2ZyB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW46IGF1dG87XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDUwcHg7XG59XG5cbmRpdi53ZWxsYmVpbmdGb290ZXIgZGl2Lm92ZXJsYXBNaW5pQnViYmxlIGRpdiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuZGl2LndlbGxiZWluZ0Zvb3RlciBkaXYub3ZlcmxhcE1pbmlCdWJibGUgZGl2IHNwYW4ge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogLTUzcHg7XG4gIGxlZnQ6IC0yNXB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHdpZHRoOiA0MHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5ibGFjayB7XG4gIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xufVxuXG4ud2hpdGUge1xuICBjb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbn1cblxuLmVudmlyb25tZW50YWxRdWFsIHtcbiAgY29sb3I6ICMxNzA5NTc7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogLTVweDtcbn1cblxuc3Bhbi5zbWFsbGVyVGV4dCB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbn0iLCJpb24tY29udGVudC5iYWNrZ3JvdW5kIHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHJnYig3LCAxNTYsIDE2MSk7XG59XG5cbi5zY29yZSB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24tY2FyZCB7XG4gIGJvcmRlci1yYWRpdXM6IDEwMCU7XG4gIGhlaWdodDogMTVlbTtcbiAgd2lkdGg6IDE1ZW07XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7XG59XG5pb24tY2FyZCBpb24tY2FyZC1oZWFkZXIge1xuICBjb2xvcjogIzJmMzMyYTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXNpemU6IDIwcHg7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5pb24tY2FyZCBpb24tY2FyZC1jb250ZW50IHtcbiAgY29sb3I6IHJnYmEoNDcsIDUxLCA0MiwgMCk7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAganVzdGlmeS1pdGVtczogY2VudGVyO1xuICBtYXJnaW4tdG9wOiAyMHB4O1xuICBmb250LXNpemU6IDE1MHB4O1xuICBmb250LXN0eWxlOiBpdGFsaWM7XG4gIGZvbnQtZmFtaWx5OiBcIkx1Y2lkYSBTYW5zXCIsIFwiTHVjaWRhIFNhbnMgUmVndWxhclwiLCBcIkx1Y2lkYSBHcmFuZGVcIiwgXCJMdWNpZGEgU2FucyBVbmljb2RlXCIsIEdlbmV2YSwgVmVyZGFuYSwgc2Fucy1zZXJpZjtcbn1cblxuLmhlbGxvIHtcbiAgcG9zaXRpb246IGF1dG87XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgdGV4dC10cmFuc2Zvcm06IG5vbmU7XG4gIGNvbG9yOiAjMmYzMzJhO1xufVxuXG5oNCB7XG4gIGNvbG9yOiAjMTcwOTU3O1xuICBtYXJnaW46IDBweDtcbiAgbWFyZ2luLWxlZnQ6IDZweDtcbn1cblxuaDUge1xuICBsZXR0ZXItc3BhY2luZzogMnB4O1xufVxuXG5kaXYucGFnZS1wYWRkaW5nIHtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbiAgcGFkZGluZzogMTBweDtcbiAgbWF4LXdpZHRoOiA0MDBweDtcbn1cblxuZGl2Lm92ZXJsYXBFbnZpcm9ubWVudCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIHdpZHRoOiAyNDBweDtcbiAgbWF4LWhlaWdodDogMHB4O1xuICBtYXJnaW46IDQwcHg7XG4gIG1hcmdpbi1sZWZ0OiBjYWxjKDUwJSAtIDEyMHB4KTtcbn1cblxuZGl2Lm92ZXJsYXBFbnZpcm9ubWVudCA+IGRpdiB7XG4gIGdyaWQtY29sdW1uOiAxO1xuICBncmlkLXJvdzogMTtcbiAgd2lkdGg6IDQwcHggIWltcG9ydGFudDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAtMjhweDtcbiAgbGVmdDogLTE0MHB4O1xuICBmb250LXNpemU6IDE0cHg7XG59XG5cbmlvbi1pbWcuYmFyIHtcbiAgZ3JpZC1jb2x1bW46IDE7XG4gIGdyaWQtcm93OiAxO1xuICB3aWR0aDogMTAwJTtcbn1cblxuaW9uLWltZy50ZW1wZXJhdHVyZSB7XG4gIHdpZHRoOiA5MHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogLTMycHg7XG4gIGxlZnQ6IC0xNjZweDtcbiAgaGVpZ2h0OiAzMnB4O1xuICBncmlkLWNvbHVtbjogMTtcbiAgZ3JpZC1yb3c6IDE7XG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjtcbn1cblxuZGl2Lm92ZXJsYXAge1xuICBkaXNwbGF5OiBncmlkO1xuICB3aWR0aDogMjQwcHg7XG4gIG1heC1oZWlnaHQ6IDE3MHB4O1xuICBtYXJnaW46IDBweDtcbiAgcGFkZGluZy10b3A6IDEwcHg7XG4gIG1hcmdpbi1sZWZ0OiBjYWxjKDUwJSAtIDEyMHB4KTtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IC0xNXB4O1xufVxuXG5kaXYub3ZlcmxhcCA+IGRpdiB7XG4gIHdpZHRoOiA2MHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIG1hcmdpbi1sZWZ0OiBjYWxjKDUwJSAtIDMwcHgpO1xuICB0b3A6IDY4cHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgaGVpZ2h0OiA1MHB4O1xuICBncmlkLWNvbHVtbjogMTtcbiAgZ3JpZC1yb3c6IDE7XG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjtcbiAgY29sb3I6ICMxNzA5NTc7XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cblxuaW9uLWltZy53aGVlbCB7XG4gIHdpZHRoOiAxNzBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBtYXJnaW4tbGVmdDogY2FsYyg1MCUgLSA4NXB4KTtcbiAgZ3JpZC1jb2x1bW46IDE7XG4gIGdyaWQtcm93OiAxO1xuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XG59XG5cbmlvbi1pbWcuZGlhbCB7XG4gIHdpZHRoOiA4NHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGxlZnQ6IGNhbGMoNTAlIC0gNDJweCk7XG4gIHRvcDogMnB4O1xuICBncmlkLWNvbHVtbjogMTtcbiAgZ3JpZC1yb3c6IDE7XG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjtcbn1cblxuLnNwYWNlLTEwIHtcbiAgaGVpZ2h0OiAwcHg7XG59XG5cbi5zcGFjZS0yMCB7XG4gIGhlaWdodDogMjBweDtcbn1cblxuZGl2Lmlvbi1wYWRkaW5nIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Y5ZjlmOTtcbiAgaGVpZ2h0OiAxMDB2aDtcbn1cblxuY2FudmFzLmNoYXJ0IHtcbiAgd2lkdGg6IDgwJTtcbiAgcGFkZGluZzogMHB4IDEwcHggMHB4IDEwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGdyZXk7XG59XG5cbmRpdi5hY2NvcmRpb24ge1xuICB3aWR0aDogXCIxMDAlXCI7XG4gIGJhY2tncm91bmQtY29sb3I6ICNEMEQ2RDA7XG4gIGhlaWdodDogMS41ZW07XG4gIHBhZGRpbmctbGVmdDogNnB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGNvbG9yOiAjM2Q1MDEzO1xufVxuXG5kaXYuYWNjb3JkaW9uIGg1IHtcbiAgZGlzcGxheTogXCJpbmxpbmUtYmxvY2tcIjtcbiAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gIGZsb2F0OiBsZWZ0O1xuICB3aWR0aDogY2FsYygxMDAlIC0gMjVweCk7XG4gIG1hcmdpbjogMHB4O1xufVxuXG5kaXYuYWNjb3JkaW9uIGRpdiB7XG4gIGRpc3BsYXk6IFwiaW5saW5lLWJsb2NrXCI7XG4gIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xuICB0ZXh0LWFsaWduOiByaWdodDtcbiAgZmxvYXQ6IHJpZ2h0O1xufVxuXG5kaXYuYWNjb3JkaW9uIHNwYW4ge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogM3B4O1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgbWF4LWhlaWdodDogNDVweDtcbiAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnIgMmZyIDJmciAyZnIgMWZyO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogLTQ1cHg7XG4gIGNvbG9yOiAjMTcwOTU3O1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdiB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgbWluLXdpZHRoOiA1MHB4O1xuICBncmlkLXJvdzogMTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICB0ZXh0LW92ZXJmbG93OiBzaG93O1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdjpudGgtb2YtdHlwZSgxKSB7XG4gIGdyaWQtY29sdW1uOiAyO1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdjpudGgtb2YtdHlwZSgyKSB7XG4gIHBhZGRpbmc6IGF1dG87XG4gIHBhZGRpbmctdG9wOiAyMHB4O1xuICBmb250LXNpemU6IDE4cHg7XG4gIGdyaWQtY29sdW1uOiAzO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogNXB4O1xuICBmb250LXNpemU6IDE2cHg7XG59XG5cbmRpdi53ZWxsYmVpbmdGb290ZXIgZGl2Om50aC1vZi10eXBlKDMpIHtcbiAgZ3JpZC1jb2x1bW46IDQ7XG59XG5cbmRpdi53ZWxsYmVpbmdGb290ZXIgc3ZnIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbjogYXV0bztcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogNTBweDtcbn1cblxuZGl2LndlbGxiZWluZ0Zvb3RlciBkaXYub3ZlcmxhcE1pbmlCdWJibGUgZGl2IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuXG5kaXYud2VsbGJlaW5nRm9vdGVyIGRpdi5vdmVybGFwTWluaUJ1YmJsZSBkaXYgc3BhbiB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAtNTNweDtcbiAgbGVmdDogLTI1cHg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgd2lkdGg6IDQwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmJsYWNrIHtcbiAgY29sb3I6IGJsYWNrICFpbXBvcnRhbnQ7XG59XG5cbi53aGl0ZSB7XG4gIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xufVxuXG4uZW52aXJvbm1lbnRhbFF1YWwge1xuICBjb2xvcjogIzE3MDk1NztcbiAgZm9udC1zaXplOiAxNnB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAtNXB4O1xufVxuXG5zcGFuLnNtYWxsZXJUZXh0IHtcbiAgZm9udC1zaXplOiAxNHB4O1xufSJdfQ== */"
 
 /***/ }),
 
@@ -1043,14 +877,12 @@ let HomePage = class HomePage {
         const today = yyyy + '-' + mm + '-' + td;
         const yesterday = yyyy + '-' + mm + '-' + yd;
         this.displayName = this.user.getDisplayname(uid);
-        this.getTodayScore(uid, today);
-        this.getYstScore(uid, yesterday);
-        this.getAvgScore(uid);
+        this.getTodayScore(uid);
     }
     ngOnInit() {
     }
-    getTodayScore(uid, date) {
-        this.user.getWellScore(uid, date).subscribe(user => {
+    getTodayScore(uid) {
+        this.user.getUser(uid).subscribe(user => {
             let tempScore;
             if (user) {
                 if (user.wellbeingScore) {
@@ -1076,59 +908,6 @@ let HomePage = class HomePage {
             };
             this.formatSubtitle(this.todayScore);
         });
-    }
-    getYstScore(uid, date) {
-        this.user.getWellScore(uid, date).subscribe(user => {
-            let tempScore;
-            if (user.wellbeingScore) {
-                tempScore = user.wellbeingScore;
-            }
-            else {
-                tempScore = 0;
-            }
-            this.ystScore = tempScore;
-            this.yesterdayZone = this.ystScore >= 100 ? 4 :
-                Math.floor((this.ystScore) / 20);
-            this.yesterdayClass = 'GuageColor' + this.yesterdayZone;
-            this.yesterdayTextColor = this.yesterdayZone === 4 ? 'white' : 'white';
-        });
-    }
-    getAvgScore(uid) {
-        const avgSc = this.user.getEma(uid);
-        const score = [];
-        const avg = [];
-        let sc;
-        avgSc.subscribe(user => {
-            if (user) {
-                for (const item of user) {
-                    avg.push(item);
-                    if (item.wellbeingScore) {
-                        sc = item.wellbeingScore;
-                    }
-                    else {
-                        sc = 0;
-                    }
-                    score.push(sc);
-                    this.avgScore = Number(this.getAverage(score).toFixed(0));
-                    this.averageZone = this.avgScore >= 100 ? 4 :
-                        Math.floor((this.avgScore) / 20);
-                    this.averageClass = 'GuageColor' + this.averageZone;
-                    this.averageTextColor = this.averageZone === 4 ? 'white' : 'white';
-                }
-            }
-            else {
-                console.log('data not found');
-            }
-        });
-    }
-    getAverage(score) {
-        let sum = 0, counter = 0;
-        // tslint:disable-next-line: forin
-        for (const key in score) {
-            sum += Number(score[key]);
-            counter++;
-        }
-        return sum / counter;
     }
     overlap() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {

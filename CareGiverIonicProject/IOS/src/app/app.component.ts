@@ -4,6 +4,7 @@ import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {FCM} from '@ionic-native/fcm/ngx';
+import { FcmService } from './services/fcm.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private fcm: FCM
+    private fcm: FCM,
+    public fcmService: FcmService
   ) {
     this.initializeApp();
   }
@@ -24,17 +26,20 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.fcm.onNotification().subscribe(data => {
+
+      this.fcmService.initPush();
+      
+     /* this.fcm.onNotification().subscribe(data => {
         if (data.wasTapped) {
           console.log('Received in background');
         } else {
           console.log('Received in foreground');
         }
-      });
+      });*/
     });
   }
 
   unsubscribeFromTopic() {
     this.fcm.unsubscribeFromTopic('enappd');
-  }
+   }
 }

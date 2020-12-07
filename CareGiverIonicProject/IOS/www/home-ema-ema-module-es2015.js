@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-tabs>\r\n</ion-tabs>"
+module.exports = "<ion-tabs>\n</ion-tabs>"
 
 /***/ }),
 

@@ -441,7 +441,7 @@ module.exports = webpackAsyncContext;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n"
+module.exports = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n"
 
 /***/ }),
 
@@ -469,7 +469,7 @@ const routes = [
     },
     {
         path: '',
-        loadChildren: () => Promise.all(/*! import() | home-tabs-tabs-module */[__webpack_require__.e("default~home-chat-home-home-module~home-profile-profile-module~home-tabs-tabs-module~reset-password-~1e363514"), __webpack_require__.e("default~home-chat-home-home-module~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("common"), __webpack_require__.e("home-tabs-tabs-module")]).then(__webpack_require__.bind(null, /*! ./home/tabs/tabs.module */ "./src/app/home/tabs/tabs.module.ts"))
+        loadChildren: () => Promise.all(/*! import() | home-tabs-tabs-module */[__webpack_require__.e("default~home-profile-profile-module~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("default~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("home-tabs-tabs-module")]).then(__webpack_require__.bind(null, /*! ./home/tabs/tabs.module */ "./src/app/home/tabs/tabs.module.ts"))
             .then(m => m.TabsPageModule)
     },
     {
@@ -479,7 +479,7 @@ const routes = [
     },
     {
         path: 'reset-password',
-        loadChildren: () => Promise.all(/*! import() | reset-password-reset-password-module */[__webpack_require__.e("default~home-chat-home-home-module~home-profile-profile-module~home-tabs-tabs-module~reset-password-~1e363514"), __webpack_require__.e("default~home-chat-home-home-module~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("common"), __webpack_require__.e("reset-password-reset-password-module")]).then(__webpack_require__.bind(null, /*! ./reset-password/reset-password.module */ "./src/app/reset-password/reset-password.module.ts"))
+        loadChildren: () => Promise.all(/*! import() | reset-password-reset-password-module */[__webpack_require__.e("default~home-profile-profile-module~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("default~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("reset-password-reset-password-module")]).then(__webpack_require__.bind(null, /*! ./reset-password/reset-password.module */ "./src/app/reset-password/reset-password.module.ts"))
             .then(m => m.ResetPasswordPageModule)
     },
     {
@@ -496,7 +496,7 @@ const routes = [
     },
     {
         path: 'profile',
-        loadChildren: () => Promise.all(/*! import() | home-profile-profile-module */[__webpack_require__.e("default~home-chat-home-home-module~home-profile-profile-module~home-tabs-tabs-module~reset-password-~1e363514"), __webpack_require__.e("default~home-home-module~home-profile-profile-module"), __webpack_require__.e("home-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./home/profile/profile.module */ "./src/app/home/profile/profile.module.ts")).then(m => m.ProfilePageModule)
+        loadChildren: () => Promise.all(/*! import() | home-profile-profile-module */[__webpack_require__.e("default~home-profile-profile-module~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("default~home-home-module~home-profile-profile-module"), __webpack_require__.e("home-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./home/profile/profile.module */ "./src/app/home/profile/profile.module.ts")).then(m => m.ProfilePageModule)
     },
     {
         path: 'settings',
@@ -532,7 +532,7 @@ const routes = [
     },
     {
         path: 'home',
-        loadChildren: () => Promise.all(/*! import() | home-chat-home-home-module */[__webpack_require__.e("default~home-chat-home-home-module~home-profile-profile-module~home-tabs-tabs-module~reset-password-~1e363514"), __webpack_require__.e("default~home-chat-home-home-module~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("home-chat-home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/chat/home/home.module */ "./src/app/home/chat/home/home.module.ts")).then(m => m.HomePageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | home-chat-home-home-module */ "home-chat-home-home-module").then(__webpack_require__.bind(null, /*! ./home/chat/home/home.module */ "./src/app/home/chat/home/home.module.ts")).then(m => m.HomePageModule)
     },
     {
         path: 'ema',
@@ -541,6 +541,10 @@ const routes = [
     {
         path: 'wellbeing-score',
         loadChildren: () => Promise.all(/*! import() | wellbeing-score-wellbeing-score-module */[__webpack_require__.e("default~calories-calories-module~heart-rate-heart-rate-module~pulse-ox-pulse-ox-module~sleep-sleep-m~4bb81c00"), __webpack_require__.e("wellbeing-score-wellbeing-score-module")]).then(__webpack_require__.bind(null, /*! ./wellbeing-score/wellbeing-score.module */ "./src/app/wellbeing-score/wellbeing-score.module.ts")).then(m => m.WellbeingScorePageModule)
+    },
+    {
+        path: 'details',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-details-details-module */ "pages-details-details-module").then(__webpack_require__.bind(null, /*! ./pages/details/details.module */ "./src/app/pages/details/details.module.ts")).then(m => m.DetailsPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -585,6 +589,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
+/* harmony import */ var _services_fcm_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/fcm.service */ "./src/app/services/fcm.service.ts");
+
 
 
 
@@ -592,25 +598,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-    constructor(platform, splashScreen, statusBar, fcm) {
+    constructor(platform, splashScreen, statusBar, fcm, fcmService) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.fcm = fcm;
+        this.fcmService = fcmService;
         this.initializeApp();
     }
     initializeApp() {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
-            this.fcm.onNotification().subscribe(data => {
-                if (data.wasTapped) {
-                    console.log('Received in background');
-                }
-                else {
-                    console.log('Received in foreground');
-                }
-            });
+            this.fcmService.initPush();
+            /* this.fcm.onNotification().subscribe(data => {
+               if (data.wasTapped) {
+                 console.log('Received in background');
+               } else {
+                 console.log('Received in foreground');
+               }
+             });*/
         });
     }
     unsubscribeFromTopic() {
@@ -621,7 +628,8 @@ AppComponent.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
     { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
     { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
-    { type: _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"] }
+    { type: _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"] },
+    { type: _services_fcm_service__WEBPACK_IMPORTED_MODULE_6__["FcmService"] }
 ];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -632,7 +640,8 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
         _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
         _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
-        _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"]])
+        _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"],
+        _services_fcm_service__WEBPACK_IMPORTED_MODULE_6__["FcmService"]])
 ], AppComponent);
 
 
@@ -822,6 +831,76 @@ const firebaseConfig = {
 
 /***/ }),
 
+/***/ "./src/app/services/fcm.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/services/fcm.service.ts ***!
+  \*****************************************/
+/*! exports provided: FcmService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FcmService", function() { return FcmService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+const { PushNotifications } = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"];
+let FcmService = class FcmService {
+    constructor(router) {
+        this.router = router;
+    }
+    initPush() {
+        if (_capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Capacitor"].platform !== 'web') {
+            this.registerPush();
+        }
+    }
+    registerPush() {
+        PushNotifications.requestPermission().then((permission) => {
+            if (permission.granted) {
+                // Register with Apple / Google to receive push via APNS/FCM
+                PushNotifications.register();
+            }
+            else {
+                // No permission for push granted
+            }
+        });
+        PushNotifications.addListener('registration', (token) => {
+            console.log('My token: ' + JSON.stringify(token));
+        });
+        PushNotifications.addListener('registrationError', (error) => {
+            console.log('Error: ' + JSON.stringify(error));
+        });
+        PushNotifications.addListener('pushNotificationReceived', (notification) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            console.log('Push received: ' + JSON.stringify(notification));
+        }));
+        PushNotifications.addListener('pushNotificationActionPerformed', (notification) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const data = notification.notification.data;
+            console.log('Action performed: ' + JSON.stringify(notification.notification));
+            if (data.detailsId) {
+                this.router.navigateByUrl(`/tabs/home/${data.detailsId}`);
+            }
+        }));
+    }
+};
+FcmService.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+];
+FcmService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+], FcmService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/user.service.ts":
 /*!*********************************!*\
   !*** ./src/app/user.service.ts ***!
@@ -995,7 +1074,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\IonicProject\Git\CareGiver\CareGiverIonicProject\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Volumes/IonicProject/CareGiver/CareGiverIonicProject/ios/src/main.ts */"./src/main.ts");
 
 
 /***/ })

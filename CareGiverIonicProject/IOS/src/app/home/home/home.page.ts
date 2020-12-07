@@ -61,16 +61,14 @@ export class HomePage implements OnInit {
     const yesterday = yyyy + '-' + mm + '-' + yd;
 
     this.displayName = this.user.getDisplayname(uid);
-    this.getTodayScore(uid, today);
-    this.getYstScore(uid, yesterday);
-    this.getAvgScore(uid);
+    this.getTodayScore(uid);
   }
 
   ngOnInit() {
   }
 
-  getTodayScore(uid, date) {
-    this.user.getWellScore(uid, date).subscribe(user => {
+  getTodayScore(uid) {
+    this.user.getUser(uid).subscribe(user => {
       let tempScore;
       if (user) {
         if (user.wellbeingScore) {
@@ -93,52 +91,6 @@ export class HomePage implements OnInit {
     });
   }
 
-  getYstScore(uid, date) {
-    this.user.getWellScore(uid, date).subscribe(user => {
-      let tempScore;
-      if (user.wellbeingScore) {
-        tempScore = user.wellbeingScore;
-      } else { tempScore = 0; }
-      this.ystScore = tempScore;
-      this.yesterdayZone = this.ystScore >= 100 ? 4 :
-          Math.floor((this.ystScore) / 20);
-      this.yesterdayClass = 'GuageColor' + this.yesterdayZone;
-      this.yesterdayTextColor = this.yesterdayZone === 4 ? 'white' : 'white';
-    });
-  }
-
-  getAvgScore(uid) {
-    const avgSc = this.user.getEma(uid);
-    const score = [];
-    const avg = [];
-    let sc;
-    avgSc.subscribe(user => {
-      if (user) {
-        for (const item of user) {
-          avg.push(item);
-          if (item.wellbeingScore) {
-            sc = item.wellbeingScore;
-          } else { sc = 0; }
-          score.push(sc);
-          this.avgScore = Number(this.getAverage(score).toFixed(0));
-          this.averageZone = this.avgScore >= 100 ? 4 :
-            Math.floor((this.avgScore) / 20);
-          this.averageClass = 'GuageColor' + this.averageZone;
-          this.averageTextColor = this.averageZone === 4 ? 'white' : 'white';
-        }
-      } else {console.log('data not found'); }
-    });
-  }
-
-  public getAverage(score: any[]): number {
-    let sum = 0, counter = 0;
-    // tslint:disable-next-line: forin
-    for (const key in score) {
-        sum += Number(score[key]);
-        counter++;
-    }
-    return sum / counter;
-  }
 
   formatSubtitle = (score: number): string => {
     if (score < 20) {

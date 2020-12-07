@@ -81,6 +81,10 @@ const routes: Routes = [
   {
     path: 'wellbeing-score',
     loadChildren: () => import('./wellbeing-score/wellbeing-score.module').then(m => m.WellbeingScorePageModule)
+  },
+  {
+    path: 'details',
+    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
   }
 
 ];
