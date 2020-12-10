@@ -541,10 +541,6 @@ const routes = [
     {
         path: 'wellbeing-score',
         loadChildren: () => Promise.all(/*! import() | wellbeing-score-wellbeing-score-module */[__webpack_require__.e("default~calories-calories-module~heart-rate-heart-rate-module~pulse-ox-pulse-ox-module~sleep-sleep-m~4bb81c00"), __webpack_require__.e("wellbeing-score-wellbeing-score-module")]).then(__webpack_require__.bind(null, /*! ./wellbeing-score/wellbeing-score.module */ "./src/app/wellbeing-score/wellbeing-score.module.ts")).then(m => m.WellbeingScorePageModule)
-    },
-    {
-        path: 'details',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-details-details-module */ "pages-details-details-module").then(__webpack_require__.bind(null, /*! ./pages/details/details.module */ "./src/app/pages/details/details.module.ts")).then(m => m.DetailsPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -611,17 +607,7 @@ let AppComponent = class AppComponent {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
             this.fcmService.initPush();
-            /* this.fcm.onNotification().subscribe(data => {
-               if (data.wasTapped) {
-                 console.log('Received in background');
-               } else {
-                 console.log('Received in foreground');
-               }
-             });*/
         });
-    }
-    unsubscribeFromTopic() {
-        this.fcm.unsubscribeFromTopic('enappd');
     }
 };
 AppComponent.ctorParameters = () => [
@@ -860,8 +846,8 @@ let FcmService = class FcmService {
         }
     }
     registerPush() {
-        PushNotifications.requestPermission().then((permission) => {
-            if (permission.granted) {
+        PushNotifications.requestPermission().then(result => {
+            if (result.granted) {
                 // Register with Apple / Google to receive push via APNS/FCM
                 PushNotifications.register();
             }
@@ -870,20 +856,16 @@ let FcmService = class FcmService {
             }
         });
         PushNotifications.addListener('registration', (token) => {
-            console.log('My token: ' + JSON.stringify(token));
+            console.log('My token: ' + JSON.stringify(token.value));
         });
         PushNotifications.addListener('registrationError', (error) => {
             console.log('Error: ' + JSON.stringify(error));
         });
         PushNotifications.addListener('pushNotificationReceived', (notification) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            console.log('Push received: ' + JSON.stringify(notification));
+            alert(JSON.stringify(notification.body));
         }));
         PushNotifications.addListener('pushNotificationActionPerformed', (notification) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            const data = notification.notification.data;
             console.log('Action performed: ' + JSON.stringify(notification.notification));
-            if (data.detailsId) {
-                this.router.navigateByUrl(`/tabs/home/${data.detailsId}`);
-            }
         }));
     }
 };

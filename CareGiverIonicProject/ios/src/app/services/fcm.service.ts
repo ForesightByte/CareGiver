@@ -24,8 +24,8 @@ export class FcmService {
   }
  
   private registerPush() {
-    PushNotifications.requestPermission().then((permission) => {
-      if (permission.granted) {
+    PushNotifications.requestPermission().then(result => {
+      if (result.granted) {
         // Register with Apple / Google to receive push via APNS/FCM
         PushNotifications.register();
       } else {
@@ -36,7 +36,7 @@ export class FcmService {
     PushNotifications.addListener(
       'registration',
       (token: PushNotificationToken) => {
-        console.log('My token: ' + JSON.stringify(token));
+        console.log('My token: ' + JSON.stringify(token.value));
       }
     );
  
@@ -47,18 +47,14 @@ export class FcmService {
     PushNotifications.addListener(
       'pushNotificationReceived',
       async (notification: PushNotification) => {
-        console.log('Push received: ' + JSON.stringify(notification));
+        alert(JSON.stringify(notification.body));
       }
     );
  
     PushNotifications.addListener(
       'pushNotificationActionPerformed',
       async (notification: PushNotificationActionPerformed) => {
-        const data = notification.notification.data;
         console.log('Action performed: ' + JSON.stringify(notification.notification));
-        if (data.detailsId) {
-          this.router.navigateByUrl(`/tabs/home/${data.detailsId}`);
-        }
       }
     );
   }

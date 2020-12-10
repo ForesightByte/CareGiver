@@ -547,10 +547,6 @@ var routes = [
     {
         path: 'wellbeing-score',
         loadChildren: function () { return Promise.all(/*! import() | wellbeing-score-wellbeing-score-module */[__webpack_require__.e("default~calories-calories-module~heart-rate-heart-rate-module~pulse-ox-pulse-ox-module~sleep-sleep-m~4bb81c00"), __webpack_require__.e("wellbeing-score-wellbeing-score-module")]).then(__webpack_require__.bind(null, /*! ./wellbeing-score/wellbeing-score.module */ "./src/app/wellbeing-score/wellbeing-score.module.ts")).then(function (m) { return m.WellbeingScorePageModule; }); }
-    },
-    {
-        path: 'details',
-        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-details-details-module */ "pages-details-details-module").then(__webpack_require__.bind(null, /*! ./pages/details/details.module */ "./src/app/pages/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -621,17 +617,7 @@ var AppComponent = /** @class */ (function () {
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
             _this.fcmService.initPush();
-            /* this.fcm.onNotification().subscribe(data => {
-               if (data.wasTapped) {
-                 console.log('Received in background');
-               } else {
-                 console.log('Received in foreground');
-               }
-             });*/
         });
-    };
-    AppComponent.prototype.unsubscribeFromTopic = function () {
-        this.fcm.unsubscribeFromTopic('enappd');
     };
     AppComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
@@ -885,8 +871,8 @@ var FcmService = /** @class */ (function () {
     };
     FcmService.prototype.registerPush = function () {
         var _this = this;
-        PushNotifications.requestPermission().then(function (permission) {
-            if (permission.granted) {
+        PushNotifications.requestPermission().then(function (result) {
+            if (result.granted) {
                 // Register with Apple / Google to receive push via APNS/FCM
                 PushNotifications.register();
             }
@@ -895,25 +881,20 @@ var FcmService = /** @class */ (function () {
             }
         });
         PushNotifications.addListener('registration', function (token) {
-            console.log('My token: ' + JSON.stringify(token));
+            console.log('My token: ' + JSON.stringify(token.value));
         });
         PushNotifications.addListener('registrationError', function (error) {
             console.log('Error: ' + JSON.stringify(error));
         });
         PushNotifications.addListener('pushNotificationReceived', function (notification) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                console.log('Push received: ' + JSON.stringify(notification));
+                alert(JSON.stringify(notification.body));
                 return [2 /*return*/];
             });
         }); });
         PushNotifications.addListener('pushNotificationActionPerformed', function (notification) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-            var data;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                data = notification.notification.data;
                 console.log('Action performed: ' + JSON.stringify(notification.notification));
-                if (data.detailsId) {
-                    this.router.navigateByUrl("/tabs/home/" + data.detailsId);
-                }
                 return [2 /*return*/];
             });
         }); });

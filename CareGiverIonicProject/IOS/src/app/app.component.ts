@@ -28,18 +28,6 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.fcmService.initPush();
-      
-     /* this.fcm.onNotification().subscribe(data => {
-        if (data.wasTapped) {
-          console.log('Received in background');
-        } else {
-          console.log('Received in foreground');
-        }
-      });*/
     });
   }
-
-  unsubscribeFromTopic() {
-    this.fcm.unsubscribeFromTopic('enappd');
-   }
 }
