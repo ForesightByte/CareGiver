@@ -9,12 +9,7 @@
 
       <ion-tab-button routerLink="/resource" routerDirection="root">
         <ion-icon md="md-information-circle"></ion-icon>
-        <ion-label class="tabBar">Resource</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button routerLink="/kp" routerDirection="root">
-        <ion-icon md="md-medkit"></ion-icon>
-        <ion-label class="tabBar">KP</ion-label>
+        <ion-label class="tabBar">Resources</ion-label>
       </ion-tab-button>
 
       <ion-tab-button routerLink="/home" routerDirection="root" (click)="popAlert()">
@@ -24,7 +19,7 @@
 
       <ion-tab-button routerLink="/ema" routerDirection="root">
         <ion-icon md="md-document"></ion-icon>
-        <ion-label class="tabBar">W.CheckIn</ion-label>
+        <ion-label class="tabBar">WB Check in</ion-label>
       </ion-tab-button>
 
     </ion-tab-bar>
@@ -54,11 +49,11 @@
         <ion-button class="actionbutton" expand="block" color="#20438d" style="max-width: 465px;"
                     (click)="log.login()">Log In
         </ion-button>
-        <!--<ion-button class="forgotbutton" fill="clear" style="font-size:10px; padding-bottom:20px;
+        <ion-button class="forgotbutton" fill="clear" style="font-size:15px; padding-bottom:20px;
                             color:lavender;margin-left:10px; text-transform:none; color:#ffbf6c;"
                     routerLink="/reset-password" routerDirection="root">
           Forgot password ?
-        </ion-button>-->
+        </ion-button>
       </ion-grid>
       <!--<ion-grid style="max-width: 465px;">
           <ion-row>

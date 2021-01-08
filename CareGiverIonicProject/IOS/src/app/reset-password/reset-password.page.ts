@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {Router} from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 import {AuthService} from '../auth.service';
 import {LoginComponent} from '../login/login.component';
@@ -25,9 +26,10 @@ export class ResetPasswordPage implements OnInit {
 
   resetPassword(email) {
     if (this.Auth.authenticated) {
+      alert('Password reset link has sent to your email')
       return this.log.resetPassword(this.email);
     } else {
-      return console.log('Error! The email id is not recorded');
+      return alert('Error! The email id is not recorded');
     }
   }
 }
