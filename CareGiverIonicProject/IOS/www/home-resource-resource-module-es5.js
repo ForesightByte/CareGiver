@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button [routerLink]=\"['/tabs/home']\" style=\"color: white;\">Back</ion-button>\n    </ion-buttons>\n    <ion-title style=\"text-align: center;\">Resource page</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item><b class=\"zip\">Enter Zip Code:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n    <ion-input [(ngModel)]= 'zip_code' placeholder=\"zip_code\"></ion-input>\n  </ion-item>\n\n  <ion-item><b class=\"zip\">Select Place:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n    <ion-select interface=\"popover\" placeholder=\"Select Place\" [(ngModel)]=\"placeToSearch\">\n      <ion-select-option value=\"pharmacy,drugstore\">Pharmacy</ion-select-option>\n      <ion-select-option value=\"hospital\">Hospital</ion-select-option>\n      <ion-select-option value=\"social security office\">Social security office</ion-select-option>\n    </ion-select>\n  </ion-item>\n  <section>\n    <ion-button (click)=\"zipToLocation()\" color=\"rgb(7, 156, 161)\"\n                style=\"background-color: rgb(7, 156, 161); margin-left: 25px;\">Search\n    </ion-button>\n  </section>\n  <ion-list class=\"zip\">\n    <ion-list-header>\n      <h1>Places Nearby</h1>\n    </ion-list-header>\n\n    <ion-item *ngFor=\"let place of placesResult\">\n      <ion-label>\n        <h2>Name:     {{place.name}}</h2>\n        <h3>Status:   {{place.business_status}}</h3>\n        <h3>Rating:   {{place.rating}}</h3>\n        <h3>Vicinity: {{place.vicinity}}</h3>\n      </ion-label>\n    </ion-item>\n\n  </ion-list>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\" class=\"back\">\n      <ion-button [routerLink]=\"['/tabs/home']\" style=\"color: white;\">Back</ion-button>\n    </ion-buttons>\n    <ion-title style=\"text-align: center;\">Resources page</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid class=\"outside\">\n    <ion-card>\n      <ion-grid class=\"inside\">\n      <ion-buttons>\n      <ion-button [routerLink]=\"['/nearby']\" class=\"middle\">Find your nearby</ion-button>\n      </ion-buttons><br>\n      <ion-buttons>\n      <ion-button [routerLink]=\"['/kp']\" class=\"middle\">Knowledge Portal</ion-button>\n      </ion-buttons>\n    </ion-grid>\n    </ion-card>\n  </ion-grid>\n</ion-content>\n"
 
 /***/ }),
 
@@ -103,7 +103,7 @@ var ResourcePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-content {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n  color: white;\n}\n\nion-item {\n  --background: rgba(255, 255, 255, 0);\n  color: black;\n}\n\nion-list {\n  background: rgba(255, 255, 255, 0);\n}\n\n.zip {\n  padding-left: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Wb2x1bWVzL0lvbmljUHJvamVjdC9DYXJlR2l2ZXIvQ2FyZUdpdmVySW9uaWNQcm9qZWN0L2lvcy9zcmMvYXBwL2hvbWUvcmVzb3VyY2UvcmVzb3VyY2UucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL3Jlc291cmNlL3Jlc291cmNlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG1CQUFBO0FDQ0Y7O0FERUE7RUFDRSw4QkFBQTtFQUNBLFlBQUE7QUNDRjs7QURFQTtFQUNFLG9DQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREVBO0VBQ0Usa0NBQUE7QUNDRjs7QURFQTtFQUNFLGtCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9ob21lL3Jlc291cmNlL3Jlc291cmNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTsgLy8gdXJsKC4uLy4uLy4uL2Fzc2V0cy9yZXNvdXJjZXMuanBnKSAwIDAvMTAwJSAxMDAlIHJlcGVhdDtcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHJnYig3LCAxNTYsIDE2MSk7IC8vIHVybCguLi8uLi8uLi9hc3NldHMvdG9vbGJhci5qcGcpIDAgMC8xMDAlIDEwMCUgcmVwZWF0O1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDApO1xuICBjb2xvcjogcmdiKDAsIDAsIDApO1xufVxuXG5pb24tbGlzdCB7XG4gIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7XG59XG5cbi56aXB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn0iLCJpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG59XG5cbmlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2IoNywgMTU2LCAxNjEpO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDApO1xuICBjb2xvcjogYmxhY2s7XG59XG5cbmlvbi1saXN0IHtcbiAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwKTtcbn1cblxuLnppcCB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn0iXX0= */"
+module.exports = "ion-content {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n  color: white;\n}\n\nion-card {\n  background-color: #eff0aa;\n  height: 300px;\n  width: 300px;\n}\n\n.outside {\n  display: grid;\n  -webkit-box-pack: center;\n          justify-content: center;\n  align-content: center;\n  color: black;\n  font-size: large;\n  padding-top: 30%;\n}\n\n.inside {\n  display: grid;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  color: black;\n  font-size: large;\n  padding-top: 25%;\n}\n\n.middle {\n  background-color: #079ca1;\n  color: white;\n  width: 220px;\n  height: 60px;\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Wb2x1bWVzL0RldmVsb3BtZW50L0NhcmVHaXZlci9DYXJlR2l2ZXJJb25pY1Byb2plY3QvSU9TL3NyYy9hcHAvaG9tZS9yZXNvdXJjZS9yZXNvdXJjZS5wYWdlLnNjc3MiLCJzcmMvYXBwL2hvbWUvcmVzb3VyY2UvcmVzb3VyY2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7QUNDRjs7QURFQTtFQUNFLDhCQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREVBO0VBQ0MseUJBQUE7RUFDQSxhQUFBO0VBQ0EsWUFBQTtBQ0NEOztBREVBO0VBQ0UsYUFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7RUFDQSxxQkFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxhQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtBQ0VGOztBRENBO0VBQ0UseUJBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtBQ0VGIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9yZXNvdXJjZS9yZXNvdXJjZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7IC8vIHVybCguLi8uLi8uLi9hc3NldHMvcmVzb3VyY2VzLmpwZykgMCAwLzEwMCUgMTAwJSByZXBlYXQ7XG59XG5cbmlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2IoNywgMTU2LCAxNjEpOyAvLyB1cmwoLi4vLi4vLi4vYXNzZXRzL3Rvb2xiYXIuanBnKSAwIDAvMTAwJSAxMDAlIHJlcGVhdDtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG5pb24tY2FyZHtcbiBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjM5LCAyNDAsIDE3MCk7XG4gaGVpZ2h0OiAzMDBweDtcbiB3aWR0aDogMzAwcHg7XG59XG5cbi5vdXRzaWRle1xuICBkaXNwbGF5OiBncmlkO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xuICBjb2xvcjogYmxhY2s7XG4gIGZvbnQtc2l6ZTogbGFyZ2U7XG4gIHBhZGRpbmctdG9wOiAzMCU7XG59XG4uaW5zaWRle1xuICBkaXNwbGF5OiBncmlkO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgY29sb3I6IGJsYWNrO1xuICBmb250LXNpemU6IGxhcmdlO1xuICBwYWRkaW5nLXRvcDogMjUlO1xufVxuXG4ubWlkZGxle1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoNywgMTU2LCAxNjEpOyBcbiAgY29sb3I6IHdoaXRlO1xuICB3aWR0aDogMjIwcHg7XG4gIGhlaWdodDogNjBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufSIsImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHJnYig3LCAxNTYsIDE2MSk7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuaW9uLWNhcmQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWZmMGFhO1xuICBoZWlnaHQ6IDMwMHB4O1xuICB3aWR0aDogMzAwcHg7XG59XG5cbi5vdXRzaWRlIHtcbiAgZGlzcGxheTogZ3JpZDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbiAgY29sb3I6IGJsYWNrO1xuICBmb250LXNpemU6IGxhcmdlO1xuICBwYWRkaW5nLXRvcDogMzAlO1xufVxuXG4uaW5zaWRlIHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGNvbG9yOiBibGFjaztcbiAgZm9udC1zaXplOiBsYXJnZTtcbiAgcGFkZGluZy10b3A6IDI1JTtcbn1cblxuLm1pZGRsZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwNzljYTE7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgd2lkdGg6IDIyMHB4O1xuICBoZWlnaHQ6IDYwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn0iXX0= */"
 
 /***/ }),
 
@@ -119,83 +119,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResourcePage", function() { return ResourcePage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
 
 
 var ResourcePage = /** @class */ (function () {
-    function ResourcePage(http) {
-        this.placesResult = [{ name: 'Empty List.' }];
-        this.httpClient = http;
+    function ResourcePage() {
     }
     ResourcePage.prototype.ngOnInit = function () {
     };
-    ResourcePage.prototype.getPlacesNearby = function (url) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var proxyurl, result;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        proxyurl = 'https://cors-anywhere.herokuapp.com/';
-                        return [4 /*yield*/, fetch(proxyurl + url)];
-                    case 1:
-                        result = _a.sent();
-                        return [4 /*yield*/, result.json()];
-                    case 2: // https://cors-anywhere.herokuapp.com/https://example.com
-                    return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    ResourcePage.prototype.searchByZipcode = function (location) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var zipcode, url, placesFromSearch;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!(location && this.placeToSearch)) return [3 /*break*/, 2];
-                        zipcode = location;
-                        console.log('zip', zipcode);
-                        url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + zipcode + '&rankby=distance&type=' + this.placeToSearch + '&keyword=' + this.placeToSearch + '&key=AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk';
-                        return [4 /*yield*/, this.getPlacesNearby(url)];
-                    case 1:
-                        placesFromSearch = _a.sent();
-                        if (String(placesFromSearch.status) === 'OK') {
-                            this.placesResult = placesFromSearch.results.length > 0 ? placesFromSearch.results : [{ name: 'Got zero result.' }];
-                            console.log(this.placesResult);
-                        }
-                        else {
-                            this.placesResult = [{ name: 'Got No result.' }];
-                        }
-                        _a.label = 2;
-                    case 2: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ResourcePage.prototype.zipToLocation = function () {
-        var _this = this;
-        var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.zip_code + '&key=AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk';
-        fetch(url).then(function (res) { return res.json(); })
-            .then(function (res) {
-            var objectData = [];
-            objectData.push(res);
-            var geo = objectData[0].results[0].geometry.location;
-            var location = geo.lat + ',' + geo.lng;
-            console.log('location', location);
-            _this.searchByZipcode(location);
-        });
-    };
-    ResourcePage.ctorParameters = function () { return [
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-    ]; };
     ResourcePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-resource',
             template: __webpack_require__(/*! raw-loader!./resource.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/resource/resource.page.html"),
             styles: [__webpack_require__(/*! ./resource.page.scss */ "./src/app/home/resource/resource.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], ResourcePage);
     return ResourcePage;
 }());

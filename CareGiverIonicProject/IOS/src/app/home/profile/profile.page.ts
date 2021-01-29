@@ -29,6 +29,10 @@ export class ProfilePage implements OnInit {
     console.log(uid);
   }
 
+  profileEdit() {
+    this.router.navigate(['/profile-edit']);
+  }
+
   ngOnInit() {
   }
 

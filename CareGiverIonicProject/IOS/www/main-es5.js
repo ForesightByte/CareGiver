@@ -451,6 +451,17 @@ module.exports = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-ap
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/login/login.component.html":
+/*!**********************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/login/login.component.html ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--asdf-->\n"
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -475,7 +486,7 @@ var routes = [
     },
     {
         path: '',
-        loadChildren: function () { return Promise.all(/*! import() | home-tabs-tabs-module */[__webpack_require__.e("default~home-profile-profile-module~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("default~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("home-tabs-tabs-module")]).then(__webpack_require__.bind(null, /*! ./home/tabs/tabs.module */ "./src/app/home/tabs/tabs.module.ts"))
+        loadChildren: function () { return __webpack_require__.e(/*! import() | home-tabs-tabs-module */ "home-tabs-tabs-module").then(__webpack_require__.bind(null, /*! ./home/tabs/tabs.module */ "./src/app/home/tabs/tabs.module.ts"))
             .then(function (m) { return m.TabsPageModule; }); }
     },
     {
@@ -485,7 +496,7 @@ var routes = [
     },
     {
         path: 'reset-password',
-        loadChildren: function () { return Promise.all(/*! import() | reset-password-reset-password-module */[__webpack_require__.e("default~home-profile-profile-module~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("default~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("reset-password-reset-password-module")]).then(__webpack_require__.bind(null, /*! ./reset-password/reset-password.module */ "./src/app/reset-password/reset-password.module.ts"))
+        loadChildren: function () { return __webpack_require__.e(/*! import() | reset-password-reset-password-module */ "reset-password-reset-password-module").then(__webpack_require__.bind(null, /*! ./reset-password/reset-password.module */ "./src/app/reset-password/reset-password.module.ts"))
             .then(function (m) { return m.ResetPasswordPageModule; }); }
     },
     {
@@ -502,7 +513,7 @@ var routes = [
     },
     {
         path: 'profile',
-        loadChildren: function () { return Promise.all(/*! import() | home-profile-profile-module */[__webpack_require__.e("default~home-profile-profile-module~home-tabs-tabs-module~reset-password-reset-password-module"), __webpack_require__.e("default~home-home-module~home-profile-profile-module"), __webpack_require__.e("home-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./home/profile/profile.module */ "./src/app/home/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | home-profile-profile-module */[__webpack_require__.e("default~home-home-module~home-profile-profile-module"), __webpack_require__.e("home-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./home/profile/profile.module */ "./src/app/home/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
     },
     {
         path: 'settings',
@@ -547,6 +558,10 @@ var routes = [
     {
         path: 'wellbeing-score',
         loadChildren: function () { return Promise.all(/*! import() | wellbeing-score-wellbeing-score-module */[__webpack_require__.e("default~calories-calories-module~heart-rate-heart-rate-module~pulse-ox-pulse-ox-module~sleep-sleep-m~4bb81c00"), __webpack_require__.e("wellbeing-score-wellbeing-score-module")]).then(__webpack_require__.bind(null, /*! ./wellbeing-score/wellbeing-score.module */ "./src/app/wellbeing-score/wellbeing-score.module.ts")).then(function (m) { return m.WellbeingScorePageModule; }); }
+    },
+    {
+        path: 'nearby',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | home-nearby-nearby-module */ "home-nearby-nearby-module").then(__webpack_require__.bind(null, /*! ./home/nearby/nearby.module */ "./src/app/home/nearby/nearby.module.ts")).then(function (m) { return m.NearbyPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -675,6 +690,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+
 
 
 
@@ -724,7 +741,8 @@ var AppModule = /** @class */ (function () {
                 },
                 _user_service__WEBPACK_IMPORTED_MODULE_16__["UserService"],
                 _auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"],
-                _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_19__["FCM"]
+                _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_19__["FCM"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_20__["LoginComponent"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
@@ -837,6 +855,167 @@ var firebaseConfig = {
 };
 // tslint:disable-next-line: semicolon
 /* harmony default export */ __webpack_exports__["default"] = (firebaseConfig);
+
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.scss":
+/*!********************************************!*\
+  !*** ./src/app/login/login.component.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/login/login.component.ts ***!
+  \******************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(afAuth, afStore, alert, userS) {
+        this.afAuth = afAuth;
+        this.afStore = afStore;
+        this.alert = alert;
+        this.userS = userS;
+        this.email = '';
+        this.password = null;
+    }
+    LoginComponent.prototype.ngOnInit = function () {
+    };
+    // this is function for login with email and password
+    LoginComponent.prototype.login = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _a, email, password, res, error_1;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this, email = _a.email, password = _a.password;
+                        _b.label = 1;
+                    case 1:
+                        _b.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.afAuth.auth.signInWithEmailAndPassword(email, password)];
+                    case 2:
+                        res = _b.sent();
+                        if (res.user) {
+                            console.log('Ok');
+                        }
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_1 = _b.sent();
+                        console.dir(error_1);
+                        this.showAlert('Error', error_1.message);
+                        if (error_1.code === 'auth/user-not-found') {
+                            console.log(error_1);
+                            this.showAlert('Error', error_1.message);
+                        }
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    // This google() function is for sign in with google
+    LoginComponent.prototype.google = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var provider, credential;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        provider = new firebase__WEBPACK_IMPORTED_MODULE_6__["auth"].GoogleAuthProvider();
+                        return [4 /*yield*/, this.afAuth.auth.signInWithPopup(provider)];
+                    case 1:
+                        credential = _a.sent();
+                        if (credential.user) {
+                            this.updateUserData(credential.user);
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    // store data in firestore
+    LoginComponent.prototype.updateUserData = function (_a) {
+        var uid = _a.uid, email = _a.email, displayName = _a.displayName, photoURL = _a.photoURL;
+        var userRef = this.afStore.doc("users/" + uid);
+        var data = {
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL
+        };
+        return userRef.set(data, { merge: true });
+    };
+    // send link to reset password
+    LoginComponent.prototype.resetPassword = function (email) {
+        firebase__WEBPACK_IMPORTED_MODULE_6__["auth"]().sendPasswordResetEmail(email);
+        console.log('Reset Password link has been sent');
+        this.showAlert('Link', 'Reset Password link has been sent');
+    };
+    // pop up alert message
+    LoginComponent.prototype.showAlert = function (header, message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        alert = this.alert.create({
+                            header: header,
+                            message: message,
+                            buttons: ['OK']
+                        });
+                        return [4 /*yield*/, alert];
+                    case 1: return [4 /*yield*/, (_a.sent()).present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    LoginComponent.ctorParameters = function () { return [
+        { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"] },
+        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] },
+        { type: _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"] }
+    ]; };
+    LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/index.js!./src/app/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.scss */ "./src/app/login/login.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"],
+            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"],
+            _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
 
 
 /***/ }),
@@ -1101,7 +1280,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/IonicProject/CareGiver/CareGiverIonicProject/ios/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Volumes/Development/CareGiver/CareGiverIonicProject/IOS/src/main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -68,7 +68,7 @@ export class StepsPage implements OnInit {
           this.totalSteps = sortedDataSet[0].steps;
           this.activityType = sortedDataSet[0].activityType;
           this.calendarDate = sortedDataSet[0].calendarDate;
-          this.distanceInMeters = sortedDataSet[0].distanceInMeters;
+          this.distanceInMeters = Number((sortedDataSet[0].distanceInMeters * 0.000621).toFixed(2));
           this.stepsGoal = sortedDataSet[0].stepsGoal;
         }
       });

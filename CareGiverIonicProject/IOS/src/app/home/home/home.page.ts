@@ -23,19 +23,19 @@ export class HomePage implements OnInit {
   scoreColor = 'red';
   defaultColor = 'rgba(0, 0, 0, 0.200)';
 
-  todayScore: number;
+  todayScore;
   colorZone;
   coloredDial;
   wellbeingQual;
   wellbeingTextColor;
   dialRotation;
 
-  ystScore: number;
+  ystScore;
   yesterdayZone;
   yesterdayClass;
   yesterdayTextColor;
 
-  avgScore: number;
+  avgScore
   averageZone;
   averageClass;
   averageTextColor;
@@ -73,8 +73,8 @@ export class HomePage implements OnInit {
       if (user) {
         if (user.wellbeingScore) {
           tempScore = user.wellbeingScore;
-        } else { tempScore = 0; }
-      } else { tempScore = 0; }
+        } else { tempScore = 'Null'; }
+      } else { tempScore = 'Null'; }
       this.todayScore = tempScore;
       this.colorZone = this.todayScore >= 100 ? 4 :
           Math.floor(this.todayScore / 20);
@@ -122,14 +122,14 @@ export class HomePage implements OnInit {
         handler: () => {
           return this.router.navigate(['./profile']);
         }
-      }, {
+      }, /* {
         text: 'Settings',
         role: 'settings',
         icon: 'settings',
         handler: () => {
           return this.router.navigate(['./settings']);
         }
-      }, {
+      },*/ {
         text: 'Sign Out',
         icon: 'power',
         handler: () => {
