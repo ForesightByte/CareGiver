@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-button [routerLink]="['/profile']" style="color: white;">Back</ion-button>
     </ion-buttons>
     <ion-title>Edit Profile</ion-title>
     <ion-button slot="end" fill="solid" color="#ffffff" (click)="createProfile()">
@@ -51,12 +51,12 @@
             <ion-input type="number" autocapitalize="on" required="true" [(ngModel)]="age"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <!--ion-item>
             <ion-label floating>Skills:</ion-label>
             <ion-textarea type="text" autocapitalize="word"
                           [(ngModel)]="skills" required="true">
             </ion-textarea>
-          </ion-item>
+          </ion-item-->
         </ion-list>
       </ion-card-content>
 

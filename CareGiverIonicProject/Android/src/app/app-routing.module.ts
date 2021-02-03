@@ -81,6 +81,10 @@ const routes: Routes = [
   {
     path: 'wellbeing-score',
     loadChildren: () => import('./wellbeing-score/wellbeing-score.module').then(m => m.WellbeingScorePageModule)
+  },
+  {
+    path: 'nearby',
+    loadChildren: () => import('./home/nearby/nearby.module').then( m => m.NearbyPageModule)
   }
 
 ];

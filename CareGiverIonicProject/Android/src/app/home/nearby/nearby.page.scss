@@ -1,0 +1,21 @@
+ion-content {
+    --background: white; // url(../../../assets/resources.jpg) 0 0/100% 100% repeat;
+  }
+  
+  ion-toolbar {
+    --background: rgb(7, 156, 161); // url(../../../assets/toolbar.jpg) 0 0/100% 100% repeat;
+    color: white;
+  }
+  
+  ion-item {
+    --background: rgba(255, 255, 255, 0);
+    color: rgb(0, 0, 0);
+  }
+  
+  ion-list {
+    background: rgba(255, 255, 255, 0);
+  }
+  
+  .zip{
+    padding-left: 10px;
+  }

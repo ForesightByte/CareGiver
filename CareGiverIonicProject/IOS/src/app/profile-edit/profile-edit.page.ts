@@ -98,7 +98,7 @@ export class ProfileEditPage implements OnInit {
      // photoURL
     };
     uProfile.update(data);
-    this.router.navigate(['/settings']);
+    this.router.navigate(['/profile']);
   }
 
 }

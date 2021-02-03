@@ -14,8 +14,7 @@ import {LoginComponent} from 'src/app/login/login.component';
     IonicModule,
     TabsPageRoutingModule
   ],
-  declarations: [TabsPage],
-  providers: [LoginComponent]
+  declarations: [TabsPage, LoginComponent]
 })
 export class TabsPageModule {
 }

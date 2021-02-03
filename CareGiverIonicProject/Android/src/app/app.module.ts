@@ -22,6 +22,7 @@ import {AuthService} from './auth.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {FCM} from '@ionic-native/fcm/ngx';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,7 +49,8 @@ import {FCM} from '@ionic-native/fcm/ngx';
     },
     UserService,
     AuthService,
-    FCM
+    FCM,
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })

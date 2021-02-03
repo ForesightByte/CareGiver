@@ -45,14 +45,14 @@ export class HomePage implements OnInit {
     this.data.type = 'message';
     this.data.displayName = this.displayName;
 
-    const joinData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
+    /*const joinData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
     joinData.set({
       type: 'join',
       user: this.displayName,
       message: this.displayName + ' has joined this room.',
       sendDate: Date()
     });
-    this.data.message = '';
+    this.data.message = '';*/
 
     firebase.database().ref('chatrooms/' + this.roomkey + '/chats').on('value', resp => {
       this.chats = [];
@@ -81,7 +81,7 @@ export class HomePage implements OnInit {
   }
 
   exitChat() {
-    const exitData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
+    /*const exitData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
     exitData.set({
       type: 'exit',
       user: this.displayName,
@@ -94,8 +94,8 @@ export class HomePage implements OnInit {
       queryParams: {
         displayName: this.displayName
       }
-    };
-    this.router.navigate(['/'], navExtras);
+    };*/
+    this.router.navigate(['/']);
   }
 
 }

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-button [routerLink]="['/tabs/relax']" style="color: white;">Back</ion-button>
     </ion-buttons>
-    <ion-title style="text-align: center;">Perma Profiler</ion-title>
+    <ion-title style="text-align: center;">Wellbeing Survey</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Not well</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="helped==20?'dark':'lightblue'"
                         (click)="helpedChange(20)" required="true">
@@ -40,7 +40,7 @@
                         (click)="helpedChange(100)" required="true">
           <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Really well</ion-text>
       </ion-row>
     </div>
     <div>
@@ -48,7 +48,7 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Not well</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="loved==20?'dark':'lightblue'"
                         (click)="lovedChange(20)" required="true">
@@ -74,7 +74,7 @@
                         (click)="lovedChange(100)" required="true">
           <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Really well</ion-text>
       </ion-row>
     </div>
     <div>
@@ -82,7 +82,7 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Not well</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="satisfied==20?'dark':'lightblue'"
                         (click)="satisfiedChange(20)" required="true">
@@ -108,7 +108,7 @@
                         (click)="satisfiedChange(100)" required="true">
           <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Really well</ion-text>
       </ion-row>
     </div>
     <div>
@@ -116,7 +116,7 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Not well</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="purposeful==20?'dark':'lightblue'"
                         (click)="purposefulChange(20)" required="true">
@@ -142,7 +142,7 @@
                         (click)="purposefulChange(100)" required="true">
           <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Really well</ion-text>
       </ion-row>
     </div>
     <div>
@@ -150,7 +150,7 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Not well</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="valuable==20?'dark':'lightblue'"
                         (click)="valuableChange(20)" required="true">
@@ -176,7 +176,7 @@
                         (click)="valuableChange(100)" required="true">
           <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Really well</ion-text>
       </ion-row>
     </div>
     <div>
@@ -184,7 +184,7 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Not well</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="sense==20?'dark':'lightblue'"
                         (click)="senseChange(20)" required="true">
@@ -210,7 +210,7 @@
                         (click)="senseChange(100)" required="true">
           <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Really well</ion-text>
       </ion-row>
     </div>
     <div>
@@ -218,7 +218,7 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Not well</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="progress==20?'dark':'lightblue'"
                         (click)="prgressChange(20)" required="true">
@@ -244,7 +244,7 @@
                         (click)="prgressChange(100)" required="true">
           <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Really well</ion-text>
       </ion-row>
     </div>
     <div>
@@ -252,7 +252,7 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Not well</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="achieve==20?'dark':'lightblue'"
                         (click)="achieveChange(20)" required="true">
@@ -278,7 +278,7 @@
                         (click)="achieveChange(100)" required="true">
           <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Really well</ion-text>
       </ion-row>
     </div>
     <div>
@@ -286,7 +286,7 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
+        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Not well</ion-text>&nbsp;
         <ion-fab-button size="small" shape="round"
                         [color]="handle==20?'dark':'lightblue'"
                         (click)="handleChange(20)" required="true">
@@ -312,7 +312,7 @@
                         (click)="handleChange(100)" required="true">
           <img class="pic" [src]="ema.one"/>
         </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-text style="font-size: smaller; color:green; padding-top:10px;">Really well</ion-text>
       </ion-row>
     </div>
   </ion-grid>
@@ -320,6 +320,8 @@
 
 <ion-tab-bar>
   <ion-buttons>
-    <ion-button expand="block" fill="clear" style="color: rgb(7, 156, 161);" (click)="submit()">Submit</ion-button>
+    <ion-button expand="block" fill="clear" 
+                style="color: rgb(7, 156, 161); font-size: larger; font: bold;" 
+                (click)="submit()">Submit</ion-button>
   </ion-buttons>
 </ion-tab-bar>

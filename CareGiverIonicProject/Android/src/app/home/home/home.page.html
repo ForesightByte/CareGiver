@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="text-align: center; color: white;">Home</ion-title>
+    <h3 style="text-align: center; color: white;">Home</h3>
     <ion-buttons slot="end" fill="clear" class="menu">
       <ion-button fill="clear" slot="icon-only" (click)="overlap()">
         <img src='../../../assets/menu.png'
@@ -14,12 +14,17 @@
     <ion-card-title *ngIf="displayName">
       <p class="hello"><b>
         Hello {{(displayName |async)}}</b><br>
-        We are together on this with you </p>
+        We are together in this with you </p>
     </ion-card-title>
   </ion-grid>
   <br><br>
-  <ion-grid class="score">  
-    <h3 style="text-align: center; font: bold">Your wellbeing-score</h3>  
+
+  <div *ngIf = "todayScore == 'Null'">
+    <h3 style="text-align: center;">Please complete WB Check In to get your Well-Being Score</h3>
+  </div>
+
+  <ion-grid class="score" *ngIf = "todayScore != 'Null'">  
+    <h3 style="text-align: center; font: bold">Your Well-Being Score</h3>  
     <ion-card-content>
   <div class="overlap" button [routerLink]="['/wellbeing-score']">
     <ion-img
@@ -28,8 +33,8 @@
         [ngStyle]="dialRotation"
     >
     </ion-img>
-    <ion-img class="wheel" [src]="wheel"></ion-img>
-    <div [ngClass]="wellbeingTextColor">{{todayScore}}</div>
+      <ion-img class="wheel" [src]="wheel"></ion-img>
+      <div [ngClass]="wellbeingTextColor">{{todayScore}}</div>
   </div>
   </ion-card-content>
 </ion-grid>

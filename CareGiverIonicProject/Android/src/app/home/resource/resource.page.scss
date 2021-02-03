@@ -7,15 +7,33 @@ ion-toolbar {
   color: white;
 }
 
-ion-item {
-  --background: rgba(255, 255, 255, 0);
-  color: rgb(0, 0, 0);
+ion-card{
+ background-color: rgb(239, 240, 170);
+ height: 300px;
+ width: 300px;
 }
 
-ion-list {
-  background: rgba(255, 255, 255, 0);
+.outside{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  color: black;
+  font-size: large;
+  padding-top: 30%;
+}
+.inside{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: large;
+  padding-top: 25%;
 }
 
-.zip{
-  padding-left: 10px;
+.middle{
+  background-color: rgb(7, 156, 161); 
+  color: white;
+  width: 220px;
+  height: 60px;
+  text-align: center;
 }
