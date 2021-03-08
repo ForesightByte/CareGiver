@@ -21,8 +21,8 @@ export class NearbyPage implements OnInit {
   }
 
   public async getPlacesNearby(url: string): Promise<any> {
-    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    const result = await fetch(proxyurl + url); // https://cors-anywhere.herokuapp.com/https://example.com
+    const proxyurl = 'https://thingproxy.freeboard.io/fetch/';
+    const result = await fetch(proxyurl + url); // https://thingproxy.freeboard.io/fetch/https://example.com
     return await result.json();
   }
 
