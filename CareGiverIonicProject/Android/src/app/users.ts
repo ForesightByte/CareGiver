@@ -15,4 +15,8 @@ export interface Userelement {
   pulseox?: any;
   wellSleep?: string;
   wellbeingScore?: number;
+  steps?: any;
+  sleep?: any;
+  stress?: any;
+  pulseOX?: any;
 }

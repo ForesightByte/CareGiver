@@ -3,6 +3,8 @@ import {UserService} from '../../../user.service';
 import {GarminService} from 'src/app/garmin.service';
 import {Chart} from 'chart.js';
 import {AngularFireAuth} from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-steps',
@@ -20,13 +22,18 @@ export class StepsPage implements OnInit {
   public distanceInMeters: number;
   public stepsGoal: number;
 
+  public uid: string;
   private garminId: string;
 
   constructor(
+    private afStore: AngularFirestore,
+    public auth: AuthService,
     private user: UserService,
     private garmin: GarminService,
     public afAuth: AngularFireAuth) {
     this.firebaseAuth = afAuth;
+    this.uid = auth.cUid;
+    console.log('uid', this.uid);
     this.garminId = this.user.garminId;
     console.log('garminId', this.garminId);
   }
@@ -64,12 +71,20 @@ export class StepsPage implements OnInit {
             }
           });
 
-          console.log('sort 2', sortedDataSet);
           this.totalSteps = sortedDataSet[0].steps;
+          console.log('totalSteps', this.totalSteps);
           this.activityType = sortedDataSet[0].activityType;
           this.calendarDate = sortedDataSet[0].calendarDate;
           this.distanceInMeters = Number((sortedDataSet[0].distanceInMeters * 0.000621).toFixed(2));
           this.stepsGoal = sortedDataSet[0].stepsGoal;
+
+          let steps = 0;
+          if(this.totalSteps > 12500){
+            steps = 100;
+          } else {
+            steps = Number(((steps/12500)*100).toFixed(0));
+          }
+          this.afStore.doc(`users/${this.uid}`).set({steps: steps}, {merge: true});
         }
       });
       // tslint:disable-next-line: only-arrow-functions

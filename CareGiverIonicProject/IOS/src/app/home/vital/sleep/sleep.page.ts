@@ -5,6 +5,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {UserService} from 'src/app/user.service';
 import {GarminService} from 'src/app/garmin.service';
 import {Chart} from 'chart.js';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from 'src/app/auth.service';
 
 const lineColors = ['rgb(38, 194, 129)',
   'rgba(54, 162, 235, 1)',
@@ -35,10 +37,14 @@ export class SleepPage implements OnInit {
     private garminId: string;
 
     constructor(
+      private afStore: AngularFirestore,
+      public auth: AuthService,
       private user: UserService,
       private garmin: GarminService,
       public afAuth: AngularFireAuth) {
         this.firebaseAuth = afAuth;
+        this.uid = auth.cUid;
+        console.log('uid', this.uid);
         this.garminId = this.user.garminId;
         console.log('garminId', this.garminId);
     }
@@ -92,10 +98,37 @@ export class SleepPage implements OnInit {
                       });
                       
                     this.calendarDate = sortedDataSet[0].calendarDate;
+                    const duration = sortedDataSet[0].durationInSeconds;
                     this.totalDuration = this.secondsToHMS(sortedDataSet[0].durationInSeconds);
                     this.lightSleepDuration = this.secondsToHMS(sortedDataSet[0].lightSleepDurationInSeconds);
                     this.deepSleepDuration = this.secondsToHMS(sortedDataSet[0].deepSleepDurationInSeconds);
                     this.remSleepDuration = this.secondsToHMS(sortedDataSet[0].remSleepInSeconds);
+                    
+                    let sleep = 0;
+                    if (duration >= 27000 && duration <= 30600){
+                        sleep = 100;
+                    } else if (duration < 27000 || duration > 30600) {
+                        sleep = 90;
+                    } else if (duration < 23400 || duration > 34200) {
+                        sleep = 80;
+                    } else if (duration < 19800 || duration > 37800) {
+                        sleep = 70;
+                    } else if (duration < 16200 || duration > 41400) {
+                        sleep = 60;
+                    } else if (duration < 12600 || duration > 45000) {
+                        sleep = 50;
+                    } else if (duration < 9000 || duration > 48600) {
+                        sleep = 40;
+                    } else if (duration < 7200 || duration > 50400) {
+                        sleep = 30;
+                    } else if (duration < 5400 || duration > 52200) {
+                        sleep = 20;
+                    } else if (duration < 3600 || duration > 54000) {
+                        sleep = 10;
+                    } else {
+                        sleep = 0;
+                    }
+                    this.afStore.doc(`users/${this.uid}`).set({sleep: sleep}, {merge: true});
                 }
             });
             // tslint:disable-next-line: only-arrow-functions

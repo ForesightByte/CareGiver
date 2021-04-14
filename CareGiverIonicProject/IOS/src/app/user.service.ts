@@ -59,6 +59,7 @@ export class UserService {
     );
   }
 
+  // get wellbeing score from EMA without date
   getEma(uid: string) {
     this.userCollection = this.afStore.collection('users').doc(uid).collection('EMA');
     return this.userCollection.snapshotChanges().pipe(
@@ -72,12 +73,23 @@ export class UserService {
     );
   }
 
+  // get wellbeing score from EMA by date
   getWellScore(uid: string, date: string): Observable<Userelement> {
     console.log(uid, date);
     return this.afStore.collection('users').doc<Userelement>(uid).collection('EMA').doc<Userelement>(date)
     .valueChanges().pipe( take(1), map(user => {
       return user;
     }));
+  }
+
+  // get wellbeing score from home directory
+  getWellbeing(uid: string): Observable<Userelement>{
+    let score;
+    return this.afStore.collection('users').doc<Userelement>(uid)
+    .valueChanges().pipe(take(1), map(user =>{
+      score = user.wellbeingScore;
+      return score;
+    }))
   }
 
   getDisplayname(id: string) {

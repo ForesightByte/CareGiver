@@ -5,6 +5,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {Chart} from 'chart.js';
 import {UserService} from 'src/app/user.service';
 import {GarminService} from 'src/app/garmin.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
     selector: 'app-pulse-ox',
@@ -26,10 +28,14 @@ export class PulseOxPage implements OnInit {
     private garminId: string;
 
     constructor(
+      private afStore: AngularFirestore,
+      public auth: AuthService,
       private user: UserService,
       private garmin: GarminService,
       public afAuth: AngularFireAuth) {
         this.firebaseAuth = afAuth;
+        this.uid = auth.cUid;
+        console.log('uid', this.uid);
         this.garminId = this.user.garminId;
         console.log('garminId', this.garminId);
     }
@@ -87,6 +93,8 @@ export class PulseOxPage implements OnInit {
                     this.calendarDate = sortedDataSet[0].calendarDate;
                     this.durationInSeconds = this.secondsToHMS(sortedDataSet[0].durationInSeconds);
                     this.averageSpLevel = sortedDataSet[0].averageSpLevel;
+                    
+                    this.afStore.doc(`users/${this.uid}`).set({pulseOX: this.averageSpLevel}, {merge: true});
                 }
             });
             // tslint:disable-next-line: only-arrow-functions

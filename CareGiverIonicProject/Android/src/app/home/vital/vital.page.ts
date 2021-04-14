@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from 'src/app/user.service';
 
 @Component({
   selector: 'app-vital',
@@ -7,6 +6,7 @@ import {UserService} from 'src/app/user.service';
   styleUrls: ['./vital.page.scss'],
 })
 export class VitalPage implements OnInit {
+
   steps = '../../../assets/vitals/steps.png';
   heartRate = '../../../assets/vitals/heartRate.png';
   sleep = '../../../assets/vitals/sleep.png';
@@ -14,7 +14,7 @@ export class VitalPage implements OnInit {
   stress = '../../../assets/vitals/stress.png';
   pulseOx = '../../../assets/vitals/pulseOx.png';
 
-  constructor(private user: UserService) {
+  constructor() {
   }
 
   ngOnInit() {

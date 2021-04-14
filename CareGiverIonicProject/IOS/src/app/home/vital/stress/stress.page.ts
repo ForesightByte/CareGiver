@@ -3,6 +3,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {Chart} from 'chart.js';
 import {UserService} from 'src/app/user.service';
 import {GarminService} from 'src/app/garmin.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -21,13 +23,18 @@ export class StressPage implements OnInit {
     public highStressDurationInSeconds: string;
     public mediumStressDurationInSeconds: string;
 
+    public uid: string;
     private garminId: string;
 
     constructor(
+      private afStore: AngularFirestore,
+      public auth: AuthService,
       private user: UserService,
       private garmin: GarminService,
       public afAuth: AngularFireAuth) {
         this.firebaseAuth = afAuth;
+        this.uid = auth.cUid;
+        console.log('uid', this.uid);
         this.garminId = this.user.garminId;
         console.log('garminId', this.garminId);
     }
@@ -71,6 +78,14 @@ export class StressPage implements OnInit {
                     this.stressDurationInSeconds = this.secondsToHMS(sortedDataSet[0].stressDurationInSeconds);
                     this.highStressDurationInSeconds = this.secondsToHMS(sortedDataSet[0].highStressDurationInSeconds);
                     this.mediumStressDurationInSeconds = this.secondsToHMS(sortedDataSet[0].mediumStressDurationInSeconds);
+
+                    let stress = 0;
+                    if(this.averageStressLevel == -1) {
+                        stress = 0;
+                    } else{
+                        stress = this.averageStressLevel;
+                    }
+                    this.afStore.doc(`users/${this.uid}`).set({stress: stress}, {merge: true});
                 }
             });
             // tslint:disable-next-line: only-arrow-functions

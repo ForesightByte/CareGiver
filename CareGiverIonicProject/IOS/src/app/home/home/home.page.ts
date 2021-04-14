@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Userelement} from 'src/app/users';
 import {map, take} from 'rxjs/operators';
+import { GarminService } from 'src/app/garmin.service';
 
 const qualitativeScale = ['Distressing', 'Substandard', 'Ordinary', 'Adequate', 'Impressive'];
 
@@ -30,18 +31,11 @@ export class HomePage implements OnInit {
   wellbeingTextColor;
   dialRotation;
 
-  ystScore;
-  yesterdayZone;
-  yesterdayClass;
-  yesterdayTextColor;
-
-  avgScore
-  averageZone;
-  averageClass;
-  averageTextColor;
-
   assetPath = '../../../assets/chart/';
   wheel: any = '../../../assets/chart/numberedwheel.svg';
+
+  private garminId: string;
+  private testGlobal: any;
 
   constructor(
     private router: Router,
@@ -49,19 +43,29 @@ export class HomePage implements OnInit {
     public afAuth: AngularFireAuth,
     public auth: AuthService,
     public user: UserService,
-    public actionSheetController: ActionSheetController) {
+    public actionSheetController: ActionSheetController,
+    private garmin: GarminService) {
     const uid = this.auth.cUid;
+    this.garminId = this.user.garminId;
     console.log(uid);
     const date = new Date();
     const td = String(date.getDate()).padStart(2, '0');
-    const yd = String(date.getDate() - 1).padStart(2, '0');
     const mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
     const yyyy = date.getFullYear();
     const today = yyyy + '-' + mm + '-' + td;
-    const yesterday = yyyy + '-' + mm + '-' + yd;
 
     this.displayName = this.user.getDisplayname(uid);
     this.getTodayScore(uid);
+  }
+
+  public getAveragePulseox(pulseoxValues: any[]): number {
+    let sum = 0, counter = 0;
+    // tslint:disable-next-line: forin
+    for (const key in pulseoxValues) {
+        sum += Number(pulseoxValues[key]);
+        counter++;
+    }
+    return sum / counter;
   }
 
   ngOnInit() {
@@ -69,28 +73,37 @@ export class HomePage implements OnInit {
 
   getTodayScore(uid) {
     this.user.getUser(uid).subscribe(user => {
-      let tempScore;
+      let tempScore: any;
       if (user) {
         if (user.wellbeingScore) {
-          tempScore = user.wellbeingScore;
+          const wellbeing = user.wellbeingScore;
+          const step = user.steps;
+          const sleep = user.sleep;
+          const stress = user.stress;
+          const pulseOX = user.pulseOX;
+
+          tempScore = Number((0.75 * wellbeing) + (0.25 * ((step+sleep+stress+pulseOX)/4)))
+          console.log('temScore', tempScore);
         } else { tempScore = 'Null'; }
       } else { tempScore = 'Null'; }
-      this.todayScore = tempScore;
-      this.colorZone = this.todayScore >= 100 ? 4 :
-          Math.floor(this.todayScore / 20);
-      this.coloredDial = this.assetPath + 'dial' + this.colorZone + '.svg';
-      this.wellbeingQual = qualitativeScale[this.colorZone];
-      this.wellbeingTextColor = this.colorZone === 4 ? 'white' : 'black';
 
-      this.dialRotation = {
-          transform: `
-            rotate(${(this.todayScore / 100.00) * 300 - 150}deg)
-          `
-        };
-      this.formatSubtitle(this.todayScore);
+    // Donut chart
+    this.todayScore = tempScore;
+    console.log('todayScore', this.todayScore);
+    this.colorZone = this.todayScore >= 100 ? 4 :
+        Math.floor(this.todayScore / 20);
+    this.coloredDial = this.assetPath + 'dial' + this.colorZone + '.svg';
+    this.wellbeingQual = qualitativeScale[this.colorZone];
+    this.wellbeingTextColor = this.colorZone === 4 ? 'white' : 'black';
+
+    this.dialRotation = {
+        transform: `
+          rotate(${(this.todayScore / 100.00) * 300 - 150}deg)
+        `
+      };
+    this.formatSubtitle(this.todayScore);
     });
   }
-
 
   formatSubtitle = (score: number): string => {
     if (score < 20) {

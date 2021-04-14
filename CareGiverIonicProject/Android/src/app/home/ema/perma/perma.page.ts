@@ -33,9 +33,9 @@ export class PermaPage implements OnInit {
     private alert: AlertController,
     public ema: EmaPage) {
     const date = new Date();
-    const dd = String(date.getUTCDate()).padStart(2, '0');
-    const mm = String(date.getUTCMonth() + 1).padStart(2, '0');
-    const yyyy = date.getUTCFullYear();
+    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const yyyy = date.getFullYear();
 
     this.today = yyyy + '-' + mm + '-' + dd;
     this.uid = this.auth.cUid;
