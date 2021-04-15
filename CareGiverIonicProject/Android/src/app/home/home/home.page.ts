@@ -82,7 +82,7 @@ export class HomePage implements OnInit {
           const stress = user.stress;
           const pulseOX = user.pulseOX;
 
-          tempScore = Number((0.75 * wellbeing) + (0.25 * ((step+sleep+stress+pulseOX)/4)))
+          tempScore = Number((0.75 * wellbeing) + (0.25 * ((step+sleep+stress+pulseOX)/4))).toFixed(0);
           console.log('temScore', tempScore);
         } else { tempScore = 'Null'; }
       } else { tempScore = 'Null'; }
