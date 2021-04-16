@@ -53,7 +53,7 @@ export class HomePage implements OnInit {
 
   public getAveragePulseox(pulseoxValues: any[]): number {
     let sum = 0, counter = 0;
-    // tslint:disable-next-line: forin
+    // tslint:disable-next-line: forin;
     for (const key in pulseoxValues) {
         sum += Number(pulseoxValues[key]);
         counter++;
