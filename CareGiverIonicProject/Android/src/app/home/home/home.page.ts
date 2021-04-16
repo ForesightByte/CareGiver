@@ -4,10 +4,8 @@ import {Router} from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {UserService} from '../../user.service';
 import {AuthService} from '../../auth.service';
-import {Observable} from 'rxjs';
+import {interval, Observable, Subscription} from 'rxjs';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {Userelement} from 'src/app/users';
-import {map, take} from 'rxjs/operators';
 import { GarminService } from 'src/app/garmin.service';
 
 const qualitativeScale = ['Distressing', 'Substandard', 'Ordinary', 'Adequate', 'Impressive'];
@@ -19,6 +17,7 @@ const qualitativeScale = ['Distressing', 'Substandard', 'Ordinary', 'Adequate', 
 })
 export class HomePage implements OnInit {
   @ViewChild('lineCanvas', {static: false}) lineCanvas;
+  private updateSubscription: Subscription;
 
   displayName: Observable<any>;
   scoreColor = 'red';
@@ -34,28 +33,24 @@ export class HomePage implements OnInit {
   assetPath = '../../../assets/chart/';
   wheel: any = '../../../assets/chart/numberedwheel.svg';
 
-  private garminId: string;
-  private testGlobal: any;
-
   constructor(
     private router: Router,
-    private afStore: AngularFirestore,
     public afAuth: AngularFireAuth,
     public auth: AuthService,
     public user: UserService,
-    public actionSheetController: ActionSheetController,
-    private garmin: GarminService) {
+    public actionSheetController: ActionSheetController) {
     const uid = this.auth.cUid;
-    this.garminId = this.user.garminId;
     console.log(uid);
-    const date = new Date();
-    const td = String(date.getDate()).padStart(2, '0');
-    const mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
-    const yyyy = date.getFullYear();
-    const today = yyyy + '-' + mm + '-' + td;
+    var count = 0;
 
-    this.displayName = this.user.getDisplayname(uid);
-    this.getTodayScore(uid);
+    this.updateSubscription = interval(1000).subscribe(
+      () => { 
+        count++;
+        if (count <2){
+          this.displayName = this.user.getDisplayname(uid);
+          this.getTodayScore(uid);
+        }
+      });
   }
 
   public getAveragePulseox(pulseoxValues: any[]): number {
