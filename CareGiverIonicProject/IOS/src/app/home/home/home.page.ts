@@ -67,14 +67,25 @@ export class HomePage implements OnInit {
   getTodayScore(uid) {
     this.user.getUser(uid).subscribe(user => {
       let tempScore: any;
+      let step = 0;
+      let sleep = 0;
+      let stress = 0;
+      let pulseOX = 0;
       if (user) {
         if (user.wellbeingScore) {
           const wellbeing = user.wellbeingScore;
-          const step = user.steps;
-          const sleep = user.sleep;
-          const stress = user.stress;
-          const pulseOX = user.pulseOX;
-
+          if (user.steps){
+            step = user.steps;
+          }
+          if (user.sleep){
+            sleep = user.sleep;
+          }
+          if (user.stress){
+            stress = user.stress;
+          }
+          if (user.pulseOX){
+            pulseOX = user.pulseOX;
+          }
           tempScore = Number((0.75 * wellbeing) + (0.25 * ((step+sleep+stress+pulseOX)/4))).toFixed(0);
         } else { tempScore = 'Null'; }
       } else { tempScore = 'Null'; }
