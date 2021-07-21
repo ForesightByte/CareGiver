@@ -30,7 +30,7 @@ export class NearbyPage implements OnInit {
     if (location && this.placeToSearch) {
       const zipcode = location;
       console.log('zip', zipcode);
-      const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + zipcode + '&rankby=distance&type=' + this.placeToSearch + '&keyword=' + this.placeToSearch + '&key=AIzaSyBrkk2S7tZy3HzSZeAudzCFE1JY15HLgug';
+      const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + zipcode + '&rankby=distance&type=' + this.placeToSearch + '&keyword=' + this.placeToSearch + '&key=AIzaSyASG6Rf4ZdWJI7Vcc2xLNcaZGCRa7BQaE0';
       const placesFromSearch = await this.getPlacesNearby(url);
       if (String(placesFromSearch.status) === 'OK') {
         this.placesResult = placesFromSearch.results.length > 0 ? placesFromSearch.results : [{name: 'Got zero result.'}];
@@ -42,7 +42,7 @@ export class NearbyPage implements OnInit {
   }
 
   zipToLocation() {
-    const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.zip_code + '&key=AIzaSyBrkk2S7tZy3HzSZeAudzCFE1JY15HLgug';
+    const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.zip_code + '&key=AIzaSyASG6Rf4ZdWJI7Vcc2xLNcaZGCRa7BQaE0';
     fetch(url).then(res => res.json())
     .then(res => {
       const objectData = [];
