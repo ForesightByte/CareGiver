@@ -147,8 +147,8 @@ var ExtraPage = /** @class */ (function () {
         this.other3 = '';
         var date = new Date();
         var dd = String(date.getDate()).padStart(2, '0');
-        var mm = String(date.getUTCMonth() + 1).padStart(2, '0');
-        var yyyy = date.getUTCFullYear();
+        var mm = String(date.getMonth() + 1).padStart(2, '0');
+        var yyyy = date.getFullYear();
         this.today = yyyy + '-' + mm + '-' + dd;
         this.uid = this.auth.cUid;
         console.log('today', this.today);

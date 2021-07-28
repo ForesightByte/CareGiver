@@ -151,13 +151,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VitalPage", function() { return VitalPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/user.service */ "./src/app/user.service.ts");
-
 
 
 var VitalPage = /** @class */ (function () {
-    function VitalPage(user) {
-        this.user = user;
+    function VitalPage() {
         this.steps = '../../../assets/vitals/steps.png';
         this.heartRate = '../../../assets/vitals/heartRate.png';
         this.sleep = '../../../assets/vitals/sleep.png';
@@ -167,16 +164,13 @@ var VitalPage = /** @class */ (function () {
     }
     VitalPage.prototype.ngOnInit = function () {
     };
-    VitalPage.ctorParameters = function () { return [
-        { type: src_app_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] }
-    ]; };
     VitalPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-vital',
             template: __webpack_require__(/*! raw-loader!./vital.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/vital/vital.page.html"),
             styles: [__webpack_require__(/*! ./vital.page.scss */ "./src/app/home/vital/vital.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], VitalPage);
     return VitalPage;
 }());

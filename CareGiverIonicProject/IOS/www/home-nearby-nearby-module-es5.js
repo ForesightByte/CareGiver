@@ -136,12 +136,12 @@ var NearbyPage = /** @class */ (function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        proxyurl = 'https://cors-anywhere.herokuapp.com/';
+                        proxyurl = 'https://thingproxy.freeboard.io/fetch/';
                         return [4 /*yield*/, fetch(proxyurl + url)];
                     case 1:
                         result = _a.sent();
                         return [4 /*yield*/, result.json()];
-                    case 2: // https://cors-anywhere.herokuapp.com/https://example.com
+                    case 2: // https://thingproxy.freeboard.io/fetch/https://example.com
                     return [2 /*return*/, _a.sent()];
                 }
             });
@@ -156,7 +156,7 @@ var NearbyPage = /** @class */ (function () {
                         if (!(location && this.placeToSearch)) return [3 /*break*/, 2];
                         zipcode = location;
                         console.log('zip', zipcode);
-                        url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + zipcode + '&rankby=distance&type=' + this.placeToSearch + '&keyword=' + this.placeToSearch + '&key=AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk';
+                        url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + zipcode + '&rankby=distance&type=' + this.placeToSearch + '&keyword=' + this.placeToSearch + '&key=AIzaSyASG6Rf4ZdWJI7Vcc2xLNcaZGCRa7BQaE0';
                         return [4 /*yield*/, this.getPlacesNearby(url)];
                     case 1:
                         placesFromSearch = _a.sent();
@@ -175,7 +175,7 @@ var NearbyPage = /** @class */ (function () {
     };
     NearbyPage.prototype.zipToLocation = function () {
         var _this = this;
-        var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.zip_code + '&key=AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk';
+        var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.zip_code + '&key=AIzaSyASG6Rf4ZdWJI7Vcc2xLNcaZGCRa7BQaE0';
         fetch(url).then(function (res) { return res.json(); })
             .then(function (res) {
             var objectData = [];

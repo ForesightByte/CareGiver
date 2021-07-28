@@ -141,6 +141,7 @@ let WellbeingScorePage = class WellbeingScorePage {
             const uid = this.auth.cUid;
             const score = this.user.getEma(uid);
             let wellbeingData;
+            const dailiesDataset = [];
             if (score) {
                 score.subscribe(data => {
                     wellbeingData = data;

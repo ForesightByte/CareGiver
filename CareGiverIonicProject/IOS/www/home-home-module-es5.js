@@ -826,7 +826,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../user.service */ "./src/app/user.service.ts");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../auth.service */ "./src/app/auth.service.ts");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 
 
 
@@ -837,10 +837,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var qualitativeScale = ['Distressing', 'Substandard', 'Ordinary', 'Adequate', 'Impressive'];
 var HomePage = /** @class */ (function () {
-    function HomePage(router, afStore, afAuth, auth, user, actionSheetController) {
+    function HomePage(router, afAuth, auth, user, actionSheetController) {
         var _this = this;
         this.router = router;
-        this.afStore = afStore;
         this.afAuth = afAuth;
         this.auth = auth;
         this.user = user;
@@ -873,25 +872,50 @@ var HomePage = /** @class */ (function () {
         };
         var uid = this.auth.cUid;
         console.log(uid);
-        var date = new Date();
-        var td = String(date.getDate()).padStart(2, '0');
-        var yd = String(date.getDate() - 1).padStart(2, '0');
-        var mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
-        var yyyy = date.getFullYear();
-        var today = yyyy + '-' + mm + '-' + td;
-        var yesterday = yyyy + '-' + mm + '-' + yd;
-        this.displayName = this.user.getDisplayname(uid);
-        this.getTodayScore(uid);
+        var count = 0;
+        this.updateSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["interval"])(1000).subscribe(function (val) {
+            count++;
+            if (count < 2) {
+                _this.displayName = _this.user.getDisplayname(uid);
+                _this.getTodayScore(uid);
+            }
+        });
     }
+    HomePage.prototype.getAveragePulseox = function (pulseoxValues) {
+        var sum = 0, counter = 0;
+        // tslint:disable-next-line: forin;
+        for (var key in pulseoxValues) {
+            sum += Number(pulseoxValues[key]);
+            counter++;
+        }
+        return sum / counter;
+    };
     HomePage.prototype.ngOnInit = function () {
     };
     HomePage.prototype.getTodayScore = function (uid) {
         var _this = this;
         this.user.getUser(uid).subscribe(function (user) {
             var tempScore;
+            var step = 0;
+            var sleep = 0;
+            var stress = 0;
+            var pulseOX = 0;
             if (user) {
                 if (user.wellbeingScore) {
-                    tempScore = user.wellbeingScore;
+                    var wellbeing = user.wellbeingScore;
+                    if (user.steps) {
+                        step = user.steps;
+                    }
+                    if (user.sleep) {
+                        sleep = user.sleep;
+                    }
+                    if (user.stress) {
+                        stress = user.stress;
+                    }
+                    if (user.pulseOX) {
+                        pulseOX = user.pulseOX;
+                    }
+                    tempScore = Number((0.75 * wellbeing) + (0.25 * ((step + sleep + stress + pulseOX) / 4))).toFixed(0);
                 }
                 else {
                     tempScore = 'Null';
@@ -900,6 +924,7 @@ var HomePage = /** @class */ (function () {
             else {
                 tempScore = 'Null';
             }
+            // Donut chart
             _this.todayScore = tempScore;
             _this.colorZone = _this.todayScore >= 100 ? 4 :
                 Math.floor(_this.todayScore / 20);
@@ -907,7 +932,7 @@ var HomePage = /** @class */ (function () {
             _this.wellbeingQual = qualitativeScale[_this.colorZone];
             _this.wellbeingTextColor = _this.colorZone === 4 ? 'white' : 'black';
             _this.dialRotation = {
-                transform: "\n            rotate(" + ((_this.todayScore / 100.00) * 300 - 150) + "deg)\n          "
+                transform: "\n          rotate(" + ((_this.todayScore / 100.00) * 300 - 150) + "deg)\n        "
             };
             _this.formatSubtitle(_this.todayScore);
         });
@@ -950,7 +975,6 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__["AngularFirestore"] },
         { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"] },
         { type: _auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"] },
         { type: _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"] },
@@ -967,7 +991,6 @@ var HomePage = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home/home.page.scss")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__["AngularFirestore"],
             _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"],
             _auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"],
             _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"],

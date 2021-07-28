@@ -139,9 +139,9 @@ var RelaxPage = /** @class */ (function () {
         this.alert = alert;
         this.ema = ema;
         var date = new Date();
-        var dd = String(date.getUTCDate()).padStart(2, '0');
-        var mm = String(date.getUTCMonth() + 1).padStart(2, '0');
-        var yyyy = date.getUTCFullYear();
+        var dd = String(date.getDate()).padStart(2, '0');
+        var mm = String(date.getMonth() + 1).padStart(2, '0');
+        var yyyy = date.getFullYear();
         this.today = yyyy + '-' + mm + '-' + dd;
         this.uid = auth.cUid;
     }

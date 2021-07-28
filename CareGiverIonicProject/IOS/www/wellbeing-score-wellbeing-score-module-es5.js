@@ -144,11 +144,12 @@ var WellbeingScorePage = /** @class */ (function () {
     };
     WellbeingScorePage.prototype.showScore = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var uid, score, wellbeingData;
+            var uid, score, wellbeingData, dailiesDataset;
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 uid = this.auth.cUid;
                 score = this.user.getEma(uid);
+                dailiesDataset = [];
                 if (score) {
                     score.subscribe(function (data) {
                         wellbeingData = data;

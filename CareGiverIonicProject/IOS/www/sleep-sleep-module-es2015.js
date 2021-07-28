@@ -118,6 +118,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_garmin_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/garmin.service */ "./src/app/garmin.service.ts");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/auth.service */ "./src/app/auth.service.ts");
+
+
 
 
 
@@ -130,11 +134,15 @@ const lineColors = ['rgb(38, 194, 129)',
     'rgba(153, 102, 255, 1)',
     'rgba(255, 159, 64, 1)'];
 let SleepPage = class SleepPage {
-    constructor(user, garmin, afAuth) {
+    constructor(afStore, auth, user, garmin, afAuth) {
+        this.afStore = afStore;
+        this.auth = auth;
         this.user = user;
         this.garmin = garmin;
         this.afAuth = afAuth;
         this.firebaseAuth = afAuth;
+        this.uid = auth.cUid;
+        console.log('uid', this.uid);
         this.garminId = this.user.garminId;
         console.log('garminId', this.garminId);
     }
@@ -184,10 +192,46 @@ let SleepPage = class SleepPage {
                             }
                         });
                         this.calendarDate = sortedDataSet[0].calendarDate;
+                        const duration = sortedDataSet[0].durationInSeconds;
                         this.totalDuration = this.secondsToHMS(sortedDataSet[0].durationInSeconds);
                         this.lightSleepDuration = this.secondsToHMS(sortedDataSet[0].lightSleepDurationInSeconds);
                         this.deepSleepDuration = this.secondsToHMS(sortedDataSet[0].deepSleepDurationInSeconds);
                         this.remSleepDuration = this.secondsToHMS(sortedDataSet[0].remSleepInSeconds);
+                        let sleep = 0;
+                        if (duration >= 27000 && duration <= 30600) {
+                            sleep = 100;
+                        }
+                        else if (duration < 27000 || duration > 30600) {
+                            sleep = 90;
+                        }
+                        else if (duration < 23400 || duration > 34200) {
+                            sleep = 80;
+                        }
+                        else if (duration < 19800 || duration > 37800) {
+                            sleep = 70;
+                        }
+                        else if (duration < 16200 || duration > 41400) {
+                            sleep = 60;
+                        }
+                        else if (duration < 12600 || duration > 45000) {
+                            sleep = 50;
+                        }
+                        else if (duration < 9000 || duration > 48600) {
+                            sleep = 40;
+                        }
+                        else if (duration < 7200 || duration > 50400) {
+                            sleep = 30;
+                        }
+                        else if (duration < 5400 || duration > 52200) {
+                            sleep = 20;
+                        }
+                        else if (duration < 3600 || duration > 54000) {
+                            sleep = 10;
+                        }
+                        else {
+                            sleep = 0;
+                        }
+                        this.afStore.doc(`users/${this.uid}`).set({ sleep: sleep }, { merge: true });
                     }
                 });
                 // tslint:disable-next-line: only-arrow-functions
@@ -239,6 +283,8 @@ let SleepPage = class SleepPage {
     }
 };
 SleepPage.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"] },
+    { type: src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
     { type: src_app_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"] },
     { type: src_app_garmin_service__WEBPACK_IMPORTED_MODULE_4__["GarminService"] },
     { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"] }
@@ -253,7 +299,9 @@ SleepPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./sleep.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/vital/sleep/sleep.page.html"),
         styles: [__webpack_require__(/*! ./sleep.page.scss */ "./src/app/home/vital/sleep/sleep.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"],
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"],
+        src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
+        src_app_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"],
         src_app_garmin_service__WEBPACK_IMPORTED_MODULE_4__["GarminService"],
         _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"]])
 ], SleepPage);

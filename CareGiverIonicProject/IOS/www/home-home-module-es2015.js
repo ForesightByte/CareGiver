@@ -823,7 +823,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../user.service */ "./src/app/user.service.ts");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../auth.service */ "./src/app/auth.service.ts");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 
 
 
@@ -834,9 +834,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const qualitativeScale = ['Distressing', 'Substandard', 'Ordinary', 'Adequate', 'Impressive'];
 let HomePage = class HomePage {
-    constructor(router, afStore, afAuth, auth, user, actionSheetController) {
+    constructor(router, afAuth, auth, user, actionSheetController) {
         this.router = router;
-        this.afStore = afStore;
         this.afAuth = afAuth;
         this.auth = auth;
         this.user = user;
@@ -869,24 +868,49 @@ let HomePage = class HomePage {
         };
         const uid = this.auth.cUid;
         console.log(uid);
-        const date = new Date();
-        const td = String(date.getDate()).padStart(2, '0');
-        const yd = String(date.getDate() - 1).padStart(2, '0');
-        const mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
-        const yyyy = date.getFullYear();
-        const today = yyyy + '-' + mm + '-' + td;
-        const yesterday = yyyy + '-' + mm + '-' + yd;
-        this.displayName = this.user.getDisplayname(uid);
-        this.getTodayScore(uid);
+        var count = 0;
+        this.updateSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["interval"])(1000).subscribe((val) => {
+            count++;
+            if (count < 2) {
+                this.displayName = this.user.getDisplayname(uid);
+                this.getTodayScore(uid);
+            }
+        });
+    }
+    getAveragePulseox(pulseoxValues) {
+        let sum = 0, counter = 0;
+        // tslint:disable-next-line: forin;
+        for (const key in pulseoxValues) {
+            sum += Number(pulseoxValues[key]);
+            counter++;
+        }
+        return sum / counter;
     }
     ngOnInit() {
     }
     getTodayScore(uid) {
         this.user.getUser(uid).subscribe(user => {
             let tempScore;
+            let step = 0;
+            let sleep = 0;
+            let stress = 0;
+            let pulseOX = 0;
             if (user) {
                 if (user.wellbeingScore) {
-                    tempScore = user.wellbeingScore;
+                    const wellbeing = user.wellbeingScore;
+                    if (user.steps) {
+                        step = user.steps;
+                    }
+                    if (user.sleep) {
+                        sleep = user.sleep;
+                    }
+                    if (user.stress) {
+                        stress = user.stress;
+                    }
+                    if (user.pulseOX) {
+                        pulseOX = user.pulseOX;
+                    }
+                    tempScore = Number((0.75 * wellbeing) + (0.25 * ((step + sleep + stress + pulseOX) / 4))).toFixed(0);
                 }
                 else {
                     tempScore = 'Null';
@@ -895,6 +919,7 @@ let HomePage = class HomePage {
             else {
                 tempScore = 'Null';
             }
+            // Donut chart
             this.todayScore = tempScore;
             this.colorZone = this.todayScore >= 100 ? 4 :
                 Math.floor(this.todayScore / 20);
@@ -903,8 +928,8 @@ let HomePage = class HomePage {
             this.wellbeingTextColor = this.colorZone === 4 ? 'white' : 'black';
             this.dialRotation = {
                 transform: `
-            rotate(${(this.todayScore / 100.00) * 300 - 150}deg)
-          `
+          rotate(${(this.todayScore / 100.00) * 300 - 150}deg)
+        `
             };
             this.formatSubtitle(this.todayScore);
         });
@@ -937,7 +962,6 @@ let HomePage = class HomePage {
 };
 HomePage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__["AngularFirestore"] },
     { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"] },
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"] },
     { type: _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"] },
@@ -954,7 +978,6 @@ HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home/home.page.scss")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-        _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__["AngularFirestore"],
         _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"],
         _auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"],
         _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"],

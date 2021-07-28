@@ -124,6 +124,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
+/* harmony import */ var src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/auth.service */ "./src/app/auth.service.ts");
+
+
 
 
 
@@ -131,11 +135,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var StepsPage = /** @class */ (function () {
-    function StepsPage(user, garmin, afAuth) {
+    function StepsPage(afStore, auth, user, garmin, afAuth) {
+        this.afStore = afStore;
+        this.auth = auth;
         this.user = user;
         this.garmin = garmin;
         this.afAuth = afAuth;
         this.firebaseAuth = afAuth;
+        this.uid = auth.cUid;
+        console.log('uid', this.uid);
         this.garminId = this.user.garminId;
         console.log('garminId', this.garminId);
     }
@@ -176,12 +184,20 @@ var StepsPage = /** @class */ (function () {
                                     return 0;
                                 }
                             });
-                            console.log('sort 2', sortedDataSet);
                             _this.totalSteps = sortedDataSet[0].steps;
+                            console.log('totalSteps', _this.totalSteps);
                             _this.activityType = sortedDataSet[0].activityType;
                             _this.calendarDate = sortedDataSet[0].calendarDate;
                             _this.distanceInMeters = Number((sortedDataSet[0].distanceInMeters * 0.000621).toFixed(2));
                             _this.stepsGoal = sortedDataSet[0].stepsGoal;
+                            var steps = 0;
+                            if (_this.totalSteps > 12500) {
+                                steps = 100;
+                            }
+                            else {
+                                steps = Number(((steps / 12500) * 100).toFixed(0));
+                            }
+                            _this.afStore.doc("users/" + _this.uid).set({ steps: steps }, { merge: true });
                         }
                     });
                     // tslint:disable-next-line: only-arrow-functions
@@ -227,6 +243,8 @@ var StepsPage = /** @class */ (function () {
         });
     };
     StepsPage.ctorParameters = function () { return [
+        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"] },
+        { type: src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
         { type: _user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] },
         { type: src_app_garmin_service__WEBPACK_IMPORTED_MODULE_3__["GarminService"] },
         { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"] }
@@ -241,7 +259,9 @@ var StepsPage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./steps.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/vital/steps/steps.page.html"),
             styles: [__webpack_require__(/*! ./steps.page.scss */ "./src/app/home/vital/steps/steps.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"],
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"],
+            src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
+            _user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"],
             src_app_garmin_service__WEBPACK_IMPORTED_MODULE_3__["GarminService"],
             _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"]])
     ], StepsPage);

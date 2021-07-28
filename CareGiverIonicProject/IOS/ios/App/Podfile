@@ -18,6 +18,8 @@ target 'App' do
   capacitor_pods
   # Add your Pods here
   pod 'FirebaseCore'
+  pod 'Firebase/Auth'
   pod 'Firebase/Messaging'
   pod 'Firebase/Analytics'
+  pod 'FirebaseInstanceID'
 end

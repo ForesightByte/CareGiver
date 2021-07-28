@@ -118,6 +118,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var src_app_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/user.service */ "./src/app/user.service.ts");
 /* harmony import */ var src_app_garmin_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/garmin.service */ "./src/app/garmin.service.ts");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/auth.service */ "./src/app/auth.service.ts");
+
+
 
 
 
@@ -125,11 +129,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let StressPage = class StressPage {
-    constructor(user, garmin, afAuth) {
+    constructor(afStore, auth, user, garmin, afAuth) {
+        this.afStore = afStore;
+        this.auth = auth;
         this.user = user;
         this.garmin = garmin;
         this.afAuth = afAuth;
         this.firebaseAuth = afAuth;
+        this.uid = auth.cUid;
+        console.log('uid', this.uid);
         this.garminId = this.user.garminId;
         console.log('garminId', this.garminId);
     }
@@ -173,6 +181,14 @@ let StressPage = class StressPage {
                         this.stressDurationInSeconds = this.secondsToHMS(sortedDataSet[0].stressDurationInSeconds);
                         this.highStressDurationInSeconds = this.secondsToHMS(sortedDataSet[0].highStressDurationInSeconds);
                         this.mediumStressDurationInSeconds = this.secondsToHMS(sortedDataSet[0].mediumStressDurationInSeconds);
+                        let stress = 0;
+                        if (this.averageStressLevel == -1) {
+                            stress = 0;
+                        }
+                        else {
+                            stress = this.averageStressLevel;
+                        }
+                        this.afStore.doc(`users/${this.uid}`).set({ stress: stress }, { merge: true });
                     }
                 });
                 // tslint:disable-next-line: only-arrow-functions
@@ -223,6 +239,8 @@ let StressPage = class StressPage {
     }
 };
 StressPage.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"] },
+    { type: src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
     { type: src_app_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"] },
     { type: src_app_garmin_service__WEBPACK_IMPORTED_MODULE_5__["GarminService"] },
     { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"] }
@@ -237,7 +255,9 @@ StressPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./stress.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/vital/stress/stress.page.html"),
         styles: [__webpack_require__(/*! ./stress.page.scss */ "./src/app/home/vital/stress/stress.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"],
+        src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
+        src_app_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
         src_app_garmin_service__WEBPACK_IMPORTED_MODULE_5__["GarminService"],
         _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"]])
 ], StressPage);

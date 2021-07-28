@@ -126,8 +126,8 @@ let NearbyPage = class NearbyPage {
     }
     getPlacesNearby(url) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-            const result = yield fetch(proxyurl + url); // https://cors-anywhere.herokuapp.com/https://example.com
+            const proxyurl = 'https://thingproxy.freeboard.io/fetch/';
+            const result = yield fetch(proxyurl + url); // https://thingproxy.freeboard.io/fetch/https://example.com
             return yield result.json();
         });
     }
@@ -136,7 +136,7 @@ let NearbyPage = class NearbyPage {
             if (location && this.placeToSearch) {
                 const zipcode = location;
                 console.log('zip', zipcode);
-                const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + zipcode + '&rankby=distance&type=' + this.placeToSearch + '&keyword=' + this.placeToSearch + '&key=AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk';
+                const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + zipcode + '&rankby=distance&type=' + this.placeToSearch + '&keyword=' + this.placeToSearch + '&key=AIzaSyASG6Rf4ZdWJI7Vcc2xLNcaZGCRa7BQaE0';
                 const placesFromSearch = yield this.getPlacesNearby(url);
                 if (String(placesFromSearch.status) === 'OK') {
                     this.placesResult = placesFromSearch.results.length > 0 ? placesFromSearch.results : [{ name: 'Got zero result.' }];
@@ -149,7 +149,7 @@ let NearbyPage = class NearbyPage {
         });
     }
     zipToLocation() {
-        const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.zip_code + '&key=AIzaSyA5U7_XDrz5HxBqPRlp8xlPJI7LIsZMMZk';
+        const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.zip_code + '&key=AIzaSyASG6Rf4ZdWJI7Vcc2xLNcaZGCRa7BQaE0';
         fetch(url).then(res => res.json())
             .then(res => {
             const objectData = [];

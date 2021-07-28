@@ -118,6 +118,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/auth.service */ "./src/app/auth.service.ts");
+
+
 
 
 
@@ -125,11 +129,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let StepsPage = class StepsPage {
-    constructor(user, garmin, afAuth) {
+    constructor(afStore, auth, user, garmin, afAuth) {
+        this.afStore = afStore;
+        this.auth = auth;
         this.user = user;
         this.garmin = garmin;
         this.afAuth = afAuth;
         this.firebaseAuth = afAuth;
+        this.uid = auth.cUid;
+        console.log('uid', this.uid);
         this.garminId = this.user.garminId;
         console.log('garminId', this.garminId);
     }
@@ -167,12 +175,20 @@ let StepsPage = class StepsPage {
                                 return 0;
                             }
                         });
-                        console.log('sort 2', sortedDataSet);
                         this.totalSteps = sortedDataSet[0].steps;
+                        console.log('totalSteps', this.totalSteps);
                         this.activityType = sortedDataSet[0].activityType;
                         this.calendarDate = sortedDataSet[0].calendarDate;
                         this.distanceInMeters = Number((sortedDataSet[0].distanceInMeters * 0.000621).toFixed(2));
                         this.stepsGoal = sortedDataSet[0].stepsGoal;
+                        let steps = 0;
+                        if (this.totalSteps > 12500) {
+                            steps = 100;
+                        }
+                        else {
+                            steps = Number(((steps / 12500) * 100).toFixed(0));
+                        }
+                        this.afStore.doc(`users/${this.uid}`).set({ steps: steps }, { merge: true });
                     }
                 });
                 // tslint:disable-next-line: only-arrow-functions
@@ -217,6 +233,8 @@ let StepsPage = class StepsPage {
     }
 };
 StepsPage.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"] },
+    { type: src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
     { type: _user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] },
     { type: src_app_garmin_service__WEBPACK_IMPORTED_MODULE_3__["GarminService"] },
     { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"] }
@@ -231,7 +249,9 @@ StepsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./steps.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/vital/steps/steps.page.html"),
         styles: [__webpack_require__(/*! ./steps.page.scss */ "./src/app/home/vital/steps/steps.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"],
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"],
+        src_app_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
+        _user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"],
         src_app_garmin_service__WEBPACK_IMPORTED_MODULE_3__["GarminService"],
         _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"]])
 ], StepsPage);
