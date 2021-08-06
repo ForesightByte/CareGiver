@@ -609,6 +609,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
+/* harmony import */ var _services_fcm_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/fcm.service */ "./src/app/services/fcm.service.ts");
+
 
 
 
@@ -616,11 +618,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(platform, splashScreen, statusBar, fcm) {
+    function AppComponent(platform, splashScreen, statusBar, fcm, fcmService) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.fcm = fcm;
+        this.fcmService = fcmService;
         this.initializeApp();
     }
     AppComponent.prototype.initializeApp = function () {
@@ -628,31 +631,16 @@ var AppComponent = /** @class */ (function () {
         this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
-            //get FCM token
-            _this.fcm.getToken().then(function (token) {
-                console.log(token);
-            });
-            // ionic push notification 
-            _this.fcm.onNotification().subscribe(function (data) {
-                console.log(data);
-                if (data.wasTapped) {
-                    console.log('Received in Background');
-                }
-                else {
-                    console.log('Received in Foreground');
-                }
-            });
-            //refresh the FCM token
-            _this.fcm.onTokenRefresh().subscribe(function (token) {
-                console.log(token);
-            });
+            // Trigger the push setup
+            _this.fcmService.initPush();
         });
     };
     AppComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
         { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
-        { type: _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"] }
+        { type: _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"] },
+        { type: _services_fcm_service__WEBPACK_IMPORTED_MODULE_6__["FcmService"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -663,7 +651,8 @@ var AppComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
-            _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"]])
+            _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"],
+            _services_fcm_service__WEBPACK_IMPORTED_MODULE_6__["FcmService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -1026,6 +1015,76 @@ var LoginComponent = /** @class */ (function () {
             _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/fcm.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/services/fcm.service.ts ***!
+  \*****************************************/
+/*! exports provided: FcmService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FcmService", function() { return FcmService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+var PushNotifications = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"].PushNotifications;
+var FcmService = /** @class */ (function () {
+    function FcmService(router) {
+        this.router = router;
+    }
+    FcmService.prototype.initPush = function () {
+        if (_capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Capacitor"].platform !== 'web') {
+            this.registerPush();
+        }
+    };
+    FcmService.prototype.registerPush = function () {
+        var _this = this;
+        PushNotifications.requestPermission().then(function (permission) {
+            if (permission.granted) {
+                // Register with Apple / Google to receive push via APNS/FCM
+                PushNotifications.register();
+            }
+            else {
+                // No permission for push granted
+            }
+        });
+        PushNotifications.addListener('registration', function (token) {
+            alert('My token: ' + JSON.stringify(token));
+        });
+        PushNotifications.addListener('registrationError', function (error) {
+            alert('Error: ' + JSON.stringify(error));
+        });
+        PushNotifications.addListener('pushNotificationActionPerformed', function (notification) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var data;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                data = notification.notification.data;
+                console.log('Push received: ' + JSON.stringify(notification.notification));
+                return [2 /*return*/];
+            });
+        }); });
+    };
+    FcmService.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    ]; };
+    FcmService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], FcmService);
+    return FcmService;
 }());
 
 

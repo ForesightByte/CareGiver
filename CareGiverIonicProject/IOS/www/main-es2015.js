@@ -600,6 +600,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
+/* harmony import */ var _services_fcm_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/fcm.service */ "./src/app/services/fcm.service.ts");
+
 
 
 
@@ -607,35 +609,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-    constructor(platform, splashScreen, statusBar, fcm) {
+    constructor(platform, splashScreen, statusBar, fcm, fcmService) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.fcm = fcm;
+        this.fcmService = fcmService;
         this.initializeApp();
     }
     initializeApp() {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
-            //get FCM token
-            this.fcm.getToken().then(token => {
-                console.log(token);
-            });
-            // ionic push notification 
-            this.fcm.onNotification().subscribe(data => {
-                console.log(data);
-                if (data.wasTapped) {
-                    console.log('Received in Background');
-                }
-                else {
-                    console.log('Received in Foreground');
-                }
-            });
-            //refresh the FCM token
-            this.fcm.onTokenRefresh().subscribe(token => {
-                console.log(token);
-            });
+            // Trigger the push setup
+            this.fcmService.initPush();
         });
     }
 };
@@ -643,7 +630,8 @@ AppComponent.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
     { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
     { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
-    { type: _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"] }
+    { type: _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"] },
+    { type: _services_fcm_service__WEBPACK_IMPORTED_MODULE_6__["FcmService"] }
 ];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -654,7 +642,8 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
         _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
         _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
-        _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"]])
+        _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"],
+        _services_fcm_service__WEBPACK_IMPORTED_MODULE_6__["FcmService"]])
 ], AppComponent);
 
 
@@ -970,6 +959,70 @@ LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"],
         _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]])
 ], LoginComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/fcm.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/services/fcm.service.ts ***!
+  \*****************************************/
+/*! exports provided: FcmService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FcmService", function() { return FcmService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+const { PushNotifications } = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"];
+let FcmService = class FcmService {
+    constructor(router) {
+        this.router = router;
+    }
+    initPush() {
+        if (_capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Capacitor"].platform !== 'web') {
+            this.registerPush();
+        }
+    }
+    registerPush() {
+        PushNotifications.requestPermission().then((permission) => {
+            if (permission.granted) {
+                // Register with Apple / Google to receive push via APNS/FCM
+                PushNotifications.register();
+            }
+            else {
+                // No permission for push granted
+            }
+        });
+        PushNotifications.addListener('registration', (token) => {
+            alert('My token: ' + JSON.stringify(token));
+        });
+        PushNotifications.addListener('registrationError', (error) => {
+            alert('Error: ' + JSON.stringify(error));
+        });
+        PushNotifications.addListener('pushNotificationActionPerformed', (notification) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const data = notification.notification.data;
+            console.log('Push received: ' + JSON.stringify(notification.notification));
+        }));
+    }
+};
+FcmService.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+];
+FcmService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+], FcmService);
 
 
 
