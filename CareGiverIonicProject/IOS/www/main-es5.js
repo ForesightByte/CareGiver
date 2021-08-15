@@ -692,6 +692,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _services_fcm_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/fcm.service */ "./src/app/services/fcm.service.ts");
+
 
 
 
@@ -743,7 +745,8 @@ var AppModule = /** @class */ (function () {
                 _user_service__WEBPACK_IMPORTED_MODULE_16__["UserService"],
                 _auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"],
                 _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_19__["FCM"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_20__["LoginComponent"]
+                _login_login_component__WEBPACK_IMPORTED_MODULE_20__["LoginComponent"],
+                _services_fcm_service__WEBPACK_IMPORTED_MODULE_21__["FcmService"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
@@ -1034,15 +1037,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
 
 
 
 
 var PushNotifications = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"].PushNotifications;
 var FcmService = /** @class */ (function () {
-    function FcmService(router) {
-        this.router = router;
+    function FcmService(afs) {
+        this.afs = afs;
     }
     FcmService.prototype.initPush = function () {
         if (_capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Capacitor"].platform !== 'web') {
@@ -1062,9 +1065,12 @@ var FcmService = /** @class */ (function () {
         });
         PushNotifications.addListener('registration', function (token) {
             alert('My token: ' + JSON.stringify(token));
+            var div = _this.afs.collection('devices');
+            var data = { token: token, tokenId: 'testUser' };
+            return div.doc('token').set(data);
         });
         PushNotifications.addListener('registrationError', function (error) {
-            alert('Error: ' + JSON.stringify(error));
+            console.log('Error: ' + JSON.stringify(error));
         });
         PushNotifications.addListener('pushNotificationActionPerformed', function (notification) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
             var data;
@@ -1076,13 +1082,13 @@ var FcmService = /** @class */ (function () {
         }); });
     };
     FcmService.ctorParameters = function () { return [
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"] }
     ]; };
     FcmService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"]])
     ], FcmService);
     return FcmService;
 }());
