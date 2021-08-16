@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
   Plugins,
+  PushNotification,
   PushNotificationToken,
   PushNotificationActionPerformed,
-  Capacitor,
-  PushNotificationDeliveredList
-} from '@capacitor/core';
-
-import { AngularFirestore } from '@angular/fire/firestore';
+  Capacitor} from '@capacitor/core';
 
 const { PushNotifications } = Plugins;
 
@@ -16,7 +13,7 @@ const { PushNotifications } = Plugins;
 })
 export class FcmService {
 
-  constructor(private afs: AngularFirestore) { }
+  constructor() { }
 
   initPush() {
     if (Capacitor.platform !== 'web') {
@@ -37,10 +34,7 @@ export class FcmService {
     PushNotifications.addListener(
       'registration',
       (token: PushNotificationToken) => {
-        alert('My token: ' + JSON.stringify(token));
-        const div = this.afs.collection('devices');
-        const data = JSON.stringify(token);
-        return div.doc('token').set(data);
+        console.log('My token: ' + JSON.stringify(token));
       }
     );
  
@@ -48,12 +42,18 @@ export class FcmService {
       console.log('Error: ' + JSON.stringify(error));
     });
  
-    
+    PushNotifications.addListener(
+      'pushNotificationReceived',
+      async (notification: PushNotification) => {
+        console.log('Push received: ' + JSON.stringify(notification));
+      }
+    );
+
     PushNotifications.addListener(
       'pushNotificationActionPerformed',
       async (notification: PushNotificationActionPerformed) => {
         const data = notification.notification.data;
-        console.log('Push received: ' + JSON.stringify(notification.notification));
+        console.log('Action performed: ' + JSON.stringify(notification.notification));
       }
     );
 

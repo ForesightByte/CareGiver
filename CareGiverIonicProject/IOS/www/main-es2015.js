@@ -980,16 +980,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
-
 
 
 
 const { PushNotifications } = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"];
 let FcmService = class FcmService {
-    constructor(afs) {
-        this.afs = afs;
-    }
+    constructor() { }
     initPush() {
         if (_capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Capacitor"].platform !== 'web') {
             this.registerPush();
@@ -1006,28 +1002,25 @@ let FcmService = class FcmService {
             }
         });
         PushNotifications.addListener('registration', (token) => {
-            alert('My token: ' + JSON.stringify(token));
-            const div = this.afs.collection('devices');
-            const data = { token, tokenId: 'testUser' };
-            return div.doc('token').set(data);
+            console.log('My token: ' + JSON.stringify(token));
         });
         PushNotifications.addListener('registrationError', (error) => {
             console.log('Error: ' + JSON.stringify(error));
         });
+        PushNotifications.addListener('pushNotificationReceived', (notification) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            console.log('Push received: ' + JSON.stringify(notification));
+        }));
         PushNotifications.addListener('pushNotificationActionPerformed', (notification) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             const data = notification.notification.data;
-            console.log('Push received: ' + JSON.stringify(notification.notification));
+            console.log('Action performed: ' + JSON.stringify(notification.notification));
         }));
     }
 };
-FcmService.ctorParameters = () => [
-    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"] }
-];
 FcmService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
 ], FcmService);
 
 

@@ -1037,15 +1037,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
-
 
 
 
 var PushNotifications = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"].PushNotifications;
 var FcmService = /** @class */ (function () {
-    function FcmService(afs) {
-        this.afs = afs;
+    function FcmService() {
     }
     FcmService.prototype.initPush = function () {
         if (_capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Capacitor"].platform !== 'web') {
@@ -1064,31 +1061,31 @@ var FcmService = /** @class */ (function () {
             }
         });
         PushNotifications.addListener('registration', function (token) {
-            alert('My token: ' + JSON.stringify(token));
-            var div = _this.afs.collection('devices');
-            var data = { token: token, tokenId: 'testUser' };
-            return div.doc('token').set(data);
+            console.log('My token: ' + JSON.stringify(token));
         });
         PushNotifications.addListener('registrationError', function (error) {
             console.log('Error: ' + JSON.stringify(error));
         });
+        PushNotifications.addListener('pushNotificationReceived', function (notification) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                console.log('Push received: ' + JSON.stringify(notification));
+                return [2 /*return*/];
+            });
+        }); });
         PushNotifications.addListener('pushNotificationActionPerformed', function (notification) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
             var data;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 data = notification.notification.data;
-                console.log('Push received: ' + JSON.stringify(notification.notification));
+                console.log('Action performed: ' + JSON.stringify(notification.notification));
                 return [2 /*return*/];
             });
         }); });
     };
-    FcmService.ctorParameters = function () { return [
-        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"] }
-    ]; };
     FcmService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], FcmService);
     return FcmService;
 }());
