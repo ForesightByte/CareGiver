@@ -50,10 +50,10 @@ export class ExtraPage implements OnInit {
     this.sleep = this.hours + ' hr ' + this.minutes + ' mn';
     this.afStore.doc(`users/${this.uid}/EMA/${this.today}`)
       .set({
-        wellSleep: event,
+        wellSleep: event.detail.value,
         sleep: this.sleep
       }, {merge: true});
-    this.wellSleep = event;
+    this.wellSleep = event.detail.value;
   }
 
   ngOnInit() {

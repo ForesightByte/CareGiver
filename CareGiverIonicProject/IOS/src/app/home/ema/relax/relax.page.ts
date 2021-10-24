@@ -38,39 +38,32 @@ export class RelaxPage implements OnInit {
     this.uid = auth.cUid;
   }
 
-  relaxChange(event: number) {
-    console.log(event);
-    return this.relax = event;
+  relaxChange(event) {
+    return this.relax = event.detail.value;
   }
 
-  joyfulChange(event: number) {
-    console.log(event);
-    return this.joyful = event;
+  joyfulChange(event) {
+    return this.joyful = event.detail.value;
   }
 
-  positiveChange(event: number) {
-    console.log(event);
-    return this.positive = event;
+  positiveChange(event) {
+    return this.positive = event.detail.value;
   }
 
-  contentedChange(event: number) {
-    console.log(event);
-    return this.contented = event;
+  contentedChange(event) {
+    return this.contented = event.detail.value;
   }
 
-  absorbedChange(event: number) {
-    console.log(event);
-    return this.absorbed = event;
+  absorbedChange(event) {
+    return this.absorbed = event.detail.value;
   }
 
-  excitedChange(event: number) {
-    console.log(event);
-    return this.excited = event;
+  excitedChange(event) {
+    return this.excited = event.detail.value;
   }
 
-  lostTrackChange(event: number) {
-    console.log(event);
-    return this.lostTrack = event;
+  lostTrackChange(event) {
+    return this.lostTrack = event.detail.value;
   }
 
   ngOnInit() {
