@@ -37,6 +37,10 @@ export class HomePage implements OnInit {
     public auth: AuthService,
     public user: UserService,
     public actionSheetController: ActionSheetController) {
+    this.doStart();
+  }
+
+  doStart(){
     const uid = this.auth.cUid;
     console.log(uid);
     var count = 0;
@@ -154,5 +158,15 @@ export class HomePage implements OnInit {
       }]
     });
     await actionSheet.present();
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    this.doStart();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
   }
 }

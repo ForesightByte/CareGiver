@@ -112,33 +112,33 @@ div.overlap {
 }
 
 div.overlap > div {
-  width: 60px;
+  width: 100px;
   position: relative;
-  margin-left: calc(50% - 30px);
-  top: 68px;
+  margin-left: calc(43% - 30px);
+  top: 125px; //68
   text-align: center;
   height: 50px;
   grid-column: 1;
   grid-row: 1;
   transform-origin: center;
   color: #170957;
-  font-size: 20px;
+  font-size: 15px; //20
   font-weight: 500;
 }
 
 ion-img.wheel {
-  width: 170px;
+  width: 300px;
   position: relative;
-  margin-left: calc(50% - 85px);
+  margin-left: calc(7% - 40px);
   grid-column: 1;
   grid-row: 1;
   transform-origin: center;
 }
 
 ion-img.dial {
-  width: 84px;
+  width: 135px; //84
   position: relative;
-  left: calc(50% - 42px);
+  left: calc(40% - 42px);
   top: 2px; // minor alignment adjustment, related to svg graphic cuts
   grid-column: 1;
   grid-row: 1;

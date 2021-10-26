@@ -9,7 +9,16 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="background"><br><br>
+<ion-content class="background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <br><br>
   <ion-grid>
     <ion-card-title *ngIf="displayName">
       <p class="hello"><b>
@@ -34,15 +43,15 @@
     >
     </ion-img>
       <ion-img class="wheel" [src]="wheel"></ion-img>
-      <div [ngClass]="wellbeingTextColor">{{todayScore}}</div>
+      <div [ngClass]="wellbeingTextColor">{{this.wellbeingQual}}</div>
   </div>
   </ion-card-content>
 </ion-grid>
 <ion-grid>
   
-  <div style="text-align: center;">
+  <!--<div style="text-align: center;">
     <h3 style="size: 20px;">{{this.wellbeingQual}}</h3>
-  </div>
+  </div>-->
 </ion-grid>
 </ion-content>	
 
