@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { IonloaderService } from 'src/app/ionloader.service';
 
 @Component({
   selector: 'app-nearby',
@@ -13,7 +14,9 @@ export class NearbyPage implements OnInit {
 
   private httpClient: HttpClient;
 
-  constructor(http: HttpClient) {
+  constructor(
+    public ionLoaderService: IonloaderService,
+    http: HttpClient) {
     this.httpClient = http;
   }
 
@@ -35,13 +38,16 @@ export class NearbyPage implements OnInit {
       if (String(placesFromSearch.status) === 'OK') {
         this.placesResult = placesFromSearch.results.length > 0 ? placesFromSearch.results : [{name: 'Got zero result.'}];
         console.log(this.placesResult);
+        this.ionLoaderService.dismissLoader();
       } else {
         this.placesResult = [{name: 'Got No result.'}];
+        this.ionLoaderService.dismissLoader();
       }
     }
   }
 
   zipToLocation() {
+    this.ionLoaderService.simpleLoader();
     const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.zip_code + '&key=AIzaSyASG6Rf4ZdWJI7Vcc2xLNcaZGCRa7BQaE0';
     fetch(url).then(res => res.json())
     .then(res => {

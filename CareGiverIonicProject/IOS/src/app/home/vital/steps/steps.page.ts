@@ -5,6 +5,7 @@ import {Chart} from 'chart.js';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/auth.service';
+import { IonloaderService } from 'src/app/ionloader.service';
 
 @Component({
   selector: 'app-steps',
@@ -26,6 +27,7 @@ export class StepsPage implements OnInit {
   private garminId: string;
 
   constructor(
+    public ionLoaderService: IonloaderService,
     private afStore: AngularFirestore,
     public auth: AuthService,
     private user: UserService,
@@ -43,6 +45,7 @@ export class StepsPage implements OnInit {
   }
 
   async showData() {
+    this.ionLoaderService.simpleLoader();
     let garminData;
     if (this.garminId) {
       this.garmin.getGarminDataset(this.garminId).subscribe(data => {
@@ -127,5 +130,6 @@ export class StepsPage implements OnInit {
         }
       }
     });
+    this.ionLoaderService.dismissLoader();
   }
 }

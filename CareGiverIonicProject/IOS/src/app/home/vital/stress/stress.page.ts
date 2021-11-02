@@ -5,6 +5,7 @@ import {UserService} from 'src/app/user.service';
 import {GarminService} from 'src/app/garmin.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/auth.service';
+import { IonloaderService } from 'src/app/ionloader.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class StressPage implements OnInit {
     private garminId: string;
 
     constructor(
+        public ionLoaderService: IonloaderService,
       private afStore: AngularFirestore,
       public auth: AuthService,
       private user: UserService,
@@ -44,6 +46,7 @@ export class StressPage implements OnInit {
     }
 
     async showData() {
+        this.ionLoaderService.simpleLoader();
         let garminData;
         if (this.garminId) {
             this.garmin.getGarminDataset(this.garminId).subscribe(data => {
@@ -134,5 +137,6 @@ export class StressPage implements OnInit {
                 }
             }
         });
+        this.ionLoaderService.dismissLoader();
     }
 }

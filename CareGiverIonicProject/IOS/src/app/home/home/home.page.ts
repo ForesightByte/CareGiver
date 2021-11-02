@@ -5,6 +5,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {UserService} from '../../user.service';
 import {AuthService} from '../../auth.service';
 import {Observable, Subscription, interval} from 'rxjs';
+import { IonloaderService } from 'src/app/ionloader.service';
 
 const qualitativeScale = ['Distressing', 'Substandard', 'Ordinary', 'Adequate', 'Impressive'];
 
@@ -21,6 +22,7 @@ export class HomePage implements OnInit {
   scoreColor = 'red';
   defaultColor = 'rgba(0, 0, 0, 0.200)';
 
+  today;
   todayScore;
   colorZone;
   coloredDial;
@@ -32,11 +34,19 @@ export class HomePage implements OnInit {
   wheel: any = '../../../assets/chart/numberedwheel.svg';
 
   constructor(
+    public ionLoaderService: IonloaderService,
     private router: Router,
     public afAuth: AngularFireAuth,
     public auth: AuthService,
     public user: UserService,
     public actionSheetController: ActionSheetController) {
+      const date = new Date();
+      const dd = String(date.getDate()).padStart(2, '0');
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const yyyy = date.getFullYear();  
+      this.today = yyyy + '-' + mm + '-' + dd;
+ 
+    this.ionLoaderService.simpleLoader();
     this.doStart();
   }
 
@@ -69,6 +79,8 @@ export class HomePage implements OnInit {
   }
 
   getTodayScore(uid) {
+    //********Vital Score*********
+    let vitalScore;
     this.user.getUser(uid).subscribe(user => {
       let tempScore: any;
       let step = 0;
@@ -90,14 +102,33 @@ export class HomePage implements OnInit {
           if (user.pulseOX){
             pulseOX = user.pulseOX;
           }
-          tempScore = Number((0.75 * wellbeing) + (0.25 * ((step+sleep+stress+pulseOX)/4))).toFixed(0);
-        } else { tempScore = 'Null'; }
-      } else { tempScore = 'Null'; }
+          vitalScore = step+sleep+stress+pulseOX;
+        } else { vitalScore = 0; }
+      } else { vitalScore = 0; }
 
-    // Donut chart
-    this.todayScore = tempScore;
+    //********survey score**********
+    let surveyScore;
+    this.user.getWellScore(uid, this.today).subscribe(user => {
+      if(user) {
+        surveyScore = user.wellbeingScore;
+      }
+      else {
+        surveyScore = 'Null';
+      }
+      if(surveyScore == 'Null'){
+        this.todayScore = 'Null';
+        console.log('Nullscore', this.todayScore);
+        this.ionLoaderService.dismissLoader();
+      }
+      else {
+        this.todayScore = Number((0.75 * surveyScore) + (0.25 * ((vitalScore)/4))).toFixed(0);
+        console.log('todayScore', this.todayScore);
+        this.ionLoaderService.dismissLoader();
+      }
+
+      //***********Donut chart***********
     this.colorZone = this.todayScore >= 100 ? 4 :
-        Math.floor(this.todayScore / 20);
+    Math.floor(this.todayScore / 20);
     this.coloredDial = this.assetPath + 'dial' + this.colorZone + '.svg';
     this.wellbeingQual = qualitativeScale[this.colorZone];
     this.wellbeingTextColor = this.colorZone === 4 ? 'white' : 'black';
@@ -109,6 +140,7 @@ export class HomePage implements OnInit {
       };
     this.formatSubtitle(this.todayScore);
     });
+    })
   }
 
   formatSubtitle = (score: number): string => {
@@ -169,4 +201,5 @@ export class HomePage implements OnInit {
       event.target.complete();
     }, 1000);
   }
+
 }

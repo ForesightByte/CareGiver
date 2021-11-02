@@ -7,6 +7,7 @@ import {GarminService} from 'src/app/garmin.service';
 import {Chart} from 'chart.js';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/auth.service';
+import { IonloaderService } from 'src/app/ionloader.service';
 
 const lineColors = ['rgb(38, 194, 129)',
   'rgba(54, 162, 235, 1)',
@@ -37,6 +38,7 @@ export class SleepPage implements OnInit {
     private garminId: string;
 
     constructor(
+        public ionLoaderService: IonloaderService,
       private afStore: AngularFirestore,
       public auth: AuthService,
       private user: UserService,
@@ -54,6 +56,7 @@ export class SleepPage implements OnInit {
     }
 
     async showData() {
+        this.ionLoaderService.simpleLoader();
         let garminData;
         if (this.garminId) {
             this.garmin.getGarminDataset(this.garminId).subscribe(data => {
@@ -180,5 +183,6 @@ export class SleepPage implements OnInit {
                 }
             }
         });
+        this.ionLoaderService.dismissLoader();
     }
 }
