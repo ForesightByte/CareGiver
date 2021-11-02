@@ -6,6 +6,7 @@ import {UserService} from '../../user.service';
 import {AuthService} from '../../auth.service';
 import {Observable, Subscription, interval} from 'rxjs';
 import { IonloaderService } from 'src/app/ionloader.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 const qualitativeScale = ['Distressing', 'Substandard', 'Ordinary', 'Adequate', 'Impressive'];
 
@@ -35,6 +36,7 @@ export class HomePage implements OnInit {
 
   constructor(
     public ionLoaderService: IonloaderService,
+    private afStore: AngularFirestore,
     private router: Router,
     public afAuth: AngularFireAuth,
     public auth: AuthService,
@@ -63,52 +65,63 @@ export class HomePage implements OnInit {
           this.getTodayScore(uid);
         }
       });
+    
+      
+    this.user.getUser(uid).subscribe(user =>{
+      let step = 0;
+      let sleep = 0;
+      let stress = 0;
+      let pulseOX = 0;
+    })
   }
 
-  public getAveragePulseox(pulseoxValues: any[]): number {
-    let sum = 0, counter = 0;
-    // tslint:disable-next-line: forin;
-    for (const key in pulseoxValues) {
-        sum += Number(pulseoxValues[key]);
-        counter++;
-    }
-    return sum / counter;
-  }
 
   ngOnInit() {
   }
 
   getTodayScore(uid) {
     //********Vital Score*********
-    let vitalScore;
+    let vitalScore=0;
     this.user.getUser(uid).subscribe(user => {
-      let tempScore: any;
+      let gid;
       let step = 0;
       let sleep = 0;
       let stress = 0;
       let pulseOX = 0;
       if (user) {
-        if (user.wellbeingScore) {
-          const wellbeing = user.wellbeingScore;
-          if (user.steps){
-            step = user.steps;
+        
+      gid = user.garminUserId;
+      console.log('gid',gid);
+      this.user.getVitalScore(gid, this.today).subscribe(vital =>{
+        if(vital){
+          if(vital.dailies){
+            step = this.stepScore(vital.dailies.steps);
+            console.log('steps', step);
+            if(vital.dailies.averageStressLevel == -1){
+              stress = 0;
+            }else{
+              stress = 100 - (vital.dailies.averageStressLevel);
+            }
+            console.log('stress', stress);
           }
-          if (user.sleep){
-            sleep = user.sleep;
+          if(vital.sleeps){
+            sleep = this.sleepScore(vital.sleeps.durationInSeconds);
+            console.log('Sleep', sleep);
+            pulseOX = Number(this.getAveragePulseox(vital.sleeps.timeOffsetSleepSpo2).toFixed(0));
+            console.log('pulse', pulseOX);
           }
-          if (user.stress){
-            stress = user.stress;
-          }
-          if (user.pulseOX){
-            pulseOX = user.pulseOX;
-          }
-          vitalScore = step+sleep+stress+pulseOX;
-        } else { vitalScore = 0; }
+        }else{
+          vitalScore = 0; 
+        }
+
+        vitalScore = step+sleep+stress+pulseOX;
+      })
       } else { vitalScore = 0; }
+
 
     //********survey score**********
     let surveyScore;
-    this.user.getWellScore(uid, this.today).subscribe(user => {
+    this.user.getSurveyScore(uid, this.today).subscribe(user => {
       if(user) {
         surveyScore = user.wellbeingScore;
       }
@@ -117,13 +130,13 @@ export class HomePage implements OnInit {
       }
       if(surveyScore == 'Null'){
         this.todayScore = 'Null';
-        console.log('Nullscore', this.todayScore);
         this.ionLoaderService.dismissLoader();
       }
       else {
         this.todayScore = Number((0.75 * surveyScore) + (0.25 * ((vitalScore)/4))).toFixed(0);
         console.log('todayScore', this.todayScore);
         this.ionLoaderService.dismissLoader();
+        this.storeWellbeing(uid, this.todayScore)
       }
 
       //***********Donut chart***********
@@ -202,4 +215,55 @@ export class HomePage implements OnInit {
     }, 1000);
   }
 
+  public stepScore(totalSteps){
+    let steps = 0;
+          if(totalSteps > 12500){
+            return steps = 100;
+          } else {
+            return steps = Number(((totalSteps/12500)*100).toFixed(0));
+          }
+  }
+
+  public sleepScore(duration){
+    let sleep = 0;
+    if (duration >= 27000 && duration <= 30600){
+      return sleep = 100;
+    } else if (duration < 27000 || duration > 30600) {
+      return sleep = 90;
+    } else if (duration < 23400 || duration > 34200) {
+      return sleep = 80;
+    } else if (duration < 19800 || duration > 37800) {
+      return sleep = 70;
+    } else if (duration < 16200 || duration > 41400) {
+      return sleep = 60;
+    } else if (duration < 12600 || duration > 45000) {
+      return sleep = 50;
+    } else if (duration < 9000 || duration > 48600) {
+      return sleep = 40;
+    } else if (duration < 7200 || duration > 50400) {
+      return sleep = 30;
+    } else if (duration < 5400 || duration > 52200) {
+      return sleep = 20;
+    } else if (duration < 3600 || duration > 54000) {
+      return sleep = 10;
+    } else {
+      return sleep = 0;
+    }
+  }
+
+  public getAveragePulseox(pulseoxValues: any[]): number {
+    let sum = 0, counter = 0;
+    // tslint:disable-next-line: forin;
+    for (const key in pulseoxValues) {
+        sum += Number(pulseoxValues[key]);
+        counter++;
+    }
+    return sum / counter;
+  }
+
+  storeWellbeing(uid, wellbeingScore){
+    const date = this.today;
+    this.afStore.doc(`users/${uid}/Wellbeing/${date}`).
+    set({wellbeingScore,date}, {merge: true});
+  }
 }

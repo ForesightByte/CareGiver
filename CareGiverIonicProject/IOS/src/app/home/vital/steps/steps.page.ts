@@ -85,7 +85,7 @@ export class StepsPage implements OnInit {
           if(this.totalSteps > 12500){
             steps = 100;
           } else {
-            steps = Number(((steps/12500)*100).toFixed(0));
+            steps = Number(((this.totalSteps/12500)*100).toFixed(0));
           }
           this.afStore.doc(`users/${this.uid}`).set({steps: steps}, {merge: true});
         }
