@@ -73,6 +73,15 @@ export class UserService {
     );
   }
 
+  // get Sleep score from EMA by date
+  getSleepEMA(uid: string, date: string): Observable<Userelement> {
+    console.log(uid, date);
+    return this.afStore.collection('users').doc<Userelement>(uid).collection('EMA').doc<Userelement>(date)
+    .valueChanges().pipe( take(1), map(user => {
+      return user;
+    }));
+  }
+
   // get Survey score from EMA by date
   getSurveyScore(uid: string, date: string): Observable<Userelement> {
     console.log(uid, date);

@@ -140,7 +140,7 @@ export class ExtraPage implements OnInit {
   }
 
   sleepData(uid: string, date: string) {
-    this.user.getWellScore(uid, date).subscribe(user => {
+    this.user.getSleepEMA(uid, date).subscribe(user => {
       if (user) {
         if (user.wellSleep) {
         this.isSleep = user.wellSleep;
