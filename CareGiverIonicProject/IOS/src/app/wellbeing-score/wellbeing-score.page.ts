@@ -53,7 +53,7 @@ export class WellbeingScorePage implements OnInit {
   createWellbeingScoreChart(dataSet: number[], date: string[]) {
     const labelData = [];
     // tslint:disable-next-line: forin
-    for (const {} in dataSet) {
+    for (const item in dataSet) {
       labelData.push('');
     }
     this.bars = new Chart(this.barChart.nativeElement, {
