@@ -7,6 +7,7 @@ import {UserService} from 'src/app/user.service';
 import {GarminService} from 'src/app/garmin.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/auth.service';
+import { IonloaderService } from 'src/app/ionloader.service';
 
 @Component({
     selector: 'app-pulse-ox',
@@ -28,6 +29,7 @@ export class PulseOxPage implements OnInit {
     private garminId: string;
 
     constructor(
+        public ionLoaderService: IonloaderService,
       private afStore: AngularFirestore,
       public auth: AuthService,
       private user: UserService,
@@ -55,6 +57,7 @@ export class PulseOxPage implements OnInit {
     }
 
     async showData() {
+        this.ionLoaderService.simpleLoader();
         let garminData;
         if (this.garminId) {
             this.garmin.getGarminDataset(this.garminId).subscribe(data => {
@@ -138,6 +141,7 @@ export class PulseOxPage implements OnInit {
                 }
             }
         });
+        this.ionLoaderService.dismissLoader();
     }
 }
 

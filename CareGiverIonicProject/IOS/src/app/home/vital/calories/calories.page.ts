@@ -25,8 +25,7 @@ export class CaloriesPage implements OnInit {
     public ionLoaderService: IonloaderService,
     private user: UserService,
     private garmin: GarminService,
-    public afAuth: AngularFireAuth,
-    private auth: AuthService) {
+    public afAuth: AngularFireAuth) {
     this.firebaseAuth = afAuth;
     let gId;
     gId =  this.user.garminId;

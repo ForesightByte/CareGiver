@@ -9,21 +9,31 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="background"><br><br>
+<ion-content class="background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <br><br>
   <ion-grid>
     <ion-card-title *ngIf="displayName">
       <p class="hello"><b>
         Hello {{(displayName |async)}}</b><br>
-        We are together in this with you </p>
+        We are all in this together </p>
     </ion-card-title>
   </ion-grid>
   <br><br>
 
-  <div *ngIf = "todayScore == 'Null'">
+  <!--div *ngIf = "todayScore == 'Null'">
     <h3 style="text-align: center;">Please complete WB Check In to get your Well-Being Score</h3>
-  </div>
+  </div
+ *ngIf = "todayScore != 'Null'"-->
 
-  <ion-grid class="score" *ngIf = "todayScore != 'Null'">  
+  <ion-grid class="score">  
     <h3 style="text-align: center; font: bold">Your Well-Being Score</h3>  
     <ion-card-content>
   <div class="overlap" button [routerLink]="['/wellbeing-score']">
@@ -34,15 +44,15 @@
     >
     </ion-img>
       <ion-img class="wheel" [src]="wheel"></ion-img>
-      <div [ngClass]="wellbeingTextColor">{{todayScore}}</div>
+      <div [ngClass]="wellbeingTextColor">{{this.todayScore}}</div>
   </div>
   </ion-card-content>
 </ion-grid>
 <ion-grid>
   
-  <div style="text-align: center;">
+  <!--div style="text-align: center;">
     <h3 style="size: 20px;">{{this.wellbeingQual}}</h3>
-  </div>
+  </div-->
 </ion-grid>
 </ion-content>	
 

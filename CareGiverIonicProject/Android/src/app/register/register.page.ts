@@ -16,6 +16,7 @@ export class RegisterPage implements OnInit {
   email: string;
   password: string;
   repassword: string;
+  displayName: string;
   userId: string;
 
   constructor(
@@ -31,7 +32,7 @@ export class RegisterPage implements OnInit {
 
   // register a new account for user
   async register() {
-    const {email, password, repassword, userId} = this;
+    const {displayName, email, password, repassword, userId} = this;
 
     if (password !== repassword) {
       this.router.navigate(['/register']);
@@ -46,7 +47,7 @@ export class RegisterPage implements OnInit {
         this.afStore.doc(`users/${credential.user.uid}`).set({
           uid: credential.user.uid,
           email,
-          displayName: email.split('@')[0],
+          displayName,
           garminUserId: this.userId,
           photoURL: null,
           firstName: null,

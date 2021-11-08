@@ -4,6 +4,7 @@ import {GarminService} from '../../../garmin.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Chart} from 'chart.js';
 import { AuthService } from 'src/app/auth.service';
+import { IonloaderService } from 'src/app/ionloader.service';
 
 
 @Component({
@@ -21,10 +22,10 @@ export class CaloriesPage implements OnInit {
   public totalKilocalories = 0;
 
   constructor(
+    public ionLoaderService: IonloaderService,
     private user: UserService,
     private garmin: GarminService,
-    public afAuth: AngularFireAuth,
-    private auth: AuthService) {
+    public afAuth: AngularFireAuth) {
     this.firebaseAuth = afAuth;
     let gId;
     gId =  this.user.garminId;
@@ -36,6 +37,7 @@ export class CaloriesPage implements OnInit {
   }
 
   async showData(garminId) {
+    this.ionLoaderService.simpleLoader();
     let garminData;
     if (garminId) {
       this.garmin.getGarminDataset(garminId).subscribe(data => {
@@ -116,5 +118,6 @@ export class CaloriesPage implements OnInit {
         }
       }
     });
+    this.ionLoaderService.dismissLoader();
   }
 }

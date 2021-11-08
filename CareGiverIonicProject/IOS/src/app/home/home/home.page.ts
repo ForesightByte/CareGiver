@@ -65,14 +65,6 @@ export class HomePage implements OnInit {
           this.getTodayScore(uid);
         }
       });
-    
-      
-    this.user.getUser(uid).subscribe(user =>{
-      let step = 0;
-      let sleep = 0;
-      let stress = 0;
-      let pulseOX = 0;
-    })
   }
 
 

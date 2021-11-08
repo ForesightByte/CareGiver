@@ -7,6 +7,7 @@ import {AuthService} from '../../auth.service';
 import {interval, Observable, Subscription} from 'rxjs';
 import {AngularFirestore} from '@angular/fire/firestore';
 import { GarminService } from 'src/app/garmin.service';
+import { IonloaderService } from 'src/app/ionloader.service';
 
 const qualitativeScale = ['Distressing', 'Substandard', 'Ordinary', 'Adequate', 'Impressive'];
 
@@ -23,6 +24,7 @@ export class HomePage implements OnInit {
   scoreColor = 'red';
   defaultColor = 'rgba(0, 0, 0, 0.200)';
 
+  today;
   todayScore;
   colorZone;
   coloredDial;
@@ -34,17 +36,30 @@ export class HomePage implements OnInit {
   wheel: any = '../../../assets/chart/numberedwheel.svg';
 
   constructor(
+    public ionLoaderService: IonloaderService,
+    private afStore: AngularFirestore,
     private router: Router,
     public afAuth: AngularFireAuth,
     public auth: AuthService,
     public user: UserService,
     public actionSheetController: ActionSheetController) {
+      const date = new Date();
+      const dd = String(date.getDate()).padStart(2, '0');
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const yyyy = date.getFullYear();  
+      this.today = yyyy + '-' + mm + '-' + dd;
+ 
+    this.ionLoaderService.simpleLoader();
+    this.doStart();
+  }
+
+  doStart(){
     const uid = this.auth.cUid;
     console.log(uid);
     var count = 0;
 
     this.updateSubscription = interval(1000).subscribe(
-      () => { 
+      (val) => { 
         count++;
         if (count <2){
           this.displayName = this.user.getDisplayname(uid);
@@ -53,40 +68,73 @@ export class HomePage implements OnInit {
       });
   }
 
-  public getAveragePulseox(pulseoxValues: any[]): number {
-    let sum = 0, counter = 0;
-    // tslint:disable-next-line: forin
-    for (const key in pulseoxValues) {
-        sum += Number(pulseoxValues[key]);
-        counter++;
-    }
-    return sum / counter;
-  }
-
   ngOnInit() {
   }
 
+  
   getTodayScore(uid) {
+    //********Vital Score*********
+    let vitalScore=0;
     this.user.getUser(uid).subscribe(user => {
-      let tempScore: any;
+      let gid;
+      let step = 0;
+      let sleep = 0;
+      let stress = 0;
+      let pulseOX = 0;
       if (user) {
-        if (user.wellbeingScore) {
-          const wellbeing = user.wellbeingScore;
-          const step = user.steps;
-          const sleep = user.sleep;
-          const stress = user.stress;
-          const pulseOX = user.pulseOX;
+        
+      gid = user.garminUserId;
+      console.log('gid',gid);
+      this.user.getVitalScore(gid, this.today).subscribe(vital =>{
+        if(vital){
+          if(vital.dailies){
+            step = this.stepScore(vital.dailies.steps);
+            console.log('steps', step);
+            if(vital.dailies.averageStressLevel == -1){
+              stress = 0;
+            }else{
+              stress = 100 - (vital.dailies.averageStressLevel);
+            }
+            console.log('stress', stress);
+          }
+          if(vital.sleeps){
+            sleep = this.sleepScore(vital.sleeps.durationInSeconds);
+            console.log('Sleep', sleep);
+            pulseOX = Number(this.getAveragePulseox(vital.sleeps.timeOffsetSleepSpo2).toFixed(0));
+            console.log('pulse', pulseOX);
+          }
+        }else{
+          vitalScore = 0; 
+        }
 
-          tempScore = Number((0.75 * wellbeing) + (0.25 * ((step+sleep+stress+pulseOX)/4))).toFixed(0);
-          console.log('temScore', tempScore);
-        } else { tempScore = 'Null'; }
-      } else { tempScore = 'Null'; }
+        vitalScore = step+sleep+stress+pulseOX;
+      })
+      } else { vitalScore = 0; }
 
-    // Donut chart
-    this.todayScore = tempScore;
-    console.log('todayScore', this.todayScore);
+
+    //********survey score**********
+    let surveyScore;
+    this.user.getSurveyScore(uid, this.today).subscribe(user => {
+      if(user) {
+        surveyScore = user.wellbeingScore;
+      }
+      else {
+        surveyScore = 'Null';
+      }
+      if(surveyScore == 'Null'){
+        this.todayScore = 'Null';
+        this.ionLoaderService.dismissLoader();
+      }
+      else {
+        this.todayScore = Number((0.75 * surveyScore) + (0.25 * ((vitalScore)/4))).toFixed(0);
+        console.log('todayScore', this.todayScore);
+        this.ionLoaderService.dismissLoader();
+        this.storeWellbeing(uid, this.todayScore)
+      }
+
+      //***********Donut chart***********
     this.colorZone = this.todayScore >= 100 ? 4 :
-        Math.floor(this.todayScore / 20);
+    Math.floor(this.todayScore / 20);
     this.coloredDial = this.assetPath + 'dial' + this.colorZone + '.svg';
     this.wellbeingQual = qualitativeScale[this.colorZone];
     this.wellbeingTextColor = this.colorZone === 4 ? 'white' : 'black';
@@ -98,6 +146,7 @@ export class HomePage implements OnInit {
       };
     this.formatSubtitle(this.todayScore);
     });
+    })
   }
 
   formatSubtitle = (score: number): string => {
@@ -147,5 +196,67 @@ export class HomePage implements OnInit {
       }]
     });
     await actionSheet.present();
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    this.doStart();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
+  }
+
+  public stepScore(totalSteps){
+    let steps = 0;
+          if(totalSteps > 12500){
+            return steps = 100;
+          } else {
+            return steps = Number(((totalSteps/12500)*100).toFixed(0));
+          }
+  }
+
+  public sleepScore(duration){
+    let sleep = 0;
+    if (duration >= 27000 && duration <= 30600){
+      return sleep = 100;
+    } else if (duration < 27000 || duration > 30600) {
+      return sleep = 90;
+    } else if (duration < 23400 || duration > 34200) {
+      return sleep = 80;
+    } else if (duration < 19800 || duration > 37800) {
+      return sleep = 70;
+    } else if (duration < 16200 || duration > 41400) {
+      return sleep = 60;
+    } else if (duration < 12600 || duration > 45000) {
+      return sleep = 50;
+    } else if (duration < 9000 || duration > 48600) {
+      return sleep = 40;
+    } else if (duration < 7200 || duration > 50400) {
+      return sleep = 30;
+    } else if (duration < 5400 || duration > 52200) {
+      return sleep = 20;
+    } else if (duration < 3600 || duration > 54000) {
+      return sleep = 10;
+    } else {
+      return sleep = 0;
+    }
+  }
+
+  public getAveragePulseox(pulseoxValues: any[]): number {
+    let sum = 0, counter = 0;
+    // tslint:disable-next-line: forin;
+    for (const key in pulseoxValues) {
+        sum += Number(pulseoxValues[key]);
+        counter++;
+    }
+    return sum / counter;
+  }
+
+  storeWellbeing(uid, wellbeingScore){
+    const date = this.today;
+    this.afStore.doc(`users/${uid}/Wellbeing/${date}`).
+    set({wellbeingScore,date}, {merge: true});
   }
 }

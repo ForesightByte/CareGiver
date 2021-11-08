@@ -52,49 +52,40 @@ export class PermaPage implements OnInit {
   ngOnInit() {
   }
 
-  helpedChange(event: number) {
-    console.log(event);
-    return this.helped = event;
+  helpedChange(event) {
+    return this.helped = event.detail.value;
   }
 
-  lovedChange(event: number) {
-    console.log(event);
-    return this.loved = event;
+  lovedChange(event) {
+    return this.loved = event.detail.value;
   }
 
-  satisfiedChange(event: number) {
-    console.log(event);
-    return this.satisfied = event;
+  satisfiedChange(event) {
+    return this.satisfied = event.detail.value;
   }
 
-  purposefulChange(event: number) {
-    console.log(event);
-    return this.purposeful = event;
+  purposefulChange(event) {
+    return this.purposeful = event.detail.value;
   }
 
-  valuableChange(event: number) {
-    console.log(event);
-    return this.valuable = event;
+  valuableChange(event) {
+    return this.valuable = event.detail.value;
   }
 
-  senseChange(event: number) {
-    console.log(event);
-    return this.sense = event;
+  senseChange(event) {
+    return this.sense = event.detail.value;
   }
 
-  prgressChange(event: number) {
-    console.log(event);
-    return this.progress = event;
+  prgressChange(event) {
+    return this.progress = event.detail.value;
   }
 
-  achieveChange(event: number) {
-    console.log(event);
-    return this.achieve = event;
+  achieveChange(event) {
+    return this.achieve = event.detail.value;
   }
 
-  handleChange(event: number) {
-    console.log(event);
-    return this.handle = event;
+  handleChange(event) {
+    return this.handle = event.detail.value;
   }
 
   submit() {

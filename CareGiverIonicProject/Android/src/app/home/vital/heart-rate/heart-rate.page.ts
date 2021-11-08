@@ -3,6 +3,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {Chart} from 'chart.js';
 import {UserService} from 'src/app/user.service';
 import {GarminService} from 'src/app/garmin.service';
+import { IonloaderService } from 'src/app/ionloader.service';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class HeartRatePage implements OnInit {
     private garminId: string;
 
     constructor(
+        public ionLoaderService: IonloaderService,
       private user: UserService,
       private garmin: GarminService,
       public afAuth: AngularFireAuth) {
@@ -36,6 +38,7 @@ export class HeartRatePage implements OnInit {
     }
 
     async showData() {
+        this.ionLoaderService.simpleLoader();
         let garminData;
         if (this.garminId) {
             this.garmin.getGarminDataset(this.garminId).subscribe(data => {
@@ -111,5 +114,6 @@ export class HeartRatePage implements OnInit {
                 }
             }
         });
+        this.ionLoaderService.dismissLoader();
     }
 }

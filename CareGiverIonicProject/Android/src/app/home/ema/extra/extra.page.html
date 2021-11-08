@@ -10,112 +10,60 @@
 <ion-content>
   <ion-grid>
     <div>
-      <ion-radio-group [(ngModel)]="where">
         <ion-list-header style="font-size: large;">
           <ion-label>Where are you right now?</ion-label>
         </ion-list-header>
-        <ion-item>
-          <ion-label>At home</ion-label>
-          <ion-radio slot="start" value="At home"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>At work</ion-label>
-          <ion-radio slot="start" value="At work"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>At the hospital</ion-label>
-          <ion-radio slot="start" value="At the hospital"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>At an appointment for patient</ion-label>
-          <ion-radio slot="start" value="At an appointment for patient"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Other:</ion-label>
-          <ion-radio slot="start" value="other"></ion-radio>
-          <ion-input [(ngModel)]="other1"></ion-input>
-        </ion-item>
-      </ion-radio-group>
+        <ion-list>
+          <ion-item>
+            <ion-label><strong>Select All</strong></ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="whereParent" [indeterminate]="indeterminateState" 
+            (click)="whereCheckbox($event)"></ion-checkbox>
+          </ion-item>
+
+          <ion-item *ngFor="let whereboxes of whereBoxes">
+            <ion-label>{{whereboxes.value}}</ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="whereboxes.isItemChecked">
+            </ion-checkbox>
+          </ion-item>
+        </ion-list>
     </div>
+
     <div>
-      <ion-radio-group [(ngModel)]="who">
         <ion-list-header style="font-size: large;">
           <ion-label>Who are you with right now?</ion-label>
         </ion-list-header>
-        <ion-item>
-          <ion-label>Alone</ion-label>
-          <ion-radio slot="start" value="Alone"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>With the patient</ion-label>
-          <ion-radio slot="start" value="With the patient"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>With friends</ion-label>
-          <ion-radio slot="start" value="With friends"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>With family</ion-label>
-          <ion-radio slot="start" value="With family"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>With colleagues</ion-label>
-          <ion-radio slot="start" value="With colleagues"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Other:</ion-label>
-          <ion-radio slot="start" value="other"></ion-radio>
-          <ion-input [(ngModel)]="other2"></ion-input>
-        </ion-item>
-      </ion-radio-group>
+        <ion-list>
+          <ion-item>
+            <ion-label><strong>Select All</strong></ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="whoParent" [indeterminate]="indeterminateState" 
+            (click)="whoCheckbox($event)"></ion-checkbox>
+          </ion-item>
+
+          <ion-item *ngFor="let whoboxes of whoBoxes">
+            <ion-label>{{whoboxes.value}}</ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="whoboxes.isItemChecked">
+            </ion-checkbox>
+          </ion-item>
+        </ion-list>
     </div>
+
     <div>
-      <ion-radio-group [(ngModel)]="what">
         <ion-list-header style="font-size: large;">
           <ion-label>Right before you started this survey, what were you doing?</ion-label>
         </ion-list-header>
-        <ion-item>
-          <ion-label>Sleeping</ion-label>
-          <ion-radio slot="start" value="Sleeping"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Eating</ion-label>
-          <ion-radio slot="start" value="Eating"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Tending to the patient</ion-label>
-          <ion-radio slot="start" value="Tending to the patient"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Working</ion-label>
-          <ion-radio slot="start" value="Working"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Reading</ion-label>
-          <ion-radio slot="start" value="Reading"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Engaging in physical activity</ion-label>
-          <ion-radio slot="start" value="Engaging in physical activity"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>In nature</ion-label>
-          <ion-radio slot="start" value="In nature"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Cooking</ion-label>
-          <ion-radio slot="start" value="Cooking"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Relaxing</ion-label>
-          <ion-radio slot="start" value="Relaxing"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Other:</ion-label>
-          <ion-radio slot="start" value="other"></ion-radio>
-          <ion-input [(ngModel)]="other3"></ion-input>
-        </ion-item>
-      </ion-radio-group>
+        <ion-list>
+          <ion-item>
+            <ion-label><strong>Select All</strong></ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="whatParent" [indeterminate]="indeterminateState" 
+            (click)="whatCheckbox($event)"></ion-checkbox>
+          </ion-item>
+
+          <ion-item *ngFor="let whatboxes of whatBoxes">
+            <ion-label>{{whatboxes.value}}</ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="whatboxes.isItemChecked">
+            </ion-checkbox>
+          </ion-item>
+        </ion-list>
     </div>
   </ion-grid>
 
@@ -136,33 +84,10 @@
     </div>
     <div class="btn">
       <ion-row row-1>
-        <ion-text style="font-size: smaller; color:red; padding-top:10px;">Low</ion-text>&nbsp;
-        <ion-fab-button size="small" shape="round"
-                        [color]="wellSleep==20?'dark':'lightblue'"
-                        (click)="wellSleepChange(20)" required="true">
-          <img class="pic" [src]="ema.five"/>
-        </ion-fab-button>
-        <ion-fab-button size="small" shape="round"
-                        [color]="wellSleep==40?'dark':'lightblue'"
-                        (click)="wellSleepChange(40)" required="true">
-          <img class="pic" [src]="ema.four"/>
-        </ion-fab-button>
-        <ion-fab-button size="small" shape="round"
-                        [color]="wellSleep==60?'dark':'lightblue'"
-                        (click)="wellSleepChange(60)" required="true">
-          <img class="pic" [src]="ema.three"/>
-        </ion-fab-button>
-        <ion-fab-button size="small" shape="round"
-                        [color]="wellSleep==80?'dark':'lightblue'"
-                        (click)="wellSleepChange(80)" required="true">
-          <img class="pic" [src]="ema.two"/>
-        </ion-fab-button>
-        <ion-fab-button size="small" shape="round"
-                        [color]="wellSleep==100?'dark':'lightblue'"
-                        (click)="wellSleepChange(100)" required="true">
-          <img class="pic" [src]="ema.one"/>
-        </ion-fab-button>&nbsp;
-        <ion-text style="font-size: smaller; color:green; padding-top:10px;">High</ion-text>
+        <ion-range min="0" max="100" color="secondary" pin="true" (ionChange)="wellSleepChange($event)">
+          <ion-label slot="start" style="font-size: large; color:red;">Not at all</ion-label>
+          <ion-label slot="end" style="font-size: large; color:green;">Extremely</ion-label>
+        </ion-range>
       </ion-row>
     </div>
   </ion-grid>
