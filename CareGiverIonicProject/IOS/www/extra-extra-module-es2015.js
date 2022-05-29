@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button [routerLink]=\"['/tabs/home']\" style=\"color: white;\">Back</ion-button>\n    </ion-buttons>\n    <ion-title style=\"text-align: center;\">Well-Being CheckIn</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <div>\n      <ion-radio-group [(ngModel)]=\"where\">\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Where are you right now?</ion-label>\n        </ion-list-header>\n        <ion-item>\n          <ion-label>At home</ion-label>\n          <ion-radio slot=\"start\" value=\"At home\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>At work</ion-label>\n          <ion-radio slot=\"start\" value=\"At work\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>At the hospital</ion-label>\n          <ion-radio slot=\"start\" value=\"At the hospital\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>At an appointment for patient</ion-label>\n          <ion-radio slot=\"start\" value=\"At an appointment for patient\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Other:</ion-label>\n          <ion-radio slot=\"start\" value=\"other\"></ion-radio>\n          <ion-input [(ngModel)]=\"other1\"></ion-input>\n        </ion-item>\n      </ion-radio-group>\n    </div>\n    <div>\n      <ion-radio-group [(ngModel)]=\"who\">\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Who are you with right now?</ion-label>\n        </ion-list-header>\n        <ion-item>\n          <ion-label>Alone</ion-label>\n          <ion-radio slot=\"start\" value=\"Alone\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>With the patient</ion-label>\n          <ion-radio slot=\"start\" value=\"With the patient\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>With friends</ion-label>\n          <ion-radio slot=\"start\" value=\"With friends\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>With family</ion-label>\n          <ion-radio slot=\"start\" value=\"With family\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>With colleagues</ion-label>\n          <ion-radio slot=\"start\" value=\"With colleagues\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Other:</ion-label>\n          <ion-radio slot=\"start\" value=\"other\"></ion-radio>\n          <ion-input [(ngModel)]=\"other2\"></ion-input>\n        </ion-item>\n      </ion-radio-group>\n    </div>\n    <div>\n      <ion-radio-group [(ngModel)]=\"what\">\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Right before you started this survey, what were you doing?</ion-label>\n        </ion-list-header>\n        <ion-item>\n          <ion-label>Sleeping</ion-label>\n          <ion-radio slot=\"start\" value=\"Sleeping\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Eating</ion-label>\n          <ion-radio slot=\"start\" value=\"Eating\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Tending to the patient</ion-label>\n          <ion-radio slot=\"start\" value=\"Tending to the patient\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Working</ion-label>\n          <ion-radio slot=\"start\" value=\"Working\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Reading</ion-label>\n          <ion-radio slot=\"start\" value=\"Reading\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Engaging in physical activity</ion-label>\n          <ion-radio slot=\"start\" value=\"Engaging in physical activity\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>In nature</ion-label>\n          <ion-radio slot=\"start\" value=\"In nature\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Cooking</ion-label>\n          <ion-radio slot=\"start\" value=\"Cooking\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Relaxing</ion-label>\n          <ion-radio slot=\"start\" value=\"Relaxing\"></ion-radio>\n        </ion-item>\n        <ion-item>\n          <ion-label>Other:</ion-label>\n          <ion-radio slot=\"start\" value=\"other\"></ion-radio>\n          <ion-input [(ngModel)]=\"other3\"></ion-input>\n        </ion-item>\n      </ion-radio-group>\n    </div>\n  </ion-grid>\n\n  <ion-grid class=\"sleepQuestions\" *ngIf=\"!isSleep\">\n    <div>\n      <p>How long did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-input required=\"true\" placeholder=\"hours\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"hours\"></ion-input>&nbsp;&nbsp;\n        <ion-input required=\"true\" placeholder=\"minutes\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"minutes\"></ion-input>\n      </ion-row>\n    </div>\n    <div>\n      <p>How well did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-text style=\"font-size: smaller; color:red; padding-top:10px;\">Low</ion-text>&nbsp;\n        <ion-fab-button size=\"small\" shape=\"round\"\n                        [color]=\"wellSleep==20?'dark':'lightblue'\"\n                        (click)=\"wellSleepChange(20)\" required=\"true\">\n          <img class=\"pic\" [src]=\"ema.five\"/>\n        </ion-fab-button>\n        <ion-fab-button size=\"small\" shape=\"round\"\n                        [color]=\"wellSleep==40?'dark':'lightblue'\"\n                        (click)=\"wellSleepChange(40)\" required=\"true\">\n          <img class=\"pic\" [src]=\"ema.four\"/>\n        </ion-fab-button>\n        <ion-fab-button size=\"small\" shape=\"round\"\n                        [color]=\"wellSleep==60?'dark':'lightblue'\"\n                        (click)=\"wellSleepChange(60)\" required=\"true\">\n          <img class=\"pic\" [src]=\"ema.three\"/>\n        </ion-fab-button>\n        <ion-fab-button size=\"small\" shape=\"round\"\n                        [color]=\"wellSleep==80?'dark':'lightblue'\"\n                        (click)=\"wellSleepChange(80)\" required=\"true\">\n          <img class=\"pic\" [src]=\"ema.two\"/>\n        </ion-fab-button>\n        <ion-fab-button size=\"small\" shape=\"round\"\n                        [color]=\"wellSleep==100?'dark':'lightblue'\"\n                        (click)=\"wellSleepChange(100)\" required=\"true\">\n          <img class=\"pic\" [src]=\"ema.one\"/>\n        </ion-fab-button>&nbsp;\n        <ion-text style=\"font-size: smaller; color:green; padding-top:10px;\">High</ion-text>\n      </ion-row>\n    </div>\n  </ion-grid>\n</ion-content>\n\n<ion-tab-bar>\n  <ion-buttons>\n    <ion-button expand=\"block\" \n                fill=\"clear\" \n                style=\"color: rgb(7, 156, 161); font-size: larger; font: bold;\"\n                (click)=\"submit()\">Next</ion-button>\n  </ion-buttons>\n</ion-tab-bar>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button [routerLink]=\"['/tabs/home']\" style=\"color: white;\">Back</ion-button>\n    </ion-buttons>\n    <ion-title style=\"text-align: center;\">Well-Being CheckIn</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Where are you right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whereCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whereboxes of whereBoxes\">\n            <ion-label>{{whereboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Who are you with right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whoCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whoboxes of whoBoxes\">\n            <ion-label>{{whoboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Right before you started this survey, what were you doing?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whatCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whatboxes of whatBoxes\">\n            <ion-label>{{whatboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n  </ion-grid>\n\n  <ion-grid class=\"sleepQuestions\" *ngIf=\"!isSleep\">\n    <div>\n      <p>How long did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-input required=\"true\" placeholder=\"hours\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"hours\"></ion-input>&nbsp;&nbsp;\n        <ion-input required=\"true\" placeholder=\"minutes\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"minutes\"></ion-input>\n      </ion-row>\n    </div>\n    <div>\n      <p>How well did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-range min=\"0\" max=\"100\" color=\"secondary\" pin=\"true\" (ionChange)=\"wellSleepChange($event)\">\n          <ion-label slot=\"start\" style=\"font-size: large; color:red;\">Not at all</ion-label>\n          <ion-label slot=\"end\" style=\"font-size: large; color:green;\">Extremely</ion-label>\n        </ion-range>\n      </ion-row>\n    </div>\n  </ion-grid>\n</ion-content>\n\n<ion-tab-bar>\n  <ion-buttons>\n    <ion-button expand=\"block\" \n                fill=\"clear\" \n                style=\"color: rgb(7, 156, 161); font-size: larger; font: bold;\"\n                (click)=\"submit()\">Next</ion-button>\n  </ion-buttons>\n</ion-tab-bar>\n"
 
 /***/ }),
 
@@ -97,7 +97,7 @@ ExtraPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-content {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n  color: white;\n}\n\n.pic {\n  width: 30px;\n  height: 30px;\n}\n\nion-grid {\n  display: grid;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n\nion-row {\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n\nion-item {\n  --background: rgba(255, 255, 255, 0);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Wb2x1bWVzL0RldmVsb3BtZW50L0NhcmVHaXZlci9DYXJlR2l2ZXJJb25pY1Byb2plY3QvSU9TL3NyYy9hcHAvaG9tZS9lbWEvZXh0cmEvZXh0cmEucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL2VtYS9leHRyYS9leHRyYS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtQkFBQTtBQ0NGOztBREVBO0VBQ0UsOEJBQUE7RUFDQSxZQUFBO0FDQ0Y7O0FERUE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREVBO0VBQ0UsYUFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7QUNDRjs7QURFQTtFQUNFLHdCQUFBO1VBQUEsdUJBQUE7QUNDRjs7QURFQTtFQUNFLG9DQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9ob21lL2VtYS9leHRyYS9leHRyYS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7IC8vIHVybCgnLi4vLi4vLi4vLi4vYXNzZXRzL3doaXRlbGVhZi5qcGcnKSAwIDAvMTAwJSAxMDAlIHJlcGVhdDtcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHJnYig3LCAxNTYsIDE2MSk7IC8vIHVybChzcmMvYXNzZXRzL3Rvb2xiYXIuanBnKSAwIDAvMTAwJSAxMDAlIHJlcGVhdDtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4ucGljIHtcbiAgd2lkdGg6IDMwcHg7XG4gIGhlaWdodDogMzBweDtcbn1cblxuaW9uLWdyaWQge1xuICBkaXNwbGF5OiBncmlkO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuaW9uLXJvdyB7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24taXRlbXtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDApO1xufSIsImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHJnYig3LCAxNTYsIDE2MSk7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuLnBpYyB7XG4gIHdpZHRoOiAzMHB4O1xuICBoZWlnaHQ6IDMwcHg7XG59XG5cbmlvbi1ncmlkIHtcbiAgZGlzcGxheTogZ3JpZDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbmlvbi1yb3cge1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuaW9uLWl0ZW0ge1xuICAtLWJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7XG59Il19 */"
+module.exports = "ion-content {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n  color: white;\n}\n\n.pic {\n  width: 30px;\n  height: 30px;\n}\n\nion-grid {\n  display: grid;\n  justify-content: center;\n}\n\nion-row {\n  justify-content: center;\n}\n\nion-item {\n  --background: rgba(255, 255, 255, 0);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Wb2x1bWVzL1Byb2plY3RzL0NhcmVHaXZlci9DYXJlR2l2ZXJJb25pY1Byb2plY3QvSU9TL3NyYy9hcHAvaG9tZS9lbWEvZXh0cmEvZXh0cmEucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL2VtYS9leHRyYS9leHRyYS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtQkFBQTtBQ0NGOztBREVBO0VBQ0UsOEJBQUE7RUFDQSxZQUFBO0FDQ0Y7O0FERUE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREVBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FDQ0Y7O0FERUE7RUFDRSx1QkFBQTtBQ0NGOztBREVBO0VBQ0Usb0NBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvZW1hL2V4dHJhL2V4dHJhLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTsgLy8gdXJsKCcuLi8uLi8uLi8uLi9hc3NldHMvd2hpdGVsZWFmLmpwZycpIDAgMC8xMDAlIDEwMCUgcmVwZWF0O1xufVxuXG5pb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogcmdiKDcsIDE1NiwgMTYxKTsgLy8gdXJsKHNyYy9hc3NldHMvdG9vbGJhci5qcGcpIDAgMC8xMDAlIDEwMCUgcmVwZWF0O1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi5waWMge1xuICB3aWR0aDogMzBweDtcbiAgaGVpZ2h0OiAzMHB4O1xufVxuXG5pb24tZ3JpZCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24tcm93IHtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbmlvbi1pdGVte1xuICAtLWJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7XG59IiwiaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6IHdoaXRlO1xufVxuXG5pb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogcmdiKDcsIDE1NiwgMTYxKTtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4ucGljIHtcbiAgd2lkdGg6IDMwcHg7XG4gIGhlaWdodDogMzBweDtcbn1cblxuaW9uLWdyaWQge1xuICBkaXNwbGF5OiBncmlkO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuaW9uLXJvdyB7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwKTtcbn0iXX0= */"
 
 /***/ }),
 
@@ -136,9 +136,6 @@ let ExtraPage = class ExtraPage {
         this.alert = alert;
         this.ema = ema;
         this.sleep = '';
-        this.other1 = '';
-        this.other2 = '';
-        this.other3 = '';
         const date = new Date();
         const dd = String(date.getDate()).padStart(2, '0');
         const mm = String(date.getMonth() + 1).padStart(2, '0');
@@ -147,20 +144,92 @@ let ExtraPage = class ExtraPage {
         this.uid = this.auth.cUid;
         console.log('today', this.today);
         this.sleepData(this.uid, this.today);
+        this.whereBoxes = [
+            {
+                value: "At home",
+                isItemChecked: false
+            }, {
+                value: "At work",
+                isItemChecked: false
+            }, {
+                value: "At the hospital",
+                isItemChecked: false
+            }, {
+                value: "At an appointment for patient",
+                isItemChecked: false
+            }, {
+                value: "Other",
+                isItemChecked: false
+            }
+        ];
+        this.whoBoxes = [
+            {
+                value: "Alone",
+                isItemChecked: false
+            }, {
+                value: "With the patient",
+                isItemChecked: false
+            }, {
+                value: "With friends",
+                isItemChecked: false
+            }, {
+                value: "With family",
+                isItemChecked: false
+            }, {
+                value: "With colleagues",
+                isItemChecked: false
+            }, {
+                value: "Other",
+                isItemChecked: false
+            }
+        ];
+        this.whatBoxes = [
+            {
+                value: "Sleeping",
+                isItemChecked: false
+            }, {
+                value: "Eating",
+                isItemChecked: false
+            }, {
+                value: "Tending to the patient",
+                isItemChecked: false
+            }, {
+                value: "Working",
+                isItemChecked: false
+            }, {
+                value: "Reading",
+                isItemChecked: false
+            }, {
+                value: "Engaging in physical activity",
+                isItemChecked: false
+            }, {
+                value: "In nature",
+                isItemChecked: false
+            }, {
+                value: "Cooking",
+                isItemChecked: false
+            }, {
+                value: "Relaxing",
+                isItemChecked: false
+            }, {
+                value: "Other",
+                isItemChecked: false
+            }
+        ];
     }
     wellSleepChange(event) {
         this.sleep = this.hours + ' hr ' + this.minutes + ' mn';
         this.afStore.doc(`users/${this.uid}/EMA/${this.today}`)
             .set({
-            wellSleep: event,
+            wellSleep: event.detail.value,
             sleep: this.sleep
         }, { merge: true });
-        this.wellSleep = event;
+        this.wellSleep = event.detail.value;
     }
     ngOnInit() {
     }
     sleepData(uid, date) {
-        this.user.getWellScore(uid, date).subscribe(user => {
+        this.user.getSleepEMA(uid, date).subscribe(user => {
             if (user) {
                 if (user.wellSleep) {
                     this.isSleep = user.wellSleep;
@@ -175,28 +244,121 @@ let ExtraPage = class ExtraPage {
             }
         });
     }
+    //*************Where Question**********
+    whereCheckbox() {
+        setTimeout(() => {
+            this.whereBoxes.forEach(item => {
+                item.isItemChecked = this.whereParent;
+            });
+        });
+    }
+    verifyWhereEvent() {
+        const allItems = this.whereBoxes.length;
+        let selected = 0;
+        this.whereBoxes.map(item => {
+            if (item.isItemChecked)
+                selected++;
+        });
+        if (selected > 0 && selected < allItems) {
+            // One item is selected among all checkbox elements
+            this.indeterminateState = true;
+            this.whereParent = false;
+        }
+        else if (selected == allItems) {
+            // All item selected
+            this.whereParent = true;
+            this.indeterminateState = false;
+        }
+        else {
+            // No item is selected
+            this.indeterminateState = false;
+            this.whereParent = false;
+        }
+    }
+    //*************Who Question**********
+    whoCheckbox() {
+        setTimeout(() => {
+            this.whoBoxes.forEach(item => {
+                item.isItemChecked = this.whoParent;
+            });
+        });
+    }
+    verifyWhoEvent() {
+        const allItems = this.whoBoxes.length;
+        let selected = 0;
+        this.whoBoxes.map(item => {
+            if (item.isItemChecked)
+                selected++;
+        });
+        if (selected > 0 && selected < allItems) {
+            // One item is selected among all checkbox elements
+            this.indeterminateState = true;
+            this.whoParent = false;
+        }
+        else if (selected == allItems) {
+            // All item selected
+            this.whoParent = true;
+            this.indeterminateState = false;
+        }
+        else {
+            // No item is selected
+            this.indeterminateState = false;
+            this.whoParent = false;
+        }
+    }
+    //*************What Question**********
+    whatCheckbox() {
+        setTimeout(() => {
+            this.whatBoxes.forEach(item => {
+                item.isItemChecked = this.whatParent;
+            });
+        });
+    }
+    verifyWhatEvent() {
+        const allItems = this.whatBoxes.length;
+        let selected = 0;
+        this.whatBoxes.map(item => {
+            if (item.isItemChecked)
+                selected++;
+        });
+        if (selected > 0 && selected < allItems) {
+            // One item is selected among all checkbox elements
+            this.indeterminateState = true;
+            this.whatParent = false;
+        }
+        else if (selected == allItems) {
+            // All item selected
+            this.whatParent = true;
+            this.indeterminateState = false;
+        }
+        else {
+            // No item is selected
+            this.indeterminateState = false;
+            this.whatParent = false;
+        }
+    }
     submit() {
         try {
-            let tempWhere;
-            let tempWhat;
-            let tempWho;
-            if (this.where === 'other') {
-                tempWhere = this.other1;
+            let tempWhere = [];
+            let tempWhat = [];
+            let tempWho = [];
+            for (let i = 0; i < this.whereBoxes.length; i++) {
+                if (this.whereBoxes[i].isItemChecked == true) {
+                    tempWhere.push(this.whereBoxes[i].value);
+                    console.log('where', tempWhere);
+                }
             }
-            else {
-                tempWhere = this.where;
+            for (let i = 0; i < this.whoBoxes.length; i++) {
+                if (this.whoBoxes[i].isItemChecked == true) {
+                    tempWho.push(this.whoBoxes[i].value);
+                    console.log('who', tempWho);
+                }
             }
-            if (this.who === 'other') {
-                tempWho = this.other2;
-            }
-            else {
-                tempWho = this.who;
-            }
-            if (this.what === 'other') {
-                tempWhat = this.other3;
-            }
-            else {
-                tempWhat = this.what;
+            for (let i = 0; i < this.whatBoxes.length; i++) {
+                if (this.whatBoxes[i].isItemChecked == true) {
+                    tempWhat.push(this.whatBoxes[i].value);
+                    console.log('what', tempWhat);
+                }
             }
             this.afStore.doc(`users/${this.uid}/EMA/${this.today}`)
                 .set({

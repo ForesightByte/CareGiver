@@ -97,7 +97,7 @@ NearbyPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-content {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n  color: white;\n}\n\nion-item {\n  --background: rgba(255, 255, 255, 0);\n  color: black;\n}\n\nion-list {\n  background: rgba(255, 255, 255, 0);\n}\n\n.zip {\n  padding-left: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Wb2x1bWVzL0RldmVsb3BtZW50L0NhcmVHaXZlci9DYXJlR2l2ZXJJb25pY1Byb2plY3QvSU9TL3NyYy9hcHAvaG9tZS9uZWFyYnkvbmVhcmJ5LnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9uZWFyYnkvbmVhcmJ5LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG1CQUFBO0FDQ0o7O0FERUU7RUFDRSw4QkFBQTtFQUNBLFlBQUE7QUNDSjs7QURFRTtFQUNFLG9DQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVFO0VBQ0Usa0NBQUE7QUNDSjs7QURFRTtFQUNFLGtCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9ob21lL25lYXJieS9uZWFyYnkucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnQge1xuICAgIC0tYmFja2dyb3VuZDogd2hpdGU7IC8vIHVybCguLi8uLi8uLi9hc3NldHMvcmVzb3VyY2VzLmpwZykgMCAwLzEwMCUgMTAwJSByZXBlYXQ7XG4gIH1cbiAgXG4gIGlvbi10b29sYmFyIHtcbiAgICAtLWJhY2tncm91bmQ6IHJnYig3LCAxNTYsIDE2MSk7IC8vIHVybCguLi8uLi8uLi9hc3NldHMvdG9vbGJhci5qcGcpIDAgMC8xMDAlIDEwMCUgcmVwZWF0O1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgfVxuICBcbiAgaW9uLWl0ZW0ge1xuICAgIC0tYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwKTtcbiAgICBjb2xvcjogcmdiKDAsIDAsIDApO1xuICB9XG4gIFxuICBpb24tbGlzdCB7XG4gICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwKTtcbiAgfVxuICBcbiAgLnppcHtcbiAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gIH0iLCJpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG59XG5cbmlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2IoNywgMTU2LCAxNjEpO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDApO1xuICBjb2xvcjogYmxhY2s7XG59XG5cbmlvbi1saXN0IHtcbiAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwKTtcbn1cblxuLnppcCB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn0iXX0= */"
+module.exports = "ion-content {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n  color: white;\n}\n\nion-item {\n  --background: rgba(255, 255, 255, 0);\n  color: black;\n}\n\nion-list {\n  background: rgba(255, 255, 255, 0);\n}\n\n.zip {\n  padding-left: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Wb2x1bWVzL1Byb2plY3RzL0NhcmVHaXZlci9DYXJlR2l2ZXJJb25pY1Byb2plY3QvSU9TL3NyYy9hcHAvaG9tZS9uZWFyYnkvbmVhcmJ5LnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9uZWFyYnkvbmVhcmJ5LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG1CQUFBO0FDQ0o7O0FERUU7RUFDRSw4QkFBQTtFQUNBLFlBQUE7QUNDSjs7QURFRTtFQUNFLG9DQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVFO0VBQ0Usa0NBQUE7QUNDSjs7QURFRTtFQUNFLGtCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9ob21lL25lYXJieS9uZWFyYnkucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnQge1xuICAgIC0tYmFja2dyb3VuZDogd2hpdGU7IC8vIHVybCguLi8uLi8uLi9hc3NldHMvcmVzb3VyY2VzLmpwZykgMCAwLzEwMCUgMTAwJSByZXBlYXQ7XG4gIH1cbiAgXG4gIGlvbi10b29sYmFyIHtcbiAgICAtLWJhY2tncm91bmQ6IHJnYig3LCAxNTYsIDE2MSk7IC8vIHVybCguLi8uLi8uLi9hc3NldHMvdG9vbGJhci5qcGcpIDAgMC8xMDAlIDEwMCUgcmVwZWF0O1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgfVxuICBcbiAgaW9uLWl0ZW0ge1xuICAgIC0tYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwKTtcbiAgICBjb2xvcjogcmdiKDAsIDAsIDApO1xuICB9XG4gIFxuICBpb24tbGlzdCB7XG4gICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwKTtcbiAgfVxuICBcbiAgLnppcHtcbiAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gIH0iLCJpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG59XG5cbmlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2IoNywgMTU2LCAxNjEpO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDApO1xuICBjb2xvcjogYmxhY2s7XG59XG5cbmlvbi1saXN0IHtcbiAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwKTtcbn1cblxuLnppcCB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -114,11 +114,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var src_app_ionloader_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/ionloader.service */ "./src/app/ionloader.service.ts");
+
 
 
 
 let NearbyPage = class NearbyPage {
-    constructor(http) {
+    constructor(ionLoaderService, http) {
+        this.ionLoaderService = ionLoaderService;
         this.placesResult = [{ name: 'Empty List.' }];
         this.httpClient = http;
     }
@@ -141,14 +144,17 @@ let NearbyPage = class NearbyPage {
                 if (String(placesFromSearch.status) === 'OK') {
                     this.placesResult = placesFromSearch.results.length > 0 ? placesFromSearch.results : [{ name: 'Got zero result.' }];
                     console.log(this.placesResult);
+                    this.ionLoaderService.dismissLoader();
                 }
                 else {
                     this.placesResult = [{ name: 'Got No result.' }];
+                    this.ionLoaderService.dismissLoader();
                 }
             }
         });
     }
     zipToLocation() {
+        this.ionLoaderService.simpleLoader();
         const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.zip_code + '&key=AIzaSyASG6Rf4ZdWJI7Vcc2xLNcaZGCRa7BQaE0';
         fetch(url).then(res => res.json())
             .then(res => {
@@ -162,6 +168,7 @@ let NearbyPage = class NearbyPage {
     }
 };
 NearbyPage.ctorParameters = () => [
+    { type: src_app_ionloader_service__WEBPACK_IMPORTED_MODULE_3__["IonloaderService"] },
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
 ];
 NearbyPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -170,7 +177,8 @@ NearbyPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./nearby.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/nearby/nearby.page.html"),
         styles: [__webpack_require__(/*! ./nearby.page.scss */ "./src/app/home/nearby/nearby.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_ionloader_service__WEBPACK_IMPORTED_MODULE_3__["IonloaderService"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
 ], NearbyPage);
 
 

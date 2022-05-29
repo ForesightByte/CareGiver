@@ -693,6 +693,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _services_fcm_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/fcm.service */ "./src/app/services/fcm.service.ts");
+/* harmony import */ var _ionloader_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./ionloader.service */ "./src/app/ionloader.service.ts");
+
 
 
 
@@ -746,7 +748,8 @@ var AppModule = /** @class */ (function () {
                 _auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"],
                 _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_19__["FCM"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_20__["LoginComponent"],
-                _services_fcm_service__WEBPACK_IMPORTED_MODULE_21__["FcmService"]
+                _services_fcm_service__WEBPACK_IMPORTED_MODULE_21__["FcmService"],
+                _ionloader_service__WEBPACK_IMPORTED_MODULE_22__["IonloaderService"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
@@ -859,6 +862,82 @@ var firebaseConfig = {
 };
 // tslint:disable-next-line: semicolon
 /* harmony default export */ __webpack_exports__["default"] = (firebaseConfig);
+
+
+/***/ }),
+
+/***/ "./src/app/ionloader.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/ionloader.service.ts ***!
+  \**************************************/
+/*! exports provided: IonloaderService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IonloaderService", function() { return IonloaderService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+var IonloaderService = /** @class */ (function () {
+    function IonloaderService(loadingController) {
+        this.loadingController = loadingController;
+    }
+    // Simple loader
+    IonloaderService.prototype.simpleLoader = function () {
+        this.loadingController.create({
+            message: 'Please be patient...',
+            spinner: "lines"
+        }).then(function (response) {
+            response.present();
+        });
+    };
+    // Dismiss loader
+    IonloaderService.prototype.dismissLoader = function () {
+        this.loadingController.dismiss().then(function (response) {
+            console.log('Loader closed!', response);
+        }).catch(function (err) {
+            console.log('Error occured : ', err);
+        });
+    };
+    // Auto hide show loader
+    IonloaderService.prototype.autoLoader = function () {
+        this.loadingController.create({
+            message: 'Loading....',
+            duration: 3000,
+            translucent: true
+        }).then(function (response) {
+            response.present();
+            response.onDidDismiss().then(function (response) {
+            });
+        });
+    };
+    // Custom style + hide on tap loader
+    IonloaderService.prototype.customLoader = function () {
+        this.loadingController.create({
+            message: 'Loader with custom style',
+            duration: 4000,
+            cssClass: 'loader-css-class',
+            backdropDismiss: true
+        }).then(function (res) {
+            res.present();
+        });
+    };
+    IonloaderService.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
+    ]; };
+    IonloaderService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
+    ], IonloaderService);
+    return IonloaderService;
+}());
+
 
 
 /***/ }),
@@ -1152,7 +1231,7 @@ var UserService = /** @class */ (function () {
     };
     // get wellbeing score from EMA without date
     UserService.prototype.getEma = function (uid) {
-        this.userCollection = this.afStore.collection('users').doc(uid).collection('EMA');
+        this.userCollection = this.afStore.collection('users').doc(uid).collection('Wellbeing');
         return this.userCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (actions) {
             return actions.map(function (a) {
                 var data = a.payload.doc.data();
@@ -1161,10 +1240,26 @@ var UserService = /** @class */ (function () {
             });
         }));
     };
-    // get wellbeing score from EMA by date
-    UserService.prototype.getWellScore = function (uid, date) {
+    // get Sleep score from EMA by date
+    UserService.prototype.getSleepEMA = function (uid, date) {
         console.log(uid, date);
         return this.afStore.collection('users').doc(uid).collection('EMA').doc(date)
+            .valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) {
+            return user;
+        }));
+    };
+    // get Survey score from EMA by date
+    UserService.prototype.getSurveyScore = function (uid, date) {
+        console.log(uid, date);
+        return this.afStore.collection('users').doc(uid).collection('EMA').doc(date)
+            .valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) {
+            return user;
+        }));
+    };
+    // get Vital score from EMA by date
+    UserService.prototype.getVitalScore = function (gid, date) {
+        console.log(gid, date);
+        return this.afStore.collection('users').doc(gid).collection('garmin').doc(date)
             .valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) {
             return user;
         }));
@@ -1291,7 +1386,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Development/CareGiver/CareGiverIonicProject/IOS/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Volumes/Projects/CareGiver/CareGiverIonicProject/IOS/src/main.ts */"./src/main.ts");
 
 
 /***/ })

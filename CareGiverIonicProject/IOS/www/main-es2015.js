@@ -682,6 +682,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _services_fcm_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/fcm.service */ "./src/app/services/fcm.service.ts");
+/* harmony import */ var _ionloader_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./ionloader.service */ "./src/app/ionloader.service.ts");
+
 
 
 
@@ -734,7 +736,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"],
             _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_19__["FCM"],
             _login_login_component__WEBPACK_IMPORTED_MODULE_20__["LoginComponent"],
-            _services_fcm_service__WEBPACK_IMPORTED_MODULE_21__["FcmService"]
+            _services_fcm_service__WEBPACK_IMPORTED_MODULE_21__["FcmService"],
+            _ionloader_service__WEBPACK_IMPORTED_MODULE_22__["IonloaderService"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })
@@ -835,6 +838,81 @@ const firebaseConfig = {
 };
 // tslint:disable-next-line: semicolon
 /* harmony default export */ __webpack_exports__["default"] = (firebaseConfig);
+
+
+/***/ }),
+
+/***/ "./src/app/ionloader.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/ionloader.service.ts ***!
+  \**************************************/
+/*! exports provided: IonloaderService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IonloaderService", function() { return IonloaderService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+let IonloaderService = class IonloaderService {
+    constructor(loadingController) {
+        this.loadingController = loadingController;
+    }
+    // Simple loader
+    simpleLoader() {
+        this.loadingController.create({
+            message: 'Please be patient...',
+            spinner: "lines"
+        }).then((response) => {
+            response.present();
+        });
+    }
+    // Dismiss loader
+    dismissLoader() {
+        this.loadingController.dismiss().then((response) => {
+            console.log('Loader closed!', response);
+        }).catch((err) => {
+            console.log('Error occured : ', err);
+        });
+    }
+    // Auto hide show loader
+    autoLoader() {
+        this.loadingController.create({
+            message: 'Loading....',
+            duration: 3000,
+            translucent: true
+        }).then((response) => {
+            response.present();
+            response.onDidDismiss().then((response) => {
+            });
+        });
+    }
+    // Custom style + hide on tap loader
+    customLoader() {
+        this.loadingController.create({
+            message: 'Loader with custom style',
+            duration: 4000,
+            cssClass: 'loader-css-class',
+            backdropDismiss: true
+        }).then((res) => {
+            res.present();
+        });
+    }
+};
+IonloaderService.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
+];
+IonloaderService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
+], IonloaderService);
+
 
 
 /***/ }),
@@ -1085,7 +1163,7 @@ let UserService = class UserService {
     }
     // get wellbeing score from EMA without date
     getEma(uid) {
-        this.userCollection = this.afStore.collection('users').doc(uid).collection('EMA');
+        this.userCollection = this.afStore.collection('users').doc(uid).collection('Wellbeing');
         return this.userCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(actions => {
             return actions.map(a => {
                 const data = a.payload.doc.data();
@@ -1094,10 +1172,26 @@ let UserService = class UserService {
             });
         }));
     }
-    // get wellbeing score from EMA by date
-    getWellScore(uid, date) {
+    // get Sleep score from EMA by date
+    getSleepEMA(uid, date) {
         console.log(uid, date);
         return this.afStore.collection('users').doc(uid).collection('EMA').doc(date)
+            .valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(user => {
+            return user;
+        }));
+    }
+    // get Survey score from EMA by date
+    getSurveyScore(uid, date) {
+        console.log(uid, date);
+        return this.afStore.collection('users').doc(uid).collection('EMA').doc(date)
+            .valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(user => {
+            return user;
+        }));
+    }
+    // get Vital score from EMA by date
+    getVitalScore(gid, date) {
+        console.log(gid, date);
+        return this.afStore.collection('users').doc(gid).collection('garmin').doc(date)
             .valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(user => {
             return user;
         }));
@@ -1211,7 +1305,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Development/CareGiver/CareGiverIonicProject/IOS/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Volumes/Projects/CareGiver/CareGiverIonicProject/IOS/src/main.ts */"./src/main.ts");
 
 
 /***/ })
