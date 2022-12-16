@@ -18,7 +18,10 @@ export class ExtraPage implements OnInit {
   whatParent: boolean;
   whereBoxes: any;
   whoBoxes: any;
-  whatBoxes; any;
+  whatBoxes: any;
+  whereBoxes2: any;
+  whoBoxes2: any;
+  whatBoxes2: any;
 
   sleep: any = '';
   hours: number;
@@ -44,8 +47,9 @@ export class ExtraPage implements OnInit {
     const dd = String(date.getDate()).padStart(2, '0');
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const yyyy = date.getFullYear();
+    const time = date.getHours();
 
-    this.today = yyyy + '-' + mm + '-' + dd;
+    this.today = yyyy + '-' + mm + '-' + dd + '_'  + time;
     this.uid = this.auth.cUid;
     console.log('today', this.today);
     this.sleepData(this.uid, this.today);
@@ -69,6 +73,40 @@ export class ExtraPage implements OnInit {
       }
     ];
 
+    this.whereBoxes2 = [
+      {
+        value: "At home",
+        isItemChecked: false
+      }, {
+        value: "At work",
+        isItemChecked: false
+      }, {
+        value: "Running errands",
+        isItemChecked: false
+      }, {
+        value: "At the gym",
+        isItemChecked: false
+      }, {
+        value: "Outdoors in nature",
+        isItemChecked: false
+      }, {
+        value: "At the hospital/doctor’s office for the patient’s appointment",
+        isItemChecked: false
+      }, {
+        value: "At the hospital/doctor’s office for my own appointment",
+        isItemChecked: false
+      }, {
+        value: "Out to eat",
+        isItemChecked: false
+      }, {
+        value: "At school",
+        isItemChecked: false
+      }, {
+        value: "Other",
+        isItemChecked: false
+      }
+    ];
+
     this.whoBoxes = [
       {
         value: "Alone",
@@ -84,6 +122,31 @@ export class ExtraPage implements OnInit {
         isItemChecked: false
       }, {
         value: "With colleagues",
+        isItemChecked: false
+      }, {
+        value: "Other",
+        isItemChecked: false
+      }
+    ];
+
+    this.whoBoxes2 = [
+      {
+        value: "With the patient",
+        isItemChecked: false
+      }, {
+        value: "With a romantic partner",
+        isItemChecked: false
+      }, {
+        value: "With friends",
+        isItemChecked: false
+      }, {
+        value: "On my own",
+        isItemChecked: false
+      }, {
+        value: "Around people I do not know",
+        isItemChecked: false
+      }, {
+        value: "With work colleagues",
         isItemChecked: false
       }, {
         value: "Other",
@@ -118,6 +181,40 @@ export class ExtraPage implements OnInit {
         isItemChecked: false
       }, {
         value: "Relaxing",
+        isItemChecked: false
+      }, {
+        value: "Other",
+        isItemChecked: false
+      }
+    ];
+
+    this.whatBoxes2 = [
+      {
+        value: "Exercising",
+        isItemChecked: false
+      }, {
+        value: "Eating",
+        isItemChecked: false
+      }, {
+        value: "Caring for the patient",
+        isItemChecked: false
+      }, {
+        value: "Working (job)",
+        isItemChecked: false
+      }, {
+        value: "Doing work around the house (e.g., cleaning)",
+        isItemChecked: false
+      }, {
+        value: "Quality time with family",
+        isItemChecked: false
+      },  {
+        value: "Watching TV",
+        isItemChecked: false
+      },  {
+        value: "On my phone (e.g., social media, text, call)",
+        isItemChecked: false
+      }, {
+        value: "Quality time with friends",
         isItemChecked: false
       }, {
         value: "Other",

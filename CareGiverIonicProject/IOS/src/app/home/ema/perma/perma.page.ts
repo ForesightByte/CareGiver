@@ -36,8 +36,9 @@ export class PermaPage implements OnInit {
     const dd = String(date.getDate()).padStart(2, '0');
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const yyyy = date.getFullYear();
+    const time = date.getHours();
 
-    this.today = yyyy + '-' + mm + '-' + dd;
+    this.today = yyyy + '-' + mm + '-' + dd + '_'  + time;
     this.uid = this.auth.cUid;
 
     this.aRoute.queryParams.subscribe(params => {

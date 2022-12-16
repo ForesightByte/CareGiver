@@ -29,6 +29,26 @@
     </div>
 
     <div>
+      <ion-list-header style="font-size: large;">
+        <ion-label>Where were you at the time that you receive the survey notification?</ion-label>
+      </ion-list-header>
+      <ion-list>
+        <ion-item>
+          <ion-label><strong>Select All</strong></ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whereParent" [indeterminate]="indeterminateState" 
+          ></ion-checkbox>
+        </ion-item>
+        <!-- (click)="whereCheckbox($event)" -->
+
+        <ion-item *ngFor="let whereboxes of whereBoxes">
+          <ion-label>{{whereboxes2.value}}</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whereboxes.isItemChecked">
+          </ion-checkbox>
+        </ion-item>
+      </ion-list>
+  </div>
+
+    <div>
         <ion-list-header style="font-size: large;">
           <ion-label>Who are you with right now?</ion-label>
         </ion-list-header>
@@ -48,6 +68,26 @@
     </div>
 
     <div>
+      <ion-list-header style="font-size: large;">
+        <ion-label>Who were you with at the time that you received the survey notification (select all that apply)?</ion-label>
+      </ion-list-header>
+      <ion-list>
+        <ion-item>
+          <ion-label><strong>Select All</strong></ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whoParent" [indeterminate]="indeterminateState" 
+          ></ion-checkbox>
+        </ion-item>
+        <!-- (click)="whoCheckbox($event)" -->
+
+        <ion-item *ngFor="let whoboxes of whoBoxes">
+          <ion-label>{{whoboxes2.value}}</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whoboxes.isItemChecked">
+          </ion-checkbox>
+        </ion-item>
+      </ion-list>
+  </div>
+
+    <div>
         <ion-list-header style="font-size: large;">
           <ion-label>Right before you started this survey, what were you doing?</ion-label>
         </ion-list-header>
@@ -65,6 +105,26 @@
           </ion-item>
         </ion-list>
     </div>
+
+    <div>
+      <ion-list-header style="font-size: large;">
+        <ion-label>What were you doing at the time that you received the survey notification?</ion-label>
+      </ion-list-header>
+      <ion-list>
+        <ion-item>
+          <ion-label><strong>Select All</strong></ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whatParent" [indeterminate]="indeterminateState" 
+          ></ion-checkbox>
+        </ion-item>
+        <!-- (click)="whatCheckbox($event)" -->
+
+        <ion-item *ngFor="let whatboxes of whatBoxes">
+          <ion-label>{{whatboxes2.value}}</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whatboxes.isItemChecked">
+          </ion-checkbox>
+        </ion-item>
+      </ion-list>
+  </div>
   </ion-grid>
 
   <ion-grid class="sleepQuestions" *ngIf="!isSleep">

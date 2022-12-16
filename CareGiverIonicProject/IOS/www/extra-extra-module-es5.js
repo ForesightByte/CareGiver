@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button [routerLink]=\"['/tabs/home']\" style=\"color: white;\">Back</ion-button>\n    </ion-buttons>\n    <ion-title style=\"text-align: center;\">Well-Being CheckIn</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Where are you right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whereCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whereboxes of whereBoxes\">\n            <ion-label>{{whereboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Who are you with right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whoCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whoboxes of whoBoxes\">\n            <ion-label>{{whoboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Right before you started this survey, what were you doing?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whatCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whatboxes of whatBoxes\">\n            <ion-label>{{whatboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n  </ion-grid>\n\n  <ion-grid class=\"sleepQuestions\" *ngIf=\"!isSleep\">\n    <div>\n      <p>How long did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-input required=\"true\" placeholder=\"hours\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"hours\"></ion-input>&nbsp;&nbsp;\n        <ion-input required=\"true\" placeholder=\"minutes\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"minutes\"></ion-input>\n      </ion-row>\n    </div>\n    <div>\n      <p>How well did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-range min=\"0\" max=\"100\" color=\"secondary\" pin=\"true\" (ionChange)=\"wellSleepChange($event)\">\n          <ion-label slot=\"start\" style=\"font-size: large; color:red;\">Not at all</ion-label>\n          <ion-label slot=\"end\" style=\"font-size: large; color:green;\">Extremely</ion-label>\n        </ion-range>\n      </ion-row>\n    </div>\n  </ion-grid>\n</ion-content>\n\n<ion-tab-bar>\n  <ion-buttons>\n    <ion-button expand=\"block\" \n                fill=\"clear\" \n                style=\"color: rgb(7, 156, 161); font-size: larger; font: bold;\"\n                (click)=\"submit()\">Next</ion-button>\n  </ion-buttons>\n</ion-tab-bar>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button [routerLink]=\"['/tabs/home']\" style=\"color: white;\">Back</ion-button>\n    </ion-buttons>\n    <ion-title style=\"text-align: center;\">Well-Being CheckIn</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Where are you right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whereCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whereboxes of whereBoxes\">\n            <ion-label>{{whereboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n      <ion-list-header style=\"font-size: large;\">\n        <ion-label>Where were you at the time that you receive the survey notification?</ion-label>\n      </ion-list-header>\n      <ion-list>\n        <ion-item>\n          <ion-label><strong>Select All</strong></ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whereParent\" [indeterminate]=\"indeterminateState\" \n          ></ion-checkbox>\n        </ion-item>\n        <!-- (click)=\"whereCheckbox($event)\" -->\n\n        <ion-item *ngFor=\"let whereboxes of whereBoxes\">\n          <ion-label>{{whereboxes2.value}}</ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whereboxes.isItemChecked\">\n          </ion-checkbox>\n        </ion-item>\n      </ion-list>\n  </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Who are you with right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whoCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whoboxes of whoBoxes\">\n            <ion-label>{{whoboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n      <ion-list-header style=\"font-size: large;\">\n        <ion-label>Who were you with at the time that you received the survey notification (select all that apply)?</ion-label>\n      </ion-list-header>\n      <ion-list>\n        <ion-item>\n          <ion-label><strong>Select All</strong></ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whoParent\" [indeterminate]=\"indeterminateState\" \n          ></ion-checkbox>\n        </ion-item>\n        <!-- (click)=\"whoCheckbox($event)\" -->\n\n        <ion-item *ngFor=\"let whoboxes of whoBoxes\">\n          <ion-label>{{whoboxes2.value}}</ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whoboxes.isItemChecked\">\n          </ion-checkbox>\n        </ion-item>\n      </ion-list>\n  </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Right before you started this survey, what were you doing?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whatCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whatboxes of whatBoxes\">\n            <ion-label>{{whatboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n      <ion-list-header style=\"font-size: large;\">\n        <ion-label>What were you doing at the time that you received the survey notification?</ion-label>\n      </ion-list-header>\n      <ion-list>\n        <ion-item>\n          <ion-label><strong>Select All</strong></ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whatParent\" [indeterminate]=\"indeterminateState\" \n          ></ion-checkbox>\n        </ion-item>\n        <!-- (click)=\"whatCheckbox($event)\" -->\n\n        <ion-item *ngFor=\"let whatboxes of whatBoxes\">\n          <ion-label>{{whatboxes2.value}}</ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whatboxes.isItemChecked\">\n          </ion-checkbox>\n        </ion-item>\n      </ion-list>\n  </div>\n  </ion-grid>\n\n  <ion-grid class=\"sleepQuestions\" *ngIf=\"!isSleep\">\n    <div>\n      <p>How long did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-input required=\"true\" placeholder=\"hours\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"hours\"></ion-input>&nbsp;&nbsp;\n        <ion-input required=\"true\" placeholder=\"minutes\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"minutes\"></ion-input>\n      </ion-row>\n    </div>\n    <div>\n      <p>How well did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-range min=\"0\" max=\"100\" color=\"secondary\" pin=\"true\" (ionChange)=\"wellSleepChange($event)\">\n          <ion-label slot=\"start\" style=\"font-size: large; color:red;\">Not at all</ion-label>\n          <ion-label slot=\"end\" style=\"font-size: large; color:green;\">Extremely</ion-label>\n        </ion-range>\n      </ion-row>\n    </div>\n  </ion-grid>\n</ion-content>\n\n<ion-tab-bar>\n  <ion-buttons>\n    <ion-button expand=\"block\" \n                fill=\"clear\" \n                style=\"color: rgb(7, 156, 161); font-size: larger; font: bold;\"\n                (click)=\"submit()\">Next</ion-button>\n  </ion-buttons>\n</ion-tab-bar>\n"
 
 /***/ }),
 
@@ -146,7 +146,8 @@ var ExtraPage = /** @class */ (function () {
         var dd = String(date.getDate()).padStart(2, '0');
         var mm = String(date.getMonth() + 1).padStart(2, '0');
         var yyyy = date.getFullYear();
-        this.today = yyyy + '-' + mm + '-' + dd;
+        var time = date.getHours();
+        this.today = yyyy + '-' + mm + '-' + dd + '_' + time;
         this.uid = this.auth.cUid;
         console.log('today', this.today);
         this.sleepData(this.uid, this.today);
@@ -168,6 +169,39 @@ var ExtraPage = /** @class */ (function () {
                 isItemChecked: false
             }
         ];
+        this.whereBoxes2 = [
+            {
+                value: "At home",
+                isItemChecked: false
+            }, {
+                value: "At work",
+                isItemChecked: false
+            }, {
+                value: "Running errands",
+                isItemChecked: false
+            }, {
+                value: "At the gym",
+                isItemChecked: false
+            }, {
+                value: "Outdoors in nature",
+                isItemChecked: false
+            }, {
+                value: "At the hospital/doctor’s office for the patient’s appointment",
+                isItemChecked: false
+            }, {
+                value: "At the hospital/doctor’s office for my own appointment",
+                isItemChecked: false
+            }, {
+                value: "Out to eat",
+                isItemChecked: false
+            }, {
+                value: "At school",
+                isItemChecked: false
+            }, {
+                value: "Other",
+                isItemChecked: false
+            }
+        ];
         this.whoBoxes = [
             {
                 value: "Alone",
@@ -183,6 +217,30 @@ var ExtraPage = /** @class */ (function () {
                 isItemChecked: false
             }, {
                 value: "With colleagues",
+                isItemChecked: false
+            }, {
+                value: "Other",
+                isItemChecked: false
+            }
+        ];
+        this.whoBoxes2 = [
+            {
+                value: "With the patient",
+                isItemChecked: false
+            }, {
+                value: "With a romantic partner",
+                isItemChecked: false
+            }, {
+                value: "With friends",
+                isItemChecked: false
+            }, {
+                value: "On my own",
+                isItemChecked: false
+            }, {
+                value: "Around people I do not know",
+                isItemChecked: false
+            }, {
+                value: "With work colleagues",
                 isItemChecked: false
             }, {
                 value: "Other",
@@ -216,6 +274,39 @@ var ExtraPage = /** @class */ (function () {
                 isItemChecked: false
             }, {
                 value: "Relaxing",
+                isItemChecked: false
+            }, {
+                value: "Other",
+                isItemChecked: false
+            }
+        ];
+        this.whatBoxes2 = [
+            {
+                value: "Exercising",
+                isItemChecked: false
+            }, {
+                value: "Eating",
+                isItemChecked: false
+            }, {
+                value: "Caring for the patient",
+                isItemChecked: false
+            }, {
+                value: "Working (job)",
+                isItemChecked: false
+            }, {
+                value: "Doing work around the house (e.g., cleaning)",
+                isItemChecked: false
+            }, {
+                value: "Quality time with family",
+                isItemChecked: false
+            }, {
+                value: "Watching TV",
+                isItemChecked: false
+            }, {
+                value: "On my phone (e.g., social media, text, call)",
+                isItemChecked: false
+            }, {
+                value: "Quality time with friends",
                 isItemChecked: false
             }, {
                 value: "Other",

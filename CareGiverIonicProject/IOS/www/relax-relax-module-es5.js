@@ -142,7 +142,8 @@ var RelaxPage = /** @class */ (function () {
         var dd = String(date.getDate()).padStart(2, '0');
         var mm = String(date.getMonth() + 1).padStart(2, '0');
         var yyyy = date.getFullYear();
-        this.today = yyyy + '-' + mm + '-' + dd;
+        var time = date.getHours();
+        this.today = yyyy + '-' + mm + '-' + dd + '_' + time;
         this.uid = auth.cUid;
     }
     RelaxPage.prototype.relaxChange = function (event) {
