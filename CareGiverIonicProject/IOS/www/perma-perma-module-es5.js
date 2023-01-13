@@ -145,7 +145,8 @@ var PermaPage = /** @class */ (function () {
         var mm = String(date.getMonth() + 1).padStart(2, '0');
         var yyyy = date.getFullYear();
         var time = date.getHours();
-        this.today = yyyy + '-' + mm + '-' + dd + '_' + time;
+        this.today = yyyy + '-' + mm + '-' + dd;
+        this.today4EMA = yyyy + '-' + mm + '-' + dd + '_' + time;
         this.uid = this.auth.cUid;
         this.aRoute.queryParams.subscribe(function (params) {
             if (params.score) {
@@ -186,8 +187,9 @@ var PermaPage = /** @class */ (function () {
         return this.handle = event.detail.value;
     };
     PermaPage.prototype.submit = function () {
-        var res = this.afStore.doc("users/" + this.uid + "/EMA/" + this.today);
-        var res2 = this.afStore.doc("users/" + this.uid);
+        var res = this.afStore.doc("users/" + this.uid);
+        var res2 = this.afStore.doc("users/" + this.uid + "/EMA/" + this.today);
+        var res3 = this.afStore.doc("users/" + this.uid + "/EMA/" + this.today4EMA);
         var helped = this.helped;
         var loved = this.loved;
         var satisfied = this.satisfied;
@@ -202,9 +204,10 @@ var PermaPage = /** @class */ (function () {
         var wellbeingScore = Number(((Number(this.wellbeingScore) + Number(score)) / 17).toFixed(0));
         var data = { helped: helped, loved: loved, satisfied: satisfied, purposeful: purposeful, valuable: valuable, sense: sense, progress: progress, achieve: achieve, handle: handle, wellbeingScore: wellbeingScore };
         try {
-            res.set(data, { merge: true });
+            res3.set(data, { merge: true });
             // tslint:disable-next-line: object-literal-shorthand
-            res2.set({ wellbeingScore: wellbeingScore }, { merge: true });
+            res2.set(data, { merge: true });
+            res.set({ wellbeingScore: wellbeingScore }, { merge: true });
             this.showAlert('Thank you for your participation! Your contribution matters');
             this.router.navigate(['/tabs']);
         }

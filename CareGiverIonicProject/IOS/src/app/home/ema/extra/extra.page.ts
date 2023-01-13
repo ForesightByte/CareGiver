@@ -16,6 +16,9 @@ export class ExtraPage implements OnInit {
   whereParent: boolean;
   whoParent: boolean;
   whatParent: boolean;
+  whereParent2: boolean;
+  whoParent2: boolean;
+  whatParent2: boolean;
   whereBoxes: any;
   whoBoxes: any;
   whatBoxes: any;
@@ -32,6 +35,9 @@ export class ExtraPage implements OnInit {
   where: string;
   who: string;
   what: string;
+  where2: string;
+  who2: string;
+  what2: string;
 
   uid;
   today;
@@ -75,10 +81,10 @@ export class ExtraPage implements OnInit {
 
     this.whereBoxes2 = [
       {
-        value: "At home",
+        value: "At_home",
         isItemChecked: false
       }, {
-        value: "At work",
+        value: "At_work",
         isItemChecked: false
       }, {
         value: "Running errands",
@@ -131,13 +137,13 @@ export class ExtraPage implements OnInit {
 
     this.whoBoxes2 = [
       {
-        value: "With the patient",
+        value: "With_the_patient",
         isItemChecked: false
       }, {
         value: "With a romantic partner",
         isItemChecked: false
       }, {
-        value: "With friends",
+        value: "With_friends",
         isItemChecked: false
       }, {
         value: "On my own",
@@ -279,6 +285,37 @@ export class ExtraPage implements OnInit {
     }
   }
 
+  //*************Where Question**********
+  whereCheckbox2() {
+    setTimeout(() => {
+      this.whereBoxes2.forEach(item => {
+        item.isItemChecked = this.whereParent2;
+      });
+    });
+  }
+
+  verifyWhereEvent2() {
+    const allItems = this.whereBoxes2.length;
+    let selected = 0;
+
+    this.whereBoxes2.map(item => {
+      if (item.isItemChecked) selected++;
+    });
+
+    if (selected > 0 && selected < allItems) {
+      // One item is selected among all checkbox elements
+      this.indeterminateState = true;
+      this.whereParent2 = false;
+    } else if (selected == allItems) {
+      // All item selected
+      this.whereParent2 = true;
+      this.indeterminateState = false;
+    } else {
+      // No item is selected
+      this.indeterminateState = false;
+      this.whereParent2 = false;
+    }
+  }
 
   //*************Who Question**********
   whoCheckbox() {
@@ -313,6 +350,38 @@ export class ExtraPage implements OnInit {
   }
 
 
+  //*************Who Question**********
+  whoCheckbox2() {
+    setTimeout(() => {
+      this.whoBoxes2.forEach(item => {
+        item.isItemChecked = this.whoParent2;
+      });
+    });
+  }
+
+  verifyWhoEvent2() {
+    const allItems = this.whoBoxes2.length;
+    let selected = 0;
+
+    this.whoBoxes2.map(item => {
+      if (item.isItemChecked) selected++;
+    });
+
+    if (selected > 0 && selected < allItems) {
+      // One item is selected among all checkbox elements
+      this.indeterminateState = true;
+      this.whoParent2 = false;
+    } else if (selected == allItems) {
+      // All item selected
+      this.whoParent2 = true;
+      this.indeterminateState = false;
+    } else {
+      // No item is selected
+      this.indeterminateState = false;
+      this.whoParent2 = false;
+    }
+  }
+
   //*************What Question**********
   whatCheckbox() {
     setTimeout(() => {
@@ -345,9 +414,42 @@ export class ExtraPage implements OnInit {
     }
   }
 
+  //*************What Question**********
+  whatCheckbox2() {
+    setTimeout(() => {
+      this.whatBoxes2.forEach(item => {
+        item.isItemChecked = this.whatParent2;
+      });
+    });
+  }
+
+  verifyWhatEvent2() {
+    const allItems = this.whatBoxes2.length;
+    let selected = 0;
+
+    this.whatBoxes2.map(item => {
+      if (item.isItemChecked) selected++;
+    });
+
+    if (selected > 0 && selected < allItems) {
+      // One item is selected among all checkbox elements
+      this.indeterminateState = true;
+      this.whatParent2 = false;
+    } else if (selected == allItems) {
+      // All item selected
+      this.whatParent2 = true;
+      this.indeterminateState = false;
+    } else {
+      // No item is selected
+      this.indeterminateState = false;
+      this.whatParent2 = false;
+    }
+  }
+
   submit() {
     try {
       let tempWhere = []; let tempWhat = []; let tempWho = [];
+      let tempWhere2 = []; let tempWhat2 = []; let tempWho2 = [];
       for(let i =0; i < this.whereBoxes.length; i++) {
         if (this.whereBoxes[i].isItemChecked == true){
           tempWhere.push(this.whereBoxes[i].value);
@@ -366,11 +468,33 @@ export class ExtraPage implements OnInit {
           console.log('what', tempWhat);
         }
       }
+      // for 2nd
+      for(let i =0; i < this.whereBoxes2.length; i++) {
+        if (this.whereBoxes2[i].isItemChecked == true){
+          tempWhere2.push(this.whereBoxes2[i].value);
+          console.log('where', tempWhere2);
+        }
+      }
+      for(let i =0; i < this.whoBoxes2.length; i++) {
+        if (this.whoBoxes2[i].isItemChecked == true){
+          tempWho2.push(this.whoBoxes2[i].value);
+          console.log('who', tempWho2);
+        }
+      }
+      for(let i =0; i < this.whatBoxes2.length; i++) {
+        if (this.whatBoxes2[i].isItemChecked == true){
+          tempWhat2.push(this.whatBoxes2[i].value);
+          console.log('what', tempWhat2);
+        }
+      }
       this.afStore.doc(`users/${this.uid}/EMA/${this.today}`)
       .set({
         where: tempWhere,
         what: tempWhat,
-        who: tempWho
+        who: tempWho,
+        where2: tempWhere2,
+        what2: tempWhat2,
+        who2: tempWho2
       }, {merge: true});
       this.router.navigate(['/ema/relax']);
     } catch {

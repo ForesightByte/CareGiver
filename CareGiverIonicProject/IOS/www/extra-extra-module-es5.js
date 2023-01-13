@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button [routerLink]=\"['/tabs/home']\" style=\"color: white;\">Back</ion-button>\n    </ion-buttons>\n    <ion-title style=\"text-align: center;\">Well-Being CheckIn</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Where are you right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whereCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whereboxes of whereBoxes\">\n            <ion-label>{{whereboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n      <ion-list-header style=\"font-size: large;\">\n        <ion-label>Where were you at the time that you receive the survey notification?</ion-label>\n      </ion-list-header>\n      <ion-list>\n        <ion-item>\n          <ion-label><strong>Select All</strong></ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whereParent\" [indeterminate]=\"indeterminateState\" \n          ></ion-checkbox>\n        </ion-item>\n        <!-- (click)=\"whereCheckbox($event)\" -->\n\n        <ion-item *ngFor=\"let whereboxes of whereBoxes\">\n          <ion-label>{{whereboxes2.value}}</ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whereboxes.isItemChecked\">\n          </ion-checkbox>\n        </ion-item>\n      </ion-list>\n  </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Who are you with right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whoCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whoboxes of whoBoxes\">\n            <ion-label>{{whoboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n      <ion-list-header style=\"font-size: large;\">\n        <ion-label>Who were you with at the time that you received the survey notification (select all that apply)?</ion-label>\n      </ion-list-header>\n      <ion-list>\n        <ion-item>\n          <ion-label><strong>Select All</strong></ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whoParent\" [indeterminate]=\"indeterminateState\" \n          ></ion-checkbox>\n        </ion-item>\n        <!-- (click)=\"whoCheckbox($event)\" -->\n\n        <ion-item *ngFor=\"let whoboxes of whoBoxes\">\n          <ion-label>{{whoboxes2.value}}</ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whoboxes.isItemChecked\">\n          </ion-checkbox>\n        </ion-item>\n      </ion-list>\n  </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label>Right before you started this survey, what were you doing?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whatCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whatboxes of whatBoxes\">\n            <ion-label>{{whatboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n      <ion-list-header style=\"font-size: large;\">\n        <ion-label>What were you doing at the time that you received the survey notification?</ion-label>\n      </ion-list-header>\n      <ion-list>\n        <ion-item>\n          <ion-label><strong>Select All</strong></ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whatParent\" [indeterminate]=\"indeterminateState\" \n          ></ion-checkbox>\n        </ion-item>\n        <!-- (click)=\"whatCheckbox($event)\" -->\n\n        <ion-item *ngFor=\"let whatboxes of whatBoxes\">\n          <ion-label>{{whatboxes2.value}}</ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whatboxes.isItemChecked\">\n          </ion-checkbox>\n        </ion-item>\n      </ion-list>\n  </div>\n  </ion-grid>\n\n  <ion-grid class=\"sleepQuestions\" *ngIf=\"!isSleep\">\n    <div>\n      <p>How long did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-input required=\"true\" placeholder=\"hours\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"hours\"></ion-input>&nbsp;&nbsp;\n        <ion-input required=\"true\" placeholder=\"minutes\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"minutes\"></ion-input>\n      </ion-row>\n    </div>\n    <div>\n      <p>How well did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-range min=\"0\" max=\"100\" color=\"secondary\" pin=\"true\" (ionChange)=\"wellSleepChange($event)\">\n          <ion-label slot=\"start\" style=\"font-size: large; color:red;\">Not at all</ion-label>\n          <ion-label slot=\"end\" style=\"font-size: large; color:green;\">Extremely</ion-label>\n        </ion-range>\n      </ion-row>\n    </div>\n  </ion-grid>\n</ion-content>\n\n<ion-tab-bar>\n  <ion-buttons>\n    <ion-button expand=\"block\" \n                fill=\"clear\" \n                style=\"color: rgb(7, 156, 161); font-size: larger; font: bold;\"\n                (click)=\"submit()\">Next</ion-button>\n  </ion-buttons>\n</ion-tab-bar>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button [routerLink]=\"['/tabs/home']\" style=\"color: white;\">Back</ion-button>\n    </ion-buttons>\n    <ion-title style=\"text-align: center;\">Well-Being CheckIn</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <!-- where 1 quetions -->\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label class=\"ion-text-wrap\">Where are you right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label ><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whereCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whereboxes of whereBoxes\">\n            <ion-label class=\"ion-text-wrap\">{{whereboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whereboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <!-- where 2 quetions -->\n    <div>\n      <ion-list-header style=\"font-size: large;\">\n        <ion-label class=\"ion-text-wrap\">Where were you at the time that you receive the survey notification?</ion-label>\n      </ion-list-header>\n      <ion-list>\n        <ion-item>\n          <ion-label ><strong>Select All</strong></ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whereParent2\" [indeterminate]=\"indeterminateState\" \n          (click)=\"whereCheckbox($event)\"></ion-checkbox>\n        </ion-item>\n\n        <ion-item *ngFor=\"let whereBoxes2 of whereBoxes2\">\n          <ion-label class=\"ion-text-wrap\">{{whereBoxes2.value}}</ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whereBoxes2.isItemChecked\">\n          </ion-checkbox>\n        </ion-item>\n      </ion-list>\n    </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label class=\"ion-text-wrap\">Who are you with right now?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label ><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whoCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whoboxes of whoBoxes\">\n            <ion-label class=\"ion-text-wrap\">{{whoboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whoboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n      <ion-list-header style=\"font-size: large;\">\n        <ion-label class=\"ion-text-wrap\">Who were you with at the time that you received the survey notification (select all that apply)?</ion-label>\n      </ion-list-header>\n      <ion-list>\n        <ion-item>\n          <ion-label><strong>Select All</strong></ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whoParent2\" [indeterminate]=\"indeterminateState\" \n          (click)=\"whoCheckbox2($event)\"></ion-checkbox>\n        </ion-item>\n\n        <ion-item *ngFor=\"let whoBoxes2 of whoBoxes2\">\n          <ion-label class=\"ion-text-wrap\">{{whoBoxes2.value}}</ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whoBoxes2.isItemChecked\">\n          </ion-checkbox>\n        </ion-item>\n      </ion-list>\n  </div>\n\n    <div>\n        <ion-list-header style=\"font-size: large;\">\n          <ion-label class=\"ion-text-wrap\">Right before you started this survey, what were you doing?</ion-label>\n        </ion-list-header>\n        <ion-list>\n          <ion-item>\n            <ion-label ><strong>Select All</strong></ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatParent\" [indeterminate]=\"indeterminateState\" \n            (click)=\"whatCheckbox($event)\"></ion-checkbox>\n          </ion-item>\n\n          <ion-item *ngFor=\"let whatboxes of whatBoxes\">\n            <ion-label class=\"ion-text-wrap\">{{whatboxes.value}}</ion-label>\n            <ion-checkbox slot=\"start\" [(ngModel)]=\"whatboxes.isItemChecked\">\n            </ion-checkbox>\n          </ion-item>\n        </ion-list>\n    </div>\n\n    <div>\n      <ion-list-header style=\"font-size: large;\">\n        <ion-label class=\"ion-text-wrap\">What were you doing at the time that you received the survey notification?</ion-label>\n      </ion-list-header>\n      <ion-list>\n        <ion-item>\n          <ion-label><strong>Select All</strong></ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whatParent2\" [indeterminate]=\"indeterminateState\" \n          (click)=\"whatCheckbox2($event)\"></ion-checkbox>\n        </ion-item>\n\n        <ion-item *ngFor=\"let whatBoxes2 of whatBoxes2\">\n          <ion-label class=\"ion-text-wrap\">{{whatBoxes2.value}}</ion-label>\n          <ion-checkbox slot=\"start\" [(ngModel)]=\"whatBoxes2.isItemChecked\">\n          </ion-checkbox>\n        </ion-item>\n      </ion-list>\n  </div>\n  </ion-grid>\n\n  <ion-grid class=\"sleepQuestions\" *ngIf=\"!isSleep\">\n    <div>\n      <p>How long did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-input required=\"true\" placeholder=\"hours\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"hours\"></ion-input>&nbsp;&nbsp;\n        <ion-input required=\"true\" placeholder=\"minutes\" type=\"tel\" minlength=\"1\" maxlength=\"2\"\n                   [(ngModel)]=\"minutes\"></ion-input>\n      </ion-row>\n    </div>\n    <div>\n      <p>How well did you sleep last night?</p>\n    </div>\n    <div class=\"btn\">\n      <ion-row row-1>\n        <ion-range min=\"0\" max=\"100\" color=\"secondary\" pin=\"true\" (ionChange)=\"wellSleepChange($event)\">\n          <ion-label slot=\"start\" style=\"font-size: large; color:red;\">Not at all</ion-label>\n          <ion-label slot=\"end\" style=\"font-size: large; color:green;\">Extremely</ion-label>\n        </ion-range>\n      </ion-row>\n    </div>\n  </ion-grid>\n</ion-content>\n\n<ion-tab-bar>\n  <ion-buttons>\n    <ion-button expand=\"block\" \n                fill=\"clear\" \n                style=\"color: rgb(7, 156, 161); font-size: larger; font: bold;\"\n                (click)=\"submit()\">Next</ion-button>\n  </ion-buttons>\n</ion-tab-bar>\n"
 
 /***/ }),
 
@@ -103,7 +103,7 @@ var ExtraPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-content {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n  color: white;\n}\n\n.pic {\n  width: 30px;\n  height: 30px;\n}\n\nion-grid {\n  display: grid;\n  justify-content: center;\n}\n\nion-row {\n  justify-content: center;\n}\n\nion-item {\n  --background: rgba(255, 255, 255, 0);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Wb2x1bWVzL1Byb2plY3RzL0NhcmVHaXZlci9DYXJlR2l2ZXJJb25pY1Byb2plY3QvSU9TL3NyYy9hcHAvaG9tZS9lbWEvZXh0cmEvZXh0cmEucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL2VtYS9leHRyYS9leHRyYS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtQkFBQTtBQ0NGOztBREVBO0VBQ0UsOEJBQUE7RUFDQSxZQUFBO0FDQ0Y7O0FERUE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREVBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FDQ0Y7O0FERUE7RUFDRSx1QkFBQTtBQ0NGOztBREVBO0VBQ0Usb0NBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvZW1hL2V4dHJhL2V4dHJhLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTsgLy8gdXJsKCcuLi8uLi8uLi8uLi9hc3NldHMvd2hpdGVsZWFmLmpwZycpIDAgMC8xMDAlIDEwMCUgcmVwZWF0O1xufVxuXG5pb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogcmdiKDcsIDE1NiwgMTYxKTsgLy8gdXJsKHNyYy9hc3NldHMvdG9vbGJhci5qcGcpIDAgMC8xMDAlIDEwMCUgcmVwZWF0O1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi5waWMge1xuICB3aWR0aDogMzBweDtcbiAgaGVpZ2h0OiAzMHB4O1xufVxuXG5pb24tZ3JpZCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24tcm93IHtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbmlvbi1pdGVte1xuICAtLWJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7XG59IiwiaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6IHdoaXRlO1xufVxuXG5pb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogcmdiKDcsIDE1NiwgMTYxKTtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4ucGljIHtcbiAgd2lkdGg6IDMwcHg7XG4gIGhlaWdodDogMzBweDtcbn1cblxuaW9uLWdyaWQge1xuICBkaXNwbGF5OiBncmlkO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuaW9uLXJvdyB7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwKTtcbn0iXX0= */"
+module.exports = "ion-content {\n  --background: white;\n}\n\nion-toolbar {\n  --background: rgb(7, 156, 161);\n  color: white;\n}\n\n.pic {\n  width: 30px;\n  height: 30px;\n}\n\nion-grid {\n  display: grid;\n  justify-content: center;\n}\n\nion-row {\n  justify-content: center;\n}\n\nion-item {\n  --background: rgba(255, 255, 255, 0);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Wb2x1bWVzL1Byb2plY3RzL0NhcmVHaXZlci9DYXJlR2l2ZXJJb25pY1Byb2plY3QvSU9TL3NyYy9hcHAvaG9tZS9lbWEvZXh0cmEvZXh0cmEucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL2VtYS9leHRyYS9leHRyYS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtQkFBQTtBQ0NGOztBREVBO0VBQ0UsOEJBQUE7RUFDQSxZQUFBO0FDQ0Y7O0FERUE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREVBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FDQ0Y7O0FERUE7RUFDRSx1QkFBQTtBQ0NGOztBREVBO0VBQ0Usb0NBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvZW1hL2V4dHJhL2V4dHJhLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTsgLy8gdXJsKCcuLi8uLi8uLi8uLi9hc3NldHMvd2hpdGVsZWFmLmpwZycpIDAgMC8xMDAlIDEwMCUgcmVwZWF0O1xufVxuXG5pb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogcmdiKDcsIDE1NiwgMTYxKTsgLy8gdXJsKHNyYy9hc3NldHMvdG9vbGJhci5qcGcpIDAgMC8xMDAlIDEwMCUgcmVwZWF0O1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi5waWMge1xuICB3aWR0aDogMzBweDtcbiAgaGVpZ2h0OiAzMHB4O1xufVxuXG5pb24tZ3JpZCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24tcm93IHtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbmlvbi1pdGVte1xuICAtLWJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7XG59XG4iLCJpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG59XG5cbmlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2IoNywgMTU2LCAxNjEpO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi5waWMge1xuICB3aWR0aDogMzBweDtcbiAgaGVpZ2h0OiAzMHB4O1xufVxuXG5pb24tZ3JpZCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5pb24tcm93IHtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbmlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDApO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -171,10 +171,10 @@ var ExtraPage = /** @class */ (function () {
         ];
         this.whereBoxes2 = [
             {
-                value: "At home",
+                value: "At_home",
                 isItemChecked: false
             }, {
-                value: "At work",
+                value: "At_work",
                 isItemChecked: false
             }, {
                 value: "Running errands",
@@ -225,13 +225,13 @@ var ExtraPage = /** @class */ (function () {
         ];
         this.whoBoxes2 = [
             {
-                value: "With the patient",
+                value: "With_the_patient",
                 isItemChecked: false
             }, {
                 value: "With a romantic partner",
                 isItemChecked: false
             }, {
-                value: "With friends",
+                value: "With_friends",
                 isItemChecked: false
             }, {
                 value: "On my own",
@@ -374,6 +374,38 @@ var ExtraPage = /** @class */ (function () {
             this.whereParent = false;
         }
     };
+    //*************Where Question**********
+    ExtraPage.prototype.whereCheckbox2 = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.whereBoxes2.forEach(function (item) {
+                item.isItemChecked = _this.whereParent2;
+            });
+        });
+    };
+    ExtraPage.prototype.verifyWhereEvent2 = function () {
+        var allItems = this.whereBoxes2.length;
+        var selected = 0;
+        this.whereBoxes2.map(function (item) {
+            if (item.isItemChecked)
+                selected++;
+        });
+        if (selected > 0 && selected < allItems) {
+            // One item is selected among all checkbox elements
+            this.indeterminateState = true;
+            this.whereParent2 = false;
+        }
+        else if (selected == allItems) {
+            // All item selected
+            this.whereParent2 = true;
+            this.indeterminateState = false;
+        }
+        else {
+            // No item is selected
+            this.indeterminateState = false;
+            this.whereParent2 = false;
+        }
+    };
     //*************Who Question**********
     ExtraPage.prototype.whoCheckbox = function () {
         var _this = this;
@@ -404,6 +436,38 @@ var ExtraPage = /** @class */ (function () {
             // No item is selected
             this.indeterminateState = false;
             this.whoParent = false;
+        }
+    };
+    //*************Who Question**********
+    ExtraPage.prototype.whoCheckbox2 = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.whoBoxes2.forEach(function (item) {
+                item.isItemChecked = _this.whoParent2;
+            });
+        });
+    };
+    ExtraPage.prototype.verifyWhoEvent2 = function () {
+        var allItems = this.whoBoxes2.length;
+        var selected = 0;
+        this.whoBoxes2.map(function (item) {
+            if (item.isItemChecked)
+                selected++;
+        });
+        if (selected > 0 && selected < allItems) {
+            // One item is selected among all checkbox elements
+            this.indeterminateState = true;
+            this.whoParent2 = false;
+        }
+        else if (selected == allItems) {
+            // All item selected
+            this.whoParent2 = true;
+            this.indeterminateState = false;
+        }
+        else {
+            // No item is selected
+            this.indeterminateState = false;
+            this.whoParent2 = false;
         }
     };
     //*************What Question**********
@@ -438,11 +502,46 @@ var ExtraPage = /** @class */ (function () {
             this.whatParent = false;
         }
     };
+    //*************What Question**********
+    ExtraPage.prototype.whatCheckbox2 = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.whatBoxes2.forEach(function (item) {
+                item.isItemChecked = _this.whatParent2;
+            });
+        });
+    };
+    ExtraPage.prototype.verifyWhatEvent2 = function () {
+        var allItems = this.whatBoxes2.length;
+        var selected = 0;
+        this.whatBoxes2.map(function (item) {
+            if (item.isItemChecked)
+                selected++;
+        });
+        if (selected > 0 && selected < allItems) {
+            // One item is selected among all checkbox elements
+            this.indeterminateState = true;
+            this.whatParent2 = false;
+        }
+        else if (selected == allItems) {
+            // All item selected
+            this.whatParent2 = true;
+            this.indeterminateState = false;
+        }
+        else {
+            // No item is selected
+            this.indeterminateState = false;
+            this.whatParent2 = false;
+        }
+    };
     ExtraPage.prototype.submit = function () {
         try {
             var tempWhere = [];
             var tempWhat = [];
             var tempWho = [];
+            var tempWhere2 = [];
+            var tempWhat2 = [];
+            var tempWho2 = [];
             for (var i = 0; i < this.whereBoxes.length; i++) {
                 if (this.whereBoxes[i].isItemChecked == true) {
                     tempWhere.push(this.whereBoxes[i].value);
@@ -461,11 +560,33 @@ var ExtraPage = /** @class */ (function () {
                     console.log('what', tempWhat);
                 }
             }
+            // for 2nd
+            for (var i = 0; i < this.whereBoxes2.length; i++) {
+                if (this.whereBoxes2[i].isItemChecked == true) {
+                    tempWhere2.push(this.whereBoxes2[i].value);
+                    console.log('where', tempWhere2);
+                }
+            }
+            for (var i = 0; i < this.whoBoxes2.length; i++) {
+                if (this.whoBoxes2[i].isItemChecked == true) {
+                    tempWho2.push(this.whoBoxes2[i].value);
+                    console.log('who', tempWho2);
+                }
+            }
+            for (var i = 0; i < this.whatBoxes2.length; i++) {
+                if (this.whatBoxes2[i].isItemChecked == true) {
+                    tempWhat2.push(this.whatBoxes2[i].value);
+                    console.log('what', tempWhat2);
+                }
+            }
             this.afStore.doc("users/" + this.uid + "/EMA/" + this.today)
                 .set({
                 where: tempWhere,
                 what: tempWhat,
-                who: tempWho
+                who: tempWho,
+                where2: tempWhere2,
+                what2: tempWhat2,
+                who2: tempWho2
             }, { merge: true });
             this.router.navigate(['/ema/relax']);
         }

@@ -24,6 +24,7 @@ export class PermaPage implements OnInit {
 
   uid;
   today;
+  today4EMA;
 
   constructor(
     private afStore: AngularFirestore,
@@ -38,7 +39,8 @@ export class PermaPage implements OnInit {
     const yyyy = date.getFullYear();
     const time = date.getHours();
 
-    this.today = yyyy + '-' + mm + '-' + dd + '_'  + time;
+    this.today = yyyy + '-' + mm + '-' + dd;
+    this.today4EMA = yyyy + '-' + mm + '-' + dd + '_'  + time;
     this.uid = this.auth.cUid;
 
     this.aRoute.queryParams.subscribe(params => {
@@ -90,8 +92,9 @@ export class PermaPage implements OnInit {
   }
 
   submit() {
-    const res = this.afStore.doc(`users/${this.uid}/EMA/${this.today}`);
-    const res2 = this.afStore.doc(`users/${this.uid}`);
+    const res = this.afStore.doc(`users/${this.uid}`);
+    const res2 = this.afStore.doc(`users/${this.uid}/EMA/${this.today}`);
+    const res3 = this.afStore.doc(`users/${this.uid}/EMA/${this.today4EMA}`);
     const helped = this.helped;
     const loved = this.loved;
     const satisfied = this.satisfied;
@@ -107,9 +110,10 @@ export class PermaPage implements OnInit {
     const data = {helped, loved, satisfied, purposeful, valuable, sense, progress, achieve, handle, wellbeingScore};
 
     try {
-      res.set(data, {merge: true});
+      res3.set(data, {merge: true});
       // tslint:disable-next-line: object-literal-shorthand
-      res2.set({wellbeingScore: wellbeingScore}, {merge: true});
+      res2.set(data, {merge: true});
+      res.set({wellbeingScore: wellbeingScore}, {merge: true});
       this.showAlert('Thank you for your participation! Your contribution matters');
       this.router.navigate(['/tabs']);
     } catch (err) {

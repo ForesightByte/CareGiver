@@ -138,7 +138,8 @@ let PermaPage = class PermaPage {
         const mm = String(date.getMonth() + 1).padStart(2, '0');
         const yyyy = date.getFullYear();
         const time = date.getHours();
-        this.today = yyyy + '-' + mm + '-' + dd + '_' + time;
+        this.today = yyyy + '-' + mm + '-' + dd;
+        this.today4EMA = yyyy + '-' + mm + '-' + dd + '_' + time;
         this.uid = this.auth.cUid;
         this.aRoute.queryParams.subscribe(params => {
             if (params.score) {
@@ -179,8 +180,9 @@ let PermaPage = class PermaPage {
         return this.handle = event.detail.value;
     }
     submit() {
-        const res = this.afStore.doc(`users/${this.uid}/EMA/${this.today}`);
-        const res2 = this.afStore.doc(`users/${this.uid}`);
+        const res = this.afStore.doc(`users/${this.uid}`);
+        const res2 = this.afStore.doc(`users/${this.uid}/EMA/${this.today}`);
+        const res3 = this.afStore.doc(`users/${this.uid}/EMA/${this.today4EMA}`);
         const helped = this.helped;
         const loved = this.loved;
         const satisfied = this.satisfied;
@@ -195,9 +197,10 @@ let PermaPage = class PermaPage {
         const wellbeingScore = Number(((Number(this.wellbeingScore) + Number(score)) / 17).toFixed(0));
         const data = { helped, loved, satisfied, purposeful, valuable, sense, progress, achieve, handle, wellbeingScore };
         try {
-            res.set(data, { merge: true });
+            res3.set(data, { merge: true });
             // tslint:disable-next-line: object-literal-shorthand
-            res2.set({ wellbeingScore: wellbeingScore }, { merge: true });
+            res2.set(data, { merge: true });
+            res.set({ wellbeingScore: wellbeingScore }, { merge: true });
             this.showAlert('Thank you for your participation! Your contribution matters');
             this.router.navigate(['/tabs']);
         }

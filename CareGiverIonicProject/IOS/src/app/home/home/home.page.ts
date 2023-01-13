@@ -54,7 +54,7 @@ export class HomePage implements OnInit {
 
   doStart(){
     const uid = this.auth.cUid;
-    console.log(uid);
+    console.log('uid',uid);
     var count = 0;
 
     this.updateSubscription = interval(1000).subscribe(
@@ -73,6 +73,7 @@ export class HomePage implements OnInit {
 
   getTodayScore(uid) {
     //********Vital Score*********
+    console.log('start function getTodayScore')
     let vitalScore=0;
     this.user.getUser(uid).subscribe(user => {
       let gid;
@@ -82,6 +83,7 @@ export class HomePage implements OnInit {
       let pulseOX = 0;
       if (user) {
         
+    //********Garmin score**********
       gid = user.garminUserId;
       console.log('gid',gid);
       this.user.getVitalScore(gid, this.today).subscribe(vital =>{
@@ -104,9 +106,11 @@ export class HomePage implements OnInit {
           }
         }else{
           vitalScore = 0; 
+          console.log('vital 0');
         }
 
         vitalScore = step+sleep+stress+pulseOX;
+        console.log('vital2', vitalScore);
       })
       } else { vitalScore = 0; }
 

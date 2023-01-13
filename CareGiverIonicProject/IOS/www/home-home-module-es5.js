@@ -887,7 +887,7 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.doStart = function () {
         var _this = this;
         var uid = this.auth.cUid;
-        console.log(uid);
+        console.log('uid', uid);
         var count = 0;
         this.updateSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["interval"])(1000).subscribe(function (val) {
             count++;
@@ -902,6 +902,7 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.getTodayScore = function (uid) {
         var _this = this;
         //********Vital Score*********
+        console.log('start function getTodayScore');
         var vitalScore = 0;
         this.user.getUser(uid).subscribe(function (user) {
             var gid;
@@ -910,6 +911,7 @@ var HomePage = /** @class */ (function () {
             var stress = 0;
             var pulseOX = 0;
             if (user) {
+                //********Garmin score**********
                 gid = user.garminUserId;
                 console.log('gid', gid);
                 _this.user.getVitalScore(gid, _this.today).subscribe(function (vital) {
@@ -934,8 +936,10 @@ var HomePage = /** @class */ (function () {
                     }
                     else {
                         vitalScore = 0;
+                        console.log('vital 0');
                     }
                     vitalScore = step + sleep + stress + pulseOX;
+                    console.log('vital2', vitalScore);
                 });
             }
             else {

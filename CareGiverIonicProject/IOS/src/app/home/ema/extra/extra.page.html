@@ -9,58 +9,59 @@
 
 <ion-content>
   <ion-grid>
+    <!-- where 1 quetions -->
     <div>
         <ion-list-header style="font-size: large;">
-          <ion-label>Where are you right now?</ion-label>
+          <ion-label class="ion-text-wrap">Where are you right now?</ion-label>
         </ion-list-header>
         <ion-list>
           <ion-item>
-            <ion-label><strong>Select All</strong></ion-label>
+            <ion-label ><strong>Select All</strong></ion-label>
             <ion-checkbox slot="start" [(ngModel)]="whereParent" [indeterminate]="indeterminateState" 
             (click)="whereCheckbox($event)"></ion-checkbox>
           </ion-item>
 
           <ion-item *ngFor="let whereboxes of whereBoxes">
-            <ion-label>{{whereboxes.value}}</ion-label>
+            <ion-label class="ion-text-wrap">{{whereboxes.value}}</ion-label>
             <ion-checkbox slot="start" [(ngModel)]="whereboxes.isItemChecked">
             </ion-checkbox>
           </ion-item>
         </ion-list>
     </div>
 
+    <!-- where 2 quetions -->
     <div>
       <ion-list-header style="font-size: large;">
-        <ion-label>Where were you at the time that you receive the survey notification?</ion-label>
+        <ion-label class="ion-text-wrap">Where were you at the time that you receive the survey notification?</ion-label>
       </ion-list-header>
       <ion-list>
         <ion-item>
-          <ion-label><strong>Select All</strong></ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="whereParent" [indeterminate]="indeterminateState" 
-          ></ion-checkbox>
+          <ion-label ><strong>Select All</strong></ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whereParent2" [indeterminate]="indeterminateState" 
+          (click)="whereCheckbox($event)"></ion-checkbox>
         </ion-item>
-        <!-- (click)="whereCheckbox($event)" -->
 
-        <ion-item *ngFor="let whereboxes of whereBoxes">
-          <ion-label>{{whereboxes2.value}}</ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="whereboxes.isItemChecked">
+        <ion-item *ngFor="let whereBoxes2 of whereBoxes2">
+          <ion-label class="ion-text-wrap">{{whereBoxes2.value}}</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whereBoxes2.isItemChecked">
           </ion-checkbox>
         </ion-item>
       </ion-list>
-  </div>
+    </div>
 
     <div>
         <ion-list-header style="font-size: large;">
-          <ion-label>Who are you with right now?</ion-label>
+          <ion-label class="ion-text-wrap">Who are you with right now?</ion-label>
         </ion-list-header>
         <ion-list>
           <ion-item>
-            <ion-label><strong>Select All</strong></ion-label>
+            <ion-label ><strong>Select All</strong></ion-label>
             <ion-checkbox slot="start" [(ngModel)]="whoParent" [indeterminate]="indeterminateState" 
             (click)="whoCheckbox($event)"></ion-checkbox>
           </ion-item>
 
           <ion-item *ngFor="let whoboxes of whoBoxes">
-            <ion-label>{{whoboxes.value}}</ion-label>
+            <ion-label class="ion-text-wrap">{{whoboxes.value}}</ion-label>
             <ion-checkbox slot="start" [(ngModel)]="whoboxes.isItemChecked">
             </ion-checkbox>
           </ion-item>
@@ -69,19 +70,18 @@
 
     <div>
       <ion-list-header style="font-size: large;">
-        <ion-label>Who were you with at the time that you received the survey notification (select all that apply)?</ion-label>
+        <ion-label class="ion-text-wrap">Who were you with at the time that you received the survey notification (select all that apply)?</ion-label>
       </ion-list-header>
       <ion-list>
         <ion-item>
           <ion-label><strong>Select All</strong></ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="whoParent" [indeterminate]="indeterminateState" 
-          ></ion-checkbox>
+          <ion-checkbox slot="start" [(ngModel)]="whoParent2" [indeterminate]="indeterminateState" 
+          (click)="whoCheckbox2($event)"></ion-checkbox>
         </ion-item>
-        <!-- (click)="whoCheckbox($event)" -->
 
-        <ion-item *ngFor="let whoboxes of whoBoxes">
-          <ion-label>{{whoboxes2.value}}</ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="whoboxes.isItemChecked">
+        <ion-item *ngFor="let whoBoxes2 of whoBoxes2">
+          <ion-label class="ion-text-wrap">{{whoBoxes2.value}}</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whoBoxes2.isItemChecked">
           </ion-checkbox>
         </ion-item>
       </ion-list>
@@ -89,17 +89,17 @@
 
     <div>
         <ion-list-header style="font-size: large;">
-          <ion-label>Right before you started this survey, what were you doing?</ion-label>
+          <ion-label class="ion-text-wrap">Right before you started this survey, what were you doing?</ion-label>
         </ion-list-header>
         <ion-list>
           <ion-item>
-            <ion-label><strong>Select All</strong></ion-label>
+            <ion-label ><strong>Select All</strong></ion-label>
             <ion-checkbox slot="start" [(ngModel)]="whatParent" [indeterminate]="indeterminateState" 
             (click)="whatCheckbox($event)"></ion-checkbox>
           </ion-item>
 
           <ion-item *ngFor="let whatboxes of whatBoxes">
-            <ion-label>{{whatboxes.value}}</ion-label>
+            <ion-label class="ion-text-wrap">{{whatboxes.value}}</ion-label>
             <ion-checkbox slot="start" [(ngModel)]="whatboxes.isItemChecked">
             </ion-checkbox>
           </ion-item>
@@ -108,19 +108,18 @@
 
     <div>
       <ion-list-header style="font-size: large;">
-        <ion-label>What were you doing at the time that you received the survey notification?</ion-label>
+        <ion-label class="ion-text-wrap">What were you doing at the time that you received the survey notification?</ion-label>
       </ion-list-header>
       <ion-list>
         <ion-item>
           <ion-label><strong>Select All</strong></ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="whatParent" [indeterminate]="indeterminateState" 
-          ></ion-checkbox>
+          <ion-checkbox slot="start" [(ngModel)]="whatParent2" [indeterminate]="indeterminateState" 
+          (click)="whatCheckbox2($event)"></ion-checkbox>
         </ion-item>
-        <!-- (click)="whatCheckbox($event)" -->
 
-        <ion-item *ngFor="let whatboxes of whatBoxes">
-          <ion-label>{{whatboxes2.value}}</ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="whatboxes.isItemChecked">
+        <ion-item *ngFor="let whatBoxes2 of whatBoxes2">
+          <ion-label class="ion-text-wrap">{{whatBoxes2.value}}</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="whatBoxes2.isItemChecked">
           </ion-checkbox>
         </ion-item>
       </ion-list>

@@ -882,7 +882,7 @@ let HomePage = class HomePage {
     }
     doStart() {
         const uid = this.auth.cUid;
-        console.log(uid);
+        console.log('uid', uid);
         var count = 0;
         this.updateSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["interval"])(1000).subscribe((val) => {
             count++;
@@ -896,6 +896,7 @@ let HomePage = class HomePage {
     }
     getTodayScore(uid) {
         //********Vital Score*********
+        console.log('start function getTodayScore');
         let vitalScore = 0;
         this.user.getUser(uid).subscribe(user => {
             let gid;
@@ -904,6 +905,7 @@ let HomePage = class HomePage {
             let stress = 0;
             let pulseOX = 0;
             if (user) {
+                //********Garmin score**********
                 gid = user.garminUserId;
                 console.log('gid', gid);
                 this.user.getVitalScore(gid, this.today).subscribe(vital => {
@@ -928,8 +930,10 @@ let HomePage = class HomePage {
                     }
                     else {
                         vitalScore = 0;
+                        console.log('vital 0');
                     }
                     vitalScore = step + sleep + stress + pulseOX;
+                    console.log('vital2', vitalScore);
                 });
             }
             else {
