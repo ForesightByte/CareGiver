@@ -108,6 +108,72 @@
         </ion-range>
       </ion-row>
     </div>
+    <div>
+      <p>Please rate the level of difficulty you experience while assisting the care recipient with Activities of Daily Living (ADLs) such as bathing, dressing, eating, toileting, and transferring.</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-range min="0" max="100" color="secondary" pin="true" (ionChange)="adlsChange($event)" required="true">
+          <ion-label slot="start" style="font-size: large; color:red;">Very Easy</ion-label>
+          <ion-label slot="end" style="font-size: large; color:green;">Very Difficult</ion-label>
+        </ion-range>
+      </ion-row>
+    </div>
+    <div>
+      <p>How many hours per week do you spend providing care to your loved one?</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-range min="0" max="100" color="secondary" pin="true" (ionChange)="careHoursChange($event)" required="true">
+          <ion-label slot="start" style="font-size: large; color:red;">Very few times</ion-label>
+          <ion-label slot="end" style="font-size: large; color:green;">Very long times</ion-label>
+        </ion-range>
+      </ion-row>
+    </div>
+    <div>
+      <p>To what extent has caregiving caused financial strain in your life?</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-range min="0" max="100" color="secondary" pin="true" (ionChange)="financialChange($event)" required="true">
+          <ion-label slot="start" style="font-size: large; color:red;">Not at all</ion-label>
+          <ion-label slot="end" style="font-size: large; color:green;">Extremely</ion-label>
+        </ion-range>
+      </ion-row>
+    </div>
+    <div>
+      <p>How often are you able to take time off from caregiving to focus on your own needs or responsibilities?</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-range min="0" max="100" color="secondary" pin="true" (ionChange)="timeOffChange($event)" required="true">
+          <ion-label slot="start" style="font-size: large; color:red;">Never</ion-label>
+          <ion-label slot="end" style="font-size: large; color:green;">Very Often</ion-label>
+        </ion-range>
+      </ion-row>
+    </div>
+    <div>
+      <p>Does the care recipient have Alzheimer's disease or any other form of mental confusion?</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-range min="0" max="100" color="secondary" pin="true" (ionChange)="mentalConfusionChange($event)" required="true">
+          <ion-label slot="start" style="font-size: large; color:red;">Not at all</ion-label>
+          <ion-label slot="end" style="font-size: large; color:green;">Extremely</ion-label>
+        </ion-range>
+      </ion-row>
+    </div>
+    <div>
+      <p>Do you receive sufficient help or support in performing medical or nursing tasks for the care recipient?</p>
+    </div>
+    <div class="btn">
+      <ion-row row-1>
+        <ion-range min="0" max="100" color="secondary" pin="true" (ionChange)="helpChange($event)" required="true">
+          <ion-label slot="start" style="font-size: large; color:red;">Never</ion-label>
+          <ion-label slot="end" style="font-size: large; color:green;">Always</ion-label>
+        </ion-range>
+      </ion-row>
+    </div>
   </ion-grid>
 </ion-content>
 
