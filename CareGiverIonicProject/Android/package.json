@@ -2,7 +2,7 @@
   "name": "caregiver",
   "version": "1.4.0",
   "author": "CGU",
-  "homepage": "https://cgu.edu",
+  "homepage": "http://localhost:4200/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^8.2.14",
+    "@angular/animations": "^8.1.2",
     "@angular/common": "~8.1.2",
     "@angular/core": "~8.1.2",
     "@angular/fire": "^5.3.0",
